@@ -1,0 +1,40 @@
+:Base gedit.HLP
+1 Overview
+2 Overview=Overview
+2 Brushes=Brushes
+2 Cut Brushes and Brush Order=Cut_Brushes_and_Brush_Order
+2 Faces=Faces
+2 Entities=Entities
+1 User Interface
+2 User Interface Layout=User_Interface_Layout
+2 The Views=The_Views
+2 The Option Pages=The_Option_Pages
+2 Template=Template
+2 Textures=Textures
+2 Groups=Groups
+2 Console=Console
+2 Models=Models
+2 Sky=Sky
+2 Brush Attributes Dialog=Brush_Attributes_Dialog
+2 Face Attributes Dialog=Face_Attributes_Dialog
+1 Basic Operation
+2 Basic Operation=Basic_Operation
+2 Template Mode=Template_Mode
+2 Select Mode=Select_Mode
+2 Camera Mode=Camera_Mode
+2 The Camera Entity=The_Camera_Entity
+2 Brush and Face Modes=Brush_and_Face_Modes
+2 Shortcut Keys=Shortcut_Keys
+2 The Grid=The_Grid
+2 Auto rebuild=Auto_rebuild
+2 Entity Editor=Entity_Editor
+2 Entity Visibility Dialog=Entity_Visibility_Dialog
+2 Compiling and Viewing Your Level=Compiling_and_Viewing_Your_Level
+2 General Compile Options=General_Compile_Options
+2 BSP Settings=BSP_Settings
+2 Visibility Settings=Visibility_Settings
+2 Light Settings=Light_Settings
+2 Quick Compile=Quick_Compile
+1 Appendix
+2 The Initialization File  GEDIT.INI=The_Initialization_File_GEDIT.INI
+2 User Defined Entity Header Files=User_Defined_Entity_Header_Files

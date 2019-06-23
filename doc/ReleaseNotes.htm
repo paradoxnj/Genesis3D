@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h1 align="center">Release Notes For Genesis3D 1.1</h1>
+<p>Welcome to the 1.1 version release of the Genesis3D SDK from WildTangent, Inc.</p>
+<p>For more information, please visit us at: <a href="http://www.genesis3d.com">www.genesis3d.com</a> 
+</p>
+<h2>Running The Demo</h2>
+<p>There is a single shortcut for running the game in the Genesis3D folder. The 
+  game will start up with a menu, from which you can choose multiplayer games, 
+  or standalone. There are no enemies in the standalone game, so that version 
+  becomes a simple exploration. You might want to check out the options page for 
+  setting your name and configuring controls for the game, especially if you are 
+  going to play a net game. </p>
+<p>For network games, the server must start first, then the clients can join the 
+  game. If you are running using an ISP, and not over the LAN, then you need to 
+  communicate your IP address to your friends before they can join your game. 
+  Use winipcfg.exe that ships with Windows to get this information. Your friends 
+  will have to enter the IP address in the Join Network Game menu option. </p>
+<p>You can run the game from the command line. The command line arguments are: 
+</p>
+<table width="75%" border="1">
+  <tr>
+    <td width="27%">-server</td>
+    <td width="73%">Start in server mode</td>
+  </tr>
+  <tr>
+    <td width="27%">-client</td>
+    <td width="73%">Start in client mode</td>
+  </tr>
+  <tr>
+    <td width="27%">-name String</td>
+    <td width="73%">Set your name for scoring</td>
+  </tr>
+  <tr>
+    <td width="27%">-map FileName</td>
+    <td width="73%">Set a map name to run in. Only the server can do this.</td>
+  </tr>
+  <tr>
+    <td width="27%">-gamma</td>
+    <td width="73%">Set the brightness level. </td>
+  </tr>
+  <tr>
+    <td width="27%">-pickmode</td>
+    <td width="73%">Lets you pick the starting video mode for GTest</td>
+  </tr>
+  <tr>
+    <td width="27%">-fog</td>
+    <td width="73%">Puts in a red distance fog during hardware acceleration. See the 
+  function geEngine_SetFogEnable( ) with comments in the Genesis.h header file.</td>
+  </tr>
+  <tr>
+    <td width="27%">-farclip</td>
+    <td width="73%">Clips out distant polys for better performance in some areas. See 
+the functions geCamera_SetFarClipPlane( )   and geCamera_GetFarClipPlane( ) with 
+comments in the Camera.h header file. </td>
+  </tr>
+</table>
+<p>The editor will ensure that your levels land in the correct place by default. 
+  If you decide to change the default location of level files, you must put the 
+  result in the LEVELS directory in order for the game to load it. For example, 
+  if you installed Genesis3D to c:\Genesis3D11, you would put your level in c:\Genesis3D11\levels. 
+  To test your level in the game, run the game as follows: </p>
+<p> GTest -map foo.bsp -server -name George </p>
+<p><b>Note:</b> If you want to edit and rebuild the levels that are included with 
+  GTest, you will have to set the path options in the editor. Go to the Options 
+  | Level Options menu, and alter the Headers path to reflect the proper location 
+  of the installed SDK.</p>
+<p>The install procedure does not create a needed 'Objects' directory. If you 
+  want to use premade object support in the editor, you will have to create this 
+  directory. </p>
+<p>The editor requires CTL3D32.DLL to run. If you get a message that this DLL 
+  is not present, you can copy the DLL from Redist\ctl3d32.dll to your Windows\System 
+  directory to fix this. </p>
+<p>&nbsp;</p>
+</body>
+</html>

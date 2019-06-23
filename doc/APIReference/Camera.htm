@@ -1,0 +1,212 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h2>Summary</h2>
+<p>The geCamera object is responsible for handling projection and transformation 
+  support for rendering a scene from a given viewpoint.</p>
+<h2>Overview</h2>
+<p>The geCamera object manages the relationship between world space, camera space, 
+  and screen space. It is responsible for converting between these coordinate 
+  systems. It also comprises field of view information used in rendering a 3D 
+  scene to the screen.</p>
+<h4>Definitions</h4>
+<table width="75%" border="1">
+  <tr>
+    <td width="20%" valign="top">World space</td>
+    <td width="80%" valign="top">World space is a 3D right handed coordinate system. 
+      Most of the Genesis3D APIs operate on parameters given in world space. Collision 
+      APIs and other world APIs that yield locational information all give their 
+      results in world space.</td>
+  </tr>
+  <tr>
+    <td width="20%" valign="top">Camera space</td>
+    <td width="80%" valign="top">Camera space is an intermediate 3D coordinate 
+      system that the engine uses in the process of projecting geometry to screen 
+      space.</td>
+  </tr>
+  <tr>
+    <td width="20%" valign="top">Screen space</td>
+    <td width="80%" valign="top">Screen space is a left handed coordinate system. 
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h2>Reference</h2>
+<p><a name="geCamera_ConvertModelToCamera"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geCamera_ConvertModelToCamera(const geXForm3d MXForm, geXForm3d *CXForm)</font></tt></b></font></p>
+<p><b>Description</b>: Do not use this API.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="505" height="57" >
+  <tr> 
+    <td width="73" valign="top"><b>MXForm</b></td>
+    <td width="411" valign="top">Transform to convert from</td>
+  </tr>
+  <tr> 
+    <td width="73" valign="top"><b>CXForm</b></td>
+    <td width="411" valign="top">Transform to convert to</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geCamera_Create"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geCamera 
+  *geCamera_Create(geFloat FOV, const geRect *Rect)</font></tt></b></font></p>
+<p><b>Description</b>: Creates a camera</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="505" height="57" >
+  <tr> 
+    <td width="77" valign="top"><b>FOV</b></td>
+    <td width="407" valign="top">This parameter allows you to configure the field 
+      of view of the camera. A setting of 2.0 corresponds to a 90 degree field 
+      of view.</td>
+  </tr>
+  <tr> 
+    <td width="77" valign="top"><b>Rect</b></td>
+    <td width="407" valign="top">Screen space rectangle that the camera will project 
+      to. This parameter allows to select regions on the screen will be rendered 
+      to if you render using this camera.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: A valid geCamera object on success, NULL on failure.</p>
+<p><b>Remarks</b>: You can use this to render multiple views to the screen at 
+  a time by creating multiple cameras with different screen rects. In between 
+  geEngine_BeginFrame and geEngine_EndFrame, you can render the world multiple 
+  times, through different cameras. If you render the world through two different 
+  cameras that have different screen rects, you will get two different views of 
+  the world rendered to the screen in a single frame.</p>
+<p><a name="geCamera_Destroy"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geCamera_Destroy(geCamera *Camera)</font></tt></b></font></p>
+<p><b>Description</b>: Destroys a camera</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="505" height="57" >
+  <tr> 
+    <td width="73" valign="top" height="28"><b>Camera</b></td>
+    <td width="411" valign="top" height="28">The camera to destroy</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geCamera_GetClippingRect"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geCamera_GetClippingRect(const geCamera *Camera, geRect *Rect)</font></tt></b></font></p>
+<p><b>Description</b>: Gets the current screen rect of a camera</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="505" height="57" >
+  <tr> 
+    <td width="73" valign="top"><b>Camera</b></td>
+    <td width="411" valign="top">A camera</td>
+  </tr>
+  <tr> 
+    <td width="73" valign="top"><b>Rect</b></td>
+    <td width="411" valign="top">Destination rect to store the current screen 
+      rect of the camera</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geCamera_GetLocalXForm"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geCamera_GetLocalXForm(const geCamera *Camera, geXForm3d *XForm)</font></tt></b></font></p>
+<p><b>Description</b>: Gets the current transform for the camera</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="505" height="57" >
+  <tr> 
+    <td width="73" valign="top"><b>Camera</b></td>
+    <td width="411" valign="top">A camera</td>
+  </tr>
+  <tr> 
+    <td width="73" valign="top"><b>XForm</b></td>
+    <td width="411" valign="top">Result to store transform in</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geCamera_Project"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geCamera_Project(const geCamera *Camera, const geVec3d *PointInCameraSpace, 
+  geVec3d *ProjectedPoint)</font></tt></b></font></p>
+<p><b>Description</b>: Projects a point in camera space to a point in screen space.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="505" height="57" >
+  <tr> 
+    <td width="73" valign="top"><b>Camera</b></td>
+    <td width="411" valign="top">A camera</td>
+  </tr>
+  <tr> 
+    <td width="73" valign="top"><b>PointInCameraSpace</b></td>
+    <td width="411" valign="top">Point to project</td>
+  </tr>
+  <tr>
+    <td width="73" valign="top"><b>ProjectedPoint</b></td>
+    <td width="411" valign="top">Point projected into screen space</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: See the discussion in the overview on world space vs. camera 
+  space vs. screen space.</p>
+<p><a name="geCamera_ScreenPointToWorld"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geCamera_ScreenPointToWorld(const geCamera *Camera, int32 ScreenX, int32 ScreenY, 
+  geVec3d *Vector)</font></tt></b></font></p>
+<p><b>Description</b>: Generates a unit vector in the direction of the camera, 
+  looking towards the given screen X and Y coordinates.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="505" height="57" >
+  <tr> 
+    <td width="73" valign="top"><b>Camera</b></td>
+    <td width="411" valign="top">A camera</td>
+  </tr>
+  <tr> 
+    <td width="73" valign="top"><b>ScreenX</b></td>
+    <td width="411" valign="top">X coordinate in screen space</td>
+  </tr>
+  <tr> 
+    <td width="73" valign="top"><b>ScreenY</b></td>
+    <td width="411" valign="top">Y coordinate in screen space</td>
+  </tr>
+  <tr> 
+    <td width="73" valign="top"><b>Vector</b></td>
+    <td width="411" valign="top">Output unit vector</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: This API is useful for selecting objects in world space via 
+  screen space coordinates. Given a set of screen coordinates, use this API to 
+  get a normalized vector in the direction of that screen point. Scale the vector 
+  by an arbitrary amount, and use this to calculate an end point from the current 
+  camera translation. Take the current camera translation, and that end point, 
+  and use geWorld_Collision to collide against objects. This will allow you to 
+  accurately point to objects in 3D space using mouse coordinates.</p>
+<p><a name="geCamera_SetAttributes"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geCamera_SetAttributes(geCamera *Camera, geFloat FOV, const geRect *Rect)</font></tt></b></font></p>
+<p><b>Description</b>: Sets the field of view and screen rect on a camera</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="505" height="57" >
+  <tr> 
+    <td width="73" valign="top"><b>Camera</b></td>
+    <td width="411" valign="top">A camera</td>
+  </tr>
+  <tr> 
+    <td width="73" valign="top"><b>FOV</b></td>
+    <td width="411" valign="top">New field of view setting for the camera</td>
+  </tr>
+  <tr>
+    <td width="73" valign="top"><b>Rect</b></td>
+    <td width="411" valign="top">New screen rect for the camera</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: See geCamera_Create for a discussion of the FOV and Rect parameters.</p>
+<p><a name="geCamera_"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geCamera_(const geCamera *Camera)</font></tt></b></font></p>
+<p><b>Description</b>: </p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="505" height="57" >
+  <tr> 
+    <td width="73" valign="top"><b>Camera</b></td>
+    <td width="411" valign="top">A camera</td>
+  </tr>
+  <tr> 
+    <td width="73" valign="top">&nbsp;</td>
+    <td width="411" valign="top">&nbsp;</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p>&nbsp;</p>
+</body>
+</html>

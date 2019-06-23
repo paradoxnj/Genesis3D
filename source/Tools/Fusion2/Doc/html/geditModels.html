@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<TITLE>Models</TITLE>
+</HEAD><BODY>
+<A HREF= "defaultgedit.html"><IMG SRC="contents.gif" ALT="contents.gif" BORDER = 0></A><A HREF= "geditindex.html"><IMG SRC="index.gif" ALT="index.gif" BORDER = 0></A><A HREF= "geditConsole.html"><IMG SRC="prev1.gif" ALT="prev1.gif" BORDER = 0></A><A HREF= "geditSky.html"><IMG SRC="next1.gif" ALT="next1.gif" BORDER = 0></A>
+<P>
+<A NAME="off_37432"></A><A NAME="0485ff9e"></A><FONT FACE="Arial" SIZE="3"><B>Models
+<P>
+</B>A model is a group of one or more brushes to which programmers can attach
+data, and level designers can animate or point to from entities. There are two
+primary reasons to create a model: to create a moveable piece of geometry that you
+can animate; or to create a piece of geometry that programmers can identify at
+program run-time in order to provide special effects when an operation involves
+that piece of geometry.
+<P>
+For example, you might make a level that contains several different pools. By
+making each pool into a model and pointing entities at those models, the
+programmers will be able to differentiate among the pools. If they weren't models,
+then they'd be treated like any other piece of geometry and be indistinguishable
+from each other.
+<P>
+To create a model, selecte the brushes that you want to make up the model, and
+then from the Models Options page, click on the Add Model button.  The program
+will prompt you for a model name.  Once you've entered the name, the program
+creates the model.  You can add brushes to a model by selecting those brushes,
+selecting the desired model in the Models page, and then clicking on the &quot;Add
+Brushes&quot; button.  Other buttons on the Models page allow you to select and
+deselect all of the brushes in a model, remove brushes from a model, delete a model,
+clone a model, and set the model's rotation origin.  The bottom half of the
+Models page allows you to define an animation path for the model.
+<P>
+You create a model's motion by defining its keyframes--points through which
+the model will move--and the time it should arrive at each keyframe. When
+animating the model, the engine interpolates between keyframes to provide smooth
+motion. The simplest motion is one with a single keyframe. The model will move in a
+straight line from its original position to that keyframe in the time that you
+specified when you created that keyframe. Motions with multiple keyframes work
+in much the same way, but the animation engine provides interpolation that
+moves the model smoothly from one keyframe to the next without abrupt direction
+changes (i.e. it &quot;rounds the corners&quot;).
+<P>
+To create a motion for the model, select the desired model from the drop-down
+list on the Models page, and then press the Animate button. The editor will
+select the model's brushes and put the editor into Move mode. You can then move
+and rotate the model to the position you want the model to occupy at its next
+keyframe. When you have it at the position you want, press the Stop Animating
+button and enter the keyframe time.
+<P>
+</FONT></BODY>
+</HTML>

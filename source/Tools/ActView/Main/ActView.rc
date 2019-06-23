@@ -1,0 +1,372 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "windows.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""windows.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_PLAY                ICON    DISCARDABLE     "..\\res\\play.ico"
+IDI_RRSTART             ICON    DISCARDABLE     "..\\res\\rrstart.ico"
+IDI_RRFRAME             ICON    DISCARDABLE     "..\\res\\rrframe.ico"
+IDI_STOP                ICON    DISCARDABLE     "..\\res\\stop.ico"
+IDI_FFFRAME             ICON    DISCARDABLE     "..\\res\\ffframe.ico"
+IDI_FFEND               ICON    DISCARDABLE     "..\\res\\ffend.ico"
+IDI_PAUSE               ICON    DISCARDABLE     "..\\res\\pause.ico"
+IDI_ZOOM                ICON    DISCARDABLE     "..\\res\\zoom.ico"
+IDI_PAN                 ICON    DISCARDABLE     "..\\res\\pan.ico"
+IDI_ROTATE              ICON    DISCARDABLE     "..\\res\\rotate.ico"
+IDI_MAINICON            ICON    DISCARDABLE     "..\\res\\mainicon.ico"
+IDI_BLEND               ICON    DISCARDABLE     "..\\res\\blend.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_ACTVIEW             BITMAP  DISCARDABLE     "..\\res\\actview.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open\tCtrl+O",               ID_FILE_OPEN
+        MENUITEM "E&xit",                       ID_FILE_EXIT
+    END
+    POPUP "&Options"
+    BEGIN
+        MENUITEM "&Save as front",              ID_OPTIONS_FRONT
+        MENUITEM "Show &Frame Rate\tE",         ID_OPTIONS_FRAMERATE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Contents\tF1",               ID_HELP_CONTENTS
+        MENUITEM SEPARATOR
+        MENUITEM "&About",                      ID_HELP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ACTOR DIALOGEX 0, 0, 328, 138
+STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Genesis3D Actor Viewer"
+MENU IDR_MENU1
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Initializing Genesis3D Engine...",IDC_RENDERWIN,5,4,114,
+                    14
+    LTEXT           "0.0",IDC_STATICSTART,13,25,73,8
+    CTEXT           "Static",IDC_STATICCURRENTTIME,142,25,42,8,SS_SUNKEN
+    LTEXT           "0.0",IDC_STATICEND,266,25,45,8,0,WS_EX_RIGHT
+    CONTROL         "Slider1",IDC_SLIDERTIME,"msctls_trackbar32",TBS_TOP | 
+                    WS_TABSTOP,5,35,316,19
+    PUSHBUTTON      "P&an",IDC_PAN,5,64,20,20,BS_ICON | WS_GROUP
+    PUSHBUTTON      "&Rotate",IDC_ROTATE,26,64,20,20,BS_ICON
+    PUSHBUTTON      "&Zoom",IDC_ZOOM,47,64,20,20,BS_ICON
+    LTEXT           "Motion",IDC_STATICMOTION,73,60,22,8
+    COMBOBOX        IDC_MOTIONCOMBO,73,70,74,80,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Loop",IDC_LOOPED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    152,73,30,10
+    LTEXT           "Scale:",IDC_STATICSCALE,186,60,21,8
+    EDITTEXT        IDC_EDITSCALE,186,70,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin1",IDC_SPINSCALE,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | 
+                    UDS_NOTHOUSANDS,220,70,11,14
+    LTEXT           "Speed:",IDC_STATICSPEED,231,60,24,8
+    EDITTEXT        IDC_EDITSPEED,231,70,40,14,ES_NUMBER
+    CONTROL         "Spin2",IDC_SPINSPEED,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | 
+                    UDS_NOTHOUSANDS,264,70,11,14
+    LTEXT           "Frame step:",IDC_STATICFRAME,276,60,38,8
+    EDITTEXT        IDC_EDITFRAMETIME,276,70,40,14,ES_NUMBER
+    CONTROL         "Spin2",IDC_SPINFRAMETIME,"msctls_updown32",
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
+                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,310,70,11,14
+    PUSHBUTTON      "Fro&nt",IDC_FRONT,5,90,30,13,WS_GROUP
+    PUSHBUTTON      "&Back",IDC_BACK,37,90,30,13
+    PUSHBUTTON      "&Left",IDC_LEFT,5,104,30,13
+    PUSHBUTTON      "R&ight",IDC_RIGHT,37,104,30,13
+    PUSHBUTTON      "&Top",IDC_TOP,5,118,30,13
+    PUSHBUTTON      "Botto&m",IDC_BOTTOM,37,118,30,13
+    PUSHBUTTON      "&Center",IDC_CENTER,69,90,30,13
+    PUSHBUTTON      "&Play",IDI_PLAY,238,90,41,20,BS_ICON | WS_GROUP
+    PUSHBUTTON      "Pa&use",IDI_PAUSE,280,90,20,20,BS_ICON
+    PUSHBUTTON      "&Stop",IDI_STOP,301,90,20,20,BS_ICON
+    PUSHBUTTON      "RRStart&0",IDI_RRSTART,238,111,20,20,BS_ICON
+    PUSHBUTTON      "RRFrame&<",IDI_RRFRAME,259,111,20,20,BS_ICON
+    PUSHBUTTON      "FFFrame&>",IDI_FFFRAME,280,111,20,20,BS_ICON
+    PUSHBUTTON      "FFEnd&9",IDI_FFEND,301,111,20,20,BS_ICON
+    PUSHBUTTON      "Blen&d",IDC_BLEND,138,105,50,20,BS_ICON
+END
+
+IDD_DRIVERDIALOG DIALOG DISCARDABLE  0, 0, 253, 130
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Genesis3D Actor Viewer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_DRIVERLIST,11,25,231,67,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    LTEXT           "Select a video mode",IDC_STATIC,13,11,164,12
+    DEFPUSHBUTTON   "OK",IDOK,50,103,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,146,103,50,14
+END
+
+IDD_ABOUT DIALOG DISCARDABLE  0, 0, 145, 119
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "About Actor Viewer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,47,98,50,14
+    LTEXT           "Genesis3D Actor Viewer Version 2.0",IDC_STATIC,15,76,
+                    115,8
+    LTEXT           "Copyright © 1999, WildTangent, Inc.",IDC_STATIC,8,
+                    86,128,8
+    CONTROL         126,IDB_ACTVIEW,"Static",SS_BITMAP | SS_SUNKEN | 
+                    WS_BORDER,10,7,125,64
+END
+
+IDD_BLENDER DIALOG DISCARDABLE  0, 0, 322, 207
+STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Motion Blender"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Motions:",IDC_STATIC,7,125,34,8
+    LISTBOX         IDC_MOTIONSLIST,7,134,93,66,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | LBS_WANTKEYBOARDINPUT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add",IDC_ADD,104,134,50,14
+    PUSHBUTTON      "Remove",IDC_REMOVE,266,55,50,14
+    PUSHBUTTON      "Move up",IDC_MOVEUP,266,10,50,14
+    PUSHBUTTON      "Move Down",IDC_MOVEDOWN,266,31,50,14
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME | SS_SUNKEN,7,121,
+                    309,1
+    LTEXT           "Time Offset",IDC_STATIC,165,151,37,8
+    EDITTEXT        IDC_EDITTIMEOFFSET,209,149,26,12,ES_AUTOHSCROLL
+    LTEXT           "Start Time",IDC_STATIC,165,170,37,8
+    EDITTEXT        IDC_EDITSTARTTIME,209,168,26,12,ES_AUTOHSCROLL
+    LTEXT           "End Time",IDC_STATIC,165,188,37,8
+    EDITTEXT        IDC_EDITENDTIME,209,187,26,12,ES_AUTOHSCROLL
+    LTEXT           "Time Scale",IDC_STATIC,242,151,37,8
+    EDITTEXT        IDC_EDITTIMESCALE,284,149,26,12,ES_AUTOHSCROLL
+    LTEXT           "Start Blend",IDC_STATIC,243,170,37,8
+    EDITTEXT        IDC_EDITSTARTBLEND,284,168,26,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "End Blend",IDC_STATIC,243,188,37,8
+    EDITTEXT        IDC_EDITENDBLEND,284,187,26,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "Test Output",IDC_TESTOUT,266,90,50,14
+    CONTROL         "",IDC_STATICBLEND,"Static",SS_BLACKFRAME,7,7,253,110
+    CTEXT           "Submotion",IDC_STATICSUBMOTION,169,132,140,10,SS_SUNKEN
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_ZOOM                CURSOR  DISCARDABLE     "..\\res\\zoom.cur"
+IDC_PAN                 CURSOR  DISCARDABLE     "..\\res\\pan.cur"
+IDC_ROTATE              CURSOR  DISCARDABLE     "..\\res\\rotate.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR1 ACCELERATORS DISCARDABLE 
+BEGIN
+    "E",            ID_OPTIONS_FRAMERATE,   VIRTKEY, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    VK_ESCAPE,      IDC_NOTHING,            VIRTKEY, NOINVERT
+    VK_F1,          ID_HELP_CONTENTS,       VIRTKEY, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 138
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 112
+    END
+
+    IDD_BLENDER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 316
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 200
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CLASSNAME           "MOTION_BLENDER_WINDOW_CLASS"
+    IDS_PROGRAMNAME         "Genesis3D Actor Viewer"
+    IDS_UNIQUEMESSAGE       "ActorViewerUniqueMessageString"
+    IDS_DEFAULTPOSE         "(Default Pose)"
+    IDS_BLENDEDMOTION       "(Blended Motion)"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_EXIT            "Exit the program"
+    ID_FILE_OPEN            "Open a file"
+    ID_MOTION_SELECT        "Select motion"
+    ID_OPTIONS_FRONT        "Save current orientation as front"
+    ID_OPTIONS_FRAMERATE    "Toggle frame rate counter"
+    IDS_CANTADDWORLD        "Can't add world to engine."
+    IDS_CANTSTARTTIMER      "Can't start timer.  Animations will not function."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_PAN                 "Pan  A"
+    IDC_ROTATE              "Rotate  R"
+    IDC_ZOOM                "Zoom  Z"
+    IDI_PLAY                "Play  P"
+    IDI_PAUSE               "Pause  U"
+    IDI_RRSTART             "Go to start  0"
+    IDI_RRFRAME             "Back frame  <"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDI_STOP                "Stop  S"
+    IDI_FFFRAME             "Forward frame  >"
+    IDI_FFEND               "Go to end  9"
+    IDC_FRONT               "Front view  N"
+    IDC_EDITSCALE           "Actor scale (percent of normal)"
+    IDC_BACK                "Back view  B"
+    IDC_EDITSPEED           "Animation speed (percent of normal)"
+    IDC_LEFT                "Left side view  L"
+    IDC_RIGHT               "Right side view  I"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CANTCREATEENGINE    "Could not create engine"
+    IDS_CANTCREATECAMERA    "Could not create camera"
+    IDS_CANTCREATEWORLD     "Could not create world"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_EDITFRAMETIME       "Frame step time (1/100 second)"
+    IDC_TOP                 "Top view  T"
+    IDC_BOTTOM              "Bottom view  B"
+    IDC_STATICEND           "Animation ending time"
+    IDS_STATICSTART         "Animation start time"
+    IDC_STATICCURRENTTIME   "Current animation time (in seconds)"
+    IDC_CENTER              "Center actor at origin  C"
+    IDC_BLEND               "Blend Motion  D"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CANTLOADDRIVER      "Couldn't load graphics driver"
+    IDS_CANTINITENGINE      "Unable to initialize engine"
+    IDS_CANTLOADACTOR       "Couldn't load actor file '%s'"
+    IDS_BEGINFRAMEFAIL      "EngineBeginFrame failed."
+    IDS_RENDERFAIL          "Could not render the world."
+    IDS_INIFILENAME         "ActView.ini"
+    IDS_ENDFRAMEFAIL        "EngineEndFrame failed."
+    IDS_HELPFILENAME        "ActView.hlp"
+    IDS_PROGRAMBASENAME     "ActView"
+    IDS_ACTFILEFILTER       "*.act"
+    IDS_ACTFILEEXT          "act"
+    IDS_ACTFILEFILTERDESC   "Genesis3D Actor Files (.act)"
+    IDS_UNNAMED             "(Unnamed %d)"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

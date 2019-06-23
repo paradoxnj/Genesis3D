@@ -1,0 +1,20 @@
+The gedit.ini file.
+
+gedit.ini contains editor configuration settings.
+The GEdit settings specify the directories that the program will search for items.
+The settings in this section are:
+
+DefaultTxLib	Name (no drive or path) of the default texture library file for new levels
+GPreviewPath	Full path to the preview program.  This is the program that's executed to view compiled levels.  The default it GPreview.exe.
+ExtensionsPath	Path to the directory that contains entity definitions.
+ObjectsDir		Path to the directory that contains premade objects.
+TxlSearchPath	Semicolon-separated list of directories to be searched for texture library files.
+
+The other settings in the file are maintained by the program and shouldn't be changed by the user.
+
+
+Texture library search order is:
+	1. Directory containing .3dt file
+	2. Current working directory
+	3. Directory containing gedit.exe
+	4. Directories specified in TxlSearchPath .INI file entry

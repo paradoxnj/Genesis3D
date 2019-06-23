@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+<TITLE>The Initialization File  GEDIT.INI</TITLE>
+</HEAD><BODY>
+<A HREF= "defaultgedit.html"><IMG SRC="contents.gif" ALT="contents.gif" BORDER = 0></A><A HREF= "geditindex.html"><IMG SRC="index.gif" ALT="index.gif" BORDER = 0></A><A HREF= "geditQuick_Compile.html"><IMG SRC="prev1.gif" ALT="prev1.gif" BORDER = 0></A><A HREF= "geditUser_Defined_Entity_Header_Files.html"><IMG SRC="next1.gif" ALT="next1.gif" BORDER = 0></A>
+<P>
+<A NAME="off_165872"></A><A NAME="880e3159"></A><FONT FACE="Arial" SIZE="3"><H1>The Initialization File  GEDIT.INI
+<P>
+</H1>GEDIT.INI contains program option settings for the editor.  The editor looks
+for the initialization file in the directory that contains the executable
+program, GEDIT.EXE.  The [Paths] section of the initialization file contains settings
+that are required in order for the editor to run.  These settings are:
+<P>
+</FONT><TABLE><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">TxlName
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">The texture library where the editor will look for its textures.  The default
+is gedit.txl.
+<BR></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">PreviewPath
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">The full path and file name of the preview program.  The default is
+C:\EditorDir\GPREVIEW.EXE, where EditorDir is replaced by the name of the directory that
+contains the preview program.
+<BR></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">TxlSearchPath
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">A semicolon-separated list of paths to search for texture library files.  The
+editor searches for texture library files in the following directories in this
+order:  the directory that contains the file being edited, the program</FONT><FONT FACE="Times New Roman" SIZE="5">’</FONT><FONT FACE="Arial" SIZE="3">s current working directory, the directory that contains GEDIT.EXE, the
+directories that are specified in TxlSearchPath.
+<BR></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">Headers
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">The path to the directory that contains user-defined entity header files.
+<BR></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">ProjectDir
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">The directory in which the editor looks for and stores level files.
+<BR></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">ObjectsDir
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">The directory in which the editor looks for and stores premade objects.
+<BR></FONT></TD></TR></TABLE><FONT FACE="Arial" SIZE="3">The [GRID] section stores the grid preferences that you define in the editor. 
+The three settings (Background, Color, and SnapColor) define the colors for
+the orthographic views</FONT><FONT FACE="Times New Roman" SIZE="5">’</FONT><FONT FACE="Arial" SIZE="3"> background, and Grid color and snap grid color lines.
+<P>
+In addition to program options, this file stores editor desktop settings
+(toolbar positions, etc.), and the recent files list.  The desktop settings are
+stored in sections whose names start with DESKTOP, and the recent files list is
+stored in the [Recent File List] section.
+<P>
+</FONT></BODY>
+</HTML>

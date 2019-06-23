@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>Entity</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h2>Summary</h2>
+<p>The entity subsystem allows you to get design time data from a level that was 
+  edited with GEDIT. The data is streamed in from the level file so that the programmer 
+  is not required to do any post editing, runtime linking of structure elements.</p>
+<h2>Overview</h2>
+<p>The programmer is permitted to defne data in C header files, tagged with #pragma 
+  directives which delineate published, editable data, and private non-editable 
+  data. The editor parses these structure definitions and allows the level designer 
+  to edit field values in instances of the structures. The level designer can 
+  edit pointer references between the structures. The editor stores the results 
+  in the BSP file, and the engine streams the data back in to memory, using the 
+  type definitions that the editor writes to the BSP file to guide it in the reconstitution 
+  of the data.</p>
+<p>The programmer can then query the world for a pointer to sets of data, from 
+  which individual entites can be extracted. Access to the actual structure data 
+  is had by getting the user data from an entity, and casting that to the proper 
+  structure type that matches the entity set that the entities came from. The 
+  entity set names that the editor builds match the structure name. It is up to 
+  the programmer to ensure that the actual data types match at the time of the 
+  cast.</p>
+<p>See geWorld_GetEntitySet for more information.</p>
+<h2>Reference</h2>
+<p><a name="geEntity_EntitySetGetNextEntity"></a><b><tt><font color="#0000FF">geEntity 
+  *geEntity_EntitySetGetNextEntity(geEntity_EntitySet *EntitySet, geEntity *Entity)</font></tt></b></p>
+<p><b>Description</b>: Returns the next entity in the EntitySet.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 >
+  <tr> 
+    <td width="97" valign="top"><b>EntitySet</b> </td>
+    <td width="333">EntitySet used to search.</td>
+  </tr>
+  <tr> 
+    <td width="97" valign="top"><b>Entity</b> </td>
+    <td width="333">Entity to start searching from. NULL will return the first 
+      entity.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: On success, returns the next entity in the EntitySet. Returns 
+  NULL otherwise.</p>
+<p><a name="geEntity_GetName"></a><b><tt><font color="#0000FF">void geEntity_GetName(const 
+  geEntity *Entity, char *Buffer, int MaxLen)</font></tt></b></p>
+<p><b>Description</b>: Gets the user data that was created in GEdit for this entity. 
+  This data should be cast to the structure that was used in the header file asscociated 
+  with the entity,</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="386" >
+  <tr> 
+    <td width="102"><b>Entity</b> </td>
+    <td width="263">Entity to get the name of</td>
+  </tr>
+  <tr> 
+    <td width="102"><b>Buffer</b></td>
+    <td width="263">Buffer to copy name to</td>
+  </tr>
+  <tr> 
+    <td width="102"><b>MaxLen</b></td>
+    <td width="263">Size of the buffer</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: If the name is longer than MaxLen, then the name is truncated 
+  in the result buffer.</p>
+<p><a name="geEntity_GetUserData"></a><b><tt><font color="#0000FF">void *geEntity_GetUserData(geEntity 
+  *Entity)</font></tt></b></p>
+<p><b>Description</b>: Gets the user data that was created in GEdit for this entity. 
+  This data should be cast to the structure that was used in the header file asscociated 
+  with the entity,</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="386" >
+  <tr> 
+    <td width="98"><b>Entity</b> </td>
+    <td width="267">Entity to get the data from.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: Userdata for the entity.</p>
+<p><b>Remarks</b>: This function will never return NULL.</p>
+<p>&nbsp;</p>
+</body>
+</html>

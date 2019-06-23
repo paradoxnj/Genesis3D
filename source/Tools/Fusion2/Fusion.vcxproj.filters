@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{a39efb8e-8615-45e8-be5e-3611b2a4a486}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
+    </Filter>
+    <Filter Include="Source Files\TypeParser">
+      <UniqueIdentifier>{fac74efb-9367-45dc-b257-0e86234a5c8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{45408b92-4805-4cd5-acd5-a7b68bb57b98}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;fi;fd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{38c190cd-7800-4abb-9ea0-cf2cbbb0a143}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TypeParser\cparser.c">
+      <Filter>Source Files\TypeParser</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeParser\cscanner.c">
+      <Filter>Source Files\TypeParser</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeParser\Hash.c">
+      <Filter>Source Files\TypeParser</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeParser\iden.C">
+      <Filter>Source Files\TypeParser</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeParser\scanner.c">
+      <Filter>Source Files\TypeParser</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeParser\symtab.c">
+      <Filter>Source Files\TypeParser</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeParser\type.c">
+      <Filter>Source Files\TypeParser</Filter>
+    </ClCompile>
+    <ClCompile Include="about.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ActivationWatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="array.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="box3d.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="brush.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BrushAttributesDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BrushEntityDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BrushGroupDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BrushTemplate.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChildFrm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorBtn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompileDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compiler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleTab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateArchDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateBoxDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateConeDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateCylDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateSpheroidDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateStaircaseDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntitiesDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityVisDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntTypeName.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="face.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FaceAttributesDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FaceList.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FilePath.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FUSION.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FUSIONDoc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FusionTabControls.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FUSIONView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GridSizeDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="group.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyEditDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelOptions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="List.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="node.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Parse3dt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PreferencesDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Prefs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="render.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SelBrushList.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SelFaceList.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stack.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="typeio.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="undostack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WadFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TypeParser\cparser.h">
+      <Filter>Source Files\TypeParser</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeParser\cscanner.h">
+      <Filter>Source Files\TypeParser</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeParser\Hash.h">
+      <Filter>Source Files\TypeParser</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeParser\iden.H">
+      <Filter>Source Files\TypeParser</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeParser\scanner.h">
+      <Filter>Source Files\TypeParser</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeParser\symtab.h">
+      <Filter>Source Files\TypeParser</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeParser\type.h">
+      <Filter>Source Files\TypeParser</Filter>
+    </ClInclude>
+    <ClInclude Include="about.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ActivationWatch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="box3d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="brush.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BrushAttributesDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BrushEntityDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BrushGroupDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BrushTemplate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChildFrm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorBtn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CompileDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compiler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleTab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateArchDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateBoxDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateConeDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateCylDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateSpheroidDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateStaircaseDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EntitiesDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityVisDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EntTypeName.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EntView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="face.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FaceAttributesDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="facelist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FilePath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fusion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FUSIONDoc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FusionTabControls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fusionview.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gbsplib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GridSizeDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="group.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyEditDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelOptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mydef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Parse3dt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PreferencesDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="prefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="render.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SelBrushList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SelFaceList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="typeio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="undostack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="units.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WadFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FUSION.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\actor.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\arch.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\camera.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\cone.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\cube.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\cylinder.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\cylinder.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\default.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\ffend.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\ffframe.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\FUSION.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\FUSIONDoc.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\groupbar.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\hollowbo.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\hollowsp.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\icoPlay.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\libobj.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\light.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\light.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\modelorg.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\playstart.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\rrframe.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\rrstart.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\solidbox.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\solidsph.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\sphere.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\spotlight.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stairs.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stop.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\toolbar1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\Whoosh.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="resource.hm">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\arrow.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\Cross_m.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\eyedropper.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\FUSION.rc2">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\pointer.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Fusion.mak" />
+  </ItemGroup>
+</Project>

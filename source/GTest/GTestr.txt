@@ -1,0 +1,82 @@
+Warning: cannot find "GTest.dep"
+	if not exist ".\Release/" mkdir ".\Release"
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Game\_bot.c
+_bot.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Game\Attacker.c
+Attacker.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Game\bot.c
+bot.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Game\Genvsi.c
+Genvsi.c
+Bot - Genvsi.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Game\GMain.c
+GMain.c
+Use: GenVSI_ModelToPlayer...
+Mins / maxs should be OK in the next build
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Game\Items.c
+Items.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Game\Level.c
+Level.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Game\PathPt.c
+PathPt.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Game\Track.c
+Track.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Game\Weapons.c
+Weapons.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Fx\corona.c
+corona.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Fx\DynLight.c
+DynLight.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Fx\electric.c
+electric.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Fx\Fx.c
+Fx.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Fx\ModelCtl.c
+ModelCtl.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Procedurals\bumpmap.c
+bumpmap.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Procedurals\ElectricFx.c
+ElectricFx.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Procedurals\fire.c
+fire.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Procedurals\gebmutil.c
+gebmutil.c
+gebmu_CreateHBITMAP : choose format to be 8,16,or 24, whichever is closest to Bitmap
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Procedurals\particles.c
+particles.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Procedurals\plasma.c
+plasma.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Procedurals\proceng.c
+proceng.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Procedurals\proceng_tables.c
+proceng_tables.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Procedurals\procutil.c
+procutil.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Procedurals\setformat.c
+setformat.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Procedurals\smoke.c
+smoke.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\Procedurals\Water.c
+Water.c
+	cl.exe /nologo /MT /W3 /GX /O2 /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ERRORLOG_FULL_REPORTING" /Fp".\Release\GTest.pch" /YX /Fo".\Release\\" /Fd".\Release\\" /FD /c .\DrvMenu\Drvlist.c
+Drvlist.c
+	rc.exe /l 0x409 /fo".\Release\genvs.res" /i "DrvMenu" /d "NDEBUG" .\DrvMenu\genvs.rc
+	cl.exe @C:\TEMP\nma00181.
+AutoSelect.c
+Buffer.c
+Cd.c
+Client.c
+Console.c
+GameMgr.c
+Genvs.c
+Gmenu.c
+Host.c
+ipaddr.c
+Menu.c
+modelist.c
+NetMgr.c
+Server.c
+Bot - Server.c
+Text.c
+VidMode.c
+	link.exe @C:\TEMP\nmb00181.

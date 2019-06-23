@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h2><a name="Introduction_WhatThisIs"></a>What is this?</h2>
+<p>This is a software development kit (SDK) which allows you to build high performance 
+  3D graphics applications such as games. Included in the SDK are tools for building 
+  content for your application, binaries for building the applications themselves, 
+  example code for using the SDK, and documentation.</p>
+<h3>License</h3>
+<p>We have adopted an OpenSource license for our engine. You agreed to the license 
+  when you installed the software on your machine. We strongly encourage you to 
+  read the details of the license. A text copy of the license can be found in 
+  the OpenSource directory in the installation.</p>
+<h2><a name="Introduction_WhatItCanDo"></a>What can it do?</h2>
+<p>The engine is designed primarily to render indoor scenes with moderate polygon 
+  count at very high performance. It can be used to build reasonably detailed 
+  and extensive outdoor scenes provided that care is taken to build those scenes 
+  correctly. The engine has support for fast collision detection, and precalculated 
+  lighting and visibility testing. </p>
+<h2><a name="Introdcution_WhatItCantDo"></a>What can it not do?</h2>
+<p>The engine is not designed to render unlimited outdoor terrain currently. It 
+  is not designed for fast culling of arbitrary non-sealed geometry. You should 
+  not expect to build enormous scenes with high polygon counts and no visibility 
+  inhibitors (walls) and get a high frame rate.  If you want  to build outdoor scenes
+ with the current engine, you should limit the scene size and use Gouraud shading
+ of the outdoor faces to limit texture thrashing. Also, try the new far clipping plane 
+ with distance fogging.
+  See the editor documentation and our FAQ sheets for more information on this.</p>
+<p>&nbsp;</p>
+</body>
+</html>

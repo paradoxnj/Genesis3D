@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h2><a name="Overview"></a>What Are They?</h2>
+<p>The Genesis3D API has been designed to isolate you from the basic rendering 
+  methods available to your computer, while sacrificing a minimum of performance. 
+  In order to implement this isolation, we have built support for 2 popular rendering 
+  APIs, plus a generic driver to support machines that lack specialized 3D rendering 
+  hardware. These drivers are implemented in 4 separate dynamic link libraries 
+  (DLLs) which are included in the distribution.</p>
+<h2><a name="Software"></a>Software</h2>
+<p>The software rasterizers (softdrv.dll and softdrv2.dll) provide support for 
+  machines that do not have any specialized 3D rendering hardware. The drivers 
+  will also work on machines that do have 3D rendering hardware. There is support 
+  for both full screen rendering, and windowed mode rendering.</p>
+<p>Softdrv.dll is specifically optimized to take advantage of the AMD 3D-Now technology 
+  to improve its rendering performance. The engine will automatically select this 
+  driver if you are running on an AMD machine which has 3D-Now support. Softdrv2.dll 
+  is used on all other configurations.</p>
+<p>When rendering to a window, the software driver uses DIB sections to render, 
+  and can be run on machines that do not have DirectX installed at all. In full 
+  screen mode, the driver requires DirectDraw surfaces. For this purpose, DirectX 
+  version 6.0 or better must be installed.</p>
+<p>On all machines, the software driver supports whatever full screen modes that 
+  the video card on the machine supports with DirectX. In windowed mode, we require 
+  that the width of the window be a multiple of 4 for the software rasterizer 
+  to function properly.</p>
+<h2><a name="D3D"></a>D3D</h2>
+<p>The D3D render driver (d3ddrv.dll) supports many popular 3D accelerator cards. 
+  We require that MS DirectX 6.0 or better be installed for the current drivers 
+  to work. D3DDRV supports most cards that support the following features:</p>
+<ul>
+  <li>ZBuffering</li>
+  <li>Texturing</li>
+  <li>RGB modulated blending (multiplicative)</li>
+  <li>RGB additive blending</li>
+  <li>Bilinear filtering (Light maps don't work without it)</li>
+</ul>
+<p>Our D3D implementation currently needs to be able to create the following surface 
+  types in order to initialize correctly: 4444 and either 555 or 565.</p>
+<p>D3DDRV supports windowed mode for any 3D card which supports windowed mode. 
+  Running in windowed mode makes debugging under the D3D driver possible.</p>
+<p>D3DDRV supports single pass multi-texturing. If you have multiple texture map 
+  units on the card, lightmaps will be rendered in the same pass as normal polygons.</p>
+<p>When D3DDRV initializes, it records information about that process to the file 
+  d3ddrv.log in the current working directory of the application. This file can 
+  provide valuable debugging information in the event that D3DDRV doesn't initialize 
+  on your hardware configuration.</p>
+<h2><a name="Glide"></a>Glide</h2>
+<p>We have implemented a render driver to take advantage of the Glide APIs. GLIDEDRV.DLL 
+  is able to support Voodoo 1, 2, Rush, Banshee, and 3 series cards seamlessly. If your card has more 
+  than one TMU, GLIDEDRV will use the second TMU for lightmaps. This will speed 
+  up the rendering of your static geometry significantly.</p>
+<p>One advantage to the Glide driver is in the area of debugging. We have found 
+  that using the Monster3d board and running apps in full screen works well for 
+  debugging using the Glide drivers. The Ctrl-F9 key allows you to switch from 
+  primary to secondary display (when using Voodoo 1 or 2 pass-through cards), making debugging
+ rather easy. If you are using a D3D driver, and you are in full screen mode, breakpoints
+ and crashes in your code will usually necessitate a reboot. This is not the case with the Glide drivers. </p>
+<p> Note: You can also use Ctrl-F8 to toggle 'wireframe' mode in Glide. </p>
+</body>
+</html>

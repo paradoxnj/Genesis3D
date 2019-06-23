@@ -1,0 +1,46 @@
+Microsoft (R) Help Compiler
+HCRTF 4.01.0951
+Copyright (c) Microsoft Corp 1990 - 1995. All rights reserved.
+astudio.hpj
+    HC3037: Warning: C:\Project\AStudio\hlp\AStudio.hm : 
+	The map value for "HIDD_TARGET" is the same as the map value for "HIDD_ASTUDIO_DIALOG".
+    HC1002: Note: 
+	Using existing phrase table: AStudio.ph.
+    HC1010: Note: 
+	The following mapped Topic IDs were not used in any topic:
+	HIDD_PATHS
+	HID_BUILDBUILD
+	HID_BUILDCLEAN
+	HID_BUILDALL
+	HIDD_MATERIALS
+	HIDD_BODY
+	HID_PROJECTBUILDALL
+	HIDD_TEXTINPUT
+	HIDM_ABOUTBOX
+	HIDR_ACCELERATOR1
+	HIDD_SETTINGS
+	HID_BUILDSETTINGS
+	HID_FILESAVEAS
+	HID_FILENEW
+	HIDR_MENU1
+	HID_FILEEXIT
+	HID_FILEOPEN
+	HID_FILESAVE
+	HIDD_MOTIONS
+	HID_PROJECTBUILD
+	HID_PROJECTCLEAN
+	HID_DUMMYESC
+	HID_HELPABOUT
+	HID_FILECLOSE
+	HIDR_MAINFRAME
+	HID_PROJECTSETTINGS
+1	Topic
+0	Jumps
+0	Keywords
+0	Bitmaps
+
+
+File size: 5,992
+Phrase+Zeck compression INCREASED help file by 32 bytes.
+Compile time: 0 minutes, 0 seconds
+2 notes, 1 warning

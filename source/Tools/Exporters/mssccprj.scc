@@ -1,0 +1,4 @@
+SCC = This is a Source Code Control file
+
+[gexp.mak]
+SCC_Project_Name = "$/Genesis10/Tools/Exporters", MECCAAAA

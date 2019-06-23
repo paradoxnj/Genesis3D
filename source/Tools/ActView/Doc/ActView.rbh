@@ -1,0 +1,33 @@
+[Project]
+Help Compiler=HCW.EXE
+Remove Unused=0
+Version=512
+ConvertedFromV1=0
+HasGlossary=0
+Automatic Map Files=0
+NextFile=2
+WH2RH=0
+Extra Language=0
+
+[Document Files]
+ActView.doc=1
+
+[File Properties]
+HasProperties=1
+BrowseType=0
+AutoMapFile=0
+StartingWith=0
+IncrementBy=20
+NextTopicNumber=0
+StartingNumber=1
+BrowseString=ActView:0
+DefaultBuildTag=
+
+[VERSION]
+RHFile=4.1
+
+[.rbh]
+CopyTo=0
+PreBatch=
+PostBatch=
+AutoFixRTF=0

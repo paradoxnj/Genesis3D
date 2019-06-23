@@ -1,0 +1,409 @@
+<html>
+<head>
+<title>Vec3d</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h2>Summary</h2>
+<p>geVec3d is an implementation of a 3d vector object. It contains many of the 
+  standard vector operations, plus a few which are conveniences.</p>
+<h2>Overview</h2>
+<p>geVec3d was designed to be an efficient, but descriptive way of handling 3d 
+  vectors. Because of the common use of vectors as temporary objects, it was decided 
+  that the structure definition of the vector would be exposed in the header file, 
+  and there would be no Create/Destroy functions implemented.</p>
+<h2>Reference</h2>
+<p><a name="geVec3d_Add"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geVec3d_Add(</font><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">const 
+  geVec3d *V1</font></tt></b></font>, <font color="#0000FF">const geVec3d *V2, 
+  geVec3d *V1PlusV2</font><font color="#0000FF">)</font></tt></b></font></p>
+<p><b>Description</b>: Adds V1 to V2 and puts the result in V1PlusV2.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="322" >
+  <tr> 
+    <td><b>V1 </b></td>
+    <td>Vector to be added</td>
+  </tr>
+  <tr> 
+    <td><b>V2</b></td>
+    <td>Vector to be added</td>
+  </tr>
+  <tr>
+    <td><b>V1PlusV2</b></td>
+    <td>Sum of the two inputs</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p></p>
+<p></p>
+<p><a name="geVec3d_AddScaled"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geVec3d_AddScaled(</font><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">const 
+  geVec3d *V1</font></tt></b></font>, <font color="#0000FF">const geVec3d *V2, 
+  geFloat Scale, geVec3d *V1PlusV2</font><font color="#0000FF">Scaled)</font></tt></b></font></p>
+<p><b>Description</b>: Scales V2 by Scale, adds the result to V1, and puts the 
+  sum in V1PlusV2Scaled.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="322" >
+  <tr> 
+    <td><b>V1 </b></td>
+    <td>Input vector</td>
+  </tr>
+  <tr> 
+    <td><b>V2</b></td>
+    <td>Input vector</td>
+  </tr>
+  <tr> 
+    <td><b>Scale</b></td>
+    <td>Scale value for V2</td>
+  </tr>
+  <tr> 
+    <td><b>V1PlusV2</b></td>
+    <td>V1 + (V2 * Scale)</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geVec3d_Clear"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geVec3d_Clear(geVec3d *V)</font></tt></b></font></p>
+<p><b>Description</b>: Sets the values of the vector to zero.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="276" >
+  <tr> 
+    <td width="104"><b>V </b></td>
+    <td width="151">Vector to be cleared</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p></p>
+<p></p>
+<p><a name="geVec3d_Compare"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean 
+  geVec3d_Compare(const geVec3d *V1, const geVec3d *V2, geFloat Tolerance)</font></tt></b></font></p>
+<p><b>Description</b>: Compares V1 to V2, applying the Tolerance value to the 
+  comparisons of each element. If each element pair compares within the tolerance, 
+  the return is GE_TRUE. Otherwise it is GE_FALSE.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="442" >
+  <tr> 
+    <td width="104"><b>V1 </b></td>
+    <td width="317">Vector to be compared</td>
+  </tr>
+  <tr> 
+    <td width="104"><b>V2</b></td>
+    <td width="317">Vector to be compared</td>
+  </tr>
+  <tr>
+    <td width="104"><b>Tolerance</b></td>
+    <td width="317">Floating point tolerance to be applied to each pair of vector 
+      elements. Usually, this is a small number.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: geBoolean</p>
+<p><a name="geVec3d_Copy"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geVec3d_Copy(const geVec3d *Vsrc, geVec3d *Vdest)</font></tt></b></font></p>
+<p><b>Description</b>: Copies the vector Vsrc to Vdest</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="236" >
+  <tr> 
+    <td width="92"><b>Vsrc</b></td>
+    <td width="97">Source vector</td>
+  </tr>
+  <tr> 
+    <td width="92"><b>Vdest</b></td>
+    <td width="97">Destination vector</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geVec3d_CrossProduct"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geVec3d_CrossProduct(const geVec3d *V1, const geVec3d *V2, geVec3d *Result)</font></tt></b></font></p>
+<p><b>Description</b>: Calculates the cross product of V1 with V2, and places 
+  the result in Result.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="236" >
+  <tr> 
+    <td width="92"><b>V1 </b></td>
+    <td width="97">Input vector</td>
+  </tr>
+  <tr> 
+    <td width="92" height="24"><b>V2</b></td>
+    <td width="97" height="24"> 
+      <p>InputVector</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="92" height="24"><b>Result</b></td>
+    <td width="97" height="24">V1 x V2</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geVec3d_DistanceBetween"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geFloat 
+  geVec3d_DistanceBetween(const geVec3d *V1, const geVec3d *V2)</font></tt></b></font></p>
+<p><b>Description</b>: Calculates the distance between two vectors.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="236" >
+  <tr> 
+    <td width="92"><b>V1 </b></td>
+    <td width="97">Input vector</td>
+  </tr>
+  <tr> 
+    <td width="92"><b>V2</b></td>
+    <td width="97">InputVector</td>
+  </tr>
+</table>
+<p><b>Returns</b>: Returns the length of V2 - V1.</p>
+<p><a name="geVec3d_DotProduct"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geVec3d_DotProduct(const geVec3d *V1, const geVec3d *V2, geVec3d *Result)</font></tt></b></font></p>
+<p><b>Description</b>: Calculates the dot product of V1 with V2, and places the 
+  result in Result.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="236" >
+  <tr> 
+    <td width="92"><b>V1 </b></td>
+    <td width="97">Input vector</td>
+  </tr>
+  <tr> 
+    <td width="92"><b>V2</b></td>
+    <td width="97">Input vector</td>
+  </tr>
+  <tr> 
+    <td width="92"><b>Result</b></td>
+    <td width="97">V1 dot V2</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geVec3d_Get"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geVec3d_Get(const geVec3d *V, geFloat *X, geFloat *Y, geFloat *Z)</font></tt></b></font></p>
+<p><b>Description</b>: Gets the components of the vector into distinct variables.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="314" >
+  <tr> 
+    <td width="105"><b>V</b></td>
+    <td width="188">Input vector</td>
+  </tr>
+  <tr> 
+    <td width="105"><b>X</b></td>
+    <td width="188">Modified to the value V-&gt;X</td>
+  </tr>
+  <tr> 
+    <td width="104"><b>Y</b></td>
+    <td width="189">Modified to the value V-&gt;Y</td>
+  </tr>
+  <tr> 
+    <td width="104"><b>Z</b></td>
+    <td width="189">Modified to the value V-&gt;Z</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p></p>
+<p></p>
+<p></p>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p><a name="geVec3d_GetElement"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geFloat 
+  geVec3d_GetElement(const geVec3d *V, int ElementIndex)</font></tt></b></font></p>
+<p><b>Description</b>: Treats the input vector as an array, and returns the corresponding 
+  element's value.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=12 width="387" cellpadding="0" >
+  <tr> 
+    <td width="130"><b>V</b></td>
+    <td width="236">Input vector</td>
+  </tr>
+  <tr> 
+    <td width="130"><b>ElementIndex </b></td>
+    <td width="236">
+<table width="98%" border="0">
+        <tr>
+          <td width="14%">0</td>
+          <td width="86%">Return value is V-&gt;X</td>
+        </tr>
+        <tr>
+          <td width="14%">1</td>
+          <td width="86%">Return value is V-&gt;X</td>
+        </tr>
+        <tr>
+          <td width="14%">2</td>
+          <td width="86%">Return value is V-&gt;X</td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<p><b>Returns</b>: Value of V-&gt;X, Y or Z, depending on ElementIndex.</p>
+<p><a name="geVec3d_Inverse"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geVec3d_Inverse(geVec3d *V)</font></tt></b></font></p>
+<p><b>Description</b>: Sets V equal to -V.</p>
+<p><b>Parameters</b>:</p>
+<table border=0 cellspacing=5 width="326" >
+  <tr> 
+    <td width="104"><b>V</b></td>
+    <td width="139">Vector to be inverted</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p><a name="geVec3d_IsNormalized"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean 
+  geVec3d_IsNormalized(const geVec3d *V)</font></tt></b></font></p>
+<p><b>Description</b>: Determines if the vector has been normalized.</p>
+<p><b>Parameters</b>:</p>
+<table border=0 cellspacing=5 width="326" >
+  <tr> 
+    <td width="104"><b>V</b></td>
+    <td width="139">Vector to be tested.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the vector is of length 1.0, GE_FALSE otherwise.</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p><a name="geVec3d_IsValid"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean 
+  geVec3d_IsValid(const geVec3d *V)</font></tt></b></font></p>
+<p><b>Description</b>: Determines if the vector is valid. This is a debugging 
+  API, primarily. It was designed to test for vectors that contained NAN values 
+  on Intel machines, since it is easy to let NAN values slip into calculations. 
+  Since NANs do not generate hardware exceptions, it can be exceedingly difficult 
+  to determine when data has gone bad.</p>
+<p><b>Parameters</b>:</p>
+<table border=0 cellspacing=5 width="326" >
+  <tr> 
+    <td width="104"><b>V</b></td>
+    <td width="139">Vector to be tested.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the vector is valid, GE_FALSE otherwise.</p>
+<p><a name="geVec3d_Length"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geFloat 
+  geVec3d_Length(const geVec3d *V)</font></tt></b></font></p>
+<p><b>Description</b>: Returns the length of the input vector</p>
+<p><b>Parameters</b>:</p>
+<table border=0 cellspacing=5 width="326" >
+  <tr> 
+    <td width="104"><b>V</b></td>
+    <td width="139">Input vector</td>
+  </tr>
+</table>
+<p><b>Returns</b>: Length of V.</p>
+<p><a name="geVec3d_MA"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geVec3d_MA</font></tt></b></font></p>
+<p><b>Description</b>: Do not use this API. It has been superceeded by geVec3d_AddScaled, 
+  and will be going away.</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p><a name="geVec3d_Normalize"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geFloat 
+  geVec3d_Normalize(geVec3d *V)</font></tt></b></font></p>
+<p><b>Description</b>: Normalizes the input vector. If the vector is length zero, 
+  then it is not modified.</p>
+<p><b>Parameters</b>:</p>
+<table border=0 cellspacing=5 width="326" >
+  <tr> 
+    <td width="104"><b>V</b></td>
+    <td width="139">Vector to be normalized</td>
+  </tr>
+</table>
+<p><b>Returns</b>: The length of the vector before normalization.</p>
+<p><a name="geVec3d_Scale"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geVec3d_Scale(const geVec3d *V, geFloat Scale, geVec3d *Result)</font></tt></b></font></p>
+<p><b>Description</b>: Scales the input vector.</p>
+<p><b>Parameters</b>:</p>
+<table border=0 cellspacing=5 width="326" >
+  <tr> 
+    <td width="104"><b>V</b></td>
+    <td width="139">Input vector</td>
+  </tr>
+  <tr>
+    <td width="104"><b>Scale</b></td>
+    <td width="139">Value to scale V by</td>
+  </tr>
+  <tr>
+    <td width="104"><b>Result</b></td>
+    <td width="139">V scaled by Scale</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p><a name="geVec3d_Set"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geVec3d_Set(geVec3d *V, geFloat X, geFloat Y, geFloat Z)</font></tt></b></font></p>
+<p><b>Description</b>: Sets a vector from discrete components.</p>
+<p><b>Parameters</b>:</p>
+<table border=0 cellspacing=5 width="326" >
+  <tr> 
+    <td width="104" height="21"><b>V</b></td>
+    <td width="139" height="21">Vector to be initialized</td>
+  </tr>
+  <tr> 
+    <td width="104"><b>X</b></td>
+    <td width="139">X value for the vector</td>
+  </tr>
+  <tr> 
+    <td width="104"><b>Y</b></td>
+    <td width="139">Y value for the vector</td>
+  </tr>
+  <tr> 
+    <td width="104"><b>Z</b></td>
+    <td width="139">Z value for the vector</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p><a name="geVec3d_Subtact"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geVec3d_Subtract(const geVec3d *V1, const geVec3d *V2, geVec3d *V2MinusV1)</font></tt></b></font></p>
+<p><b>Description</b>: Subtracts two vectors.</p>
+<p><b>Parameters</b>:</p>
+<table border=0 cellspacing=5 width="326" >
+  <tr> 
+    <td width="104"><b>V1</b></td>
+    <td width="139">Input vector</td>
+  </tr>
+  <tr> 
+    <td width="104"><b>V1</b></td>
+    <td width="139">Input vector</td>
+  </tr>
+  <tr> 
+    <td width="104"><b>V2MinusV1</b></td>
+    <td width="139">Set to the result of V2 - V1.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

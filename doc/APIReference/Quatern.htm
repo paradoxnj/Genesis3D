@@ -1,0 +1,589 @@
+<html>
+<head>
+<title>Quatern</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h2>Summary</h2>
+<p> The quatern module contains basic support for a quaternion object. Quaternions 
+  are an extension of complex numbers that allows an expression for rotation that 
+  can be easily interpolated. geQuaternion_s are also more numerically stable 
+  for repeated rotations than matrices. </p>
+<h2>Overview</h2>
+<p> A quaternion is a 4 element 'vector' [w,x,y,z] where: </p>
+<ul>
+  <li> q = w + xi + yj + zk</li>
+  <li>i*i = -1</li>
+  <li>j*j = -1</li>
+  <li>k*k = -1</li>
+  <li>i*j = -j*i = k</li>
+  <li>j*k = -k*j = i</li>
+  <li>k*i = -i*k = j</li>
+  <li>q' (conjugate) = w - xi - yj - zk</li>
+  <li>||q|| (magnitude) = sqrt(q*q') = sqrt(w*w + x*x + y*y + z*z)</li>
+  <li>unit quaternion ||q|| == 1; this implies q' == qinverse</li>
+  <li>quaternions are associative (q1*q2)*q3 == q1*(q2*q3)</li>
+  <li>quaternions are not commutative q1*q2 != q2*q1</li>
+  <li>qinverse (inverse (1/q) ) = q'/(q*q') </li>
+</ul>
+<p> q can be expressed by w + xi + yj + zk or [w,x,y,z] or as in this implementation 
+  (s,v) where s=w, and v=[x,y,z] </p>
+<p> Quaternions can represent a rotation. The rotation is an angle t, around a 
+  unit vector u. q=(s,v); s= cos(t/2); v= u*sin(t/2). </p>
+<p> Quaternions can apply the rotation to a point. let the point be p [px,py,pz], 
+  and let P be a quaternion(0,p). Protated = q*P*qinverse ( Protated = q*P*q' 
+  if q is a unit quaternion).</p>
+<p> Concatenation rotations is similar to matrix concatenation. given two rotations 
+  q1 and q2, to rotate by q1, then q2: let qc = (q2*q1), then the combined rotation 
+  is given by qc*P*qcinverse (= qc*P*qc' if q is a unit quaternion).</p>
+<p> Multiplication: </p>
+<p> <font face="Courier New, Courier, mono">q1 = w1 + x1i + y1j + z1k </font></p>
+<p><font face="Courier New, Courier, mono">q2 = w2 + x2i + y2j + z2k</font></p>
+<p><font face="Courier New, Courier, mono">q1*q2 = q3 =</font></p>
+<blockquote> 
+  <blockquote> 
+    <blockquote> 
+      <p><font face="Courier New, Courier, mono">w1*w2 - x1*x2 - y1*y2 - z1*z2) 
+        {w3}</font></p>
+      <p><font face="Courier New, Courier, mono">w1*x2 + x1*w2 + y1*z2 - z1*y2)i 
+        {x3}</font></p>
+      <p><font face="Courier New, Courier, mono">(w1*y2 - x1*z2 + y1*w2 + z1*x2)j 
+        {y3}</font></p>
+      <p><font face="Courier New, Courier, mono">(w1*z2 + x1*y2 + y1*x2 + z1*w2)k 
+        {z3}</font></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<p> also, </p>
+<p> <font face="Courier New, Courier, mono">q1 = (s1,v1) = [s1,(x1,y1,z1)]</font></p>
+<p><font face="Courier New, Courier, mono">q2 = (s2,v2) = [s2,(x2,y2,z2)]</font></p>
+<p><font face="Courier New, Courier, mono">q1*q2 = q3 = (s1*s2 - dot_product(v1,v2), 
+  {s3}</font></p>
+<blockquote> 
+  <blockquote> 
+    <blockquote> 
+      <blockquote> 
+        <blockquote>
+          <p><font face="Courier New, Courier, mono">(s1*v2 + s2*v1 + cross_product(v1,v2)) 
+            {v3}</font></p>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<h3> Interpolation</h3>
+<p>It is possible (and sometimes reasonable) to interpolate between two quaternions 
+  by interpolating each component. This does not quarantee a resulting unit quaternion, 
+  and will result in an animation with non-linear rotational velocity. </p>
+<h3> Spherical Interpolation</h3>
+<p>(slerp) treat the quaternions as vectors find the angle between them (w = arccos(q1 
+  dot q2) ). given 0<=t<=1, q(t) = q1*(sin((1-t)*w)/sin(w) + q2 * sin(t*w)/sin(w). 
+  since q == -q, care must be taken to rotate the proper way. </p>
+<p> This implementation uses the notation quaternion q = (quatS,quatV) where quatS 
+  is a scalar, and quatV is a 3 element vector. </p>
+<h2>Reference</h2>
+<p><a name="geQuaternion_Add"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_Add(const geQuaternion *Q1, const geQuaternion *Q2, geQuaternion 
+  *QSum)</font></tt></b></font></p>
+<p><b>Description</b>: Adds two quaternions together.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>Q1</b></td>
+    <td width="131">Input Quaternion</td>
+  </tr>
+  <tr> 
+    <td width="64"><b>Q2</b></td>
+    <td width="131">Input Quaternion</td>
+  </tr>
+  <tr>
+    <td width="64"><b>QSum</b></td>
+    <td width="131">Q1 + Q2</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: The result of this operation is <i>not</i> generally a unit 
+  quaternion.</p>
+<p><a name="geQuaternion_Compare"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean	
+  geQuaternion_Compare(const geQuaternion *Q1, const geQuaternion *Q2, geFloat 
+  Tolerance)</font></tt></b></font></p>
+<p><b>Description</b>: Compares two quaternions.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="300" >
+  <tr> 
+    <td width="74"><b>Q1</b></td>
+    <td width="205">Input quaternion</td>
+  </tr>
+  <tr> 
+    <td width="74"><b>Q2</b></td>
+    <td width="205">Input quaternion</td>
+  </tr>
+  <tr>
+    <td width="74"><b>Tolerance</b></td>
+    <td width="205">Tolerance to compare within</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if all the corresponding elements of the quaternions 
+  compare within the supplied Tolerance, GE_FALSE otherwise.</p>
+<p><a name="geQuaternion_Copy"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_Copy(const geQuaternion *QSrc, geQuaternion *QDst)</font></tt></b></font></p>
+<p><b>Description</b>: Copies a quaternion.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>QSrc</b></td>
+    <td width="131">Quaternion to copy from</td>
+  </tr>
+  <tr> 
+    <td width="64"><b>QDst</b></td>
+    <td width="131">Quaternion to copy to</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geQuaternion_Exp"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_Exp(const geQuaternion *Q, geQuaternion *QExp)</font></tt></b></font></p>
+<p><b>Description</b>: Calculates exp(Q).</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>Q </b></td>
+    <td width="131">Input quaternion</td>
+  </tr>
+  <tr> 
+    <td width="64"><b>QExp</b></td>
+    <td width="131">Result</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: This operation only works on pure quaternions - those in which 
+  the scalar portion is zero.</p>
+<p><a name="geQuaternion_FromMatrix"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_FromMatrix(const geXForm3d *XForm, geQuaternion *QDest)</font></tt></b></font></p>
+<p><b>Description</b>: Builds a quaternion from a rotation transform.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>XForm</b></td>
+    <td width="131">Transform to convert</td>
+  </tr>
+  <tr> 
+    <td width="64"><b>QDest</b></td>
+    <td width="131">Quaternion to conver to</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: Ignores any translation in the transform.</p>
+<p><a name="geQuaternion_Get"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_Get(const geQuaternion *Q, geFloat *W, geFloat *X, geFloat *Y, 
+  geFloat *Z)</font></tt></b></font></p>
+<p><b>Description</b>: Extracts the discrete elements of a quaternion.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="328" >
+  <tr> 
+    <td width="74"><b>Q </b></td>
+    <td width="233">Quaternion to extract elements of</td>
+  </tr>
+  <tr> 
+    <td width="74"><b>W</b></td>
+    <td width="233">Variable to place W component in</td>
+  </tr>
+  <tr> 
+    <td width="74"><b>X</b></td>
+    <td width="233">Variable to place X component in</td>
+  </tr>
+  <tr> 
+    <td width="74"><b>Y</b></td>
+    <td width="233">Variable to place Y component in</td>
+  </tr>
+  <tr> 
+    <td width="74"><b>Z</b></td>
+    <td width="233">Variable to place Z component in</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geQuaternion_GetAxisAngle"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean 
+  geQuaternion_GetAxisAngle(const geQuaternion *Q, geVec3d *Axis, geFloat *Theta)</font></tt></b></font></p>
+<p><b>Description</b>: Calculates an axis and a rotation angle about that axis 
+  from a quaternion.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="309" >
+  <tr> 
+    <td width="74"><b>Q </b></td>
+    <td width="214">Quaternion to convert</td>
+  </tr>
+  <tr> 
+    <td width="74"><b>Axis</b></td>
+    <td width="214">Vector to receive the axis result</td>
+  </tr>
+  <tr>
+    <td width="74"><b>Theta</b></td>
+    <td width="214">Resulting rotation angle in radians</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if there is an axis. GE_FALSE if there is no axis, 
+  in which case Axis is set to (0, 0, 0) and Theta is set to 0.</p>
+<p><a name="geQuaternion_GetVec3d"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_GetVec3d(const geQuaternion *Q, geFloat *W, geVec3d *Vector)</font></tt></b></font></p>
+<p><b>Description</b>: Gets the quaternion components into a scalar float, and 
+  a vector.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="367" >
+  <tr> 
+    <td width="74"><b>Q </b></td>
+    <td width="272">Quaternion to extract from</td>
+  </tr>
+  <tr> 
+    <td width="74"><b>W</b></td>
+    <td width="272">Receives W component of Q</td>
+  </tr>
+  <tr>
+    <td width="74"><b>Vector</b></td>
+    <td width="272">Receives X, Y and Z components of Q</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geQuaternion_Invers"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_Inverse(const geQuaternion *Q, geQuaternion *QInv)</font></tt></b></font></p>
+<p><b>Description</b>: Calculates inverse of a quaternion.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>Q </b></td>
+    <td width="131">Quaternion to invert</td>
+  </tr>
+  <tr> 
+    <td width="64"><b>QInv</b></td>
+    <td width="131">Inverted result</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geQuaternion_IsUnit"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean 
+  geQuaternion_IsUnit(const geQuaternion *Q)</font></tt></b></font></p>
+<p><b>Description</b>: Determines if a quaternion is a unit quaternion</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>Q </b></td>
+    <td width="131">Quaternion to test</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the quaternion is a unit quaternion, GE_FALSE otherwise.</p>
+<p><a name="geQuaternion_IsValid"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean 
+  geQuaternion_IsValid(const geQuaternion *Q)</font></tt></b></font></p>
+<p><b>Description</b>: Determines if the quaternion is valid. This is a debugging 
+  API, primarily. It was designed to test for quaternions that contained NAN values 
+  on Intel machines, since it is easy to let NAN values slip into calculations. 
+  Since NANs do not generate hardware exceptions, it can be exceedingly difficult 
+  to determine when data has gone bad.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>Q </b></td>
+    <td width="131">Quaternion to test</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geQuaternion_Ln"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_Ln(const geQuaternion *Q, geQuaternion *LnQ)</font></tt></b></font></p>
+<p><b>Description</b>: Calculates Ln(Q).</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>Q </b></td>
+    <td width="131">Input quaternion</td>
+  </tr>
+  <tr> 
+    <td width="64"><b>LnQ</b></td>
+    <td width="131">Ln(Q)</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: Only works on unit quaternions.</p>
+<p><a name="geQuaternion_Magnitude"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geFloat 
+  geQuaternion_Magnitude(const geQuaternion *Q)</font></tt></b></font></p>
+<p><b>Description</b>: Calculates the magnitude of a quaternion</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64" height="20"><b>Q </b></td>
+    <td width="131" height="20">Quaternion</td>
+  </tr>
+</table>
+<p><b>Returns</b>: Magnitude of Q.</p>
+<p><a name="geQuaternion_Multiply"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_Multiple(const geQuaternion *Q1, </font><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">const 
+  geQuaternion *Q2, geQuaternion *QProduct</font></tt></b></font><font color="#0000FF">)</font></tt></b></font></p>
+<p><b>Description</b>: </p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>Q1</b></td>
+    <td width="131">Input Quaternion</td>
+  </tr>
+  <tr> 
+    <td width="64"><b>Q2</b></td>
+    <td width="131">Input Quaternion</td>
+  </tr>
+  <tr>
+    <td width="64"><b>QProduct</b></td>
+    <td width="131">Result of Q1 * Q2</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: Result is not necessarily normalized.</p>
+<p><a name="geQuaternion_Normlize"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geFloat 
+  geQuaternion_Normalize(geQuaternion *Q)</font></tt></b></font></p>
+<p><b>Description</b>: Normalizes a quaternion to a unit quaternion.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>Q </b></td>
+    <td width="131">Quaternion to normalize</td>
+  </tr>
+</table>
+<p><b>Returns</b>: Magnitude of Q before normalization.</p>
+<p><a name="geQuaternion_Rotate"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_Rotate(const geQuaternion *Q, const geVec3d *Vector, geVec3d *VRotated)</font></tt></b></font></p>
+<p><b>Description</b>: Rotates a vector by a quaternion.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>Q </b></td>
+    <td width="131">Quaternion to rotate by</td>
+  </tr>
+  <tr> 
+    <td width="64"><b>Vector</b></td>
+    <td width="131">Vector to rotate</td>
+  </tr>
+  <tr>
+    <td width="64"><b>VRotated</b></td>
+    <td width="131">Resulting rotated vector</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geQuaternion_Scale"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_Scale(const geQuaternion *Q, geFloat Scale, geQuaternion *QScaled)</font></tt></b></font></p>
+<p><b>Description</b>: Scales a quaternion.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>Q </b></td>
+    <td width="131">Quaternion to scale</td>
+  </tr>
+  <tr> 
+    <td width="64"><b>Scale</b></td>
+    <td width="131">Scale value</td>
+  </tr>
+  <tr>
+    <td width="64"><b>QScaled</b></td>
+    <td width="131">Result of Q * Scale</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: Result is not generally a unit quaternion.</p>
+<p><a name="geQuaternion_Set"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_Set(const geQuaternion *Q, geFloat W, geFloat X, geFloat Y, geFloat 
+  Z)</font></tt></b></font></p>
+<p><b>Description</b>: Builds a quaternion from discrete components.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>Q </b></td>
+    <td width="131">Quaternion to build</td>
+  </tr>
+  <tr> 
+    <td width="64"><b>W</b></td>
+    <td width="131">W component</td>
+  </tr>
+  <tr> 
+    <td width="64"><b>X</b></td>
+    <td width="131">X component</td>
+  </tr>
+  <tr> 
+    <td width="64"><b>Y</b></td>
+    <td width="131">Y component</td>
+  </tr>
+  <tr> 
+    <td width="64"><b>Z</b></td>
+    <td width="131">Z component</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: Does not normalize the resulting quaternion.</p>
+<p><a name="geQuaternion_SetFromAxisAngle"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_SetFromAxisAngle(geQuaternion *Q, const geVec3d *Axis, geFloat 
+  Theta)</font></tt></b></font></p>
+<p><b>Description</b>: Builds a quaternion from an axis and a rotation about that 
+  axis. </p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="350" >
+  <tr> 
+    <td width="74"><b>Q </b></td>
+    <td width="205">Quaternion to build</td>
+  </tr>
+  <tr> 
+    <td width="74"><b>Axis</b></td>
+    <td width="205">Axis vector</td>
+  </tr>
+  <tr>
+    <td width="74"><b>Theta</b></td>
+    <td width="205">Rotation angle about Axis, in radians</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geQuaternion_SetMaximalAssertionMode"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_SetMaximalAssertionMode(geBoolean Enable)</font></tt></b></font></p>
+<p><b>Description</b>: Enables or disables strict constraint testing on transforms 
+  at runtime.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="343" >
+  <tr> 
+    <td width="74"><b>Enable</b></td>
+    <td width="248">GE_TRUE to enable strict checking, GE_FALSE otherwise.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: In debug builds, the quaternion library performs a number of 
+  tests on quaternions on many operations. The sum of these tests imposes a very 
+  significant performance penalty on the basic operation of the whole engine, 
+  which tends to make debug builds untenable in the development environment. Consequently, 
+  we have made the running of the most expensive of these tests conditional to 
+  the enabling of maximal assertions in the quaternion library, and defaulted 
+  to not doing these tests. If you are experiencing trouble with your quaternions 
+  becoming non-unit, or are having other difficult to track down problems with 
+  your quaternions, you may want to enable these tests. This API is not present 
+  in the release builds of the engine.</p>
+<p><a name="geQuaternion_SetNoRotation"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_SetNoRotation(geQuaternion *Q)</font></tt></b></font></p>
+<p><b>Description</b>: Sets a quaternion to a quaternion which performs no rotation.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>Q </b></td>
+    <td width="131">Quaternion to set</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: This is the analog of setting up an identity transform.</p>
+<p><a name="geQuaternion_SetVec3d"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_SetVec3d(geQuaternion *Q, geFloat W, const geVec3d *Vector)</font></tt></b></font></p>
+<p><b>Description</b>: Builds a quaternion from a W component, and a vector.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="358" >
+  <tr> 
+    <td width="74"><b>Q </b></td>
+    <td width="263">Quaternion to build</td>
+  </tr>
+  <tr> 
+    <td width="74"><b>W</b></td>
+    <td width="263">W component of the quaternion</td>
+  </tr>
+  <tr>
+    <td width="74"><b>Vector</b></td>
+    <td width="263">X, Y and Z components of the quaternion</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: This does not normalize the resulting quaternion.</p>
+<p><a name="geQuaternion_Slerp"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_Slerp(const geQuaternion *Q0, const geQuaternion *Q1, geFloat T, 
+  geQuaternion *QT)</font></tt></b></font></p>
+<p><b>Description</b>: Calculates a spherical interpolation between two quaternions.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="372" >
+  <tr> 
+    <td width="74"><b>Q0</b></td>
+    <td width="277">Start quaternion</td>
+  </tr>
+  <tr> 
+    <td width="74"><b>Q1</b></td>
+    <td width="277">End quaternion</td>
+  </tr>
+  <tr>
+    <td width="74"><b>T</b></td>
+    <td width="277">Percentage (value from 0 through 1) between Q0 and Q1 that 
+      we need to end up at.</td>
+  </tr>
+  <tr>
+    <td width="74"><b>QT</b></td>
+    <td width="277">Interpolated result</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: Returns a quaternion with a positive W, always taking the shortest 
+  route through the positive W domain.</p>
+<p><a name="geQuaternion_SlerpNotShortest"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_SlerpNotShortest(const geQuaternion *Q0, const geQuaternion *Q1, 
+  geFloat T, geQuaternion *QT)</font></tt></b></font></p>
+<p><b>Description</b>: Calculates a spherical interpolation between two quaternions.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="372" >
+  <tr> 
+    <td width="74"><b>Q0</b></td>
+    <td width="277">Start quaternion</td>
+  </tr>
+  <tr> 
+    <td width="74"><b>Q1</b></td>
+    <td width="277">End quaternion</td>
+  </tr>
+  <tr> 
+    <td width="74"><b>T</b></td>
+    <td width="277">Percentage (value from 0 through 1) between Q0 and Q1 that 
+      we need to end up at.</td>
+  </tr>
+  <tr> 
+    <td width="74"><b>QT</b></td>
+    <td width="277">Interpolated result</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: This function is the same as Quaternion_Slerp, except that 
+  we do not ensure that the resulting path is not the shortest one. Hence W can 
+  be either sign in the result.</p>
+<p><a name="geQuaternion_Subtract"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_Subtract(const geQuaternion *Q1, const geQuaternion *Q2, geQuaternion 
+  *Q2MinusQ1)</font></tt></b></font></p>
+<p><b>Description</b>: Subtracts two quaternions.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="248" >
+  <tr> 
+    <td width="64"><b>Q1</b></td>
+    <td width="131">Input quaternion</td>
+  </tr>
+  <tr> 
+    <td width="64"><b>Q2</b></td>
+    <td width="131">Input quaternion</td>
+  </tr>
+  <tr>
+    <td width="64"><b>Q2MinusQ1</b></td>
+    <td width="131">Result of Q2 - Q1</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: Result is not necessarily a unit quaternion.</p>
+<p><a name="geQuaternion_ToMatrix"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geQuaternion_ToMatrix(const geQuaternion *Q, geXForm3d *XForm)</font></tt></b></font></p>
+<p><b>Description</b>: Builds a rotation transform from a quaternion.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="317" >
+  <tr> 
+    <td width="74"><b>Q </b></td>
+    <td width="222">Unit quaternion</td>
+  </tr>
+  <tr> 
+    <td width="74"><b>XForm</b></td>
+    <td width="222">Transform to receive rotational equivalent of Q</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: Any translation in XForm is lost. This function does not work 
+  correctly on non-unit quaternions.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p></p>
+<p></p>
+<p></p>
+
+</body>
+</html>

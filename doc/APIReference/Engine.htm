@@ -1,0 +1,592 @@
+<html>
+
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>Summary</h2>
+
+<p>The geEngine object is the container for the geDriver_System object, the geWorld
+object, and the geBitmap object. The primary job of the geEngine object is to provide a
+fast, and efficient interface to the output device, via the geDriver_System object.</p>
+
+<h2>Overview</h2>
+
+<p>The geEngine object is the container for all 2d objects. The geEngine object is
+responsible for providing an interface to the 2d primary display device. This includes
+drawing geBitmaps, text, etc. All info pertaining to 3d is stored in other objects such as
+geActors, geWorlds, etc. Each 3d object is optimized to render its own set of primitives.
+It is the engines job to provide an interface to the primary display device for those
+objects. If you are familiar with DirectX, you can think of the geEngine object as a
+DirectDraw object.</p>
+
+<p>When the geEngine object is created, it creates a geDriver_System object internally. It
+is the responsibility of the user to obtain the system, and to set a valid Driver/Mode
+(geEngine_SetDriverAndMode) combination in the geEngine object.</p>
+
+<h4>Explanation of buffers, and how the geEngine uses them:</h4>
+
+<p>The geEngine object uses the standard technique of double-buffering (whenever possible)
+to achieve non-flickering animation. This flickering is the result of being able to
+incrementally see what's being drawn into the front-buffer as it is being drawn.</p>
+
+<p>To counter this problem, the engine will create and maintain an n number of buffers
+whenever a valid Driver/Mode is set. These buffers are what the engine will use to draw
+into, for ANY of its drawing/rendering API's. A buffer can be one of two roles (or both in
+the case of only one buffer). It can either be the front-buffer, or a back-buffer. The
+front-buffer is the buffer that is currently visible. The back-buffers are the temporary
+buffers used to draw in while waiting to have the role of the front-buffer. At least one
+of the buffers must be the front-buffer at any given time. In the case of the engine only
+creating one buffer, that buffer will ALWAYS be the front-buffer, and all drawing will
+happen in this buffer (hence, all drawing will be visible immediately, and flickering will
+occur). In the case that the engine creates more than one buffer, one of them will be the
+front-buffer, while the others will remain back-buffers. In this case, all drawing will
+happen in the current active back-buffer, and any drawing won't be visible until the
+current active back-buffer that is being used changes it's role to the front-buffer. Note
+that only one front-buffer may exist at any given time, so in the case of a role change
+from back-buffer to front-buffer, the old front-buffer changes its role to a back-buffer.
+The engine then chooses the next available back-buffer in the chain as the active buffer
+to draw in.</p>
+
+<h4>Explanation of geEngine_BeginFrame, and geEngine_EndFrame:</h4>
+
+<p>All drawing API's should be called AFTER geEngine_BeginFrame, and BEFORE
+geEngine_EndFrame. This is because, geEngine_BeginFrame will set up the current active
+back-buffer, and prepare it to be drawn in to for that frame. This includes clearing
+specified regions of the current back-buffer, etc. To see the contents of the back-buffer,
+geEngine_EndFrame must be called. geEngine_EndFrame will make the current back-buffer
+visible (changes it's role to the front-buffer), and set the old front-buffer to the next
+available back-buffer in the chain. </p>
+
+<h4>A word about geBitmap's:</h4>
+
+<p>Before you can use a geBitmap in any module, you must add the geBitmap to that module
+first.&nbsp; For example, if you were planning on using <a href="#geEngine_DrawBitmap">geEngine_DrawBitmap</a>,
+you must first add the geBitmap to the geEngine module (see <a href="#geEngine_AddBitmap">geEngine_AddBitmap</a>).
+&nbsp; Please note that adding a geBitmap to a geEngine module, does not allow you to use
+the geBitmap in other modules.&nbsp; You must add the geBitmap to each and every module
+that you plan on using the geBitmap with.&nbsp; Also note that you cannot add a geBitmap
+to a geEngine, while in the middle of a drawing frame (in between calls to
+geEngine_BeginFrame, and geEngine_EndFrame)</p>
+
+<h4>A word about geWorld's:</h4>
+
+<p>Like geBitmap's, you cannot use a geWorld object with the geEngine, unless you have
+added the geWorld to the geEngine first (see <a href="#geEngine_AddWorld">geEngine_AddWorld</a>).
+&nbsp; Also, like geBitmap's, you cannot add a geWorld to a geEngine, while in the middle
+of a drawing frame (in between calls to geEngine_BeginFrame, and geEngine_EndFrame). </p>
+
+<h2>Reference</h2>
+
+<p><a name="geEngine_AddBitmap"></a><font color="#0000FF"
+face="Courier New, Courier, mono"><b><tt>geBoolean geEngine_AddBitmap(geEngine *Engine,
+geBitmap *Bitmap)</tt></b></font></p>
+
+<p><b>Description</b>: Adds a geBitmap to a geEngine object, and increases the reference
+count of the geBitmap object by one. A geBitmap can be added to a geEngine more than once.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>A geEngine object that will contain the geBitmap.</td>
+  </tr>
+  <tr>
+    <td><b>Bitmap </b></td>
+    <td>The geBitmap object that will be added to the geEngine object.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_AddWorld"></a><font color="#0000FF" face="Courier New, Courier, mono"><b><tt>geBoolean
+geEngine_AddWorld(geEngine *Engine, geWorld *World)</tt></b></font></p>
+
+<p><b>Description</b>: Adds a geWorld object to a geEngine object, and increases the
+reference count of the world by one. A geWorld object can be added to a geEngine more than
+once.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine object that will contain the new world.</td>
+  </tr>
+  <tr>
+    <td><b>World </b></td>
+    <td>A geWorld object that will be added to the geEngine object.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_BeginFrame"></a><font color="#0000FF"
+face="Courier New, Courier, mono"><b><tt>geBoolean geEngine_BeginFrame(geEngine *Engine,
+geCamera *Camera, geBoolean ClearScreen)</tt></b></font></p>
+
+<p><b>Description</b>: Prepares the geEngine object for a new frame, and sets up the
+current active back-buffer for drawing. Any Drawing, or Rendering API's MUST be called
+after geEngine_BeginFrame.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine object that will be prepared for a new frame.</td>
+  </tr>
+  <tr>
+    <td><b>Camera </b></td>
+    <td>A geCamera object that contains a valid geRect set, that will be used to define the
+    active region of the back-buffer. (Not fully implemented)</td>
+  </tr>
+  <tr>
+    <td><b>ClearScreen </b></td>
+    <td>A geBoolean that if set to GE_TRUE, will wipe the back-buffer. Otherwise, the
+    back-buffer will be preserved from the previous frame.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_Create"></a><font color="#0000FF" face="Courier New, Courier, mono"><b><tt>geEngine
+*geEngine_Create(HWND hWnd, const char *AppName, const char *DriverDirectory)</tt></b></font></p>
+
+<p><b>Description</b>: Creates a geEngine object. </p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>hWnd </b></td>
+    <td>Handle to the window that should belong to Genesis. This window handle will be what
+    Genesis receives it's focus from. In a window video mode (see geEngine_SetDriverAndMode),
+    it will also be what is rendered into.</td>
+  </tr>
+  <tr>
+    <td><b>AppName</b></td>
+    <td>*REMOVE*</td>
+  </tr>
+  <tr>
+    <td><b>DriverDirectory</b></td>
+    <td>The directory where the geEngine object will look for drivers upon creation.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns a valid geEngine object if the function succeeds, NULL
+otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_DrawBitmap"></a><font color="#0000FF"
+face="Courier New, Courier, mono"><b><tt>geBoolean geEngine_DrawBitmap(geEngine *Engine,
+geBitmap *Bitmap, geRect *Source, int32 x, int32 y)</tt></b></font></p>
+
+<p><b>Description</b>: Draws a geBitmap into the current active back-buffer. If there is
+more than one back-buffer, the bitmap will not be seen until the next call to
+geEngine_EndFrame.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine that will be used to draw the bitmap.</td>
+  </tr>
+  <tr>
+    <td><b>Bitmap </b></td>
+    <td>The geBitmap object to draw.</td>
+  </tr>
+  <tr>
+    <td><b>Source </b></td>
+    <td>Pointer to a geRect structure that defines what portion of the bitmap will be drawn.</td>
+  </tr>
+  <tr>
+    <td><b>x </b></td>
+    <td>Specifies the row (in pixel space) where the bitmap will start drawing.</td>
+  </tr>
+  <tr>
+    <td><b>y </b></td>
+    <td>Specifies the column (in pixel space) where the bitmap will start drawing.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_EnableFrameRateCounter"></a><font color="#0000FF"
+face="Courier New, Courier, mono"><b><tt>geBoolean
+geEngine_EnableFrameRateCounter(geEngine *Engine, geBoolean Enable)</tt></b></font></p>
+
+<p><b>Description</b>: Enables detailed debug info, using the current active font.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine that should display debug info.</td>
+  </tr>
+  <tr>
+    <td><b>Enable </b></td>
+    <td>A geBoolean that should be GE_TRUE for debug info. GE_FALSE otherwise.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_EndFrame"></a><font color="#0000FF" face="Courier New, Courier, mono"><b><tt>geBoolean
+geEngine_EndFrame(geEngine *Engine)</tt></b></font></p>
+
+<p><b>Description</b>: Ends the current drawing session in the geEngine, makes the current
+active back-buffer visible, and flips this buffer to the next buffer in the chain.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine object that previously called geEngine_BeginFrame.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_FillRect"></a><font color="#0000FF" face="Courier New, Courier, mono"><b><tt>void
+geEngine_FillRect(geEngine *Engine, const GE_Rect *Rect, const GE_RGBA *Color)</tt></b></font></p>
+
+<p><b>Description</b>: Fills a specified region of the current active back-buffer with a
+specified color.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine that was used to create the back-buffer in question.</td>
+  </tr>
+  <tr>
+    <td><b>Rect </b></td>
+    <td>Address of a geRect structure that contains the region of the buffer to fill.</td>
+  </tr>
+  <tr>
+    <td><b>Color </b></td>
+    <td>Address of a GE_RGBA structure that contains the color that the fill will use.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Nothing.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_Free"></a><font color="#0000FF" face="Courier New, Courier, mono"><b><tt>void
+geEngine_Free(geEngine *Engine)</tt></b></font></p>
+
+<p><b>Description</b>: Destroys a geEngine object. </p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine object to be destroyed.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Nothing.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_GetGamma"></a><font color="#0000FF" face="Courier New, Courier, mono"><b><tt>geBoolean
+geEngine_GetGamma(geEngine *Engine, float *Gamma)</tt></b></font></p>
+
+<p><b>Description</b>: Gets the current gamma correction value that the geEngine object is
+currently using for all drawing, and rendering API's.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine that the gamma value is to be obtained from.</td>
+  </tr>
+  <tr>
+    <td><b>Gamma </b></td>
+    <td>Address of a float that will be filled with the current gamma value.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_Printf"></a><font color="#0000FF" face="Courier New, Courier, mono"><b><tt>geBoolean
+geEngine_Printf(geEngine *Engine, int32 x, int32 y, const char *Str, ...)</tt></b></font></p>
+
+<p><b>Description</b>: Prints a formatted NULL terminated string using the currently
+selected font.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine that will be used to print the text.</td>
+  </tr>
+  <tr>
+    <td><b>x </b></td>
+    <td>Specifies the row (in pixel space) of the starting point of the text.</td>
+  </tr>
+  <tr>
+    <td><b>y </b></td>
+    <td>Specifies the column (in pixel space) of the starting point of the text.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_RemoveBitmap"></a><font color="#0000FF"
+face="Courier New, Courier, mono"><b><tt>geBoolean geEngine_RemoveBitmap(geEngine *Engine,
+geBitmap *Bitmap)</tt></b></font></p>
+
+<p><b>Description</b>: Removes a previously added geBitmap object from a geEngine object,
+and decreases the reference count of the geBitmap object by one.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>A geEngine object that contains the geBitmap.</td>
+  </tr>
+  <tr>
+    <td><b>Bitmap </b></td>
+    <td>The geBitmap object that will be removed from the geEngine object.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_RemoveWorld"></a><font color="#0000FF"
+face="Courier New, Courier, mono"><b><tt>geBoolean geEngine_RemoveWorld(geEngine *Engine,
+geWorld *World)</tt></b></font></p>
+
+<p><b>Description</b>: Removes a previously added geWorld object from a geEngine object,
+and decreases the reference count of the geWorld object by one.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>A geEngine object that contains the geWorld.</td>
+  </tr>
+  <tr>
+    <td><b>World </b></td>
+    <td>The geWorld object that will be removed from the geEngine object.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_RenderPoly"></a><font color="#0000FF"
+face="Courier New, Courier, mono"><b><tt>void geEngine_RenderPoly(geEngine *Engine,
+geWorld *World, const GE_TLVertex *Points, int NumPoints, const geBitmap *Texture, uint32
+Flags)</tt></b></font></p>
+
+<p><b>Description</b>: Renders a poly to the current active back-buffer using the geEngine
+object supplied. If there is more than one back-buffer, the poly will not be seen, until
+the next call to geEngine_EndFrame is called, and the buffer is made visible. This
+function must be called AFTER geEngine_BeginFrame, and BEFORE geEngine_EndFrame.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine that will be used to render the poly.</td>
+  </tr>
+  <tr>
+    <td><b>World </b></td>
+    <td>The geWorld that is the container for the Texture being used for this operation.</td>
+  </tr>
+  <tr>
+    <td><b>Points </b></td>
+    <td>Pointer to an array of vertices that define the winding of the poly.</td>
+  </tr>
+  <tr>
+    <td><b>NumPoints </b></td>
+    <td>Number of points in the poly.</td>
+  </tr>
+  <tr>
+    <td><b>Texture </b></td>
+    <td>Texture to be mapped onto the poly. If this is NULL, then the poly is gouraud shaded.</td>
+  </tr>
+  <tr>
+    <td><b>Flags </b></td>
+    <td>One or more of the following flags defining how the poly is rendered:</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>None</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Nothing.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_RenderWorld"></a><font color="#0000FF"
+face="Courier New, Courier, mono"><b><tt>geBoolean geEngine_RenderWorld(geEngine *Engine,
+geWorld *World, geCamera *Camera, float Time)</tt></b></font></p>
+
+<p><b>Description</b>: Renders the entire contents of a geWorld into the current active
+back-buffer. NOTE - If there is more than one back-buffer, then this buffer will not be
+visible until the next call to geEngine_Endframe. This function MUST be called after
+geEngine_BeginFrame, and before geEngine_EndFrame.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine object that will be used to render the geWorld.</td>
+  </tr>
+  <tr>
+    <td><b>World </b></td>
+    <td>The geWorld object that will be rendered.</td>
+  </tr>
+  <tr>
+    <td><b>Camera </b></td>
+    <td>A geCamera object that will define the 3d viewing area, as well as the POV (Point Of
+    View), and orientation info.</td>
+  </tr>
+  <tr>
+    <td><b>Time </b></td>
+    <td>This is currently not implemented, and should be set to 0.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_ScreenShot"></a><font color="#0000FF"
+face="Courier New, Courier, mono"><b><tt>geBoolean geEngine_ScreenShot(geEngine *Engine,
+const char *FileName)</tt></b></font></p>
+
+<p><b>Description</b>: Grabs the current contents of the front-buffer, and saves it to a
+file, in .BMP format.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine that contains the front-buffer in question.</td>
+  </tr>
+  <tr>
+    <td><b>FileName </b></td>
+    <td>Address of a NULL terminated string that contains the full path of the output file.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_SetDriverAndMode"></a><font color="#0000FF"
+face="Courier New, Courier, mono"><b><tt>geBoolean geEngine_SetDriverAndMode(geEngine
+*Engine, geDriver *Driver, geDriver_Mode *DriverMode)</tt></b></font></p>
+
+<p><b>Description</b>: Set the current driver and mode that the geEngine object will use
+for all further drawing, and rendering operations. Note that this function can be called
+anytime outside geEngine_BeginFrame/geEngine_EndFrame.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine object that the Driver/Mode change will be applied to.</td>
+  </tr>
+  <tr>
+    <td><b>Driver </b></td>
+    <td>A geDriver object that was previously enumerated with geDriver_SystemGetNextDriver.</td>
+  </tr>
+  <tr>
+    <td><b>DriverMode </b></td>
+    <td>A geDriver_Mode object that was previously enumerated with geDriver_etNextMode.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_SetGamma"></a><font color="#0000FF" face="Courier New, Courier, mono"><b><tt>geBoolean
+geEngine_SetGamma(geEngine *Engine, float Gamma)</tt></b></font></p>
+
+<p><b>Description</b>: Sets the current gamma correction value that the geEngine object is
+to use for all further drawing, or rendering API's.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine that is to get the new gamma value.</td>
+  </tr>
+  <tr>
+    <td><b>Gamma </b></td>
+    <td>The new gamma value. The valid range is from 0 to 3.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="geEngine_ShutdownDriver"></a><font color="#0000FF"
+face="Courier New, Courier, mono"><b><tt>geBoolean geEngine_ShutdownDriver(geEngine
+*Engine, geDriver *Driver, geDriver_Mode *DriverMode)</tt></b></font></p>
+
+<p><b>Description</b>: Shuts down any current Driver/Mode combo, and restores the display
+to the original prior to the very first call to geEngine_SetDriverAndMode.</p>
+
+<p><b>Parameters</b>: </p>
+
+<table border="0" cellspacing="5">
+  <tr>
+    <td><b>Engine </b></td>
+    <td>The geEngine object that the will shutdown it's current driver/mode.</td>
+  </tr>
+</table>
+
+<p><b>Returns</b>: Returns GE_TRUE is the function succeeds, GE_FALSE otherwise.</p>
+
+<p>&nbsp;</p>
+</body>
+</html>

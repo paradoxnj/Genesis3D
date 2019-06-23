@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>FUSION</ProjectName>
+    <SccProjectName>"$/Fusion2", UNHAAAAA</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <Keyword>MFCProj</Keyword>
+    <ProjectGuid>{64366638-18C6-4B9D-B0B8-FE66637EEE99}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level4</WarningLevel>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <AdditionalIncludeDirectories>.;.\GenesisSDK\include;.\TypeParser;..\..\msdev60\include;..\..\msdev60\mfc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Debug\Fusion.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Debug\Fusion.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <AdditionalIncludeDirectories>..\..\msdev60\include;..\..\msdev60\mfc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\Fusion.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <IgnoreSpecificDefaultLibraries>libcd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <OutputFile>.\Debug\Fusion.exe</OutputFile>
+      <AdditionalLibraryDirectories>..\..\msdev60\lib;..\..\msdev60\mfc\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>nafxcwd.lib;libcmtd.lib;.\GenesisSDK\lib\genesisd.lib;advapi32.lib;ctl3d32.lib;comctl32.lib;comdlg32.lib;gdi32.lib;kernel32.lib;oldnames.lib;ole32.lib;oleaut32.lib;oledlg.lib;shell32.lib;urlmon.lib;user32.lib;uuid.lib;winmm.lib;winspool.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <AdditionalIncludeDirectories>.;.\GenesisSDK\include;.\TypeParser;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Debug\Fusion.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Debug\Fusion.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <AdditionalIncludeDirectories>..\..\msdev60\include;..\..\msdev60\mfc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\Fusion.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <OutputFile>.\Debug\Fusion.exe</OutputFile>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>.\GenesisSDK\lib\genesisd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level4</WarningLevel>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <AdditionalIncludeDirectories>.;.\GenesisSDK\include;.\TypeParser;..\..\msdev60\include;..\..\msdev60\mfc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\Fusion.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Release\Fusion.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <AdditionalIncludeDirectories>..\..\msdev60\include;..\..\msdev60\mfc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\Fusion.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <OutputFile>.\Release\Fusion.exe</OutputFile>
+      <AdditionalLibraryDirectories>..\..\msdev60\lib;..\..\msdev60\mfc\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>nafxcw.lib;libcmt.lib;.\GenesisSDK\lib\genesis.lib;advapi32.lib;ctl3d32.lib;comctl32.lib;comdlg32.lib;gdi32.lib;kernel32.lib;oldnames.lib;ole32.lib;oleaut32.lib;oledlg.lib;shell32.lib;urlmon.lib;user32.lib;uuid.lib;winmm.lib;winspool.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level4</WarningLevel>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <AdditionalIncludeDirectories>.;.\GenesisSDK\include;.\TypeParser;..\..\msdev60\include;..\..\msdev60\mfc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\Fusion.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Release\Fusion.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <AdditionalIncludeDirectories>..\..\msdev60\include;..\..\msdev60\mfc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\Fusion.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <OutputFile>.\Release\Fusion.exe</OutputFile>
+      <AdditionalLibraryDirectories>..\..\msdev60\lib;..\..\msdev60\mfc\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>nafxcw.lib;libcmt.lib;.\GenesisSDK\lib\genesis.lib;advapi32.lib;ctl3d32.lib;comctl32.lib;comdlg32.lib;gdi32.lib;kernel32.lib;oldnames.lib;ole32.lib;oleaut32.lib;oledlg.lib;shell32.lib;urlmon.lib;user32.lib;uuid.lib;winmm.lib;winspool.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="about.cpp" />
+    <ClCompile Include="ActivationWatch.cpp" />
+    <ClCompile Include="array.c" />
+    <ClCompile Include="box3d.c" />
+    <ClCompile Include="brush.c" />
+    <ClCompile Include="BrushAttributesDialog.cpp" />
+    <ClCompile Include="BrushEntityDialog.cpp" />
+    <ClCompile Include="BrushGroupDialog.cpp" />
+    <ClCompile Include="BrushTemplate.c" />
+    <ClCompile Include="ChildFrm.cpp" />
+    <ClCompile Include="ColorBtn.cpp" />
+    <ClCompile Include="CompileDialog.cpp" />
+    <ClCompile Include="Compiler.cpp" />
+    <ClCompile Include="ConsoleTab.cpp" />
+    <ClCompile Include="CreateArchDialog.cpp" />
+    <ClCompile Include="CreateBoxDialog.cpp" />
+    <ClCompile Include="CreateConeDialog.cpp" />
+    <ClCompile Include="CreateCylDialog.cpp" />
+    <ClCompile Include="CreateSpheroidDialog.cpp" />
+    <ClCompile Include="CreateStaircaseDialog.cpp" />
+    <ClCompile Include="EntitiesDialog.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EntityTable.cpp" />
+    <ClCompile Include="EntityVisDlg.cpp" />
+    <ClCompile Include="EntTypeName.c" />
+    <ClCompile Include="EntView.cpp" />
+    <ClCompile Include="face.c" />
+    <ClCompile Include="FaceAttributesDialog.cpp" />
+    <ClCompile Include="FaceList.c" />
+    <ClCompile Include="FilePath.c" />
+    <ClCompile Include="FUSION.cpp" />
+    <ClCompile Include="FUSIONDoc.cpp" />
+    <ClCompile Include="FusionTabControls.cpp" />
+    <ClCompile Include="FUSIONView.cpp" />
+    <ClCompile Include="GridSizeDialog.cpp" />
+    <ClCompile Include="group.cpp" />
+    <ClCompile Include="KeyEditDlg.cpp" />
+    <ClCompile Include="level.cpp" />
+    <ClCompile Include="LevelOptions.cpp" />
+    <ClCompile Include="List.c" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="model.c" />
+    <ClCompile Include="ModelDialog.cpp" />
+    <ClCompile Include="node.c" />
+    <ClCompile Include="Parse3dt.c" />
+    <ClCompile Include="PreferencesDialog.cpp" />
+    <ClCompile Include="Prefs.c" />
+    <ClCompile Include="render.c" />
+    <ClCompile Include="SelBrushList.c" />
+    <ClCompile Include="SelFaceList.c" />
+    <ClCompile Include="SkyDialog.cpp" />
+    <ClCompile Include="stack.c" />
+    <ClCompile Include="TextureDialog.cpp" />
+    <ClCompile Include="typeio.c" />
+    <ClCompile Include="TypeParser\cparser.c" />
+    <ClCompile Include="TypeParser\cscanner.c" />
+    <ClCompile Include="TypeParser\Hash.c" />
+    <ClCompile Include="TypeParser\iden.C" />
+    <ClCompile Include="TypeParser\scanner.c" />
+    <ClCompile Include="TypeParser\symtab.c" />
+    <ClCompile Include="TypeParser\type.c" />
+    <ClCompile Include="undostack.cpp" />
+    <ClCompile Include="util.c" />
+    <ClCompile Include="WadFile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="about.h" />
+    <ClInclude Include="ActivationWatch.h" />
+    <ClInclude Include="array.h" />
+    <ClInclude Include="box3d.h" />
+    <ClInclude Include="brush.h" />
+    <ClInclude Include="BrushAttributesDialog.h" />
+    <ClInclude Include="BrushEntityDialog.h" />
+    <ClInclude Include="BrushGroupDialog.h" />
+    <ClInclude Include="BrushTemplate.h" />
+    <ClInclude Include="ChildFrm.h" />
+    <ClInclude Include="ColorBtn.h" />
+    <ClInclude Include="CompileDialog.h" />
+    <ClInclude Include="Compiler.h" />
+    <ClInclude Include="ConsoleTab.h" />
+    <ClInclude Include="CreateArchDialog.h" />
+    <ClInclude Include="CreateBoxDialog.h" />
+    <ClInclude Include="CreateConeDialog.h" />
+    <ClInclude Include="CreateCylDialog.h" />
+    <ClInclude Include="CreateSpheroidDialog.h" />
+    <ClInclude Include="CreateStaircaseDialog.h" />
+    <ClInclude Include="EntitiesDialog.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityTable.h" />
+    <ClInclude Include="EntityVisDlg.h" />
+    <ClInclude Include="EntTypeName.h" />
+    <ClInclude Include="EntView.h" />
+    <ClInclude Include="face.h" />
+    <ClInclude Include="FaceAttributesDialog.h" />
+    <ClInclude Include="facelist.h" />
+    <ClInclude Include="FilePath.h" />
+    <ClInclude Include="Fusion.h" />
+    <ClInclude Include="FUSIONDoc.h" />
+    <ClInclude Include="FusionTabControls.h" />
+    <ClInclude Include="Fusionview.h" />
+    <ClInclude Include="Gbsplib.h" />
+    <ClInclude Include="GridSizeDialog.h" />
+    <ClInclude Include="group.h" />
+    <ClInclude Include="KeyEditDlg.h" />
+    <ClInclude Include="level.h" />
+    <ClInclude Include="LevelOptions.h" />
+    <ClInclude Include="list.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="model.h" />
+    <ClInclude Include="ModelDialog.h" />
+    <ClInclude Include="Mydef.h" />
+    <ClInclude Include="node.h" />
+    <ClInclude Include="Parse3dt.h" />
+    <ClInclude Include="PreferencesDialog.h" />
+    <ClInclude Include="prefs.h" />
+    <ClInclude Include="render.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="SelBrushList.h" />
+    <ClInclude Include="SelFaceList.h" />
+    <ClInclude Include="SkyDialog.h" />
+    <ClInclude Include="stack.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="TextureDialog.h" />
+    <ClInclude Include="typeio.h" />
+    <ClInclude Include="TypeParser\cparser.h" />
+    <ClInclude Include="TypeParser\cscanner.h" />
+    <ClInclude Include="TypeParser\Hash.h" />
+    <ClInclude Include="TypeParser\iden.H" />
+    <ClInclude Include="TypeParser\scanner.h" />
+    <ClInclude Include="TypeParser\symtab.h" />
+    <ClInclude Include="TypeParser\type.h" />
+    <ClInclude Include="undostack.h" />
+    <ClInclude Include="units.h" />
+    <ClInclude Include="util.h" />
+    <ClInclude Include="WadFile.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FUSION.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Fusion.mak" />
+    <CustomBuild Include="resource.hm" />
+    <CustomBuild Include="res\arrow.cur" />
+    <CustomBuild Include="res\Cross_m.cur" />
+    <CustomBuild Include="res\eyedropper.cur" />
+    <CustomBuild Include="res\FUSION.rc2" />
+    <CustomBuild Include="res\pointer.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\actor.ico" />
+    <Image Include="res\arch.ico" />
+    <Image Include="res\camera.bmp" />
+    <Image Include="res\cone.ico" />
+    <Image Include="res\cube.ico" />
+    <Image Include="res\cylinder.bmp" />
+    <Image Include="res\cylinder.ico" />
+    <Image Include="res\default.bmp" />
+    <Image Include="res\ffend.ico" />
+    <Image Include="res\ffframe.ico" />
+    <Image Include="res\FUSION.ico" />
+    <Image Include="res\FUSIONDoc.ico" />
+    <Image Include="res\groupbar.bmp" />
+    <Image Include="res\hollowbo.bmp" />
+    <Image Include="res\hollowsp.bmp" />
+    <Image Include="res\icoPlay.ico" />
+    <Image Include="res\libobj.ico" />
+    <Image Include="res\light.bmp" />
+    <Image Include="res\light.ico" />
+    <Image Include="res\modelorg.bmp" />
+    <Image Include="res\playstart.ico" />
+    <Image Include="res\rrframe.ico" />
+    <Image Include="res\rrstart.ico" />
+    <Image Include="res\solidbox.bmp" />
+    <Image Include="res\solidsph.bmp" />
+    <Image Include="res\sphere.ico" />
+    <Image Include="res\spotlight.bmp" />
+    <Image Include="res\stairs.ico" />
+    <Image Include="res\stop.ico" />
+    <Image Include="res\Toolbar.bmp" />
+    <Image Include="res\toolbar1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\Whoosh.wav" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

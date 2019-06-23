@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{35314668-a8b5-411e-8a3a-78a71cf02d3f}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{64d404e2-c0d3-4c49-848e-179ce90059e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Fx">
+      <UniqueIdentifier>{eddde6f1-d59f-48a6-83ca-468c0dbdf44b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Procedurals">
+      <UniqueIdentifier>{1fba88ae-977b-44c1-aaad-21ae1227db58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DrvMenu">
+      <UniqueIdentifier>{3a816a57-ffe5-43ab-a805-5e7aa0b13bb9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="VidMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NetMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="modelist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ipaddr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Host.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gmenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Genvs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoSelect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DrvMenu\Drvlist.cpp">
+      <Filter>Source Files\DrvMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Fx\corona.cpp">
+      <Filter>Source Files\Fx</Filter>
+    </ClCompile>
+    <ClCompile Include="FX\DynLight.cpp">
+      <Filter>Source Files\Fx</Filter>
+    </ClCompile>
+    <ClCompile Include="Fx\electric.cpp">
+      <Filter>Source Files\Fx</Filter>
+    </ClCompile>
+    <ClCompile Include="Fx\Fx.cpp">
+      <Filter>Source Files\Fx</Filter>
+    </ClCompile>
+    <ClCompile Include="Fx\ModelCtl.cpp">
+      <Filter>Source Files\Fx</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\_bot.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Attacker.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\bot.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Genvsi.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GMain.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Items.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Level.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\PathPt.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Track.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Weapons.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Procedurals\bumpmap.cpp">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClCompile>
+    <ClCompile Include="Procedurals\ElectricFx.cpp">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClCompile>
+    <ClCompile Include="Procedurals\fire.cpp">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClCompile>
+    <ClCompile Include="Procedurals\gebmutil.cpp">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClCompile>
+    <ClCompile Include="Procedurals\particles.cpp">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClCompile>
+    <ClCompile Include="Procedurals\plasma.cpp">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClCompile>
+    <ClCompile Include="Procedurals\proceng.cpp">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClCompile>
+    <ClCompile Include="Procedurals\proceng_tables.cpp">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClCompile>
+    <ClCompile Include="Procedurals\procutil.cpp">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClCompile>
+    <ClCompile Include="Procedurals\setformat.cpp">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClCompile>
+    <ClCompile Include="Procedurals\smoke.cpp">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClCompile>
+    <ClCompile Include="Procedurals\Water.cpp">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game\_bot.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\bit.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\bot.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\botact.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\botmatch.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Genvs.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Genvsi.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GMain.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Gplayer.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\pathpt.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\track.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Fx\corona.h">
+      <Filter>Source Files\Fx</Filter>
+    </ClInclude>
+    <ClInclude Include="Fx\DynLight.h">
+      <Filter>Source Files\Fx</Filter>
+    </ClInclude>
+    <ClInclude Include="Fx\electric.h">
+      <Filter>Source Files\Fx</Filter>
+    </ClInclude>
+    <ClInclude Include="Fx\fx.h">
+      <Filter>Source Files\Fx</Filter>
+    </ClInclude>
+    <ClInclude Include="Fx\ModelCtl.h">
+      <Filter>Source Files\Fx</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedurals\bumpmap.h">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedurals\ElectricFx.h">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedurals\fire.h">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedurals\gebmutil.h">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedurals\particles.h">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedurals\plasma.h">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedurals\procedural.h">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedurals\proceng.h">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedurals\procutil.h">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedurals\setformat.h">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedurals\smoke.h">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedurals\Water.h">
+      <Filter>Source Files\Procedurals</Filter>
+    </ClInclude>
+    <ClInclude Include="DrvMenu\Drvlist.h">
+      <Filter>Source Files\DrvMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="DrvMenu\Resource.h">
+      <Filter>Source Files\DrvMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoSelect.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cd.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamemgr.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gmenu.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Host.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menuitem.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModeList.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NetMgr.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VidMode.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DrvMenu\genvs.rc">
+      <Filter>Source Files\DrvMenu</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

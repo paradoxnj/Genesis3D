@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<TITLE>Brush Attributes Dialog</TITLE>
+</HEAD><BODY>
+<A HREF= "defaultgedit.html"><IMG SRC="contents.gif" ALT="contents.gif" BORDER = 0></A><A HREF= "geditindex.html"><IMG SRC="index.gif" ALT="index.gif" BORDER = 0></A><A HREF= "geditSky.html"><IMG SRC="prev1.gif" ALT="prev1.gif" BORDER = 0></A><A HREF= "geditFace_Attributes_Dialog.html"><IMG SRC="next1.gif" ALT="next1.gif" BORDER = 0></A>
+<P>
+<A NAME="off_65536"></A><A NAME="e2f5a06f"></A><FONT FACE="Arial" SIZE="3"><B>Brush Attributes Dialog
+<P>
+</B>The Brush Attributes dialog box allows you to change the attributes of the
+selected brushes. To view the Brush Attributes dialog, select one or more brushes,
+and then click on the Face/Brush Attributes toolbar button.
+<P>
+This dialog allows you to set the brush's type to one of the six brush types
+described in the table below. 
+<P>
+</FONT><TABLE><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3"><B>Brush Type
+<BR></B></FONT></TD><TD><FONT FACE="Arial" SIZE="3"><B>Description
+<BR></B></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">Solid
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">A solid piece of geometry such as a wall, floor, ceiling, door, etc. A solid
+brush blocks visibility and blocks passage.
+<BR></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">Empty
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">An empty space. Empty is useful for creating pools and other things that
+contain liquids. An empty brush is translucent but doesn't block passage.
+<BR></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">Window
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">A translucent piece of geometry. Allows visibility but blocks passage.
+<BR></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">Clip
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">A clip brush is an invisible piece of geometry that blocks passage, but is
+entirely see-through. Clip brushes are useful for preventing access to parts of a
+level without having to build a solid wall.
+<BR></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">Hint
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">A hint brush is invisible and doesn't block passage. Hint brushes instruct the
+level compiler to split along a particular plane. Their sole purpose is to
+help the level compiler generate a more efficient level.
+<BR></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">Cut
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">A Cut brush carves a hole in existing geometry.
+<BR></FONT></TD></TR></TABLE><FONT FACE="Arial" SIZE="3">You may also set other attributes, based upon the brush type. For example, if
+the brush's type is Empty, you can set any (or none) of Wavy, Transparent, or
+Detail. For a Solid brush, however, Translucent isn't an option. The attributes
+are described in the table below.
+<P>
+</FONT><TABLE><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3"><B>Attribute
+<BR></B></FONT></TD><TD><FONT FACE="Arial" SIZE="3"><B>Description
+<BR></B></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">Translucent
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">If the brush's Translucent flag is set, then you will be able to see through
+the brush. The Value setting determines how see-through the brush is, with a
+Value of 0 representing transparent and a Value of 255 representing completely
+opaque.
+<BR></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">Hollow
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">A hollow brush is a piece of geometry with a hole cut out of it. You aren't
+allowed to set this flag from the Brush Attributes dialog (only from the brush
+template dialogs), but you are allowed to set the Hull (wall) Thickness for
+hollow brushes.
+<BR></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">Wavy
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">If you enable the Wavy flag for an Empty brush, the texture with which the
+brush is filled will &quot;wave&quot; or animate to simulate moving liquid.
+<BR></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">Detail
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">The Detail flag helps the compiler run more efficiently by removing some
+pieces of geometry from visibility and lighting calculations. Window brushes, for
+example, are always set to Detail.
+<BR></FONT></TD></TR><TR VALIGN=TOP><TD><FONT FACE="Arial" SIZE="3">Area
+<BR></FONT></TD><TD><FONT FACE="Arial" SIZE="3">The Area flag is set on model brushes (such as doors) that physically separate
+two parts of a level. This flag allows the rendering engine to ignore very
+large portions of the world if the area brush is visible, which makes rendering
+much faster.
+<BR></FONT></TD></TR></TABLE><FONT FACE="Arial" SIZE="3">When multiple brushes are selected, the values displayed in the dialog box are
+from the first selected brush.  If you change a value in the dialog box, that
+value is set in all of the selected brushes. 
+<P>
+</FONT></BODY>
+</HTML>

@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<TITLE>Entities</TITLE>
+</HEAD><BODY>
+<A HREF= "defaultgedit.html"><IMG SRC="contents.gif" ALT="contents.gif" BORDER = 0></A><A HREF= "geditindex.html"><IMG SRC="index.gif" ALT="index.gif" BORDER = 0></A><A HREF= "geditFaces.html"><IMG SRC="prev1.gif" ALT="prev1.gif" BORDER = 0></A><A HREF= "geditUser_Interface_Layout.html"><IMG SRC="next1.gif" ALT="next1.gif" BORDER = 0></A>
+<P>
+<A NAME="off_3884"></A><A NAME="72e0ed29"></A><FONT FACE="Arial" SIZE="3"><B>Entities
+<P>
+</B>Entities are point data such as player start locations, and non-locational
+data such as level attributes that you define for each level.  The system defines
+two special entity types--light and spotlight--that you use when you're
+applying lighting effects to your level.  Any other entity types are user-defined. 
+User defined entities have arbitrary properties which are defined by the
+application programmer in cooperation with the level designers.  The programmer creates
+a C header file that describes the custom entities, and places that file in
+the editor's extensions directory.  The details of the C header file syntax are
+given in Appendix A.
+<P>
+An entity contains data that is packaged with the level and made available to
+the programmer directly at program startup time.  Each entity has a list of
+properties that you may edit.  These properties can be of may different types: 
+numbers, text strings, colors, and locations being the most commonly used.
+<P>
+When you create an entity, the editor assigns it a name that consists of the
+entity type with an appended number.  Each entity of a particular type is given
+a different number in order to make the entity names unique in a level.  For
+example, the first light in a level would be assigned the name &quot;light1&quot;, the
+second &quot;light2&quot;, etc.  Currently, you cannot rename entities.
+<P>
+</FONT></BODY>
+</HTML>

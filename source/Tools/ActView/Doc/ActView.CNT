@@ -1,0 +1,15 @@
+:Base ActView.HLP
+1 ActView
+2 Introduction=Introduction
+2 Loading an Actor=Loading_an_Actor
+2 Setting the Actor's Front Position=Setting_the_Actor_s_Front_Position
+2 Selecting a Motion=Selecting_a_Motion
+2 Controlling Playback=Controlling_Playback
+2 Adjusting Playback Speed=Adjusting_Playback_Speed
+2 Adjusting Frame Step Time=Adjusting_Frame_Step_Time
+2 Moving the Actor=Moving_the_Actor
+2 Adjusting Actor Size=Adjusting_Actor_Size
+2 Displaying Frame Rate=Displaying_Frame_Rate
+2 Shortcut Keys=Shortcut_Keys
+2 Setting Texture Maps Location=Setting_Texture_Maps_Location
+2 Creating a Custom Actor Viewer Level=Creating_a_Custom_Actor_Viewer_Level

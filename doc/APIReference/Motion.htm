@@ -1,0 +1,1393 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Motion</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>Summary</h2>
+
+<p>The Motion module provides support for creating and
+maintaining lists of named Paths and associated time-indexed
+events, and methods to sample the animation paths at any
+arbitrary time.</p>
+
+<h2>Overview</h2>
+
+<p>A Motion is a set of Paths and an associated list of
+time-indexed events. The most common use of Motions is to hold
+Actor animation. See documentation for gePath for more
+information on individual paths. See documentation for geActor
+for more information about Actor animations. </p>
+
+<p>Motions are reference counted. See the Engine API Overview for
+a detailed discussion of reference counting.</p>
+
+<p>A number of functions return pointers to the Paths or sub
+motions that are maintained by the Motion object. Clients should
+not destroy these objects, as they are owned by the Motion. If
+you want to own a Path that's maintained by a Motion, call
+gePath_CreateRef to increase the Path's reference count.</p>
+
+<h4>Creating and Maintaining Motions</h4>
+
+<p>To create a Motion, call geMotion_Create. This will create an
+initially-empty Motion with with no Paths, Events, or sub
+motions. The Motion's type (simple or compound) is not set until
+the first Path or sub motion is added to the Motion. Once a
+motion's type is set, it cannot be changed.</p>
+
+<p>To add a Path to the Motion, call geMotion_AddPath. There is
+no way to remove a path from the Motion.</p>
+
+<p>To add a sub motion, call geMotion_AddSubMotion. To remove a
+sub motion, call geMotion_RemoveSubMotion. See the discussion of
+compound motions below for more information on sub motions.</p>
+
+<p>To add an event, call geMotion_InsertEvent. To remove an
+event, call geMotion_DeleteEvent. See the discussion of Events
+below for more information.</p>
+
+<h4>Compound Motions</h4>
+
+<p>Instead of individual paths, a motion may contain other
+motions. This type of motion is called a compound motion and the
+motions that it contains are called sub motions. Motions that
+contain other motions are also known as <em>branch</em> motions,
+and motions that contain path information are called <em>leaf</em>
+motions. Just like in a tree, a branch may have other branches
+subordinate to it, and it may also have leaves on it. But leaves
+are the end of the line.</p>
+
+<p>A sub motion's time offset is its starting time, relative to
+the parent motion's starting time. So a sub motion that starts
+when the parent motion starts has a time offset of 0.0f.</p>
+
+<p>Compound motions own their sub motions, and destroy them if
+the compound motion is destroyed. However, if you remove a sub
+motion from a compound motion, a pointer to the sub motion is
+returned and it is the caller's responsibility to destroy it.</p>
+
+<p>&nbsp;</p>
+
+<p>geMotion_GetTransform does something with base transforms. But
+I'm not sure what base transforms do.</p>
+
+<h4>Events</h4>
+
+<h4>Sampling</h4>
+
+<h4>Input and Output</h4>
+
+<p>Currently, Motions can be saved in text or binary format. Text
+format is supported for historical reasons and will be removed in
+a later version. Binary format results in much faster input and
+output, and much smaller files. To output a binary file, call
+geMotion_WriteToBinaryFile. To output a text format file, call
+geMotion_WriteToFile. To read a Motion from a file, call
+geMotion_CreateFromFile.</p>
+
+<p>There is currently no support for reading and writing compound
+motions.</p>
+
+<h2>Reference</h2>
+
+<p><a name="geMotion_AddPath"></a><font color="#0000FF" size="2"
+face="Courier New"><strong>geBoolean geMotion_AddPath(geMotion
+*Motion, gePath *Path, const char *Name, int *Index);</strong></font></p>
+
+<p><b>Description:</b> Adds a reference to the passed Path to the
+specified Motion.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to which the Path
+        is to be added.</td>
+    </tr>
+    <tr>
+        <td><strong>Path</strong></td>
+        <td>The Path to be added.</td>
+    </tr>
+    <tr>
+        <td><strong>Name</strong></td>
+        <td>The Name to associate with this Path. The name may be
+        NULL, in which case the path is not named.</td>
+    </tr>
+    <tr>
+        <td><strong>Index</strong></td>
+        <td>A pointer to an integer variable in which the path's
+        index is returned.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the function succeeds, the return value is
+GE_TRUE. If any error occurs, the return value is GE_FALSE.</p>
+
+<p><b>Remarks:</b> Note that a reference to the Path is added to
+the Motion. If the caller wants the Motion to destroy the Path
+when the Motion is deleted, then the caller must call
+gePath_Destroy to reduce the Path's reference count after calling
+this function.</p>
+
+<p>The function will return GE_FALSE if an attempt is made to add
+a Path to a compound motion.</p>
+
+<p>Path names are case sensitive. Path names within a motion must
+be unique. The function will return GE_FALSE if the Motion
+already contains a Path with the specified Name.</p>
+
+<p><a name="geMotion_AddSubMotion"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geBoolean
+geMotion_AddSubMotion(geMotion *ParentMotion, geFloat TimeScale,
+geFloat TimeOffset, geMotion *SubMotion, geFloat StartTime,
+geFloat StartMagnitude, geFloat EndTime, geFloat EndMagnitude,
+const geXForm3D *Transform, int *Index);</strong></font></p>
+
+<p><b>Description:</b> Adds a reference to the passed Motion to
+the specified Motion.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>ParentMotion</b></td>
+        <td valign="top" width="72%">The Motion to which the sub
+        motion is to be added.</td>
+    </tr>
+    <tr>
+        <td><strong>TimeScale</strong></td>
+        <td>Scale factor for this sub motion (0..1).</td>
+    </tr>
+    <tr>
+        <td><strong>TimeOffset</strong></td>
+        <td>Time in parent motion when sub motion should start.</td>
+    </tr>
+    <tr>
+        <td><strong>SubMotion</strong></td>
+        <td>The Motion to add as a sub motion.</td>
+    </tr>
+    <tr>
+        <td><strong>StartTime</strong></td>
+        <td>Submotion-relative blending start time.</td>
+    </tr>
+    <tr>
+        <td><strong>StartMagnitude</strong></td>
+        <td>Submotion blending start magnitude (0..1).</td>
+    </tr>
+    <tr>
+        <td><strong>EndTime</strong></td>
+        <td>Submotion-relative blending end time.</td>
+    </tr>
+    <tr>
+        <td><strong>EndMagnitude</strong></td>
+        <td>Submotion blending end magnitude (0..1).</td>
+    </tr>
+    <tr>
+        <td><strong>Transform</strong></td>
+        <td>Base transform to apply to this submotion.</td>
+    </tr>
+    <tr>
+        <td><strong>Index</strong></td>
+        <td>Returned motion index.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the function succeeds, the return value is
+GE_TRUE. If any error occurs, the return value is GE_FALSE.</p>
+
+<p><b>Remarks:</b> The function will return GE_FALSE if an
+attempt is made to add a sub motion to a Motion that already
+contains (or has contained) Paths.</p>
+
+<p>The sub motion is always added to the end of the sub motions
+list. There is no support for inserting sub motions at arbitrary
+positions in the list.</p>
+
+<p><a name="geMotion_Create"></a><font color="#0000FF" size="2"
+face="Courier New"><strong>geMotion * geMotion_Create(geBoolean
+ManageNames);</strong></font></p>
+
+<p><b>Description:</b> Creates a new Motion. </p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>ManageNames</b></td>
+        <td valign="top" width="72%">Determines whether the
+        Motion maintains a list of names for the Paths that are
+        added to it. Pass GE_TRUE to have the Motion manage the
+        names. Pass GE_FALSE if you don't want the Motion to
+        manage the names.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the function succeeds, the return value is
+an initially-empty Motion with no Paths, Events, or sub motions.</p>
+
+<p><b>Remarks:</b> The Motion's type (simple or compound) is not
+set until the first Path or sub motion is added to the Motion.
+The Motion is created without a name.</p>
+
+<p>If you want a Motion to manage names, it must be created with
+the ManageNames parameter to set to GE_TRUE. There is no way to
+specify later that a Motion manage names.</p>
+
+<p><a name="geMotion_CreateFromFile"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geMotion *
+geMotion_CreateFromFile(geVFile *F);</strong></font></p>
+
+<p><b>Description:</b> Read a Motion from the specified file. </p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>F</b></td>
+        <td valign="top" width="72%">An opened file positioned at
+        the point from which path information is to be read. The
+        file may contain binary- or text-format information.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the function succeeds, the return value is
+a valid geMotion object. If the function fails, it returns NULL.</p>
+
+<p><b>Remarks:</b> When the function returns, the file will be
+positioned after the last byte read. The specified file may not
+be a directory.</p>
+
+<p><a name="geMotion_DeleteEvent"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geBoolean
+geMotion_DeleteEvent(geMotion *Motion, geFloat tKey);</strong></font></p>
+
+<p><b>Description:</b> Removes an event from the Motion's event
+list.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion from which to
+        delete the event.</td>
+    </tr>
+    <tr>
+        <td><strong>Path</strong></td>
+        <td>The time key of the event to delete.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the function finds and successfully deletes
+the event, the return value is GE_TRUE. If the event does not
+exist in the Motion, the function returns GE_FALSE.</p>
+
+<p><b>Remarks:</b> Events may not be added to or deleted from
+compound motions.</p>
+
+<p><a name="geMotion_Destroy"></a><font color="#0000FF" size="2"
+face="Courier New"><strong>void geMotion_Destroy(geMotion
+**pMotion);</strong></font></p>
+
+<p><b>Description:</b> Destroys the Motion pointed to by the
+specified Motion pointer. </p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>pMotion</b></td>
+        <td valign="top" width="72%">A pointer to the motion to
+        be destroyed.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> void</p>
+
+<p><b>Remarks:</b> The reference count of the specified Motion is
+decreased. If the reference count goes to zero, then the Motion
+information is deallocated and the referenced Motion pointer is
+set to NULL.</p>
+
+<p>If the Motion is deallocated, all Paths and sub motions that
+it contains will also be destroyed. If their reference counts go
+to zero, they, too, will be deallocated.</p>
+
+<p><a name="geMotion_GetBaseTransform"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>const geXForm3d *
+geMotion_GetBaseTransform(const geMotion *Motion, int
+SubMotionIndex);</strong></font></p>
+
+<p><b>Description:</b> Get a pointer to the base transform for a
+specified sub motion.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion that contains the
+        sub motion to be queried.</td>
+    </tr>
+    <tr>
+        <td><strong>SubMotionIndex</strong></td>
+        <td>The index of the desired sub motion.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the passed Motion is a compound motion and
+the indexed sub motion exists, the return value is a <strong>const</strong>
+pointer to the sub motion's base transform. If any error occurs,
+the return value is NULL.</p>
+
+<p><a name="geMotion_GetBlendAmount"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geFloat
+geMotion_GetBlendAmount(const geMotion *Motion, int
+SubMotionIndex, geFloat Time);</strong></font></p>
+
+<p><b>Description:</b> Obtain the blend amount for a sub motion
+at a particular time.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Compound Motion to
+        query.</td>
+    </tr>
+    <tr>
+        <td><strong>SubMotionIndex</strong></td>
+        <td>The index of the desired sub motion.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>Time</strong></td>
+        <td>The time, relative to the start of the compound
+        motion, at which to obtain the blending amount.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the sub motion index is valid, the function
+returns the blend amount (from 0.0f to 1.0f, inclusive) for that
+sub motion at the given time. If the passed Motion is not a
+compound motion, or if the sub motion index is invalid, the
+return value is 0.0f.</p>
+
+<p><a name="geMotion_GetBlendPath"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>gePath *
+geMotion_GetBlendPath(const geMotion *Motion, int
+SubMotionIndex);</strong></font></p>
+
+<p><b>Description:</b> Obtain a pointer to a sub motion's
+blending path.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Compound Motion to
+        query.</td>
+    </tr>
+    <tr>
+        <td><strong>SubMotionIndex</strong></td>
+        <td>The index of the desired sub motion.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the sub motion index is valid, the function
+returns a pointer to the Path that is used to blend the sub
+motion. If the Motion is not a compound motion, or if the desired
+sub motion does not exist, the return value is NULL.</p>
+
+<p><b>Remarks:</b> The caller is free to modify the blending path
+by accessing it through the gePath API functions, but should not
+call gePath_Destroy, as the Path is owned by the sub motion.</p>
+
+<p><a name="geMotion_GetEventExtents"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geBoolean
+geMotion_GetEventExtents(const geMotion *Motion, geFloat
+*FirstEventTime, geFloat *LastEventTime);</strong></font></p>
+
+<p><b>Description:</b> Get the first and last events' starting
+times.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to query.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>FirstEventTime</strong></td>
+        <td valign="top">A pointer to a floating-point variable
+        that will receive the time of the Motion's first event.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>LastEventTime</strong></td>
+        <td valign="top">A pointer to a floating-point variable
+        that will receive the time of the Motion's last event.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> The return value is GE_FALSE if the Motion has
+no events. Otherwise the return value is GE_TRUE.</p>
+
+<p><b>Remarks:</b> If the Motion has no events, the
+FirstEventTime and LastEventTime variables are not set. If Motion
+has only one event, the first and last event times will be equal.</p>
+
+<p><a name="geMotion_GetName"></a><font color="#0000FF" size="2"
+face="Courier New"><strong>const char * geMotion_GetName(const
+geMotion *Motion);</strong></font></p>
+
+<p><b>Description:</b> Obtain a Motion's name.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to query.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> The return value is a <strong>const</strong>
+pointer to the Motion's name, if set. If the Motion is not named,
+the return value is NULL.</p>
+
+<p><a name="geMotion_GetNameChecksum"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>int32
+geMotion_GetNameChecksum(const geMotion *Motion);</strong></font></p>
+
+<p><b>Description:</b> Return the check sum of the Motion's name
+pool.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to query.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If successful, the function returns the
+Motion's name pool checksum. On error, the function returns
+zero..</p>
+
+<p><b>Remarks:</b> This function is intended for internal use
+only.</p>
+
+<p><a name="geMotion_GetNameOfPath"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>const char *
+geMotion_GetNameOfPath(const geMotion *Motion, int Index);</strong></font></p>
+
+<p><b>Description:</b> Obtain the name assigned to a given path.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to query.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>Index</strong></td>
+        <td valign="top">The index of the desired path.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the indexed Path exists in the Motion, and
+has a name, the return value is a <strong>const</strong> pointer
+to the Path's name. If the Path doesn't exist or is not named,
+the return value is NULL.</p>
+
+<p><a name="geMotion_GetNextEvent"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geBoolean
+geMotion_GetNextEvent(geMotion *Motion, geFloat *pTime, const
+char **ppEventString);</strong></font></p>
+
+<p><b>Description:</b> Get the event time and event string
+associated with the next event in the Motion.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to query.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>pTime</strong></td>
+        <td valign="top">Pointer to a floating-point variable
+        that will be filled with the next event's time.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>ppEventString</strong></td>
+        <td valign="top">Pointer to a character string pointer
+        that will reference the next event's event string. This
+        is a pointer to <strong>const</strong> string data.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If successful, the function returns GE_TRUE
+and the variables pointed to by the pTime and ppEventString
+parameters are set. If an error occurs, the function returns
+GE_FALSE and the return variables are not modified. If the Motion
+has no more events, the function returns GE_FALSE, and the *pTime
+is set to 0.0f, and *ppEventString is set to NULL.</p>
+
+<p><b>Remarks:</b> A program must first call
+geMotion_SetEventIterator before calling this function. Iterates
+from StartTime to EndTime as set up in geMotion_SetEventIterator,
+and returns the Time and EventString for each event in the range
+beginning with StartTime up to but not including EndTime. After
+each call, the iterator is positioned for the next search.</p>
+
+<p><a name="geMotion_GetPath"></a><font color="#0000FF" size="2"
+face="Courier New"><strong>gePath * geMotion_GetPath(const
+geMotion *Motion, int Index);</strong></font></p>
+
+<p><b>Description:</b> Obtain a pointer to a desired Path..</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to query.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>Index</strong></td>
+        <td valign="top">The index of the desired path.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the indexed Path exists in the Motion, a
+pointer to the Path is returned. Otherwise the function returns
+NULL.</p>
+
+<p><b>Remarks:</b> If the Motion is a compound motion, the return
+value is NULL.</p>
+
+<p>The caller is free to modify the returned Path by calling the
+gePath APIs, but must not call gePath_Destroy to destroy the Path
+returned by this function, without first calling gePath_CreateRef
+to increase the reference count.</p>
+
+<p><a name="geMotion_GetPathCount"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>int
+geMotion_GetPathCount(const geMotion *Motion);</strong></font></p>
+
+<p><b>Description:</b> Get the number of paths owned by a Motion.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to query.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> The number of Paths owned by the Motion.</p>
+
+<p><b>Remarks:</b> If the Motion is a compound motion, the return
+value is 0.</p>
+
+<p><a name="geMotion_GetPathNamed"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>gePath *
+geMotion_GetPathNamed(const geMotion *Motion, const char *Name);</strong></font></p>
+
+<p><b>Description:</b> Obtain a pointer to a named Path..</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to query.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>Name</strong></td>
+        <td valign="top">The name of the desired path.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the named Path exists in the Motion, a
+pointer to the Path is returned. Otherwise the function returns
+NULL.</p>
+
+<p><b>Remarks:</b> If the Motion is a compound motion, or if the
+Motion does not maintain a list of Path names, the return value
+is NULL.</p>
+
+<p>Path names are case-sensitive.</p>
+
+<p>The caller is free to modify the returned Path by calling the
+gePath APIs, but must not call gePath_Destroy to destroy the Path
+returned by this function, without first calling gePath_CreateRef
+to increase the reference count.</p>
+
+<p><a name="geMotion_GetSubMotion"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geMotion *
+geMotion_GetSubMotion(const geMotion *Motion, int Index);</strong></font></p>
+
+<p><b>Description:</b> Obtain a pointer to a sub motion.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to query.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>Index</strong></td>
+        <td valign="top">The index of the desired sub motion.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the indexed submotion exists, a pointer to
+it is returned. Otherwise the function returns NULL.</p>
+
+<p><b>Remarks:</b> If the Motion is not a compound motion, the
+return value is NULL.</p>
+
+<p>The caller is free to modify the returned Motion by calling
+the geMotion APIs, but must not call geMotion_Destroy to destroy
+the Motion returned by this function.</p>
+
+<p><a name="geMotion_GetSubMotionCount"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>int
+geMotion_GetSubMotionCount(const geMotion *Motion);</strong></font></p>
+
+<p><b>Description:</b> Get the number of sub motions contained in
+a compound motion.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The compound Motion to
+        query.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> The number of sub motions contained in the
+Motion.</p>
+
+<p><b>Remarks:</b> If the Motion is not a compound motion, the
+return value is 0.</p>
+
+<p><a name="geMotion_GetSubMotionNamed"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geMotion *
+geMotion_GetSubMotionNamed(const geMotion *Motion,const char
+*Name);</strong></font></p>
+
+<p><b>Description:</b> Obtain a pointer to a named sub motion..</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to query.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>Name</strong></td>
+        <td valign="top">The name of the desired sub motion.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the named sub motion exists, a pointer to
+the sub motion is returned. Otherwise the function returns NULL.</p>
+
+<p><b>Remarks:</b> If the Motion is not a compound motion, the
+return value is NULL.</p>
+
+<p>Sub motion names are case-sensitive.</p>
+
+<p>The caller is free to modify the returned Motion by calling the geMotion APIs, 
+  but must not call geMotion_Destroy to destroy the Motion returned by this function.</p>
+<p><font color="#0000FF"
+size="2" face="Courier New"><strong><a name="geMotion_GetTimeExtents"></a>geBoolean 
+  geMotion_GetTimeExtents(const geMotion *Motion, geFloat *StartTime,geFloat *EndTime);</strong></font></p>
+
+<p><b>Description:</b> Gets the motion's starting and ending
+times.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to query.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>StartTime</strong></td>
+        <td valign="top">Pointer to a floating point variable
+        that will be filled with the time of the Motion's
+        earliest key frame.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>EndTime</strong></td>
+        <td>Pointer to a floating point variable that will be
+        filled with the time of the Motion's latest key frame.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If successful, the function returns GE_TRUE
+and the variables pointed to by the StartTime and EndTime
+parameters are filled with the Motion's earliest and latest key
+times, respectively. If any error occurs, the function returns
+GE_FALSE and the times are not set.</p>
+
+<p><b>Remarks:</b> If the Motion is a compound motion, StartTime
+and EndTime values are computed from the scaled sub motions.</p>
+
+<p>No scaling is applied to simple (i.e. non-compound) Motions.</p>
+
+<p>If the Motion has no events (i.e. no key frames in any path),
+the function returns GE_FALSE.</p>
+
+<p><br>
+  <a name="geMotion_GetTimeOffset"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geFloat geMotion_GetTimeOffset(const geMotion 
+  *Motion, int SubMotionIndex );</strong></font></p>
+<p><b>Description:</b> Get a sub motion's time offset.</p>
+<p><b>Parameters: </b></p>
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+  <tr> 
+    <td valign="top" width="28%"><b>Motion</b></td>
+    <td valign="top" width="72%">The compound motion to query.</td>
+  </tr>
+  <tr> 
+    <td valign="top"><strong>SubMotionIndex</strong></td>
+    <td valign="top">The index of the desired sub motion.</td>
+  </tr>
+</table>
+<p><b>Returns:</b> If the sub motion exists, its time offset is returned. The 
+  function returns 0.0f on error.</p>
+<p><b>Remarks:</b> If the Motion is not a compound motion, the return value is 
+  0.0f.</p>
+<p>A sub motion's time offset is its starting time, relative to the parent motion's 
+  starting time. So a sub motion that starts when the parent motion starts has 
+  a time offset of 0.0f.</p>
+<p><a name="geMotion_GetTimeScale"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geFloat geMotion_GetTimeScale (const geMotion 
+  *Motion, int SubMotionIndex);</strong></font></p>
+
+<p><b>Description:</b> Get a sub motion's time scale.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The compound motion to
+        query.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>SubMotionIndex</strong></td>
+        <td valign="top">The index of the desired sub motion.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the sub motion exists, its time scale is
+returned. The function returns 0.0f on error.</p>
+
+<p><b>Remarks:</b> If the Motion is not a compound motion, the
+return value is 0.0f.</p>
+
+<p>A sub motion's time scale is the scaling value that's applied
+to sub motion sample times after the TimeOffset is applied. The
+formula used to determine the time into a sub motion is:</p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="15%">&nbsp;</td>
+        <td valign="top" width="72%"><font size="2"
+        face="Courier New">SubMotionTime = (CurrentTime -
+        TimeOffset) * TimeScale</font></td>
+    </tr>
+</table>
+
+<p>Negative time scales cause the sub motion to run backwards.</p>
+
+<p><a name="geMotion_GetTransform"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geBoolean
+geMotion_GetTransform(const geMotion *Motion, geFloat Time,
+geXForm3d *Transform);</strong></font></p>
+
+<p><b>Description:</b> Obtain a compound motion's blended base
+transform.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The compound Motion to
+        query.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>Time</strong></td>
+        <td valign="top">The time at which to query the compound
+        motion.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>Transform</strong></td>
+        <td>Pointer to a transform that is filled in with the
+        blended base transform.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If successful, the function returns GE_TRUE
+the Transform pointed to is filled with the blended base
+transform. On error, or if the motion is not a compound motion,
+the function returns GE_FALSE and the Transform is not modified.</p>
+
+<p><b>Remarks:</b> Each sub motion has an optional base
+transform. This function provides a way to blend the base
+transforms of the sub motions in a compound motion.</p>
+
+<p><a name="geMotion_HasNames"></a><font color="#0000FF" size="2"
+face="Courier New"><strong>geBoolean geMotion_HasNames(const
+geMotion *Motion);</strong></font></p>
+
+<p><b>Description:</b> Determine if a Motion maintains a list of
+Path names.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The motion to query.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the Motion maintains Path names, the return
+value is GE_TRUE. Otherwise the return valus is FALSE.</p>
+
+<p><b>Remarks:</b> A Motion must be created with the ManageNames
+parameter to geMotion_Create set to GE_TRUE in order for names to
+be managed. There is no way to specify later that a Motion manage
+names. If geMotion_RemoveNames is called, the Motion will no
+longer manage names.</p>
+
+<p><a name="geMotion_InsertEvent"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geBoolean
+geMotion_InsertEvent(geMotion *Motion, geFloat tKey, const char*
+String);</strong></font></p>
+
+<p><b>Description:</b> Insert an event into the Motion's event
+list.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion in which to
+        insert the event.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>Time</strong></td>
+        <td valign="top">The event's time time key.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>String</strong></td>
+        <td>The event string to be associated with this time key.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the event is successfully added, the
+function returns GE_TRUE. If any error occurs, the return value
+is GE_FALSE.</p>
+
+<p><b>Remarks:</b> Only one event is allowed at a given time. If
+you attempt to add an event at an existing time, the function
+returns GE_FALSE.</p>
+
+<p>The function returns GE_FALSE if you attempt to add an event
+to a compound Motion.</p>
+
+<p><a name="geMotion_IsValid"></a><font color="#0000FF" size="2"
+face="Courier New"><strong>geBoolean geMotion_IsValid(const
+geMotion *Motion);</strong></font></p>
+
+<p><b>Description:</b> Determine if a Motion is valid.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to validate.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If specified Motion is valid, the return value
+is GE_TRUE. If any of the Motion's internal fields is invalid,
+the function returns GE_FALSE.</p>
+
+<p><b>Remarks:</b> This is a debugging function that is intended
+for internal use only.</p>
+
+<p><a name="geMotion_RemoveNames"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geBoolean
+geMotion_RemoveNames(geMotion *Motion);</strong></font></p>
+
+<p><b>Description:</b> Delete a Motion's path names table and
+stop maintaining Path names information.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion for which to
+        cancel Path names maintenance.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If successful, the function returns GE_TRUE.
+If the Motion is a compound motion, or if the Motion has been
+cloned, the function returns GE_FALSE.</p>
+
+<p><b>Remarks:</b> There is no way to re-enable Path names
+maintenance for a Motion after calling this function.</p>
+
+<p><a name="geMotion_RemoveSubMotion"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geMotion *
+geMotion_RemoveSubMotion(geMotion *ParentMotion, int
+SubMotionIndex);</strong></font></p>
+
+<p><b>Description:</b> Remove a sub motion from a compound
+motion.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>ParentMotion</b></td>
+        <td valign="top" width="72%">The Motion from which to
+        remove the sub motion.</td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>SubMotionIndex</strong></td>
+        <td valign="top">Index of the sub motion to be removed.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If successful, the function returns a pointer
+to the sub motion that was removed. The function will return NULL
+if the ParentMotion is not a compound motion.</p>
+
+<p><a name="geMotion_Sample"></a><font color="#0000FF" size="2"
+face="Courier New"><strong>void geMotion_Sample(const geMotion
+*Motion, int PathIndex, geFloat Time, geXForm3d *Transform);</strong></font></p>
+
+<p><b>Description:</b> Sample a specified path at a given time.</p>
+
+<p><b>Parameters: </b></p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="607">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion that contains the
+        Path to sample.</td>
+    </tr>
+    <tr>
+        <td><strong>PathIndex</strong></td>
+        <td>The index of the Path to sample.</td>
+    </tr>
+    <tr>
+        <td><strong>Time</strong></td>
+        <td>The time at which the Path should be sampled.</td>
+    </tr>
+    <tr>
+        <td><strong>Transform</strong></td>
+        <td>The matrix in which to return the transform for the
+        current time.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> void</p>
+
+<p><b>Remarks:</b> For a simple (non-compound) Motion, this
+function samples the path in the same way as does gePath_Sample.
+See the description of gePath_Sample for more information.</p>
+
+<p>For a compound Motion, the indexed path for each leaf motion
+in the hierarchy is sampled and the results are blended using the
+leaf motions' blending and scaling values.</p>
+
+<p>The function will fail if the path index does not exist in the
+motion. For a compound motion, the path index must exist in every
+leaf motion in the hierarchy.</p>
+
+<p><a name="geMotion_SampleChannels"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>void
+geMotion_SampleChannels(const geMotion *Motion, int PathIndex,
+geFloat Time, geQuaternion *Rotation, geVec3d *Translation);</strong></font></p>
+
+<p><b>Description:</b> Sample the specified path at the given
+time to obtain the individual transform components.</p>
+
+<p><b>Parameters:</b> </p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="599">
+    <tr>
+        <td valign="top" width="28%"><strong>Motion</strong></td>
+        <td valign="top" width="72%">The Motion that contains the
+        Path to sample.</td>
+    </tr>
+    <tr>
+        <td><b>PathIndex</b></td>
+        <td>The index of the path to sample.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="28%"><b>Time</b></td>
+        <td valign="top" width="72%">The time at which to sample
+        the path.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="28%"><b>Rotation</b></td>
+        <td valign="top" width="72%">The quaternion in which to
+        return the rotation component.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="28%"><b>Translation</b></td>
+        <td valign="top" width="72%">The vector in which to
+        return the translation component.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> void</p>
+
+<p><b>Remarks:</b> For a simple (non-compound) Motion, this
+function samples the path in the same way as
+gePath_SampleChannels. See the description of
+gePath_SampleChannels for more information.</p>
+
+<p>For a compound Motion, the indexed path for each leaf motion
+in the hierarchy is sampled and the results are blended using the
+leaf motions' blending and scaling values.</p>
+
+<p>The function will fail if the path index does not exist in the
+motion. For a compound motion, the path index must exist in every
+leaf motion in the hierarchy.</p>
+
+<p><a name="geMotion_SampleChannelsNamed"></a><font
+color="#0000FF" size="2" face="Courier New"><strong>geBoolean
+geMotion_SampleChannelsNamed(const geMotion *Motion, const char
+*PathName, geFloat Time, geQuaternion *Rotation, geVec3d
+*Translation);</strong></font></p>
+
+<p><b>Description:</b> Sample the specified named path at the
+given time to obtain the individual transform components.</p>
+
+<p><b>Parameters:</b> </p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="599">
+    <tr>
+        <td valign="top" width="28%"><strong>Motion</strong></td>
+        <td valign="top" width="72%">The Motion that contains the
+        Path to sample.</td>
+    </tr>
+    <tr>
+        <td><b>PathName</b></td>
+        <td>The name of the path to sample.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="28%"><b>Time</b></td>
+        <td valign="top" width="72%">The time at which to sample
+        the path.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="28%"><b>Rotation</b></td>
+        <td valign="top" width="72%">The quaternion in which to
+        return the rotation component.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="28%"><b>Translation</b></td>
+        <td valign="top" width="72%">The vector in which to
+        return the translation component.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the function is successful, it returns
+GE_TRUE and the Rotation and Translation values are set. The
+function will return GE_FALSE if the named path does not exist in
+the motion.</p>
+
+<p><b>Remarks:</b> For a simple (non-compound) Motion, this
+function samples the path in the same way as
+gePath_SampleChannels. See the description of
+gePath_SampleChannels for more information.</p>
+
+<p>For a compound Motion, the named path for each leaf motion in
+the hierarchy is sampled and the results are blended using the
+leaf motions' blending and scaling values. If a particular leaf
+motion does not contain a path with the specified name, that leaf
+motion is ignored. The function will return GE_FALSE if none of
+the leaf motions contain a path with the specified name.</p>
+
+<p><a name="geMotion_SampleNamed"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geBoolean
+geMotion_SampleNamed(const geMotion *Motion, const char
+*PathName, geFloat Time, geXForm3d *Transform);</strong></font></p>
+
+<p><b>Description:</b> Sample the specified named path at the
+given time.</p>
+
+<p><b>Parameters:</b> </p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="599">
+    <tr>
+        <td valign="top" width="28%"><strong>Motion</strong></td>
+        <td valign="top" width="72%">The Motion that contains the
+        Path to sample.</td>
+    </tr>
+    <tr>
+        <td><b>PathName</b></td>
+        <td>The name of the path to sample.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="28%"><b>Time</b></td>
+        <td valign="top" width="72%">The time at which to sample
+        the path.</td>
+    </tr>
+    <tr>
+        <td><strong>Transform</strong></td>
+        <td>The matrix in which to return the transform for the
+        current time.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> void</p>
+
+<p><b>Remarks:</b> For a simple (non-compound) Motion, this
+function samples the path in the same way as gePath_Sample. See
+the description of gePath_Sample for more information.</p>
+
+<p>For a compound Motion, the named path for each leaf motion in
+the hierarchy is sampled and the results are blended using the
+leaf motions' blending and scaling values.</p>
+
+<p>For a compound Motion, the named path for each leaf motion in
+the hierarchy is sampled and the results are blended using the
+leaf motions' blending and scaling values. If a particular leaf
+motion does not contain a path with the specified name, that leaf
+motion is ignored. The function will return GE_FALSE if none of
+the leaf motions contain a path with the specified name.geBoolean
+geMotion_SetName(geMotion *M, const char * Name);</p>
+
+<p><font color="#0000FF"
+size="2" face="Courier New"><strong><a name="geMotion_SetBaseTransform"></a>geBoolean 
+  geMotion_SetBaseTransform(geMotion *Motion, int SubMotionIndex, geXForm3d *BaseTransform);</strong></font></p>
+
+<p><b>Description:</b> Set a sub motion's base transform.</p>
+
+<p><b>Parameters:</b> </p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="599">
+    <tr>
+        <td valign="top" width="28%"><strong>Motion</strong></td>
+        <td valign="top" width="72%">The compound Motion that
+        contains the sub motion.</td>
+    </tr>
+    <tr>
+        <td><b>SubMotionIndex</b></td>
+        <td>Index of the sub motion whose time offset is to be
+        set.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="28%"><b>BaseTransform</b></td>
+        <td valign="top" width="72%">The sub motion's new base
+        transform. Pass NULL to clear any existing base
+        transform.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> If the Motion is a compound motion and the sub
+motion exists, the return value is GE_TRUE. The function will
+return GE_FALSE if the Motion is not a compound motion.</p>
+
+<p><b>Remarks:</b> The function will fail if the indexed sub
+motion does not exist.</p>
+
+<p><a name="geMotion_SetBlendPath"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geBoolean geMotion_SetBlendPath(geMotion *Motion, 
+  int SubMotionIndex, gePath *Blend);</strong></font></p>
+<p><b>Description:</b> Set a sub motion's blending path.</p>
+<p><b>Parameters:</b> </p>
+<table border="0" cellpadding="3" cellspacing="0" width="599">
+  <tr> 
+    <td valign="top" width="28%"><strong>Motion</strong></td>
+    <td valign="top" width="72%">The compound Motion that contains the sub motion.</td>
+  </tr>
+  <tr> 
+    <td><b>SubMotionIndex</b></td>
+    <td>Index of the sub motion whose time offset is to be set.</td>
+  </tr>
+  <tr> 
+    <td valign="top" width="28%"><b>Blend</b></td>
+    <td valign="top" width="72%">The sub motion's new blend path.</td>
+  </tr>
+</table>
+<p><b>Returns:</b> If the Motion is a compound motion and the sub motion exists, 
+  the return value is GE_TRUE. The function will return GE_FALSE if the Motion 
+  is not a compound motion.</p>
+<p><b>Remarks:</b> The function will fail if the indexed sub motion does not exist.</p>
+<p>The function creates a copy of (not a reference to) the blend path for its 
+  own use. The caller is responsible for destroying the path that it passes in 
+  the Blend parameter.</p>
+<p>Any existing blend path for the sub motion will be destroyed.</p>
+<p><a name="geMotion_SetTimeOffset"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geBoolean geMotion_SetTimeOffset(geMotion 
+  *Motion, int SubMotionIndex, geFloat TimeOffset);</strong></font></p>
+<p><b>Description:</b> Set the time offset for a sub motion.</p>
+<p><b>Parameters:</b> </p>
+<table border="0" cellpadding="3" cellspacing="0" width="599">
+  <tr> 
+    <td valign="top" width="28%"><strong>Motion</strong></td>
+    <td valign="top" width="72%">The compound Motion that contains the sub motion.</td>
+  </tr>
+  <tr> 
+    <td><b>SubMotionIndex</b></td>
+    <td>Index of the sub motion whose time offset is to be set.</td>
+  </tr>
+  <tr> 
+    <td valign="top" width="28%"><b>TimeOffset</b></td>
+    <td valign="top" width="72%">The sub motion's new time offset.</td>
+  </tr>
+</table>
+<p><b>Returns:</b> If the Motion is a compound motion and the sub motion exists, 
+  the return value is GE_TRUE. The function will return GE_FALSE if the Motion 
+  is not a compound motion.</p>
+<p><b>Remarks:</b> The function will fail if the indexed sub motion does not exist.</p>
+<p><a name="geMotion_SetTimeScale"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geBoolean geMotion_SetTimeScale(geMotion *Motion,int 
+  SubMotionIndex,geFloat TimeScale);</strong></font></p>
+<p><b>Description:</b> Set a sub motion's time scale.</p>
+<p><b>Parameters:</b> </p>
+<table border="0" cellpadding="3" cellspacing="0" width="599">
+  <tr> 
+    <td valign="top" width="28%"><strong>Motion</strong></td>
+    <td valign="top" width="72%">The compound Motion that contains the sub motion.</td>
+  </tr>
+  <tr> 
+    <td><b>SubMotionIndex</b></td>
+    <td>Index of the sub motion whose time offset is to be set.</td>
+  </tr>
+  <tr> 
+    <td valign="top" width="28%"><b>TimeScale</b></td>
+    <td valign="top" width="72%">The sub motion's new time scale.</td>
+  </tr>
+</table>
+<p><b>Returns:</b> If the Motion is a compound motion and the sub motion exists, 
+  the return value is GE_TRUE. The function will return GE_FALSE if the Motion 
+  is not a compound motion.</p>
+<p><b>Remarks:</b> The function will fail if the indexed sub motion does not exist.</p>
+<p><a name="geMotion_SetupEventIterator"></a><font
+color="#0000FF" size="2" face="Courier New"><strong>void geMotion_SetupEventIterator(geMotion 
+  *Motion, geFloat StartTime, geFloat EndTime);</strong></font></p>
+<p><b>Description:</b> Initialize the structures necessary to iterate over a motion's 
+  events.</p>
+<p><b>Parameters:</b> </p>
+<table border="0" cellpadding="3" cellspacing="0" width="599">
+  <tr> 
+    <td valign="top" width="28%"><strong>Motion</strong></td>
+    <td valign="top" width="72%">The Motion whose events are to be enumerated.</td>
+  </tr>
+  <tr> 
+    <td><b>StartTime</b></td>
+    <td>First time for which events are to be returned.</td>
+  </tr>
+  <tr> 
+    <td valign="top" width="28%"><b>EndTime</b></td>
+    <td valign="top" width="72%">Ending iterator time.</td>
+  </tr>
+</table>
+<p><b>Returns:</b> void</p>
+<p><b>Remarks:</b> This function resets internal variables in the Motion so that 
+  its events can be enumerated by successive calls to geMotion_GetNextEvent. The 
+  first to geMotion_GetNextEvent will return the first event whose time is equal 
+  to or greater than StartTime. Subsequent calls to geMotion_GetNextEvent will 
+  return events up to <em>but not including</em> EndTime.</p>
+<p><a name="geMotion_WriteToBinaryFile"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geBoolean geMotion_WriteToBinaryFile(const 
+  geMotion *M,geVFile *pFile);</strong></font></p>
+
+<p><b>Description:</b> Write the Motion information, in binary
+format, to a file.</p>
+
+<p><b>Parameters:</b> </p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="599">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to output.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="28%"><b>F</b></td>
+        <td valign="top" width="72%">A pointer to an open VFile
+        object to which the Motion will be saved.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> GE_TRUE if the output operation is successful.
+If any error occurs, GE_FALSE is returned.</p>
+
+<p><b>Remarks:</b> The file must be opened before calling this
+function. This is the recommended method of writing a Motion to a
+file.</p>
+
+<p><a name="geMotion_WriteToFile"></a><font color="#0000FF"
+size="2" face="Courier New"><strong>geBoolean
+geMotion_WriteToFile(const geMotion *M, geVFile *f);</strong></font></p>
+
+<p><b>Description:</b> Write the Motion, in text format, to a
+file.</p>
+
+<p><b>Parameters:</b> </p>
+
+<table border="0" cellpadding="3" cellspacing="0" width="599">
+    <tr>
+        <td valign="top" width="28%"><b>Motion</b></td>
+        <td valign="top" width="72%">The Motion to output.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="28%"><b>F</b></td>
+        <td valign="top" width="72%">A pointer to an open VFile
+        object to which the Motion will be saved.</td>
+    </tr>
+</table>
+
+<p><b>Returns:</b> GE_TRUE if the output operation is successful.
+If any error occurs, GE_FALSE is returned.</p>
+
+<p><b>Remarks:</b> The file must be opened before calling this
+function.</p>
+
+<p>This function is obsolete and should be used for backward
+compatibility only. Text format will be removed in a future
+version. Text format requires more space to store and more time
+to save and load than does binary format. New programs should use
+geMotion_WriteToBinaryFile.</p>
+</body>
+</html>

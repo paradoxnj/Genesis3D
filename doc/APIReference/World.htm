@@ -1,0 +1,502 @@
+<html>
+<head>
+<title>World</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h2>Summary</h2>
+<p>The geWorld object is a container for holding BSP data, Actors, Entities, dynamic 
+  lights, and more. It is responsible for rendering these items in order, efficiently. 
+  It provides collision handling APIs.</p>
+<h2>Overview</h2>
+<p>Anything which is 3D is rendered through geWorld. </p>
+<h2>Reference</h2>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geWorld_AddActor"></a>geBoolean 
+  geWorld_AddActor(geWorld *World, geActor *Actor, uint32 Flags, uint32 UserFlags)</font></tt></b></font></p>
+<p><b>Description</b>: Adds an Actor to a world.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="556" >
+  <tr> 
+    <td width="86" valign="top"><b>World </b></td>
+    <td width="449">World to add the actor to</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Actor</b></td>
+    <td width="449">Actor to be added</td>
+  </tr>
+  <tr>
+    <td width="86" valign="top"><b>Flags</b></td>
+    <td width="449">
+      <p>Any combination of the following:</p>
+      <table width="99%" border="0">
+        <tr>
+          <td width="54%" valign="top"><b>Flag</b></td>
+          <td width="46%"><b>Meaning</b></td>
+        </tr>
+        <tr> 
+          <td width="54%" valign="top">GE_ACTOR_RENDER_NORMAL</td>
+          <td width="46%">Render in normal views</td>
+        </tr>
+        <tr> 
+          <td width="54%" valign="top">GE_ACTOR_RENDER_MIRRORS</td>
+          <td width="46%">Render in mirrors</td>
+        </tr>
+        <tr> 
+          <td width="54%" valign="top">GE_ACTOR_RENDER_ALWAYS</td>
+          <td width="46%">Render always</td>
+        </tr>
+        <tr> 
+          <td width="54%" valign="top">GE_ACTOR_COLLIDE</td>
+          <td width="46%">Consider the Actor for collision in calls to geWorld_Collision.</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="86" valign="top"><b>UserFlags</b></td>
+    <td width="449">Arbitrary flags reserved for the user</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE on success, GE_FALSE on failure.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geWorld_AddBitmap"></a>geBoolean 
+  geWorld_AddBitmap(geWorld *World, geBitmap *Bitmap)</font></tt></b></font></p>
+<p><b>Description</b>: Adds a bitmap to the world.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="556" >
+  <tr> 
+    <td width="86"><b>World </b></td>
+    <td width="449">World to add the bitmap to</td>
+  </tr>
+  <tr> 
+    <td width="86"><b>Bitmap</b></td>
+    <td width="449">Bitmap to add</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE on success, GE_FALSE on failure.</p>
+<p><b>Remarks</b>: Until a bitmap is added to the world, it may not be used to 
+  render user added polygons (geWorld_AddPoly). Bitmaps are added to the world 
+  implicitly when Actors are added to the world, and when a world is created with 
+  a BSP file which contains bitmaps.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geWorld_AddFog"></a>geFog 
+  *geWorld_AddFog(geWorld *World)</font></tt></b></font></p>
+<p><b>Description</b>: Creates a volumetric fog object in the world.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="556" >
+  <tr> 
+    <td width="86"><b>World </b></td>
+    <td width="449">World to create the fog in</td>
+  </tr>
+</table>
+<p><b>Returns</b>: A valid geFog object on success, NULL on failure.</p>
+<p><b>Remarks</b>: This API differs from the container model outlined in the overview 
+  for technical reasons. It will be reviewed at a later date, and may be altered 
+  to conform.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geWorld_AddLight"></a>geLight 
+  *geWorld_AddLight(geWorld *World)</font></tt></b></font></p>
+<p><b>Description</b>: Adds a dynamic light to the world.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="556" >
+  <tr> 
+    <td width="86"><b>World </b></td>
+    <td width="449">World to add the light to</td>
+  </tr>
+</table>
+<p><b>Returns</b>: A valid geLight object on success, NULL on failure.</p>
+<p><b>Remarks</b>: This API differs from the container model outlined in the overview 
+  for technical reasons. It will be reviewed at a later date, and may be altered 
+  to conform.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geWorld_AddPoly"></a>gePoly 
+  *geWorld_AddPoly(geWorld *World, GE_LVertex *Vertices, int Count, geBitmap *Bitmap, 
+  gePoly_Type Type, uint32 RenderFlags, float Scale)</font></tt></b></font></p>
+<p><b>Description</b>: Adds a polygon to the world for rendering.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="556" >
+  <tr> 
+    <td width="86" valign="top"><b>World </b></td>
+    <td width="449" valign="top">World to add the polygon to</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Vertices</b></td>
+    <td width="449" valign="top">Array of vertices, in clockwise order, that make 
+      up the polygon. The polygon will be ordered in the world for rendering based 
+      upon its geometric center. Note that while the vertices of the polygon have 
+      a field for alpha level, only the first vertex's alpha value is considered 
+      when rendering. This is because most cards do not support iterated alpha 
+      values.</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Count</b></td>
+    <td width="449" valign="top">Count of vertices in the vertex array. Must be 
+      at least 3, if Type is not GE_TEXTURED_POINT. If Type is GE_TEXTURED_POINT, 
+      then the Count must be 1.</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Bitmap</b></td>
+    <td width="449" valign="top">Bitmap to texture the polygon with. This parameter 
+      can be NULL, in which case the polygon is rendered gouraud shaded.</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Type</b></td>
+    <td width="449" valign="top">
+      <p>One of:</p>
+      <table width="99%" border="0">
+        <tr> 
+          <td height="24" width="39%" valign="top"><b>Type</b></td>
+          <td height="24" width="61%"><b>Meaning</b></td>
+        </tr>
+        <tr> 
+          <td width="39%" valign="top">GE_TEXTURED_POLY</td>
+          <td width="61%">The polygon is textured. The Bitmap parameter must be 
+            a valid geBitmap.</td>
+        </tr>
+        <tr> 
+          <td width="39%" valign="top">GE_GOURAUD_POLY</td>
+          <td width="61%">The polygon is Gouraud shaded. The Bitmap parameter 
+            must be NULL.</td>
+        </tr>
+        <tr>
+          <td width="39%" valign="top">GE_TEXTURED_POINT</td>
+          <td width="61%">The Bitmap parameter must be a valid geBitmap. The polygon 
+            is composed of a single vertex, which is its center. When it is rendered, 
+            a polygon which is the size of the dimensions of the supplied bitmap 
+            is drawn such that the plane of the polygon is perpendicular to the 
+            camera used to render the scene. The dimensions of the polygon are 
+            scaled by the Scale parameter. Paraphrased, this means that the polygon 
+            is a 3d sprite.</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>RenderFlags</b></td>
+    <td width="449" valign="top">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Scale</b></td>
+    <td width="449" valign="top">Scaling value that is applied to the dimensions 
+      of the polygon if Type is GE_TEXTURED_POINT.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: A valid gePoly object on success, NULL on failure.</p>
+<p><b>Remarks</b>: This API differs from the container model espoused in the overview 
+  for reasons of efficiency. The API is intended to give users reasonably efficient 
+  access to extra polygon rendering in the world, on a frame by frame basis, where 
+  the addition and removal of such polygons is expected to happen with great rapidity. 
+  To preserve this efficiency, we have left the object partially dissected.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geWorld_AddPolyOnce"></a>geBoolean 
+  geWorld_AddPolyOnce(geWorld *World, GE_LVertex *Vertices, int Count, geBitmap 
+  *Bitmap, gePoly_Type Type, uint32 RenderFlags, float Scale)</font></tt></b></font></p>
+<p><b>Description</b>: Adds a polygon to the world for rendering.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="556" >
+  <tr> 
+    <td width="86" valign="top"><b>World </b></td>
+    <td width="449">World to add the poly to</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Vertices</b></td>
+    <td width="449">See geWorld_AddPoly</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Count</b></td>
+    <td width="449">See geWorld_AddPoly</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Bitmap</b></td>
+    <td width="449">See geWorld_AddPoly</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Type</b></td>
+    <td width="449">See geWorld_AddPoly</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>RenderFlags</b></td>
+    <td width="449">See geWorld_AddPoly</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Scale</b></td>
+    <td width="449">See geWorld_AddPoly</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE on success, GE_FALSE on failure.</p>
+<p><b>Remarks</b>: This API is very similar to geWorld_AddPoly. It differs in 
+  that the polygon is added to the world for one frame only. After the world is 
+  rendered in that frame, the polygon will be removed automatically.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geWorld_BitmapIsVisible"></a>geBoolean 
+  geWorld_BitmapIsVisible(const geWorld *World, const geBitmap *Bitmap)</font></tt></b></font></p>
+<p><b>Description</b>: Tests to see if a bitmap was used in the previous frame 
+  for any rendered polygon.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="556" >
+  <tr> 
+    <td width="86"><b>World </b></td>
+    <td width="449">World to test bitmap in</td>
+  </tr>
+  <tr>
+    <td width="86"><b>Bitmap</b></td>
+    <td width="449">Bitmap to test</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the Bitmap was used in the previous frame, GE_FALSE 
+  otherwise.</p>
+<p><b>Remarks</b>: This API was added to allow clients to test a bitmap to see 
+  whether or not it is being rendered currently so that processing on the Bitmap 
+  may be foregone in the interests of efficiency. For example, if you are running 
+  procedural routines on a set of bitmaps, you may only which to run those procedurals 
+  if the bitmap is actually being rendered currently.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geWorld_Collision"></a>geBoolean 
+  geWorld_Collision(geWorld *World, const geVec3d *Mins, geVec3d *Maxs, const 
+  geVec3d *Front, geVec3d *Back, uint32 Flags, uint32 UserFlags, GE_CollisionCB 
+  *CollisionCB, void *Context, GE_Collision *Collision)</font></tt></b></font></p>
+<p><b>Description</b>: Does collision detection against various objects in the 
+  world. </p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="556" >
+  <tr> 
+    <td width="86" valign="top"><b>World </b></td>
+    <td width="449">World to do collision test against</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Mins</b></td>
+    <td width="449">Minimum values of an axial aligned bounding box to collide 
+      against the world. If this value is NULL, then the collision is considered 
+      a ray collision test. The bounding box dimensions are relative to the Front/Back 
+      vector, not in absolute world coordinates. If you provide a bounding box, 
+      the entire box is collided against the world.</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Maxs</b></td>
+    <td width="449">Maximum values of an axial aligned bounding box to collide 
+      against the world. If Mins are specified, then the Maxs must be specified 
+      as well.</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Front</b></td>
+    <td width="449">Start of the ray or box movement to test.</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Back</b></td>
+    <td width="449">End of the ray or box movement to test</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Flags</b></td>
+    <td width="449">
+      <p>Combination of:</p>
+      <table width="98%" border="0">
+        <tr> 
+          <td width="36%" valign="top"><b>Flag</b></td>
+          <td width="64%"><b>Meaning</b></td>
+        </tr>
+        <tr> 
+          <td width="36%" valign="top">GE_COLLIDE_MODELS</td>
+          <td width="64%">Do collision testing against all models, including the 
+            world </td>
+        </tr>
+        <tr> 
+          <td width="36%" valign="top">GE_COLLIDE_ACTORS</td>
+          <td width="64%">Collide against Actors</td>
+        </tr>
+        <tr>
+          <td width="36%" valign="top">GE_COLLIDE_NO_SUB_MODELS</td>
+          <td width="64%">Collide only against the world, and ignore any submodels</td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>UserFlags</b></td>
+    <td width="449">Flags to mask against user flags in collideable objects, such 
+      as Actors. These flags are masked against the UserFlags on those objects, 
+      and the collision test is made if the result is non-zero. Otherwise, the 
+      object is ignored. This is a means of fast rejection for potential collideable 
+      sets, and for preventing collisions conditionally for arbitrary purposes.</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>CollisionCB</b></td>
+    <td width="449">Callback function to be called for each object that we collide 
+      against. The callback function has the opportunity to accept or reject the 
+      collision. If the collision is rejected, then the collision testing proceeds 
+      against the other objects in the world, until a collision is accepted, or 
+      there are no more collisions. If this parameter is NULL, then the first 
+      object collided against is returned.</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Context</b></td>
+    <td width="449">Arbitrary context pointer which is passed to the CollisionCB 
+      function on each call.</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Collision</b></td>
+    <td width="449">Resulting collision information structure.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if there was a collision, GE_FALSE otherwise.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geWorld_Create"></a>geWorld 
+  *geWorld_Create(geVFile *File)</font></tt></b></font></p>
+<p><b>Description</b>: Creates a world.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="556" >
+  <tr> 
+    <td width="86" valign="top"><b>File</b></td>
+    <td width="449">
+      <p>geVFile to read the world from. If this parameter is NULL, an empty world 
+        is created with a constant size, containing a single empty space. The 
+        world then is essentially just a container that renders the subobjects.</p>
+      <p>If the File parameter is not NULL, then it must point to a BSP file, 
+        and a world is created from this. Geometry, texture information, lighting 
+        data, visibility data, entities, etc are all read and instantiated.</p>
+    </td>
+  </tr>
+</table>
+<p><b>Returns</b>: A valid geWorld object on success, NULL on failure.</p>
+<p><b>Remarks</b>: The world must be added to a geEngine with geEngine_AddWorld 
+  before it can be rendered.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geWorld_Free"></a>void 
+  geWorld_Free(geWorld *World)</font></tt></b></font></p>
+<p><b>Description</b>: Destroys a world.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="556" >
+  <tr> 
+    <td width="86"><b>World </b></td>
+    <td width="449">World to be destroyed.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void.</p>
+<p><b>Remarks</b>: Destroys the world, and all it contains. This includes bitmaps, 
+  Actors, polygons, lights and fog objects. Note that this function differs from 
+  the Create/Destroy model discussed in the overview. This will be changed before 
+  the final release of the engine.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geWorld_GetBitmapByName"></a>geBitmap 
+  *geWorld_GetBitmapByName(geWorld *World, const char *Name)</font></tt></b></font></p>
+<p><b>Description</b>: Retrieves a world texture by name.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="556" >
+  <tr> 
+    <td width="86"><b>World </b></td>
+    <td width="449">World to retrieve the bitmap from</td>
+  </tr>
+  <tr>
+    <td width="86"><b>Name</b></td>
+    <td width="449">Name of the bitmap to retrieve.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: geBitmap object, if found, NULL otherwise.</p>
+<p><b>Remarks</b>: This API only applies to bitmaps that were used to texture 
+  the world geometry in the editor. The name of the bitmap is the name that appears 
+  in the editor to the level designer. The API was provided as a means for the 
+  applications programmer to gain access to world bitmaps so as to run procedural 
+  algorithms on them.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geWorld_GetContents"></a>geBoolean 
+  geWorld_GetContents(geWorld *World, const geVec3d *Position, const geVec3d *Mins, 
+  const geVec3d *Maxs, uint32 Flags, uint32 UserFlags, GE_CollisionCB *CollisionCB, 
+  void *Context, GE_Contents *Contents)</font></tt></b></font></p>
+<p><b>Description</b>: Gets content information about a position and bounding 
+  box from a world.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="556" >
+  <tr> 
+    <td width="86" valign="top"><b>World </b></td>
+    <td width="449">A valid geWorld object</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Position</b></td>
+    <td width="449">Position in the world to gather information about</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Mins</b></td>
+    <td width="449">Minimum values of an axial aligned bounding box. If this parameter 
+      is NULL, then the test is performed only on the single point of the Position 
+      parameter. If the bounding box is supplied, then the function can return 
+      multiple contents for the different regions of the bounding box.</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Maxs</b></td>
+    <td width="449">Maximum values of the axial aligned bounding box. If Mins 
+      is not NULL, then this parameter must not be NULL.</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Flags</b></td>
+    <td width="449">
+      <p>Any combination of:</p>
+      <table width="75%" border="1">
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>UserFlags</b></td>
+    <td width="449">UserFlags to mask against objects in the volume of the bounding 
+      box/point. </td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>CollisionCB</b></td>
+    <td width="449">Collision callback function to be called for each object found 
+      in the bounding region.</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Context</b></td>
+    <td width="449">Context passed to the CollisionCB on each occurence of an 
+      object/space found in the bounding region.</td>
+  </tr>
+  <tr> 
+    <td width="86" valign="top"><b>Contents</b></td>
+    <td width="449">Contents structure that is filled in with information about 
+      the contents of the region.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if there were any non-emtpy contents in the region 
+  specified, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: The workings of this function are very similar to geWorld_Collision. 
+  In particular, the collision callback function, Flags and UserFlags behave identically.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geWorld_GetEntitySet"></a>geEntity_EntitySet 
+  geWorld_GetEntitySet(geWorld *World, const char *SetName)</font></tt></b></font></p>
+<p><b>Description</b>: Retrieves a named set of entites from the world.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="556" >
+  <tr> 
+    <td width="86"><b>World </b></td>
+    <td width="449">World to get the set from</td>
+  </tr>
+  <tr>
+    <td width="86"><b>SetName</b></td>
+    <td width="449">Name of the set to search for</td>
+  </tr>
+</table>
+<p><b>Returns</b>: A geEntity_EntitySet if one is found, NULL otherwise.</p>
+<p><b>Remarks</b>: Currently, the world has one entity set for each named type 
+  of entity that is included in the BSP file by the level designer. The name of 
+  the set is the name of the type used in the header file that the editor parses. 
+  See the overview for more information on entities.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geWorld_"></a>geBoolean 
+  geWorld_(geWorld *World)</font></tt></b></font></p>
+<p><b>Description</b>: </p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="556" >
+  <tr> 
+    <td width="86"><b>World </b></td>
+    <td width="449">&nbsp;</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE on success, GE_FALSE on failure.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p></p>
+<p></p>
+<p></p>
+
+</body>
+</html>

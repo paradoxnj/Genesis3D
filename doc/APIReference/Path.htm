@@ -1,0 +1,395 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Path</TITLE>
+<META NAME="Template" CONTENT="C:\PROGRAM FILES\MICROSOFT OFFICE\OFFICE\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<H2>Summary</H2>
+<P>The Path module provides support for creating and maintaining time indexed keyframe data, and sampling the path at arbitrary times.</P>
+<H2>Overview</H2>
+<P>A Path is a set of time indexed keyframes, each of which contains a transformation. A common use of Paths is to hold animation keyframe data for individual bones. An Actor's animation (called a Motion) consists of a Path for each of the Actor's bones. See the documentation for geActor and geMotion for more information on creating and using Motions.</P>
+<P>Each Path contains two channels: Translation and Rotation. The Translation channel maintains positional information and the Rotation channel maintains orientation information. When creating the path, you can specify the method to be used for Translation and Rotation interpolation. The interpolation method affects the way that the sampling functions provide "in between" transformations when a path is sampled between keyframes.</P>
+<P>Paths are reference counted. See the Engine API Overview for a detailed discussion of reference counting.</P>
+<H4>Creating and Maintaining Paths</H4>
+<P>To create a Path, call gePath_Create. This will create an empty Path with no keyframes. To add a keyframe to the Path, set the Path's transform and call gePath_InsertKeyframe. To modify a keyframe's transform, call gePath_ModifyKeyframe. To modify a keyframe's time, remove the keyframe and insert it at the new time. To delete a keyframe, call gePath_DeleteKeyframe.</P>
+<P>Keyframes are referenced by index. To obtain the keyframe index for a channel at a particular time, call gePath_GetKeyframeIndex.</P>
+<P>You may insert keyframes in both channels at one time by specifying GE_PATH_ALL_CHANNELS. You may also modify and delete keyframes in multiple channels concurrently. However, if you add keyframes to individual channels at different times, specifying multiple keyframes in a call to gePath_DeleteKeyframe or gePath_ModifyKeyframe will produce unexpected results.</P>
+<P>A Path's <I>time extents</I> is the time period between the first and last keyframes.</P>
+<P>When creating a Path, you have the choice to create a looping or non-looping Path. The difference is in how the path generator handles sampling beyond the Path's time extents.</P>
+<H4>Sampling</H4>
+<P>To obtain the transform for the path at a particular time, call gePath_Sample. To obtain the rotation (quaternion) and/or translation (vector) portion of the transform at a particular time, call gePath_SampleChannels.</P>
+<P>For a non-looping Path, sampling before the first keyframe time will produce the first keyframe's transform, and sampling beyond the last keyframe time will produce the last keyframe's transform. When sampling a looped Path, the sample time is "wrapped around" the time extents. Sampling before the first keyframe will cause wrapping in reverse.</P>
+<H4>Input and Output</H4>
+<P>Currently, Paths can be output in text or binary format. Text format is supported for historical reasons and will be removed in a later version. Binary format results in faster input and output, and smaller files. To output a binary file, call gePath_WriteToBinaryFile. To output a text format file, call gePath_WriteToFile.</P>
+<H2>Reference</H2>
+<P><A NAME="gePath_Create"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">gePath * gePath_Create(gePath_Interpolator TranslationInterpolation, gePath_Interpolator RotationInterpolation, geBoolean Looped);</font></tt></b></font></p>
+<P><B>Description:</b> Creates a gePath object. </P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=607>
+<TR><TD WIDTH="28%" VALIGN="TOP" ROWSPAN=3 HEIGHT=33>
+<P><B>TranslationInterpolation </B></TD>
+<TD WIDTH="29%" VALIGN="TOP" COLSPAN=2 HEIGHT=33>
+<P>GE_PATH_INTERPOLATE_LINEAR</TD>
+<TD WIDTH="43%" VALIGN="TOP" COLSPAN=3 HEIGHT=33>
+<P>Straight line interpolation.</TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP" COLSPAN=2 HEIGHT=26>
+<P>GE_PATH_INTERPOLATE_HERMITE</TD>
+<TD WIDTH="43%" VALIGN="TOP" COLSPAN=3 HEIGHT=26>
+<P>Hermite cubic spline curve </TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP" COLSPAN=2 HEIGHT=26>
+<P>GE_PATH_INTERPOLATE_HERMITE_ZERO_DERIV</TD>
+<TD WIDTH="43%" VALIGN="TOP" COLSPAN=3 HEIGHT=26>
+<P>Hermite cubic spline curve with zero derivative at keyframes for 'easing' curves.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP" ROWSPAN=3 HEIGHT=11>
+<B><P>RotationInterpolation</B></TD>
+<TD WIDTH="44%" VALIGN="TOP" COLSPAN=3 HEIGHT=11>
+<P>GE_PATH_INTERPOLATE_LINEAR</TD>
+<TD WIDTH="28%" VALIGN="TOP" COLSPAN=2 HEIGHT=11>
+<P>Straight line interpolation.</TD>
+</TR>
+<TR><TD WIDTH="44%" VALIGN="TOP" COLSPAN=3 HEIGHT=11>
+<P>GE_PATH_INTERPOLATE_SLERP</TD>
+<TD WIDTH="28%" VALIGN="TOP" COLSPAN=2 HEIGHT=11>
+<P>Spherical-linear blend.</TD>
+</TR>
+<TR><TD WIDTH="44%" VALIGN="TOP" COLSPAN=3 HEIGHT=11>
+<P>GE_PATH_INTERPOLATE_SQUAD</TD>
+<TD WIDTH="28%" VALIGN="TOP" COLSPAN=2 HEIGHT=11>
+<P>Higher order blend for 'G1' continuity.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Looped</B></TD>
+<TD WIDTH="72%" VALIGN="TOP" COLSPAN=5>
+<P>Set to GE_TRUE to create a looped motion.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> If the function succeeds, the return value is a valid gePath object with no keyframes. If the function fails, it returns NULL.</P>
+<P><B>Remarks:</b> When creating a looping motion, the first and last keyframes in both channels should be identical. The path generator will choose arbitrarily between these two keyframes when sampling exactly at the end of the loop.</P>
+<P><a name="gePath_CreateCopy"></A><font face="Courier New, Courier, mono"><b><tt><FONT COLOR="#0000ff">gePath * gePath_CreateCopy(const gePath *Path);</font></tt></b></font></p>
+<P><B>Description:</B> Creates a copy of a gePath object. </P>
+<B><P>Parameters: </P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=607>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>Path</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The path to copy.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> If the function succeeds, the return value is a valid gePath object that is an exact copy of the passed-in Path. If the function fails, it returns NULL.</P>
+<P><B>Remarks:</b> The returned Path is not a reference, but an entierly new Path object. To create a reference, call gePath_CreateRef.</P>
+<P><A NAME="gePath_CreateFromFile"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">gePath* gePath_CreateFromFile(geVFile *F);</font></tt></b></font></p>
+<P><B>Description:</B> Reads information from the specified file and creates a Path. </P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=607>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>F</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>An opened file positioned at the point from which Path information is to be read. The file may contain binary- or text-format information.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> If the function succeeds, the return value is a valid gePath object. If the function fails, it returns NULL.</P>
+<P><B>Remarks:</b> When the function returns, the file will be positioned after the last byte read. The passed-in file may not be a directory.</P>
+<P><A NAME="gePath_CreateRef"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void gePath_CreateRef(gePath *Path);</font></tt></b></font></p>
+<P><B>Description:</B> Increases the reference count of the specified path. </P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=607>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>Path</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The path to which a reference should be created.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> void.</P>
+<P><B>Remarks:</b> See the Engine API Overview for more information on reference counting.</P>
+<A NAME="gePath_DeleteKeyframe"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean gePath_DeleteKeyframe(gePath *Path, int Index, int ChannelMask);</font></tt></b></font><p></p>
+<P><B>Description:</B> Deletes the indexed keyframe in the specified channels.</P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=606>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>Path</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The path that contains the keyframe to be deleted.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Index</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The index of the keyframe to be deleted.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>ChannelMask</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The channel or channels from which to delete the keyframe. This can be a combination of GE_PATH_ROTATION_CHANNEL and GE_PATH_TRANSLATION_CHANNEL.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> Returns GE_TRUE if the specified keyframe is deleted from all specified channels. Returns GE_FALSE if any error occurs.</P>
+<P><B>Remarks:</b> The function will fail if the specified keyframe does not exist. If multiple channels are specified and the keyframe exists in one channel but not the other, the keyframe will be deleted from the channel that contains it, and the function will return GE_FALSE. Note that deleting a keyframe from multiple channels may produce unexpected results if the keyframes were added to individual channels at different times by separate calls to gePath_InsertKeyframe.</P>
+<P><A NAME="gePath_Destroy"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void gePath_Destroy(gePath **pPath);</font></tt></b></font></p>
+<P><B>Description:</B> Destroys the path pointed to by the specified path pointer.</P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=605>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>pPath</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>A pointer to the path to be destroyed.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> void.</P>
+<P><B>Remarks:</b> The reference count of the specified path is decreased. If the reference count goes to zero, then the path information is deallocated and the path pointer is set to NULL.</P>
+<P><A NAME="gePath_GetKeyframe"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void gePath_GetKeyframe(const gePath *Path, int Index, int Channel, geFloat *Time, geXForm3d *Matrix);</font></tt></b></font></p>
+<P><B>Description:</B> Obtains the transform and the time of the indexed keyframe in a specified channel.</P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=605>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>Path</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The path that contains the keyframe to be returned.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Index</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The index of the keyframe to be returned.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Channel</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The channel or channels from which to obtain the keyframe. This can be a combination of GE_PATH_ROTATION_CHANNEL and GE_PATH_TRANSLATION_CHANNEL.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Time</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>A pointer to a variable in which the keyframe's time will be returned.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Matrix</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>A pointer to the variable in which to return the keyframe's transform.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> void.</P>
+<P><B>Remarks:</b> The function will fail if the specified keyframe does not exist in the channels specified. If multiple channels are specified, the keyframe must exist in both channels. If a channel is not specified, then the poirtion of the matrix corresponding to that channel will be set to identity.</P>
+<A NAME="gePath_GetKeyframeCount"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">int gePath_GetKeyframeCount(const gePath *Path, int Channel);</font></tt></b></font><p></p>
+<P><B>Description:</B> Returns a count of the number of keyframes in the specified channel.</P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=605>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>Path</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The path that contains the keyframes to be counted.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Channel</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The channel to count. This may be GE_PATH_ROTATION_CHANNEL or GE_PATH_TRANSLATION_CHANNEL.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> The count of keyframes in the specified channel.</P>
+<P><B>Remarks:</b> This function will only return the count of keyframes in a single channel. If the channel parameter contains a mask, the return result is undefined.</P>
+<P><A NAME="gePath_GetKeyframeIndex"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">int gePath_GetKeyframeIndex(const gePath *Path, int Channel, geFloat Time)</font></tt></b></font></p>
+<P><B>Description:</B> Obtains the index of a keyframe at the specified time.</P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=606>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>Path</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The path that contains the keyframe to be returned.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Channel</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The channel from which to obtain the keyframe index. This can be GE_PATH_ROTATION_CHANNEL or GE_PATH_TRANSLATION_CHANNEL.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Time</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The time index of the keyframe index to return.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> If a keyframe exists at the specified time, the index of the keyframe is returned. If no keyframe exists in the specified channel at the specified time, the return value is -1.</P>
+<P><B>Remarks:</b> If the channel parameter contains a mask of more than one channel, the return value is undefined. The channel must contain a keyframe at the exact time specified, or the function will return -1.</P>
+<P><A NAME="gePath_GetTimeExtents"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean gePath_GetTimeExtents(const gePath *Path, geFloat *StartTime, geFloat *EndTime)</font></tt></b></font></p>
+<P><B>Description:</B> Obtains the time extents of the given path.</P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=606>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>Path</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The path to be queried.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>StartTime</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>A pointer to a variable that will be set to the path's first keyframe time.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>EndTime</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>A pointer to a variable that will be set to the path's last keyframe time.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> If the path has no keyframes, the return value is GE_FALSE, and the time extent variables are not changed. If the path contains one or more keyframes, the return value is GE_TRUE and the StartTime and EndTime variables are set.</P>
+<P><B>Remarks:</b> If the path contains one or more keyframes, then the earliest keyframe time (from both channels) is placed in StartTime, and the latest keyframe time (again, from both channels) is placed in EndTime. On successful return, EndTime will always be greater than or equal to StartTime.</P>
+<P><A NAME="gePath_InsertKeyframe"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean gePath_InsertKeyframe(gePath *Path, int ChannelMask, geFloat Time, const geXForm3d *Matrix);</font></tt></b></font></p>
+<P><B>Description:</B> Inserts a keyframe into the specified channels.</P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=605>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>Path</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The path in which to insert the keyframe.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>ChannelMask</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The channels in which to insert the keyframe. Can be a combination of GE_PATH_ROTATION_CHANNEL and GE_PATH_TRANSLATION_CHANNEL.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Time</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The keyframe's time.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Matrix</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The matrix that contains the transformation for this keyframe.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> If the keyframe is inserted successfully, the return value is GE_TRUE. If the function is unable to insert the keyframe in all of the specified channels, the return value is GE_FALSE and no keyframes are added to any channels.</P>
+<P><B>Remarks:</b> If GE_PATH_ROTATION_CHANNEL is specified, the rotation part of the passed matrix is stored as the keyframe transform for the rotation channel. If GE_PATH_TRANSLATION_CHANNEL is specified, the translation part of the passed matrix is stored as the keyframe transform for the translation channel. The function will fail if a keyframe already exists at the specified time.</P>
+<P><A NAME="gePath_ModifyKeyframe"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean gePath_ModifyKeyframe(gePath *Path, int Index, int ChannelMask, const geXForm3d *Matrix);</font></tt></b></font></p>
+<P><B>Description:</B> Change the transformation for an existing keyframe.</P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=599>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>Path</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The path that contains the keyframe to be modified.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Index</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The index of the keyframe to be modified.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>ChannelMask</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The channels in which to insert the keyframe. Can be a combination of GE_PATH_ROTATION_CHANNEL and GE_PATH_TRANSLATION_CHANNEL.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Matrix</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The matrix that contains the new transformation for this keyframe.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> If the keyframe is modified successfully, the return value is GE_TRUE.</P>
+<P><B>Remarks:</b> If the specified keyframe index does not exist in one of the channels, the function will fail. If GE_PATH_ROTATION_CHANNEL is specified, the rotation part of the passed matrix is stored as the keyframe transform for the rotation channel. If GE_PATH_TRANSLATION_CHANNEL is specified, the translation part of the passed matrix is stored as the keyframe transform for the translation channel. Note that modifying a keyframe in multiple channels may produce unexpected results if the keyframes were added to individual channels at different times by separate calls to gePath_InsertKeyframe.</P>
+<P><A NAME="gePath_OffsetTimes"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean gePath_OffsetTimes(gePath *Path, int StartingIndex, int ChannelMask, geFloat TimeOffset);</font></tt></b></font></p>
+<P>This function is not currently implemented.&nbsp;</P>
+<P><A NAME="gePath_Sample"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void gePath_Sample(const gePath *Path, geFloat Time, geXForm3d *Matrix);</font></tt></b></font></p>
+<P><B>Description:</B> Sample the path at the specified time to obtain the transform.</P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=599>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>Path</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The path to sample.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Time</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The time at which to sample the path.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Matrix</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The matrix in which to return the transform for the current time.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> void.</P>
+<P><B>Remarks:</b> All channels are sampled using the individual channel interpolation types. The resulting components (rotation and translation) are combined and placed in the matrix.</P>
+<P>For a non-looping Path, sampling before the first keyframe time will produce the first keyframe's transform, and sampling beyond the last keyframe time will produce the last keyframe's transform. When sampling a looped Path, the sample time is "wrapped around" the time extents. Sampling before the first keyframe will cause wrapping in reverse.</P>
+<P><A NAME="gePath_SampleChannels"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void gePath_SampleChannels(const gePath *Path, geFloat Time, geQuaternion *Rotation, geVec3d *Translation);</font></tt></b></font></p>
+<P><B>Description:</B> Sample the path at the specified time to obtain the individual transform components.</P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=599>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>Path</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The path to sample.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Time</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The time at which to sample the path.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Rotation</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The quaternion in which to return the rotation component.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>Translation</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The vector in which to return the translation component.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> void.</P>
+<P><B>Remarks:</b> All channels are sampled using the individual channel interpolation types. The resulting rotation component is returned as a quaternion, and the resulting translation is returned as a vector.</P>
+<P>For a non-looping Path, sampling before the first keyframe time will produce the first keyframe's transform, and sampling beyond the last keyframe time will produce the last keyframe's transform. When sampling a looped Path, the sample time is "wrapped around" the time extents. Sampling before the first keyframe will cause wrapping in reverse.</P>
+<P><A NAME="gePath_WriteToBinaryFile"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean gePath_WriteToBinaryFile(const gePath *Path, geVFile *F);</font></tt></b></font></p>
+<P><B>Description:</B> Write the path information, in binary format, to a file.</P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=599>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>Path</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The path to output.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>F</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>A pointer to an open VFile object to which the path information will be saved.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> GE_TRUE if the output operation is successful. If any error occurs, GE_FALSE is returned.</P>
+<P><B>Remarks:</b> The file must be opened before calling this function. All path information is output to the file. This is the recommended method of writing path information to a file.</P><P><A NAME="gePath_WriteToFile"></A><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean gePath_WriteToFile(const gePath *Path, geVFile *F);</font></tt></b></font></p>
+<P><B>Description:</B> Write the path information, in text format, to a file.</P>
+<B><P>Parameters:</P></B> 
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=3 WIDTH=599>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P><B>Path</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>The path to output.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P>F</B></TD>
+<TD WIDTH="72%" VALIGN="TOP">
+<P>A pointer to an open VFile object to which the path information will be saved.</TD>
+</TR>
+</TABLE>
+
+<P><B>Returns:</b> GE_TRUE if the output operation is successful. If any error occurs, GE_FALSE is returned.</P>
+<P><B>Remarks:</b> The file must be opened before calling this function. All path information is output to the file.</P>
+<P>This function is obsolete and should be used for backward compatibility only. Text format will be removed in a future version. Text format requires more space to store and more time to save and load than does binary format. New programs should use gePath_WriteToBinaryFile.</P>
+</BODY>
+</HTML>

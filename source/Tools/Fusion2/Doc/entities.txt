@@ -1,0 +1,207 @@
+
+
+Editor
+------
+
+The editor will be changed to allow only the creation of 'models' from 
+brushes, and not to associate them with particular entities.  When you 
+select a bunch of brushes, and hit the option to create a model, the editor 
+will query you for a name, giving a default name, based on the word 'Model' 
+and a number that the editor ensures will make the name unique.  The editor 
+will keep an internal list of these models and their names.  When the 
+editor writes a MAP for consumption by GBSP, it will emit entities of the 
+form below for the models:
+
+{
+"classname" "%Model%"
+"%name%" "Model1"
+"origin" "-128 128 0"
+{
+( 64 -64 64 ) ( 64 64 64 ) ( 64 64 -64 ) tex6 0 0 0 1.000000 1.000000
+( -64 -64 64 ) ( -64 -64 -64 ) ( -64 64 -64 ) tex6 0 0 0 1.000000 1.000000
+( -64 -64 64 ) ( 64 -64 64 ) ( 64 -64 -64 ) tex6 0 0 0 1.000000 1.000000
+( -64 64 64 ) ( -64 64 -64 ) ( 64 64 -64 ) tex6 0 0 0 1.000000 1.000000
+( -64 -64 -64 ) ( 64 -64 -64 ) ( 64 64 -64 ) tex6 0 0 0 1.000000 1.000000
+( -64 -64 64 ) ( -64 64 64 ) ( 64 64 64 ) tex6 0 0 0 1.000000 1.000000
+}
+}
+
+The class name is special - users will not be permitted to use % in their 
+class names.  Actually, users will be limited to alphanumerics and 
+underscores for classnames (the same characters that programmers are 
+limited to).  The name is the name that the user entered when creating the 
+model.
+
+The type system that the editor supports will have a set of primitive types 
+(already does, in fact).  These are as follows:
+
+	T_INT		32bit Integer type
+	T_FLOAT		4byte float type
+	T_COLOR		RGB color
+	T_POINT		3d location (Vec3d)
+	T_STRING	char *
+	T_MODEL		world model
+
+
+T_MODEL is here because of the fact that models are handled specially by 
+GBSP, and we need a good way to link them to the data structures.
+
+The editor will read a subset of C include files to gather the aggregate 
+types (structures) that the user can define, and a set of predefined types 
+that the user cannot modify.  These header files will have things like 
+this:
+
+typedef struct	MyDoor
+{
+	GE_Model *	LeftSideModel;
+	GE_Model *	RightSideModel;
+	float		DurationOpen;
+	float		Speed;
+	float		Lip;
+}	MyDoor;
+
+
+The editor will parse these definitions and use them for the fields that 
+the artist can modify in the entity dialogs.  The artist will not be able 
+to add fields beyond the ones provided for by the header file.  The names 
+of the fields will match the names in the header file, and the types will 
+match as well.  The type of the resulting structure as parsed into the 
+editor will be a template of type T_STRUCT, with a type name of 'MyDoor'.
+
+Structures will be able to point to other structures defined in the header 
+file:
+
+typedef struct	MyButton
+{
+	GE_Model *	Model;
+	MyDoor *	Door;
+}	MyButton;
+
+When you create a MyDoor entity in the editor, you will provide a name for 
+that entity.  All entities will be named.  The editor will automatically 
+generate names for entities, providing you the option to change them.  You 
+will then be able to edit the fields for a given entity.  The editor will 
+know the types of the field data from the structure definitions parsed from 
+the C file, and will limit your input to conform to these types.  For 
+floats and other atomic types, that is just a constraint check on the 
+value typed in.  For colors, the editor will provide a color picker dialog 
+as the method for editing the field data.  Since the dialog supports both 
+numeric and mouse selected colors, this provides the most flexibility for 
+the artist.  The interesting cases here are the cases where the field types 
+are either T_STRUCT or T_MODEL type fields.  If they are T_MODEL type 
+fields (the field was declared with 'GE_Model *' in the header file), then 
+the editor will provide a drop down menu for the field, listing all the 
+model names that it has that have been created in the world.  The user can 
+select from these only.  If the field is a field of type T_STRUCT, it will 
+look through all the entities which are have the type name of the structure 
+of the field, and will provide those in a drop down to pick from.  The user 
+will not be able to enter anything but one of these.
+
+When the editor writes out entities, it will write them out in the 
+following format:
+
+{
+"classname" "MyDoor"
+"LeftSideModel" "Model1"
+"RightSideModel" "Model2"
+"DurationOpen" "1.2"
+"Speed" "10.0"
+"Lip" "5.0"
+"%name%" "Door1"
+}
+{
+"classname" "MyButton"
+"Model" "Model3"
+"Door" "Door1"
+"%name%" "Button1"
+}
+
+Hence the fields that point to models will be linked in the map file by 
+name, and the fields that point to other entities are also linked by name.  
+The fields that are atomic data contain the data directly in the fields.  
+There can never be embedded structures.  Only pointers to other structures 
+are permitted.
+
+The editor will also write out type definition records in the fashion that 
+it currently does, with the exception that we will be removing the 
+%defaultvalue% fields from the map file.  They are not really necessary.
+
+GBSP
+----
+
+GBSP has very little special to do under the new scheme, except for the 
+models.  Particular cases that GBSP will have to handle specially are to 
+handle lights correctly, if we rename the basic light type.  Also, 
+directional lights will have to be handled differently.
+
+The main thing that GBSP will have to do that is different is to load the 
+entity data and for all fields that are of type T_MODEL, substitute the 
+alphanumeric string version of the model number that it creates for the 
+model of the given name.  For example, for the case of Button1, above, the 
+Model pair would be read in and converted to something like:
+"Model" "4"
+
+The entities of classname "%model%" will be discarded by GBSP when it 
+writes the data out to the BSP file.
+
+Engine
+------
+
+The engine will read types in from the BSP file, and will read entities in 
+from the BSP file as it currently does, with the exception that the 
+entities will be added to separate lists internally, rather then kept under 
+the one big list that they are currently held under.  The lists will be 
+kept by the type of the entity, and will be attached to the 'Type' 
+structures allocated when the types are built.  This will improve 
+efficiency in the engine when iterating through the entities of a 
+particular class.
+
+The model fields are currently handled specially by the engine.  Now, the 
+engine will simply parse the numbers out of any fields of type T_MODEL, and 
+will look up the world model structures based on these numeric indices.  
+The resulting pointer will be stored in the appropriate field of the 
+structure the engine allocates for the entity user data.
+
+The GE_Entity structures will then have at least the following fields:
+
+typedef struct	GE_Entity
+{
+	Type *			EntityClass;
+	void *			EntityData;
+	struct	GE_Entity *	Next;
+}	GE_Entity;
+
+
+The engine internal structure for types will be something like this:
+
+typedef	struct	Type	Type;
+typedef struct	TypeField
+{
+	char *			tfName;
+	Type *			tfType;
+	int			tfOffset;
+	struct TypeField *	tfNext;
+}	TypeField;
+
+typedef	struct	Type
+{
+	TopType			tpTopType;
+	char *			tpName;
+	TypeField *		tpFields;
+	int			tpSize;
+	GE_Entity *		tpEntities;
+	void *			tpClassData;
+}	Type;
+
+
+The fields of the types are mostly used solely by the engine, but the 
+tpClassData field is the field that will be set and get with:
+
+void	GE_ClassSetUserData(GE_Class *classThing, void *data);
+void *	GE_ClassGetUserData(GE_Class *classThing);
+
+These type definitions are taken from the existing entities.cpp.
+
+The tpEntities field will be used to store the list of entities for each 
+type.
+

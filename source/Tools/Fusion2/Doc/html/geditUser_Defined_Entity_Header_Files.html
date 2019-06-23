@@ -1,0 +1,185 @@
+<HTML>
+<HEAD>
+<TITLE>User Defined Entity Header Files</TITLE>
+</HEAD><BODY>
+<A HREF= "defaultgedit.html"><IMG SRC="contents.gif" ALT="contents.gif" BORDER = 0></A><A HREF= "geditindex.html"><IMG SRC="index.gif" ALT="index.gif" BORDER = 0></A><A HREF= "geditThe_Initialization_File__GEDITIN.html"><IMG SRC="prev1.gif" ALT="prev1.gif" BORDER = 0></A><IMG SRC="next0.gif" ALT="next0.gif" BORDER = 0>
+<P>
+<A NAME="off_167657"></A><A NAME="e5063e4b"></A><FONT FACE="Arial" SIZE="3"><H1>User Defined Entity Header Files
+<P>
+</H1>The header files that the programmer writes to declare user defined entities
+in the editor have some restrictions.  They must be C header files, with
+limitations on the structure definitions that are used for the editor entities.  Macro
+expansion is not supported, and nested includes are not supported.
+<P>
+</FONT><FONT FACE="Courier New" SIZE="4">#pragma GE_Type(&quot;Player.bmp&quot;)
+<P>
+typedef struct tagPlayerStart {
+<P>
+#pragma GE_Published
+<P>
+Vec3d origin;
+<P>
+#pragma GE_Origin(origin)
+<P>
+} PlayerStart;
+<P>
+</FONT><FONT FACE="Arial" SIZE="3">In the example above, the first pragma tells the editor that the following
+type is to be read as an entity definition.  The name of the entity definition in
+the editor will be the final structure tag in the type definition, in this case
+'PlayerStart'.  The BMP string in the</FONT><FONT FACE="Courier New" SIZE="4"> GE_Type</FONT><FONT FACE="Arial" SIZE="3"> pragma is used by the editor to read a bitmap to be used in the user
+interface of the editor for selection of the entity template.  Entity bitmaps should be
+32x32 pixels in size, 256-color Windows .BMP files.
+<P>
+The second pragma (</FONT><FONT FACE="Courier New" SIZE="4">GE_Published</FONT><FONT FACE="Arial" SIZE="3">) tells the parser that fields below this point in the structure definition
+should be displayed in the editor's property editors.  Another pragma (</FONT><FONT FACE="Courier New" SIZE="4">GE_Private</FONT><FONT FACE="Arial" SIZE="3">) is used to make fields in the structure private from the editor.  An example
+of this is shown below.
+<P>
+The pragma </FONT><FONT FACE="Courier New" SIZE="4">GE_Origin</FONT><FONT FACE="Arial" SIZE="3"> is used to tell the editor which field in the type, if any, is supposed to
+represent the geometric position of the entity in the editor.  This allows the
+programmer to specify which field of the structure is to be updated when the
+level designer selects an entity and moves it in the editor views.
+<P>
+The editor understands the following implicit types:
+<P>
+</FONT><FONT FACE="Courier New" SIZE="4">int
+<P>
+char *
+<P>
+float
+<P>
+geFloat
+<P>
+geWorld_Model *
+<P>
+GE_RGBA
+<P>
+geVec3d
+<P>
+geBoolean
+<P>
+</FONT><FONT FACE="Arial" SIZE="3">Each of these types has a built in property editor in the editor.  When the
+level designer double clicks on a field of type</FONT><FONT FACE="Courier New" SIZE="4"> GE_RGBA</FONT><FONT FACE="Arial" SIZE="3">, for example, the editor will raise a color picker dialog.
+<P>
+Structures can refer to each other by reference.  You cannot have embedded
+structures in your structure definitions, except for the special cases of </FONT><FONT FACE="Courier New" SIZE="4">GE_RGBA</FONT><FONT FACE="Arial" SIZE="3"> and </FONT><FONT FACE="Courier New" SIZE="4">Vec3d</FONT><FONT FACE="Arial" SIZE="3">.  Forward references of structures are allowed.  For example, here are the
+type definitions that would allow you to build a linked list:
+<P>
+</FONT><FONT FACE="Courier New" SIZE="4">#pragma GE_Type(&quot;PathPt.bmp&quot;)
+<P>
+typedef struct tagPathPoint PathPoint;
+<P>
+#pragma GE_Type(&quot;PathPt.bmp&quot;)
+<P>
+typedef struct tagPathPoint {
+<P>
+#pragma GE_Published
+<P>
+geVec3d origin;
+<P>
+PathPoint * Next;
+<P>
+#pragma GE_Origin(origin)
+<P>
+} PathPoint;
+<P>
+</FONT><FONT FACE="Arial" SIZE="3">Here, the editor has to deal with a field in the entity which is not of an
+implicit or built in type.  The </FONT><FONT FACE="Courier New" SIZE="4">Next</FONT><FONT FACE="Arial" SIZE="3"> field is a pointer to a </FONT><FONT FACE="Courier New" SIZE="4">PathPoint</FONT><FONT FACE="Times New Roman" SIZE="5"> </FONT><FONT FACE="Arial" SIZE="3">structure. The editor will display the field name </FONT><FONT FACE="Courier New" SIZE="4">Next</FONT><FONT FACE="Arial" SIZE="3"> in its property editors, and when the designer edits this field, the editor
+will bring up a list of existing entities in the world which are of the type </FONT><FONT FACE="Courier New" SIZE="4">PathPoint</FONT><FONT FACE="Arial" SIZE="3">.  The designer may select only from this list to assign a value to the field.
+ This ensures strong typing in the data structures that the editor builds for
+the programmer.
+<P>
+</FONT><FONT FACE="Courier New" SIZE="4">#pragma GE_Type(&quot;monster.bmp&quot;)
+<P>
+typedef struct Monster { 
+<P>
+#pragma GE_Published
+<P>
+geVec3d origin;
+<P>
+int HitPoints;
+<P>
+geFloat Speed;
+<P>
+GE_RGBA Color;
+<P>
+#pragma GE_Origin(origin)
+<P>
+#pragma GE_DefaultValue(HitPoints, &quot;100&quot;)
+<P>
+#pragma GE_DefaultValue(Speed, &quot;2.0f&quot;)
+<P>
+#pragma GE_DefaultValue(Color, &quot;255 0 255&quot;)
+<P>
+} Monster;
+<P>
+</FONT><FONT FACE="Arial" SIZE="3">The above is an example of the </FONT><FONT FACE="Courier New" SIZE="4">GE_DefaultValue</FONT><FONT FACE="Arial" SIZE="3"> pragma.  This pragma allows the editor to assign default values to fields in
+the entities.  Default values may not be assigned to fields that are pointers
+to user types.  They may be defined only for fields of implicit or built in type.
+<P>
+Documentation fields
+<P>
+</FONT><FONT FACE="Courier New" SIZE="4">#pragma GE_Type(&quot;monster.bmp&quot;)
+<P>
+typedef struct Monster { 
+<P>
+#pragma GE_Published
+<P>
+geVec3d origin;
+<P>
+int HitPoints;
+<P>
+geFloat Speed;
+<P>
+GE_RGBA Color;
+<P>
+#pragma GE_Origin(origin)
+<P>
+#pragma GE_DefaultValue(HitPoints, &quot;100&quot;)
+<P>
+#pragma GE_DefaultValue(Speed, &quot;2.0f&quot;)
+<P>
+#pragma GE_DefaultValue(Color, &quot;255 0 255&quot;)
+<P>
+#pragma GE_Documentation(HitPoints, </FONT><FONT FACE="Times New Roman" SIZE="4">“</FONT><FONT FACE="Courier New" SIZE="4">Monster</FONT><FONT FACE="Times New Roman" SIZE="4">’</FONT><FONT FACE="Courier New" SIZE="4">s starting hit points</FONT><FONT FACE="Times New Roman" SIZE="4">”</FONT><FONT FACE="Courier New" SIZE="4">)
+<P>
+} Monster;
+<P>
+</FONT><FONT FACE="Arial" SIZE="3">This is an example of the </FONT><FONT FACE="Courier New" SIZE="4">GE_Documentation</FONT><FONT FACE="Arial" SIZE="3"> pragma.  This pragma instructs the editor to display the specified string in
+a hint box if you hover the mouse over the field in the Entities Editor dialog
+box.
+<P>
+</FONT><FONT FACE="Courier New" SIZE="4">#pragma GE_Type(&quot;door.bmp&quot;)
+<P>
+typedef struct Door {
+<P>
+#pragma GE_Published
+<P>
+geVec3d origin;
+<P>
+geWorld_Model * DoorGeometry;
+<P>
+#pragma GE_Private
+<P>
+int IsOpening;
+<P>
+#pragma GE_Origin(origin)
+<P>
+} Door;
+<P>
+</FONT><FONT FACE="Arial" SIZE="3">Above is an example of the </FONT><FONT FACE="Courier New" SIZE="4">GE_Private</FONT><FONT FACE="Arial" SIZE="3"> pragma.  The fields marked as </FONT><FONT FACE="Courier New" SIZE="4">GE_Published</FONT><FONT FACE="Arial" SIZE="3"> will be editable in the editor.  The fields marked as </FONT><FONT FACE="Courier New" SIZE="4">GE_Private</FONT><FONT FACE="Arial" SIZE="3"> will not be displayed in the editor's entity property editor.
+<P>
+When the editor writes the entities out to the level, it stores the type
+definitions as well.  The engine parsees the type definitions, and streams in the
+entities.  The engine allocates space for each entity</FONT><FONT FACE="Times New Roman" SIZE="5">’</FONT><FONT FACE="Arial" SIZE="3">s data structure at level load time.  The published fields, for which the
+editor had data, will be filled in with whatever the designer placed in the level. 
+Fields that are pointers to other structures will be properly initialized to
+point to those structures.  This is possible because each entity is named by the
+editor, and the engine performs load time binding on those names to fill in
+the structure fields.  The private fields are all initialized to zero by the
+engine at load time. The programmer can then access the data structures directly
+without having to perform any load time binding of the structures. 
+<P>
+
+<P>
+</FONT></BODY>
+</HTML>

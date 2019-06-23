@@ -1,0 +1,546 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""res\\AStudio.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\AStudio.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_BODY DIALOG DISCARDABLE  0, 0, 359, 97
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Body"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Filename:",IDC_STATIC,7,10,31,8
+    EDITTEXT        IDC_EDITBODY,47,8,130,12,ES_AUTOHSCROLL | WS_GROUP
+    PUSHBUTTON      "Browse",IDC_BROWSEBODY,183,7,50,14,WS_GROUP
+    GROUPBOX        "Body Format",IDC_STATIC,7,27,170,44
+    CONTROL         "3DS MAX (.max)",IDC_BODYMAX,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,12,38,68,10
+    CONTROL         "Export (.nfo)",IDC_BODYNFO,"Button",BS_AUTORADIOBUTTON,
+                    12,54,55,10
+    CONTROL         "Genesis3D Body (.bdy)",IDC_BODYBDY,"Button",
+                    BS_AUTORADIOBUTTON,85,38,88,10
+    CONTROL         "Genesis3D Actor (.act)",IDC_BODYACT,"Button",
+                    BS_AUTORADIOBUTTON,85,54,87,10
+END
+
+IDD_MATERIALS DIALOG DISCARDABLE  0, 0, 348, 122
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Extra Materials"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_MATERIALSLIST,7,7,80,86,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "File:",IDC_STATIC,91,10,14,8
+    PUSHBUTTON      "Rename",IDC_RENAMEMATERIAL,91,25,50,14
+    PUSHBUTTON      "Add",IDC_ADDMATERIAL,91,43,50,14
+    PUSHBUTTON      "Delete",IDC_DELETEMATERIAL,91,61,50,14
+    PUSHBUTTON      "Default",IDC_MATERIALDEFAULT,91,79,50,14
+    EDITTEXT        IDC_EDITTEXTURE,107,8,175,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse",IDC_BROWSETEXTURE,291,7,50,14
+    CONTROL         "Color",IDC_CHECKCOLOR,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,153,31,32,8
+    PUSHBUTTON      "Choose",IDC_CHOOSECOLOR,192,27,50,14
+    LTEXT           "Only use this dialog to add extra materials to the build.  Materials that are referenced by the 3DS MAX file will be automatically included in the actor.",
+                    IDC_STATIC,153,54,188,26,SS_SUNKEN
+END
+
+IDD_MOTIONS DIALOGEX 0, 0, 348, 122
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+EXSTYLE WS_EX_ACCEPTFILES
+CAPTION "Motions"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LISTBOX         IDC_MOTIONSLIST,7,7,80,86,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Rename",IDC_RENAMEMOTION,91,25,50,14
+    PUSHBUTTON      "Add",IDC_ADDMOTION,91,43,50,14
+    PUSHBUTTON      "Delete",IDC_DELETEMOTION,91,61,50,14
+    PUSHBUTTON      "Default",IDC_MOTIONDEFAULT,91,79,50,14
+    LTEXT           "File:",IDC_STATIC,91,10,14,8
+    EDITTEXT        IDC_EDITMOTION,107,8,175,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse",IDC_BROWSEMOTION,291,7,50,14,WS_GROUP
+    GROUPBOX        "Format",IDC_STATIC,150,23,191,37
+    CONTROL         "3DS Max (.max)",IDC_MOTIONMAX,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,154,33,66,10
+    CONTROL         "Exported Key (.key)",IDC_MOTIONKEY,"Button",
+                    BS_AUTORADIOBUTTON,154,46,77,10
+    CONTROL         "Genesis3D Motion (.mot)",IDC_MOTIONMOT,"Button",
+                    BS_AUTORADIOBUTTON,230,33,107,10
+    CONTROL         "Genesis3D Actor (.act)",IDC_MOTIONACT,"Button",
+                    BS_AUTORADIOBUTTON | WS_DISABLED,230,46,87,10
+    CONTROL         "Optimize",IDC_OPTIMIZE,"Button",BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP,155,65,42,10
+    EDITTEXT        IDC_EDITOPTIMIZE,199,64,21,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER | WS_GROUP
+    CONTROL         "Spin1",IDC_SPINOPTIMIZE,"msctls_updown32",
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
+                    UDS_ARROWKEYS,215,65,11,10
+    LTEXT           "Bone:",IDC_STATIC,231,66,20,8
+    EDITTEXT        IDC_EDITBONE,253,64,88,12,ES_AUTOHSCROLL
+END
+
+IDD_PATHS DIALOG DISCARDABLE  0, 0, 348, 122
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Paths"
+FONT 8, "MS Sans Serif"
+BEGIN
+    RTEXT           "Materials directory:",IDC_STATIC,7,9,64,8
+    EDITTEXT        IDC_EDITMATERIALSPATH,79,7,256,12,ES_AUTOHSCROLL
+    RTEXT           "Temp files directory:",IDC_STATIC,7,26,64,8
+    EDITTEXT        IDC_EDITTEMPFILESDIR,79,24,256,12,ES_AUTOHSCROLL
+    CTEXT           "IMPORTANT NOTE",IDC_STATIC,79,42,256,8
+    CTEXT           "Do not put files in the Temp files directory.",
+                    IDC_STATIC,79,52,256,8
+    LTEXT           "The Temp files directory is reserved for temporary files created by AStudio during the build process.  A Clean or Build All operation will result in AStudio deleting all files in this directory.",
+                    IDC_STATIC,79,62,256,27
+END
+
+IDD_TARGET DIALOG DISCARDABLE  0, 0, 348, 122
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Target"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Output file:",IDC_STATIC,7,10,35,8
+    EDITTEXT        IDC_EDITTARGET,47,8,130,12,ES_AUTOHSCROLL | WS_GROUP
+    PUSHBUTTON      "Browse",IDC_BROWSETARGET,183,7,50,14,WS_GROUP
+    GROUPBOX        "Format",IDC_STATIC,7,24,78,25,NOT WS_VISIBLE | 
+                    WS_DISABLED
+    CONTROL         "Binary",IDC_FORMATBINARY,"Button",BS_AUTORADIOBUTTON | 
+                    NOT WS_VISIBLE | WS_DISABLED | WS_GROUP | WS_TABSTOP,13,
+                    35,35,10
+    CONTROL         "Text",IDC_FORMATTEXT,"Button",BS_AUTORADIOBUTTON | NOT 
+                    WS_VISIBLE | WS_DISABLED,52,35,30,10
+END
+
+IDD_TEXTINPUT DIALOG DISCARDABLE  0, 0, 199, 53
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_EDIT1,7,7,185,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,39,30,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,109,30,50,14
+END
+
+IDD_SETTINGS DIALOG DISCARDABLE  0, 0, 405, 142
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Settings"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Actor Viewer Path:",IDC_STATIC,7,9,60,8
+    EDITTEXT        IDC_EDITVIEWERPATH,79,7,130,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse",IDC_BROWSEVIEWER,215,7,50,14
+    LTEXT           "3DS MAX Path:",IDC_STATIC,7,27,51,8
+    EDITTEXT        IDC_EDIT3DSMAXPATH,79,25,130,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse",IDC_BROWSE3DSMAX,215,25,50,14
+    GROUPBOX        "Motion Optimization Defaults",IDC_STATIC,7,51,201,27
+    CONTROL         "Optimize Motions",IDC_OPTCHECK,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,13,63,68,10
+    LTEXT           "Optimization Level",IDC_STATIC,96,63,58,8
+    EDITTEXT        IDC_EDITOPTLEVEL,160,60,21,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER | WS_GROUP
+    CONTROL         "Spin1",IDC_SPINOPTLEVEL,"msctls_updown32",
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
+                    UDS_ARROWKEYS,176,61,11,10
+END
+
+IDD_LOGOPAGE DIALOG DISCARDABLE  0, 0, 348, 122
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "About"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         130,IDC_STATIC,"Static",SS_BITMAP | SS_SUNKEN,112,18,122,
+                    62
+    CTEXT           "Genesis3D Actor Studio Version 1.0",IDC_STATIC,114,85,
+                    119,8,SS_NOPREFIX
+    CTEXT           "Copyright © 1999, WildTangent, Inc.",IDC_STATIC,108,
+                    94,130,8
+END
+
+IDD_NEWPROJECT DIALOG DISCARDABLE  0, 0, 286, 66
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Create New Project"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Project &Name:",IDC_STATIC,7,9,46,8
+    EDITTEXT        IDC_EDITPROJECTNAME,55,7,167,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Browse",IDC_BROWSEPROJECT,229,7,50,14
+    CONTROL         "&Use Project Directory",IDC_USEPROJECTDIR,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,29,83,10
+    DEFPUSHBUTTON   "OK",IDOK,76,46,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,159,46,50,14
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "Genesis3D Actor Studio\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "AStudio\0"
+            VALUE "LegalCopyright", "Copyright © 1999, WildTangent, Inc.\0"
+            VALUE "OriginalFilename", "AStudio.EXE\0"
+            VALUE "ProductName", "Actor Studio\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_BODY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 352
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 90
+    END
+
+    IDD_MATERIALS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 341
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 115
+    END
+
+    IDD_MOTIONS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 341
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 115
+    END
+
+    IDD_PATHS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 341
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 115
+    END
+
+    IDD_TARGET, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 341
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 115
+    END
+
+    IDD_TEXTINPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 192
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 46
+    END
+
+    IDD_SETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 398
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 135
+    END
+
+    IDD_LOGOPAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 341
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 115
+    END
+
+    IDD_NEWPROJECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 279
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 59
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILENEW
+        MENUITEM "&Open\tCtlr+O",               ID_FILEOPEN
+        MENUITEM "&Save\tCtrl+S",               ID_FILESAVE
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit\tAlt+F4",               ID_FILEEXIT
+    END
+    POPUP "&Project"
+    BEGIN
+        MENUITEM "&Build\tF7",                  ID_PROJECTBUILD
+        MENUITEM "&Rebuild All",                ID_PROJECTBUILDALL
+        MENUITEM "Cl&ean",                      ID_PROJECTCLEAN
+        MENUITEM "&Actor Summary",              ID_PROJECTACTORSUMMARY
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Contents\tF1",               ID_HELP
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_LOGO                BITMAP  DISCARDABLE     "res\\actview.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR1 ACCELERATORS DISCARDABLE 
+BEGIN
+    "N",            ID_FILENEW,             VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILEOPEN,            VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILESAVE,            VIRTKEY, CONTROL, NOINVERT
+    VK_ESCAPE,      ID_DUMMYESC,            VIRTKEY, NOINVERT
+    VK_F4,          ID_FILECLOSE,           VIRTKEY, CONTROL, NOINVERT
+    VK_F7,          ID_PROJECTBUILD,        VIRTKEY, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILEOPEN             "Open an existing project"
+    IDS_UNTITLED            "Untitled"
+    ID_FILEEXIT             "Exit the program"
+    ID_FILENEW              "Create a new project"
+    ID_HELPABOUT            "Display program information"
+    ID_FILESAVE             "Save the current file"
+    ID_FILESAVEAS           "Save the current file under a new name"
+    ID_BUILDBUILD           "Build the project"
+    ID_BUILDALL             "Rebuild all project dependencies"
+    IDS_MODIFIED            "%1 has been modified.\r\nDo you want to save it?"
+    ID_BUILDCLEAN           "Deletes intermediate and output files"
+    ID_BUILDSETTINGS        "Edit project settings"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_PROJECTSETTINGS      "Change project settings"
+    ID_PROJECTBUILD         "Build the project"
+    ID_PROJECTBUILDALL      "Rebuild all project dependencies"
+    ID_PROJECTCLEAN         "Deletes intermediate and output files"
+    IDS_CAPTION             "Genesis3D Actor Studio - %1"
+    IDS_UNTITLEDFILE        "New file"
+    IDS_ACTFILEFILTER       "Genesis3D Actor Files (.act)|*.act||"
+    IDS_ACTFILEEXT          "act"
+    IDS_BDYFILEFILTER       "Genesis3D Body Files (.max;.nfo;.bdy;.act)|*.max;*.nfo;*.bdy;*.act||"
+    IDS_BDYFILEEXT          "bdy"
+    IDS_BMPFILEFILTER       "Bitmap Files (.bmp)|*.bmp||"
+    IDS_BMPFILEEXT          "bmp"
+    IDS_MOTFILEFILTER       "Genesis3D Motion Files (.max;.key;.mot)|*.max;*.key;*.mot||"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_MOTFILEEXT          "mop"
+    IDS_INIFILE_NAME        "AStudio.ini"
+    IDS_WRITEERROR          "Error writing file '%1'."
+    IDS_ASPFILEFILTER       "Genesis3D Actor Studio Projects (.apj)|*.apj||"
+    IDS_ASPFILEEXT          "apj"
+    IDS_READERROR           "Error reading from file '%1'."
+    IDS_SAVEPROJECTPROMPT   "Save Project As"
+    IDS_OPENPROJECTPROMPT   "Open Project"
+    IDS_TARGETPROMPT        "Select output file"
+    IDS_BODYPROMPT          "Load body from"
+    IDS_TEXTUREPROMPT       "Select texture file"
+    IDS_MATERIALPROMPT      "Enter material name"
+    IDS_OUTOFMEMORY         "Not enough memory to complete operation"
+    IDS_3DSMAXPROMPT        "Locate 3DS MAX"
+    IDS_VIEWERPROMPT        "Locate Actor Viewer"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_COMPILEFAILED       "Build failed.  See messages window for more information."
+    IDS_COMPILESUCCESS      "Build successful!"
+    IDS_NEWFILEPROMPT       "Select working directory"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_EXEFILEEXT          "exe"
+    IDS_EXEFILEFILTER       "Executable Files (.exe)|*.exe||"
+    IDS_MOTIONFILEPROMPT    "Select motion file"
+    IDS_MOTIONPROMPT        "Enter motion name"
+    IDS_ERRORADDMATERIAL    "Error adding material"
+    IDS_ERRORADDMOTION      "Error adding motion"
+    IDS_ERRORDELMOTION      "Error deleting motion"
+    IDS_MESSAGESHIDE        "<< Messages"
+    IDS_MESSAGESSHOW        "Messages >>"
+    IDS_CREATEERROR         "Error creating project"
+    IDS_PROJECTNAMEPROMPT   "Enter project name"
+    IDS_OVERWRITEPROJECT    "File '%1' exists.  Overwrite?"
+    IDS_PROJECTFILECREATEERROR "Error creating file '%1'."
+    IDS_BUILD               "Build"
+    IDS_OPTIONSERR          "Unable to load INI file."
+    IDS_RELATIVEPATH        "The path '%1' is not relative to the project path '%2'."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CANTSTARTCOMPILE    "Unable to start compile"
+    IDS_STOPBUILD           "Stop Build"
+    IDS_BUILDING            "Building '%1'"
+    IDS_CLEANING            "Cleaning '%1'"
+    IDS_CANCELREQUESTED     "Build cancel requested."
+    IDS_NEWNAMEPROMPT       "Enter new name"
+    IDS_MOTIONEXISTS        "A motion named '%1' already exists."
+    IDS_CANTDROPMOTION      "Can't add '%1'.  A motion named '%2' already exists."
+    IDS_ERRORDROPMOTION     "Error adding motion file '%1'."
+    IDS_MATERIALEXISTS      "A material named '%1' already exists."
+    IDS_ERRORDELMATERIAL    "Error deleting materla."
+    IDS_CANTDROPMATERIAL    "Can't add '%1'.  A material named '%2' already exists."
+    IDS_ERRORDROPMATERIAL   "Error adding material file '%1'."
+    IDS_SUMMARYFAILED       "Can't create actor summary.\nSee messages window for details."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "res\AStudio.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

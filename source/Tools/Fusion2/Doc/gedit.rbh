@@ -1,0 +1,35 @@
+[Project]
+Help Compiler=HCW.EXE
+Remove Unused=0
+Version=512
+ConvertedFromV1=0
+HasGlossary=0
+Automatic Map Files=0
+NextFile=3
+Extra Language=0
+WH2RH=0
+
+[Document Files]
+gedit.doc=1
+gedit2.doc=2
+
+[File Properties]
+HasProperties=1
+BrowseType=0
+AutoMapFile=0
+StartingWith=0
+IncrementBy=20
+NextTopicNumber=0
+StartingNumber=1
+BrowseString=gedit:0
+DefaultBuildTag=
+
+[VERSION]
+RHFile=4.1
+
+[.rbh]
+CurrentDir=C:\Project\Fusion2\Doc
+AutoFixRTF=0
+CopyTo=0
+PreBatch=
+PostBatch=

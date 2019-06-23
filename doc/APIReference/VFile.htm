@@ -1,0 +1,912 @@
+<html>
+<head>
+<title>VFile</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h2>Summary</h2>
+<p>geVFile is a file I/O subsystem designed to encapsulate and extend regular 
+  OS file operations.</p>
+<h2>Overview</h2>
+<p>The geVFile system is intended to be used to abstract away normal file operations 
+  to allow other subsystems to read data from arbitrary sources. Included in this 
+  system is support for normal DOS files, memory files, virtual file systems and 
+  complex search paths. A memory file is a file which does its I/O operations 
+  to a block of memory, with no corresponding DOS file on disk. A virtual file 
+  system is a file which contains multiple files, potentially in a hierachy. A 
+  search path is a sequence of places to search for files to be opened.</p>
+<p>One of the attributes of a geVFile is whether or not it is a directory. A file 
+  which is a directory can support Open operations, but not Read/Write operations. 
+  A file which is not a directory can support Read/Write operations, but not Open 
+  operations. This concept is key to understanding when you can use geVFiles for 
+  certain operations below. You may notice that we use the term file system from 
+  time to time, instead of file or geVFile. In general, we do this when referring 
+  to a file handle whose attributes indicate that it is a directory, and hence 
+  can support Open operations.</p>
+<p>Two APIs exist for opening files. These are geVFile_OpenNewSystem, and geVFile_Open.We 
+  have diverged from the normal pattern of having Create/Destroy functions for 
+  geVFile because we did not wish to move too far from the classical model of 
+  file APIs, as these are comfortable to most developers. The difference between 
+  geVFile_OpenNewSystem and geVFile_Open is that geVFile_OpenNewSystem allows 
+  you to create a file without a prior existing geVFile, and also to specify the 
+  base system which is used for operations on the data. geVFileOpen requires that 
+  you pass in a valid geVFile to open the file from. To explain this better, we 
+  will go into a little depth on both functions here. Following this will be a 
+  walk through of the simplest way to obtain file handles, and then more complex, 
+  but more powerful ways.</p>
+<p>The geVFile system has a mechanism for registering new file system access functions. 
+  The access functions define all possible APIs that the file system is capable 
+  of: open/close, read/write, seek, attributes etc. Each file system API (FSAPI) 
+  set allows you to access data from different media types (e.g. DOS vs memory). 
+  We have implemented three basic sets of file system access functions:</p>
+<table width="75%" border="1">
+  <tr> 
+    <td width="41%" valign="top"><b>API</b></td>
+    <td width="59%"><b>Capability</b></td>
+  </tr>
+  <tr> 
+    <td height="22" width="41%" valign="top">GE_VFILE_TYPE_DOS</td>
+    <td height="22" width="59%">Supports access to DOS files and directories. 
+      Both Open and Read/Write operations are supported.</td>
+  </tr>
+  <tr> 
+    <td width="41%" valign="top">GE_VFILE_TYPE_MEMORY</td>
+    <td width="59%">Supports access to blocks of memory as files. Both Read and 
+      Write operations are supported, but Open operations are not (You cannot 
+      pass a memory file to geVFile_Open).</td>
+  </tr>
+  <tr>
+    <td width="41%" valign="top">GE_VFILE_TYPE_VIRTUAL</td>
+    <td width="59%">Supports access to virtual file systems, which are collections 
+      of individual files embedded within a single, monolithic file. Both Open, 
+      and Read/Write operations are supported, with some restrictions.</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>geVFile_OpenNewSystem allows you to specify the base FSAPI used to perform 
+  operations on data, and the source of that data, in addition to the normal file 
+  access flags. A file that has been opened with geVFile_OpenNewSystem accesses 
+  that FSAPI for every file operation requested on the resulting geVFile.</p>
+<p>geVFile_Open does not allow you to pass the FSAPI in explicitly. Instead, you 
+  pass it in implicitly by passing in a geVFile object. geVFile_Open will then 
+  use the FSAPI in the passed geVFile to perform the actual open operation. This 
+  is very powerful, as will be demonstrated below.</p>
+<p>The APIs can be approached in steps, so we will discuss the easiest way (and 
+  the least powerful) first. The simple way to open a file (DOS only) with geVFile:</p>
+<blockquote>
+  <pre><code>geVFile *File;
+</code><code>File = geVFile_OpenNewSystem(NULL, GE_VFILE_TYPE_DOS, &quot;c:\\foo\\bar.dat&quot;, NULL, GE_VFILE_OPEN_READONLY);</code></pre>
+</blockquote>
+<p>The file handle created above can be used for the familiar file operations 
+  supported on individual files, such as Read, Seek and Close.</p>
+<p>geVFile_Close is the method that you use to close a file and to destroy the 
+  geVFile object.</p>
+<h4>Directories</h4>
+<p>Directories are simply files that contain other files. They are useful as an 
+  abstract concept because they permit us to define directories in places that 
+  are not quite the same as the conventional DOS directory structure. This permits 
+  the developer to write code which operates on files in directories, and replace 
+  the low level file system without having to change the high level code relying 
+  on that file system. Here is an example of how to open a DOS directory, and 
+  then open files from within that directory. Later, in the Virtual Files section, 
+  we will show you how this concept can be expanded to allow you to open files 
+  from a virtual file system without having to change much of your application 
+  code.</p>
+<pre><code>geBoolean OpenSomeFile(geVFile *Directory)
+</code><code>{
+    geVFile *File;
+
+    File = geVFile_Open(Diroectory, &quot;test.txt&quot;, GE_VFILE_OPEN_READONLY);
+    if (File)
+    {
+        // Do something here
+        geVFile_Close(File);
+        return GE_TRUE;
+    }
+</code><code>    return GE_FALSE;
+}</code></pre>
+<pre><code>void main(void)
+{
+    geVFile *Directory;
+</code><code>    geVFile *File;</code></pre>
+<pre><code>    Directory = geVFile_OpenNewSystem(NULL., GE_VFILE_TYPE_DOS, &quot;c:\\myapp&quot;,    NULL, GE_VFILE_OPEN_READONLY | GE_VFILE_OPEN_DIRECTORY);
+
+
+    if (OpenSomeFile(Directory) == GE_FALSE)
+        printf(&quot;Success\n&quot;);
+    else
+        printf(&quot;Failure\n&quot;);
+}</code></pre>
+<h4>Virtual Files</h4>
+<p>Virtual files are single files that contain a complete directory structure, 
+  and the contents of multiple other files. They are sometimes referred to as 
+  collection files. Other parts of the industry might refer to these as PAK files. 
+  This file system defines operations on these types of files that make them completely 
+  transparent to the calling application. One purpose of the virtual file is to 
+  permit you to package up your application data into single files, and distribute 
+  that composite file as opposed to many smaller files. Runtime access to your 
+  data is extremely efficient.</p>
+<p>In the next release of the engine, virtual file systems will be used to enable 
+  streaming operations on data to be made more efficient.</p>
+<p>Virtual files are created by opening a file with read/write access, and then 
+  opening a new file system with the type GE_VFILE_TYPE_VIRTUAL, with the first 
+  file as the FS parameter. The file that is returned from this operation will 
+  be a directory. You can open files in it, either for read-only access, or for 
+  creation. When you do write operations to the files that you create within a 
+  virtual file system, those operations are forwarded on to the base file system 
+  used to create the virtual file system. When the virtual file system is closed, 
+  a directory is written to the base file system. When you reopen the virtual 
+  file system on the base file, the directory will be read, and used to locate 
+  the data that was written to the base file in the first place. The application 
+  code need not concern itself with these operations - as far as the client is 
+  concerned, the virtual file system just looks like a directory.</p>
+<p>There are two ways to create virtual file systems. The first is more generic, 
+  and will work for any combination of file systems. The second is a sugar coated 
+  version which permits simple access to DOS files as virtual files. For the examples 
+  below, please refer to the definition of OpenSomeFile in the <b>Directories 
+  </b>example above.</p>
+<pre><code>void main(void)
+{
+    geVFile *BaseFile;
+    geVFile *VFS;
+    geVFile *File;
+ 
+    // Create the virtual file system   
+    BaseFile = geVFile_OpenNewSystem(NULL, &quot;c:\\myapp\\foo.vfs&quot;, GE_VFILE_OPEN_CREATE);
+    VFS = geVFile_OpenNewSystem(BaseFile, GE_VFILE_TYPE_VIRTUAL, NULL, NULL, GE_VFILE_OPEN_CREATE | GE_VFILE_OPEN_DIRECTORY);
+
+    File = geVFile_Open(VFS, &quot;test.txt&quot;, GE_VFILE_OPEN_CREATE);
+    geVFile_Write(File, &quot;Hello!&quot;, 6);
+    geVFile_Close(File);
+    geVFile_Close(VFS);
+    geVFile_Close(BaseFile);
+
+    // Now reopen the virtual file system.  For this example, we'll show the shortcut
+    // syntax for opening a VFS. In the shortcut, a DOS base file is created for you.
+    VFS = geVFile_OpenNewSystem(NULL, GE_VFILE_TYPE_VIRTUAL, &quot;c:\\myapp\\foo.vfs&quot;, NULL, GE_VFILE_OPEN_DIRECTORY | GE_VFILE_OPEN_READONLY);
+    OpenSomeFile(VFS);
+    geVFile_Close(VFS);
+}
+</code></pre>
+<p>Note that is perfectly OK to create directories inside a VFS. You do this just 
+  as if you were creating a directory under any file system. The VFS will maintain 
+  the hierarchy for you:</p>
+<blockquote>
+  <pre><code>geVFile *Directory;
+</code><code>geVFile *File;</code></pre>
+  <pre><code>Directory = geVFile_Open(VFS, &quot;MyNewDirectory&quot;, GE_VFILE_OPEN_DIRECTORY    | GE_VFILE_OPEN_CREATE);
+</code><code>File = geVFile_Open(Directory, &quot;AnotherFile.txt&quot;, GE_VFILE_OPEN_CREATE);</code></pre>
+</blockquote>
+<p>In the example above <code>AnotherFile.txt</code> is created within a virtual 
+  directory <code>MyNewDirectory</code>. If the <code>VFS</code> is a virtual 
+  file system, all read/write operations on <code>AnotherFile.txt</code> are forwarded 
+  on to the base file used to create the <code>VFS</code>. The <code>VFS</code> 
+  parameter used to create the <code>Directory</code> does not have to be a virtual 
+  file system. It could just be a DOS directory, in which case, you will create 
+  a directory on your disk.</p>
+<p><code></code></p>
+<h4>Memory Files</h4>
+<p>Memory files are files that have all their data in memory, not on any disk 
+  file. They can be created from an existing block of memory for read-only operations, 
+  or they can be created with no block of memory for write operations. They are 
+  useful for processing data that is embedded in your application as raw bytes. 
+  They also have applications for sending formatted data from one machine to another.</p>
+<p>To create a memory file, you have to set up a memory file context to point 
+  to the data that you want to operate on. The context is passed into geVFile_OpenNewSystem, 
+  and a normal geVFile pointer is returned. This pointer is suitable for read/write 
+  operations only. It can be used as the base file for a virtual file system, 
+  which allows you to embed virtual file systems in your application data if you 
+  so choose. This can be useful for reading application data out of a binary resource 
+  in your executeable image, for example.</p>
+<p>In the first example below, we open a memory file on an existing block of memory, 
+  and read from it. In the second example, we create a memory file for writing, 
+  passing no block of memory.</p>
+<pre><code>void main(void)
+{
+    geVFile *File;
+    geVFile_MemoryContext Context;
+</code><code>    char *Data = &quot;This is a test&quot;;
+    char Buff[5];
+
+    Context.Data = Data;
+    Context.DataLength = strlen(Data) + 1;
+    File = geVFile_OpenNewSystem(NULL, GE_VFILE_TYPE_MEMORY, NULL, &amp;Context, GE_VFILE_OPEN_READONLY);
+    geVFile_Read(File, Buff, sizeof(Buff));
+    geVFile_Close(File);
+}</code><br>
+<code>void main(void)
+{
+    geVFile *File;
+    geVFile_MemoryContext Context;
+</code><code>
+    Context.Data = NULL;
+    Context.DataLength = 0;
+    File = geVFile_OpenNewSystem(NULL, GE_VFILE_TYPE_MEMORY, NULL, &amp;Context, GE_VFILE_OPEN_CREATE);
+    geVFile_Printf(File, &quot;Some formatted data: %p&quot;, &amp;Context);
+
+    //  We want to be able to get back the data that we've written:
+    geVFile_UpdateContext(File, &amp;Context);
+    //  Now Context.Data points to the entire bulk of the file data,
+    //  and Context.DataLength is the size of that block.
+    geVFile_Close(File);
+}</code><code></code></pre>
+<p><code></code></p>
+<p>In the second example above, we used the function geVFile_UpdateContext to 
+  retrieve file system specific information. For Memory Files, you can retrieve 
+  a pointer to the current block of memory representing the file, along with its 
+  size. This pointer is valid only until the next operation on that file. You 
+  must treat the pointer as const. This API was added specifically to permit you 
+  to obtain the data from a memory file efficiently. It will also be used in the 
+  future to allow the client to obtain more specific information about particular 
+  file systems. In short, it's a back door.</p>
+<h4></h4>
+<h4>Search Paths</h4>
+<p>Search paths are a way of chaining multiple file systems together to allow 
+  open and search operations that fail on one file system to be retried on other 
+  file systems before potentially returning failure. Search paths were created 
+  with two goals in mind. First, it is desireable for users to be able to override 
+  file definitions with data of their own (for texture replacement, or patches, 
+  for example). Second, it is useful, from a configurable installation standpoint, 
+  to be able to have some files installed on your hard disk, some on a CDROM, 
+  and not have to change the application code to deal with arbitrary file location 
+  configurations. Search paths can make this easy.</p>
+<p>For the first case, suppose that you have your application data in a virtual 
+  file, including textures for some backdrops. Now suppose that you want to allow 
+  the user to override your backdrop textures with texture files of their own. 
+  Here is one way to accomplish this:</p>
+<blockquote>
+  <pre><code>geVFile *VFS;
+</code><code>geVFile *Directory;
+geVFile *TextureDirectory;</code></pre>
+  <pre><code>VFS = geVFile_OpenNewSystem(NULL, GE_VFILE_TYPE_VIRTUAL, &quot;c:\\myapp\\AppData.vfs&quot;, NULL, GE_VFILE_OPEN_READONLY | GE_VFILE_OPEN_DIRECTORY);
+Directory = geVFile_OpenNewSystem(NULL, GE_VFILE_TYPE_DOS, &quot;c:\\myapp\\UserTextures&quot;, NULL, GE_VFILE_OPEN_READONLY | GE_VFILE_OPEN_DIRECTORY);
+TextureDirectory = geVFile_Open(VFS, &quot;Textures&quot;, GE_VFILE_OPEN_READONLY | GE_VFILE_OPEN_DIRECTORY);
+geVFile_AddPath(TextureDirectory, Directory, GE_FALSE);</code></pre>
+</blockquote>
+<p>In the example code above, we create a virtual directory from a virtual file 
+  that contains all our application data. We also open a true DOS directory, and 
+  add it as an alternative directory to look for files in. The GE_FALSE parameter 
+  to geVFile_AddPath makes the DOS directory become the first directory to be 
+  searched, followed by the virtual directory. If the application opens foo.bmp 
+  from TextureDirectory, the DOS directory c:\myapp\UserTextures will be searched 
+  first for the file. If the file is found there, it will be opened from there. 
+  If the file is not found there, then the virtual directory will be searched. 
+  Hence the user can override the definition of foo.bmp in your virtual file by 
+  placing foo.bmp in the UserTextures directory. This gives you very fine control 
+  over what the user can override, without having to change your underlying application 
+  code very much at all. You just set up the initial directories at application 
+  startup, and pass them around to your subsystems, which are oblivious to the 
+  indirections.</p>
+<p>For the second case, suppose that you have a minimal install option which installs 
+  a few files to the local hard disk, but leaves most behind on a CD, and you 
+  want the application code to be able to deal with this easily. Here is how you 
+  could set this up.</p>
+<blockquote>
+  <pre><code>geVFile *ApplicationDirectory;
+geVFile *CDDirectory;
+
+ApplicationDirectory = geVFile_OpenNewSystem(NULL, GE_VFILE_TYPE_DOS, &quot;c:\\myapp, NULL, GE_VFILE_OPEN_UPDATE | GE_VFILE_OPEN_DIRECTORY);
+CDDirectory = geVFile_OpenNewSystem(NULL, GE_VFILE_TYPE_DOS, &quot;e:\\cdimage&quot;, NULL, GE_VFILE_OPEN_READONLY | GE_VFILE_OPEN_DIRECTORY);
+geVFile_AddPath(ApplicationDirectory, CDDirectory, GE_TRUE);</code></pre>
+</blockquote>
+<p><br>
+  Now, open operations on ApplicationDirectory will look first in the local DOS 
+  directory, and then on the CD. All the application has to do is pass around 
+  ApplicationDirectory, and files will be opened from the correct locations for 
+  any install configuration.<code></code></p>
+<h4>Finders</h4>
+<p>Finders are objects that you use to locate files within a file system. They 
+  can also be used to iterate the files in a file system. You use them just as 
+  you would the findfirst and findnext functions under the RTL, with a slight 
+  change to the iteration sequence.</p>
+<p>You create a finder with geVFile_CreateFinder, passing it a geVFile, which 
+  must be a directory, and a file spec to search for. To get to the first file 
+  in the finder, call geVFile_FinderGetNextFile. You can get to subsequent files 
+  by calling geVFile_FinderGetNextFile again. This makes the application code 
+  a little easier for iterating files:</p>
+<blockquote>
+  <pre><code>geVFile_Finder *Finder;
+
+Finder = geVFile_CreateFinder(Directory, &quot;*.*&quot;);
+while (geVFile_FinderGetNextFile(Finder) == GE_TRUE)
+{
+
+    geVFile_Properties Properties;
+    geVFile_FinderGetProperties(Finder, &amp;Properties);
+    printf(Properties.Name);
+}
+geVFile_DestroyFinder(Finder);</code></pre>
+</blockquote>
+<h4>File Times</h4>
+<p>File times are an issue because we did not wish to reinvent the wheel for time/date 
+  APIs. Because of this, we provide access to file times in the APIs, but provide 
+  no means for interpreting these values. Instead, we have included a single API 
+  - geVFile_TimeToWin32FileTime - which you can use to convert the internal file 
+  times to a format that can be handled by the Win32 API for manipulating file 
+  times. This was done to avoid the need for a largely redundant API set that 
+  has limited value. If you wish to break out components of a file's time, convert 
+  it to Win32 format, and use the Win32 APIs.</p>
+<h2>Reference</h2>
+<p><a name="geVFile_AddPath"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean 
+  geVFile_AddPath(geVFile *FS1, const geVFile *FS2, geBoolean Append)</font></tt></b></font></p>
+<p><b>Description</b>: Adds a file system to the search path of another file system 
+  for open operations.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="440" >
+  <tr> 
+    <td width="101" valign="top"><b>FS1 </b></td>
+    <td width="318">File system to add to</td>
+  </tr>
+  <tr> 
+    <td width="101" valign="top"><b>FS2</b></td>
+    <td width="318">New file system to be searching</td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b>Append</b></td>
+    <td width="318">GE_TRUE means append FS2 to the search order, while GE_FALSE 
+      means prepend.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><a name="geVFile_Close"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean 
+  geVFile_Close(geVFile *VFile)</font></tt></b></font></p>
+<p><b>Description</b>: Closes a file and destroys the handle.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="440" >
+  <tr> 
+    <td width="101"><b>VFile </b></td>
+    <td width="318">File to be closed.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: The operation can fail in several cases, most pertaining to 
+  running out of disk space. In the case of virtual file systems that are being 
+  constructed, the directory for the VFS is written to the parent file on the 
+  close operation for the VFS. If this write fails, the close operation will fail. 
+  There is no way to recover from this.</p>
+<p><a name="geVFile_CreateFinder"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geVFile_Finder 
+  geVFile_CreateFinder(geVFile *FS, const char *FileSpec)</font></tt></b></font></p>
+<p><b>Description</b>: Creates a finder object which can be iterated on to obtain 
+  file lists.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>FS</b></td>
+    <td width="363">File system to be used for search operations.</td>
+  </tr>
+  <tr> 
+    <td width="101"><b>FileSpec</b></td>
+    <td width="363">File specification (may include * and ?) to match against</td>
+  </tr>
+</table>
+<p><b>Returns</b>: A valid geVFile_Finder object on success, NULL otherwise.</p>
+<p></p>
+<p><a name="geVFile_DeleteFile"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean 
+  geVFile_DeleteFile(geVFile *FileSystem, const char *FileName)</font></tt></b></font></p>
+<p><b>Description</b>: Deletes a file from the given FileSystem</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>FileSystem</b></td>
+    <td width="363">File system to delete the file from</td>
+  </tr>
+  <tr> 
+    <td width="101"><b>FileName</b></td>
+    <td width="363">Name of the file to delete</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><a name="geVFile_DestroyFinder"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geVFile_DestroyFinder(geVFile_Finder *Finder)</font></tt></b></font></p>
+<p><b>Description</b>: Destroys a file finder</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>Finder</b></td>
+    <td width="363">Finder to destroy</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p><a name="geVFile_Disperse"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean 
+  geVFile_Disperse(geVFile *FS)</font></tt></b></font></p>
+<p><b>Description</b>: This API to be documented and implemented in a later release.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>FS</b></td>
+    <td width="363">&nbsp;</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><a name="geVFile_EOF"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean 
+  geVFile_EOF(geVFile *VFile)</font></tt></b></font></p>
+<p><b>Description</b>: Determines if a file is at the end of file pointer.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>VFile</b></td>
+    <td width="363">File to test</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the file pointer is at the end of file, GE_FALSE 
+  otherwise.</p>
+<p><a name="geVFile_FileExists"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean 
+  geVFile_FileExists(geVFile *FS, const char *FileName)</font></tt></b></font></p>
+<p><b>Description</b>: Tests for existance of a file.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>FS</b></td>
+    <td width="363">File system to check for existance of the file in</td>
+  </tr>
+  <tr> 
+    <td width="101"><b>FileName</b></td>
+    <td width="363">Name of file to look for.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the file exists, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: This operation will search the search path that FS makes up. 
+  If other file systems have been added to the search path, they will be tested 
+  as well.</p>
+<p> </p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p><a name="geVFile_FinderGetNextFile"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean 
+  geVFile_FinderGetNextFile(geVFile_Finder *Finder)</font></tt></b></font></p>
+<p><b>Description</b>: Moves the finder to the next file in its search list.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>Finder</b></td>
+    <td width="363">Finder to iterate on</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the there are more files in the list, GE_FALSE otherwise.</p>
+<p></p>
+<p></p>
+<p></p>
+
+<p></p>
+<p></p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_FinderGetProperties"></a>geBoolean 
+  geVFile_FinderGetProperties(const geVFile_Finder *Finder, geVFile_Properties 
+  *Properties)</font></tt></b></font></p>
+<p><b>Description</b>: Gets the properties of the current file that a finder points 
+  to. </p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>Finder</b></td>
+    <td width="363">Finder to get properties from</td>
+  </tr>
+  <tr> 
+    <td width="101"><b>Properties</b></td>
+    <td width="363">Properties structure to fill with information about the file</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: You can only get properties through a finder. In order to set 
+  properties, you have to have a file handle, and set the properties through the 
+  geVFile itself.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_GetContext"></a>geVFile 
+  *geVFile_GetContext(const geVFile *VFile)</font></tt></b></font></p>
+<p><b>Description</b>: Gets the outer geVFile from which this VFile was opened, 
+  if any exists.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>VFile</b></td>
+    <td width="363">File to get the context from</td>
+  </tr>
+</table>
+<p><b>Returns</b>: The outer context, if it exists, NULL otherwise.</p>
+<p><b>Remarks</b>: The only way that this function can return NULL is if the file 
+  was opened with geVFile_OpenNewSystem and no file system were passed in.</p>
+<p></p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_GetProperties"></a>geBoolean 
+  geVFile_GetProperties(const geVFile *VFile, geVFile_Properties *Properties)</font></tt></b></font></p>
+<p><b>Description</b>: Gets file properties from a file handle.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>VFile</b></td>
+    <td width="363">File to get properties for</td>
+  </tr>
+  <tr> 
+    <td width="101"><b>Properties</b></td>
+    <td width="363">Properties structure to fill in</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p></p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_GetS"></a>geBoolean 
+  geVFile_GetS(geVFile *VFile, char *Buff, int MaxLen)</font></tt></b></font></p>
+<p><b>Description</b>: Reads a string, including the carriage return, from a geVFile.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>VFile</b></td>
+    <td width="363">File to read from</td>
+  </tr>
+  <tr> 
+    <td width="101"><b>Buff</b></td>
+    <td width="363">Buffer to read to</td>
+  </tr>
+  <tr>
+    <td width="101"><b>MaxLen</b></td>
+    <td width="363">Maximum number of bytes to read</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: This function is intended to work exactly as fgets does, except 
+  on geVFiles. The function will return GE_FALSE if the buffer length is exceeded.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_Open"></a>geVFile 
+  *geVFile_Open(geVFile *FS, const char *FileName, unsigned int OpenFlags)</font></tt></b></font></p>
+<p><b>Description</b>: </p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>FS</b></td>
+    <td width="363">File system to open the file in</td>
+  </tr>
+  <tr> 
+    <td width="101"><b>FileName</b></td>
+    <td width="363">Name of the file to open (can have a relative directory)</td>
+  </tr>
+  <tr>
+    <td width="101"><b>OpenFlags</b></td>
+    <td width="363">Valid combination of the GE_VFILE_OPEN flags</td>
+  </tr>
+</table>
+<p><b>Returns</b>: A geVFile handle on success, NULL otherwise.</p>
+<p><b>Remarks</b>: This routine searches the search path, if any, in FS. The OpenFlags 
+  are subject to the runtime restrictions described in the overview.</p>
+<p></p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_OpenNewSystem"></a>geVFile 
+  *geVFile_OpenNewSystem(geVFile *FS, geVFile_TypeIdentifier SystemType, const 
+  char *Name, void *Context, unsigned int OpenFlags)</font></tt></b></font></p>
+<p><b>Description</b>: </p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101" valign="top"><b>FS</b></td>
+    <td width="363">File system to open the file in. This must be NULL if the 
+      SystemType is GE_VFILE_TYPE_MEMORY. It can optionally be NULL for all other 
+      FSAPI types currently.</td>
+  </tr>
+  <tr> 
+    <td width="101" valign="top"><b>SystemType</b></td>
+    <td width="363"> 
+      <p>Which registered file system API set (FSAPI) to use for operations on 
+        the file. Currently, this can be one of:</p>
+      <ul>
+        <li>GE_VFILE_TYPE_DOS</li>
+        <li>GE_VFILE_TYPE_MEMORY</li>
+        <li>GE_VFILE_TYPE_VIRTUAL</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b>Name</b></td>
+    <td width="363">Name of the file to open. This must be NULL if the SystemType 
+      is GE_VFILE_TYPE_MEMORY, or if the SystemType is GE_VFILE_TYPE_VIRTUAL and 
+      FS is not NULL.</td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b>Context</b></td>
+    <td width="363">
+      <p>Context information for some FSAPI kinds. Currently, this can only be 
+        non-NULL for GE_VFILE_TYPE_MEMORY SystemType, in which case, it must point 
+        to a geVFile_MemoryContext structure.</p>
+      <p>The geVFile_MemoryContext structure can be filled out in two ways. If 
+        the file is to be opened for readonly access, then the Data field must 
+        point to valid memory, and the DataLength field must be non-zero. If the 
+        file is to be opened for creation, then both these fields must be NULL.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b>OpenFlags</b></td>
+    <td width="363">Valid combination of the GE_VFILE_OPEN flags. See the overview 
+      for a detailed discussion of which flags are valid under which circumstances.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: A geVFile handle on success, NULL otherwise.</p>
+<p></p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_Printf"></a>geBoolean 
+  geVFile_Printf(geVFile *VFile, const char *Format, ...)</font></tt></b></font></p>
+<p><b>Description</b>: Prints to a file.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>VFile</b></td>
+    <td width="363">File to print to</td>
+  </tr>
+  <tr> 
+    <td width="101"><b>Format</b></td>
+    <td width="363">Format control string for the printf</td>
+  </tr>
+  <tr>
+    <td width="101"><b>...</b></td>
+    <td width="363">Arguments to the control string</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: This function is currently limited to an 8K output buffer for 
+  each invocation. The Format string follows the standard rules for printf format 
+  strings. In fact, the implementation applies vsprintf to get the result.</p>
+<p></p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_Read"></a>geBoolean 
+  geVFile_Read(geVFile *VFile, void *Buffer, int Count)</font></tt></b></font></p>
+<p><b>Description</b>: Reads data from a file.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>VFile</b></td>
+    <td width="363">File to read from</td>
+  </tr>
+  <tr> 
+    <td width="101"><b>Buffer</b></td>
+    <td width="363">Buffer to read to</td>
+  </tr>
+  <tr>
+    <td width="101"><b>Count</b></td>
+    <td width="363">Count of bytes to read</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: This operation will file on any file whose attributes include 
+  GE_VFILE_ATTRIB_DIRECTORY.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_RenameFile"></a>geBoolean 
+  geVFile_RenameFile(geVFile *FS, const char *FileName, const char *NewName)</font></tt></b></font></p>
+<p><b>Description</b>: </p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101"><b>FS</b></td>
+    <td width="363">File system to rename the file in</td>
+  </tr>
+  <tr> 
+    <td width="101"><b>FileName</b></td>
+    <td width="363">Name of the file to change</td>
+  </tr>
+  <tr>
+    <td width="101"><b>NewName</b></td>
+    <td width="363">New name for the file</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: This operation will always fail if the FS passed in does not 
+  have the attribute GE_VFILE_ATTRIB_DIRECTORY. </p>
+<p></p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_Seek"></a>geBoolean 
+  geVFile_Seek(geVFile *VFile, int Where, geVFile_Whence Whence)</font></tt></b></font></p>
+<p><b>Description</b>: Sets the file position.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101" valign="top"><b>VFile</b></td>
+    <td width="363">File to seek in.</td>
+  </tr>
+  <tr> 
+    <td width="101" valign="top"><b>Where</b></td>
+    <td width="363">Position to seek to, dependent on Whence parameter</td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b>Whence</b></td>
+    <td width="363">
+      <table width="99%" border="0">
+        <tr>
+          <td valign="top" width="45%">GE_VFILE_SEEKCUR</td>
+          <td width="55%">Where is relative to the current file pointer</td>
+        </tr>
+        <tr>
+          <td valign="top" width="45%">GE_VFILE_SEEKEND</td>
+          <td width="55%">Where is relative to the end of the file</td>
+        </tr>
+        <tr>
+          <td valign="top" width="45%">GE_VFILE_SEEKSET</td>
+          <td width="55%">Where is relative to the beginning of the file</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: Fails on any file whose attributes include GE_VFILE_ATTRIB_DIRECTORY.</p>
+<p></p>
+<p></p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_SetAttributes"></a>geBoolean 
+  geVFile_SetAttributes(geVFile *VFile, geVFile_Attributes Attributes)</font></tt></b></font></p>
+<p><b>Description</b>: Sets the attributes of a file.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101" valign="top"><b>VFile</b></td>
+    <td width="363">File to set attributes on</td>
+  </tr>
+  <tr> 
+    <td width="101" valign="top"><b>Attributes</b></td>
+    <td width="363"> 
+      <p>New attributes for the file. Settable attributes are:</p>
+      <ul>
+        <li>GE_VFILE_ATTRIB_READONLY</li>
+        <li>GE_VFILE_ATTRIB_DIRECTORY</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_SetHints"></a>geBoolean 
+  geVFile_SetHints(geVFile *VFile, const geVFile_Hints *Hints)</font></tt></b></font></p>
+<p><b>Description</b>: Sets the hint data for a file.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101" valign="top"><b>VFile</b></td>
+    <td width="363">File to set the hint data on.</td>
+  </tr>
+  <tr> 
+    <td width="101" valign="top"><b>Hints</b></td>
+    <td width="363"> 
+      <p>Hint data</p>
+    </td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: <font color="#FF0000">This API currently fails unconditionally</font>. 
+  It will apply, in the future, to files that are in GE_VFILE_TYPE_VIRTUAL systems.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_SetSize"></a>geBoolean 
+  geVFile_SetSize(geVFile *VFile, long Size)</font></tt></b></font></p>
+<p><b>Description</b>: Sets the size of the file.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101" valign="top"><b>VFile</b></td>
+    <td width="363">File to set the size of</td>
+  </tr>
+  <tr> 
+    <td width="101" valign="top"><b>Size</b></td>
+    <td width="363"> 
+      <p>New file size</p>
+    </td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: Any data that is beyond the end of the new file length is unrecoverable 
+  after this operation. This operation will fail on any file whose attributes 
+  include GE_VFILE_ATTRIB_DIRECTORY.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_SetTime"></a>geBoolean 
+  geVFile_SetTime(geVFile *VFile, const geVFile_Time *Time)</font></tt></b></font></p>
+<p><b>Description</b>: Sets the timestamp on a file.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101" valign="top"><b>VFile</b></td>
+    <td width="363">File to set the timestamp on</td>
+  </tr>
+  <tr> 
+    <td width="101" valign="top"><b>Time</b></td>
+    <td width="363"> 
+      <p>New time for the file</p>
+    </td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_Size"></a>geBoolean 
+  geVFile_Size(const geVFile *VFile, long *Size)</font></tt></b></font></p>
+<p><b>Description</b>: Retrieves the size of a file.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101" valign="top"><b>VFile</b></td>
+    <td width="363">File to get the size of</td>
+  </tr>
+  <tr> 
+    <td width="101" valign="top"><b>Size</b></td>
+    <td width="363"> 
+      <p>Variable to store the size in</p>
+    </td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: This operation fails on any file whose attributes include GE_VFILE_ATTRIB_DIRECTORY.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_Tell"></a>geBoolean 
+  geVFile_Tell(const geVFile *VFile, long *FilePos)</font></tt></b></font></p>
+<p><b>Description</b>: Gets the current file position for a file.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101" valign="top"><b>VFile</b></td>
+    <td width="363">File to get the position of</td>
+  </tr>
+  <tr> 
+    <td width="101" valign="top"><b>FilePos</b></td>
+    <td width="363"> 
+      <p>Variable to store the position in</p>
+    </td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: This operation fails on any file whose attributes include GE_VFILE_ATTRIB_DIRECTORY.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_TimeToWin32FileTime"></a>void 
+  geVFile_TimeToWin32FileTime(const geVFile_Time *Time, LPFILETIME Win32FileTime)</font></tt></b></font></p>
+<p><b>Description</b>: Converts a geVFile_Time to a Win32 FILETIME.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101" valign="top"><b>Time</b></td>
+    <td width="363">geVFile time object</td>
+  </tr>
+  <tr> 
+    <td width="101" valign="top"><b>Win32FileTime</b></td>
+    <td width="363"> 
+      <p>Win32 FILETIME object to convert to</p>
+    </td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_UpdateContext"></a>geBoolean 
+  geVFile_UpdateContext(const geVFile *VFile, void *Context, int ContextSize)</font></tt></b></font></p>
+<p><b>Description</b>:</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101" valign="top"><b>VFile</b></td>
+    <td width="363">File to get context information from</td>
+  </tr>
+  <tr> 
+    <td width="101" valign="top"><b>Context</b></td>
+    <td width="363"> 
+      <p>Context buffer to fill</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b>ContextSize</b></td>
+    <td width="363">Size of the context structure</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: This API was provided to retrieve updates to the initial context 
+  information that a file system was created with from an arbitrary file system. 
+  It is a method for extending a file system API implementation so that additional 
+  information can be queried from any file system without having to add to the 
+  geVFile API. Currently, this function only applies to GE_VFILE_TYPE_MEMORY. 
+  In this case, it is helpful for the following case: If you create a GE_VFILE_TYPE_MEMORY 
+  object for write, and write a bunch of data to it, you do not have access to 
+  the memory buffer that the file system is using, as you passed in NULL in the 
+  geVFile_MemoryContext. At any time, you can ask for an updated context from 
+  the memory file system, and this will give you access to the memory buffer. 
+  This allows you to write to a memory file, then retrieve the buffer pointer, 
+  and copy it. You must treat the pointer as const.</p>
+<p></p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geVFile_Write"></a>geBoolean 
+  geVFile_Write(geVFile *VFile, const void *Buffer, int Count)</font></tt></b></font></p>
+<p><b>Description</b>: Writes data to a file.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="485" >
+  <tr> 
+    <td width="101" valign="top"><b>VFile</b></td>
+    <td width="363">File to write to</td>
+  </tr>
+  <tr> 
+    <td width="101" valign="top"><b>Buffer</b></td>
+    <td width="363">Data to write</td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b>Count</b></td>
+    <td width="363">Count of bytes to write</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the operation succeeds, GE_FALSE otherwise.</p>
+<p><b>Remarks</b>: This operation always files on any file whose attributes include 
+  GE_VFILE_ATTRIB_DIRECTORY.</p>
+<p>&nbsp;</p>
+</body>
+</html>

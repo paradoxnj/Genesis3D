@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|Win32">
+      <Configuration>Template</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName>"$/Genesis3D/Src", QHABAAAA</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <ProjectGuid>{B37184CF-EE21-4B82-A96D-07772181A17C}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\bin\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.;..\..\Include;DrvMenu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Debug\GTest.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Debug\GTest.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\GTest.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalDependencies>winmm.lib;wsock32.lib;genesis3d_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\lib</AdditionalLibraryDirectories>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\Src;..\Include;DrvMenu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;ERRORLOG_FULL_REPORTING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\GTest.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Release\GTest.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\GTest.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>..\GTest.exe</OutputFile>
+      <AdditionalDependencies>winmm.lib;wsock32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AutoSelect.cpp" />
+    <ClCompile Include="Buffer.cpp" />
+    <ClCompile Include="Cd.cpp" />
+    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="Console.cpp" />
+    <ClCompile Include="DrvMenu\Drvlist.cpp" />
+    <ClCompile Include="Fx\corona.cpp" />
+    <ClCompile Include="FX\DynLight.cpp" />
+    <ClCompile Include="Fx\electric.cpp" />
+    <ClCompile Include="Fx\Fx.cpp" />
+    <ClCompile Include="Fx\ModelCtl.cpp" />
+    <ClCompile Include="GameMgr.cpp" />
+    <ClCompile Include="Game\Attacker.cpp" />
+    <ClCompile Include="Game\bot.cpp" />
+    <ClCompile Include="Game\Genvsi.cpp" />
+    <ClCompile Include="Game\GMain.cpp" />
+    <ClCompile Include="Game\Items.cpp" />
+    <ClCompile Include="Game\Level.cpp" />
+    <ClCompile Include="Game\PathPt.cpp" />
+    <ClCompile Include="Game\Track.cpp" />
+    <ClCompile Include="Game\Weapons.cpp" />
+    <ClCompile Include="Game\_bot.cpp" />
+    <ClCompile Include="Genvs.cpp" />
+    <ClCompile Include="Gmenu.cpp" />
+    <ClCompile Include="Host.cpp" />
+    <ClCompile Include="ipaddr.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="modelist.cpp" />
+    <ClCompile Include="NetMgr.cpp" />
+    <ClCompile Include="Procedurals\bumpmap.cpp" />
+    <ClCompile Include="Procedurals\ElectricFx.cpp" />
+    <ClCompile Include="Procedurals\fire.cpp" />
+    <ClCompile Include="Procedurals\gebmutil.cpp" />
+    <ClCompile Include="Procedurals\particles.cpp" />
+    <ClCompile Include="Procedurals\plasma.cpp" />
+    <ClCompile Include="Procedurals\proceng.cpp" />
+    <ClCompile Include="Procedurals\proceng_tables.cpp" />
+    <ClCompile Include="Procedurals\procutil.cpp" />
+    <ClCompile Include="Procedurals\setformat.cpp" />
+    <ClCompile Include="Procedurals\smoke.cpp" />
+    <ClCompile Include="Procedurals\Water.cpp" />
+    <ClCompile Include="Server.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="VidMode.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AutoSelect.h" />
+    <ClInclude Include="Buffer.h" />
+    <ClInclude Include="Cd.h" />
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="Console.h" />
+    <ClInclude Include="DrvMenu\Drvlist.h" />
+    <ClInclude Include="DrvMenu\Resource.h" />
+    <ClInclude Include="Fx\corona.h" />
+    <ClInclude Include="Fx\DynLight.h" />
+    <ClInclude Include="Fx\electric.h" />
+    <ClInclude Include="Fx\fx.h" />
+    <ClInclude Include="Fx\ModelCtl.h" />
+    <ClInclude Include="Gamemgr.h" />
+    <ClInclude Include="Game\bit.h" />
+    <ClInclude Include="Game\bot.h" />
+    <ClInclude Include="Game\botact.h" />
+    <ClInclude Include="Game\botmatch.h" />
+    <ClInclude Include="Game\Game.h" />
+    <ClInclude Include="Game\Genvs.h" />
+    <ClInclude Include="Game\Genvsi.h" />
+    <ClInclude Include="Game\GMain.h" />
+    <ClInclude Include="Game\Gplayer.h" />
+    <ClInclude Include="Game\pathpt.h" />
+    <ClInclude Include="Game\track.h" />
+    <ClInclude Include="Game\_bot.h" />
+    <ClInclude Include="Gmenu.h" />
+    <ClInclude Include="Host.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Menuitem.h" />
+    <ClInclude Include="ModeList.h" />
+    <ClInclude Include="NetMgr.h" />
+    <ClInclude Include="Procedurals\bumpmap.h" />
+    <ClInclude Include="Procedurals\ElectricFx.h" />
+    <ClInclude Include="Procedurals\fire.h" />
+    <ClInclude Include="Procedurals\gebmutil.h" />
+    <ClInclude Include="Procedurals\particles.h" />
+    <ClInclude Include="Procedurals\plasma.h" />
+    <ClInclude Include="Procedurals\procedural.h" />
+    <ClInclude Include="Procedurals\proceng.h" />
+    <ClInclude Include="Procedurals\procutil.h" />
+    <ClInclude Include="Procedurals\setformat.h" />
+    <ClInclude Include="Procedurals\smoke.h" />
+    <ClInclude Include="Procedurals\Water.h" />
+    <ClInclude Include="Server.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="VidMode.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DrvMenu\genvs.rc">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">DrvMenu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">DrvMenu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

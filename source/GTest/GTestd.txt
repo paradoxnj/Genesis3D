@@ -1,0 +1,82 @@
+Warning: cannot find "GTest.dep"
+	if not exist ".\Debug/" mkdir ".\Debug"
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Game\_bot.c
+_bot.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Game\Attacker.c
+Attacker.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Game\bot.c
+bot.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Game\Genvsi.c
+Genvsi.c
+Bot - Genvsi.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Game\GMain.c
+GMain.c
+Use: GenVSI_ModelToPlayer...
+Mins / maxs should be OK in the next build
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Game\Items.c
+Items.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Game\Level.c
+Level.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Game\PathPt.c
+PathPt.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Game\Track.c
+Track.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Game\Weapons.c
+Weapons.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Fx\corona.c
+corona.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Fx\DynLight.c
+DynLight.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Fx\electric.c
+electric.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Fx\Fx.c
+Fx.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Fx\ModelCtl.c
+ModelCtl.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Procedurals\bumpmap.c
+bumpmap.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Procedurals\ElectricFx.c
+ElectricFx.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Procedurals\fire.c
+fire.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Procedurals\gebmutil.c
+gebmutil.c
+gebmu_CreateHBITMAP : choose format to be 8,16,or 24, whichever is closest to Bitmap
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Procedurals\particles.c
+particles.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Procedurals\plasma.c
+plasma.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Procedurals\proceng.c
+proceng.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Procedurals\proceng_tables.c
+proceng_tables.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Procedurals\procutil.c
+procutil.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Procedurals\setformat.c
+setformat.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Procedurals\smoke.c
+smoke.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\Procedurals\Water.c
+Water.c
+	cl.exe /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\Src" /I "..\Include" /I "DrvMenu" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Debug\GTest.pch" /YX /Fo".\Debug\\" /Fd".\Debug\\" /FD /GZ /c .\DrvMenu\Drvlist.c
+Drvlist.c
+	rc.exe /l 0x409 /fo".\Debug\genvs.res" /i "DrvMenu" /d "_DEBUG" .\DrvMenu\genvs.rc
+	cl.exe @C:\TEMP\nma00172.
+AutoSelect.c
+Buffer.c
+Cd.c
+Client.c
+Console.c
+GameMgr.c
+Genvs.c
+Gmenu.c
+Host.c
+ipaddr.c
+Menu.c
+modelist.c
+NetMgr.c
+Server.c
+Bot - Server.c
+Text.c
+VidMode.c
+	link.exe @C:\TEMP\nmb00172.

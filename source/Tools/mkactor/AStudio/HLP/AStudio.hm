@@ -1,0 +1,40 @@
+// MAKEHELP.BAT generated Help Map file.  Used by ASTUDIO.HPJ. 
+ 
+// Commands (ID_* and IDM_*) 
+HIDM_ABOUTBOX                           0x10010
+HID_FILEOPEN                            0x18003
+HID_FILECLOSE                           0x18004
+HID_FILEEXIT                            0x18006
+HID_FILENEW                             0x18007
+HID_HELPABOUT                           0x18008
+HID_FILESAVE                            0x18009
+HID_FILESAVEAS                          0x1800A
+HID_BUILDBUILD                          0x1800B
+HID_BUILDALL                            0x1800C
+HID_BUILDCLEAN                          0x1800E
+HID_BUILDSETTINGS                       0x1800F
+HID_PROJECTSETTINGS                     0x18010
+HID_PROJECTBUILD                        0x18011
+HID_PROJECTBUILDALL                     0x18012
+HID_PROJECTCLEAN                        0x18013
+HID_DUMMYESC                            0x18014
+ 
+// Prompts (IDP_*) 
+ 
+// Resources (IDR_*) 
+HIDR_MAINFRAME                          0x20080
+HIDR_MENU1                              0x20081
+HIDR_ACCELERATOR1                       0x20083
+ 
+// Dialogs (IDD_*) 
+HIDD_ABOUTBOX                           0x20064
+HIDD_ASTUDIO_DIALOG                     0x20066
+HIDD_TARGET                             0x20066
+HIDD_PATHS                              0x2006A
+HIDD_BODY                               0x20084
+HIDD_MATERIALS                          0x20085
+HIDD_MOTIONS                            0x20086
+HIDD_TEXTINPUT                          0x20087
+HIDD_SETTINGS                           0x20088
+ 
+// Frame Controls (IDW_*) 

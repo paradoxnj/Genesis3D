@@ -1,0 +1,311 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Untitled Document</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2><a name="Overview"></a>Overview</h2>
+
+<p>The SDK is comprised of libraries and headers for building your application, 
+  tools for building your application content, and example code to show you the 
+  basic capabilities of the engine. Documentation is provided to bind this all 
+  together. The manifest below here should provide a roadmap into the layout of 
+  the SDK, clearing up any questions about what is redistributable, and which 
+  parts of the SDK pertain to which other parts. Finally, the complete source 
+  to the engine and tools is included under the OpenSource directory. These sources 
+  are covered by our open source license. Refer to license.txt in the OpenSource 
+  directory for more information.</p>
+
+<h2><a name="Libraries"></a>Libraries and Headers</h2>
+
+<p>The libraries and headers are the pieces that are required to
+actually build your application. </p>
+
+<p>The <font size="2" face="Courier New, Courier, mono">include</font>
+directory contains the comprehensive list of header files that
+define all the externally available interfaces in the engine. You
+may not modify these files. The main header file for the
+Genesis3D API is genesis.h. Including this header will cause most
+of the other headers to be included. Most of the other headers
+have been designed to stand on their own, or with minimall
+support from other subsystems. If your application is a tool, or
+is interested in only a subset of the Genesis3D APIs (e.g.
+Actors), you should include the headers that are relevant, and
+not the entirety of genesis.h. See the documentation on the
+subsystems under Engine API to get a more complete description of
+which subsystems depend on the others.</p>
+
+<p>The lib directory holds the different libraries that you will
+need to link. You only need one of the libraries provided in any
+given application. The differences between the libraries are
+detailed in this table:</p>
+
+<table border="1" width="75%">
+    <tr>
+        <td width="29%"><b>Library Name</b></td>
+        <td width="71%"><b>Purpose</b></td>
+    </tr>
+    <tr>
+        <td width="29%"><font size="2"
+        face="Courier New, Courier, mono">genesis.lib</font></td>
+        <td width="71%">Static link, non-debug library</td>
+    </tr>
+    <tr>
+        <td width="29%" height="13"><font size="2"
+        face="Courier New, Courier, mono">genesisd.lib</font></td>
+        <td width="71%" height="13">Static link, debug library</td>
+    </tr>
+    <tr>
+        <td width="29%"><font size="2"
+        face="Courier New, Courier, mono">genesisi.lib</font></td>
+        <td width="71%">Dynamic link, non-debug library</td>
+    </tr>
+    <tr>
+        <td width="29%"><font size="2"
+        face="Courier New, Courier, mono">genesisid.lib</font></td>
+        <td width="71%">Dynamic link, debug library</td>
+    </tr>
+</table>
+
+<p>The dynamic link libraries are provided should you choose to
+use genesis.dll You may need to use the DLL form of the library
+if your application is broken into DLLs. Multiple parts of an
+application must use the same copy of the Genesis3D libraries,
+currently.</p>
+
+<p>The bin directory contains genesis.dll. The bin\debug
+directory contains the debug version of genesis.dll. If you build
+with the dynamic link libraries, you will have to copy the
+corresponding version of the DLL (debug/non-debug) to the working
+directory of the application for it to load properly.
+Alternatively, you can copy the DLL to the system directory for
+Windows. We do not recommend this.</p>
+
+<p>The debug versions of the libraries provide much stronger
+parameter checking and runtime sanity tests than the release
+libraries, and are consequently significantly slower. They can,
+however, detect problems at a much higher level than can the
+release libraries. Some of the runtime checks can be configured
+programmatically (see geXForm3d in the Engine API section). The
+release libraries are compiled for speed. Many of the APIs in
+release mode do no safety checking on their parameters and will
+crash if you pass them bad data. This has been done to preserve
+the performance of the engine. We strongly recommend that you run
+frequently with the debug libraries.</p>
+
+<p>The Genesis3D APIs have been compiled using the __fastcall
+calling convention. This was done to maximize performance of
+several frequently called APIs (geVec3d, geXForm3d,
+geQuaternion). Unfortunately, Microsoft __fastcall convention
+passes the first 2 parameters in registers, and the remainder on
+the stack, while Borland __fastcall convention passes the first 3
+parameters in registers. This has resulted in an incomatibilty
+that we have not resolved as yet. Consequently, a wrapper must be
+built in order to use our APIs with Borland tools. Such a wrapper
+is not included in this SDK. See the section on Required External
+Tools.</p>
+
+<p>The libraries have been built with the multithreaded compiler
+options enabled in all cases. This enables them to coexist
+peacefully with applications that wish to use multiple threads
+accessing the C/C++ runtime libraries. The APIs themselves,
+however, are not guaranteed to be thread safe. You must not call
+into the Genesis3D API from separate threads without ensuring for
+yourself that the APIs are not being reentered. APIs which are
+not subject to this restriction are noted in their summary
+sections in the Engine API section. The decision to not make the
+engine completely threadsafe was made in the interests of
+preserving performance for the vast majority of applications.</p>
+
+<h2><a name="Redistributables"></a>Redistributables</h2>
+
+<p>Once you have built your application, you will need to package
+it up and distribute it. The packaging of the content is up to
+you. However, there are a few files from the SDK that you may
+need to distribute with your application. Primarily, these are
+the render drivers that the engine employs to interface to the
+hardware on your machine. If you use the dynamic link libraries,
+you will also have to distribute the Genesis3D DLL (genesis.dll).
+Below are listed the redistributable files that you are free to
+distribute from the SDK without shipping the entire, unmodified
+SDK:</p>
+
+<table border="1" width="75%">
+    <tr>
+        <td width="34%"><b>File</b></td>
+        <td width="66%"><b>Purpose</b></td>
+    </tr>
+    <tr>
+        <td width="34%">bin\genesis.dll</td>
+        <td width="66%">Non-debug version of the Genesis3D API
+        DLL</td>
+    </tr>
+    <tr>
+        <td width="34%">bin\debug\genesis.dll</td>
+        <td width="66%">Debug version of the Genesis3D API DLL</td>
+    </tr>
+    <tr>
+        <td width="34%">bin\softdrv.dll</td>
+        <td width="66%">Non-debug version of the software
+        rasterizer</td>
+    </tr>
+    <tr>
+        <td width="34%">bin\debug\softdrv.dll</td>
+        <td width="66%">Debug version of the software rasterizer</td>
+    </tr>
+    <tr>
+        <td width="34%">bin\d3ddrv.dll</td>
+        <td width="66%">Non-debug version of the D3D render
+        driver</td>
+    </tr>
+    <tr>
+        <td width="34%">bin\debug\d3ddrv.dll</td>
+        <td width="66%">Debug version of the D3D render driver</td>
+    </tr>
+    <tr>
+        <td width="34%">bin\glidedrv.dll</td>
+        <td width="66%">Non-debug version of the Glide render
+        driver</td>
+    </tr>
+    <tr>
+        <td width="34%">bin\debug\glidedrv.dll</td>
+        <td width="66%">Debug version of the Glide render driver</td>
+    </tr>
+</table>
+
+<p>The files in the above table, along with the example
+application files, comprise the <b><i>only</i></b> files that you
+are allowed to redistribute if you do not ship the entire
+unmodified SDK with your application.</p>
+
+<p>A note on the D3D render driver: The Genesis3D engine can use
+Microsoft DirectX version 6.0 or better to render scenes using 3D
+hardware. If you distribute an application which requires this
+support, you should not assume that D3D has already been
+installed on the user's machine. It is your responsibility to see
+that this is the case. WildTangent  does not
+redistribute the DirectX 6.0 engine.</p>
+
+<h2><a name="Tools"></a>Tools</h2>
+
+<h4>Editor</h4>
+
+<p>An editor (GEDIT.EXE) is provided to allow you to build 3d
+geometry for your levels. The editor is based upon constructive
+solid geometry (CSG) techniques, and has powerful features for
+generating complex geometry. Some features of the editor include
+subtractive brushes, keyframing of world geometry, customizeable
+user data for levels and advanced lighting support. See the
+editor documentation for full details on the capabilities of the
+editor.</p>
+
+<h4>Actor Studio</h4>
+
+<p>The Actor Studio (ASTUDIO.EXE) is a GUI tool which simplifies
+the job of building Actors using 3DS Max compatible files, or export files
+exported with our exporters. Use this tool to take the animated
+meshes that you have created in 3DS Max and build Genesis3D
+Actors from them.</p>
+
+<h4>Actor Builder</h4>
+
+<p>The Actor Builder (ACTBUILD.EXE) is a command line tool which
+will build projects created with Actor Studio. This tool is
+helpful for doing automated builds.</p>
+
+<h4>Actor Viewer</h4>
+
+<p>The actor viewer (ACTVIEW.EXE) allows you to view actors that
+you have built with the Actor Studio. You can blend motions with
+it, or play individual motions to get a preview of how the mesh
+will look in your application.</p>
+
+<h4>Texture Packer</h4>
+
+<p>The texture packer (TPACK.EXE) lets you build the texture
+libraries that the editor and level compilation tools use. This
+is a simple drag and drop tool which takes regular BMP files in
+8bit palletized format. To use it, just run TPACK, open an
+explorer window, and drag bitmaps over to the packer. Save the
+resulting texture library to a file, and point the editor to it.
+For information on how to set the editor's default texture
+library, see the editor documentation.</p>
+
+<h4>3DS Max exporters </h4>
+
+<p>We have provided two sets of exporters each for both 3DS Max version 2.5
+ and version 3.0, which are needed to export geometry for building with our 
+Actor tools. The files are KEYEXP.DLE and NFOEXP.DLE (root directory for 2.5,
+ /R3 for version 3.0). The appropriate set must be installed as plugins for 
+3DS Max in order for you to be able to the Actor Studio to build 3d animated meshes 
+for the engine.</p>
+
+<h2><a name="ExampleApp"></a>Example Application</h2>
+
+<p>We have provided a fully functional first person shooter game
+which supports deathmatch play via modem or LAN as an example of
+one application that you can build with the Genesis3D SDK. We
+built this application because it appealed to a large number of
+people, and enabled us to gain interest amoung the game
+development community, at the same time demonstrating the
+capability of the engine.</p>
+
+<p>You are free to do whatever you want with all of the content
+and code in the example, with no restrictions, whatsoever. This
+applies to the following directories:</p>
+
+<table border="1" width="51%" height="141">
+    <tr>
+        <td><b>Directory</b></td>
+        <td><b>Contents</b></td>
+    </tr>
+    <tr>
+        <td>levels</td>
+        <td>Game levels</td>
+    </tr>
+    <tr>
+        <td>bmp</td>
+        <td>Game miscellaneous graphics</td>
+    </tr>
+    <tr>
+        <td height="26">wav</td>
+        <td height="26">Sounds</td>
+    </tr>
+    <tr>
+        <td>actors</td>
+        <td>3D Actor meshes</td>
+    </tr>
+    <tr>
+        <td>src</td>
+        <td>Complete game source code</td>
+    </tr>
+</table>
+
+<h2><a name="Dependencies"></a>Required External Tools</h2>
+
+<p>Genesis3D was built with Microsoft Visual C++. The example code was built with 
+  MS VC++ version 6.0. You must have at least MS VC++ 6.0 or better to use the 
+  SDK to build Genesis3D applications.</p>
+
+<p>Provided in the tools are two sets of exporters that support 3DS Max
+version 2.5 and version 3.0. These exporters, and the attendant tools are the
+only tools that we provide to build Actors with. If you wish to use
+these tools, you will need to have 3DS Max version 2.5 or 3.0 with
+Character Studio version 2.0 installed on your machine.</p>
+
+<p>We have provided all of the APIs needed to build exporters for arbitrary 3d 
+  modelling tools to build actors. 3rd party efforts have successfully built exporters
+ for various modelling tools as an alternative. Check our web site 
+  (www.genesis3d.com) for further information about exporters that others have 
+  made available. Because WildTangent uses 3DS Max for its projects, 
+  we will only be supporting 3DS Max directly with our tools for the forseeable 
+  future.</p>
+<p>&nbsp;</p>
+
+</body>
+</html>

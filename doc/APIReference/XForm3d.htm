@@ -1,0 +1,609 @@
+<html>
+<head>
+<title>XForm3d</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h2>Summary</h2>
+<p>geXForm3d is a transform object. It is used to specify orientations for objects 
+  in a coordinate system, and to transform world coordinates to screen coordinates 
+  for rendering.</p>
+<h2>Overview</h2>
+<p>geXForm3d is designed to encapsulate common 3d transform operations. Because 
+  of the common use of transforms as temporary objects, we have elected to fully 
+  define the geXForm3d structure in the header file, and forgo the Create/Destroy 
+  functions. You should resist the temptation to modify the structure elements 
+  directly, and instead work with the APIs to make modifications to the transforms.</p>
+<p>Whereever angles are specified, the units are radians.</p>
+<h2>Reference</h2>
+<p><a name="geXForm_Copy"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_Copy(const geXForm3d *Src, geXForm3d *Dest)</font></tt></b></font></p>
+<p><b>Description</b>: Copies the Src transform to the Dest transform.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>Src</b></td>
+    <td width="246">Transform to copy from</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Dest</b></td>
+    <td width="246">Transform to copy to</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geXForm_GetEulerAngles"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_GetEulerAngles(const geXForm3d *XForm, geVec3d *Angles)</font></tt></b></font></p>
+<p><b>Description</b>: Finds Euler angles from XForm.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to get angles from</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Angles</b></td>
+    <td width="246">Vector to store axis angles in. The X element gets the X rotation, 
+      the Y element gets the Y rotation, and the Z element gets the Z rotation.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geXForm_GetIn"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_GetIn(const geXForm3d *XForm, geVec3d *In)</font></tt></b></font></p>
+<p><b>Description</b>: Gets the vector which, if applied to the translation of 
+  the matrix, would move the matrix a distance of 1.0 'in' along the current orientation 
+  of the matrix. See the overview for a more detailed discussion of In/Up/Left 
+  vectors for matrices.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Input transform</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>In</b></td>
+    <td width="246">Vector to store the direction in</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geXForm_GetLeft"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_GetLeft(const geXForm3d *XForm, geVec3d *Left)</font></tt></b></font></p>
+<p><b>Description</b>: Gets the vector which, if applied to the translation of 
+  the matrix, would move the matrix a distance of 1.0 'left' along the current 
+  orientation of the matrix. See the overview for a more detailed discussion of 
+  In/Up/Left vectors for matrices.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Input transform</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Left</b></td>
+    <td width="246">Vector to store the direction in</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geXForm_GetTranspose"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_GetTranspose(const geXForm3d *XForm, geXForm3d *Transpose)</font></tt></b></font></p>
+<p><b>Description</b>: Gets the transpose of the matrix. This is a fast operation 
+  which swaps rows for columns. This is useful, because for orthonormal transforms, 
+  the transpose is equal to the inverse of the transform. Calculating the inverse 
+  for a non-orthonormal transform is an expensive operation.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to calculate the transpose for</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Transpose</b></td>
+    <td width="246">Transform to place the result in</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geXForm_GetUp"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_GetUp(const geXForm3d *XForm, geVec3d *Up)</font></tt></b></font></p>
+<p><b>Description</b>: Gets the vector which, if applied to the translation of 
+  the matrix, would move the matrix a distance of 1.0 'up' along the current orientation 
+  of the matrix. See the overview for a more detailed discussion of In/Up/Left 
+  vectors for matrices.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Input transform</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Up</b></td>
+    <td width="246">Vector to store the direction in</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geXForm_IsOrthogonal"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">geBoolean 
+  geXForm3d_IsOrthogonal(const geXForm3d *XForm)</font></tt></b></font></p>
+<p><b>Description</b>: Determines if a transform is orthogonal (all basis vectors 
+  are perpendicular to each other).</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to test</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the transform is orthogonal, GE_FALSE otherwise.</p>
+<p><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"><a name="geXForm_IsOrthonormal"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF"></font></tt></b></font>geBoolean 
+  geXForm3d_IsOrthonormal(const geXForm3d *XForm)</font></tt></b></font></p>
+<p><b>Description</b>: Determines if a transform is orthogonal (all basis vectors 
+  are perpendicular to each other, and are of length 1.0).</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to test</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the transform is orthonormal, GE_FALSE otherwise.</p>
+<p><b>Remarks:</b> This is a slow operation because of the need to calculate the 
+  length of the basis vectors, which requires 3 square root operations.</p>
+<p><a name="geXForm_IsValid"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_IsValid(const geXForm3d *XForm)</font></tt></b></font></p>
+<p><b>Description</b>: Determines if the transform is valid. This is a debugging 
+  API, primarily. It was designed to test for transforms that contained NAN values 
+  on Intel machines, since it is easy to let NAN values slip into calculations. 
+  Since NANs do not generate hardware exceptions, it can be exceedingly difficult 
+  to determine when data has gone bad.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to test</td>
+  </tr>
+</table>
+<p><b>Returns</b>: GE_TRUE if the transform is valid, GE_FALSE otherwise.</p>
+<p></p>
+<p></p>
+<p></p>
+<p><a name="geXForm_Mirror"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_Mirror(const geXForm3d *XForm, const geVec3d *PlaneNormal, geFloat 
+  PlaneDistance, geXForm3d *MirroredTransform)</font></tt></b></font></p>
+<p><b>Description</b>: Mirrors a transform about a plane.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="96"><b>XForm</b></td>
+    <td width="245">Transform to mirror</td>
+  </tr>
+  <tr> 
+    <td width="96">PlaneNormal</td>
+    <td width="245">Normal vector of the plane</td>
+  </tr>
+  <tr>
+    <td width="96">PlaneDistance</td>
+    <td width="245">Distance from the origin to the plane</td>
+  </tr>
+  <tr>
+    <td width="96">MirroredTransform</td>
+    <td width="245">Result - XForm mirrored about the plane specified by PlaneNormal 
+      and PlaneDistance.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: The plane distance parameter specifies that distance which 
+  is the shortest distance from the origin to the plane. This is, by definition, 
+  a perpendicular to the plane. The combination of the PlaneNormal and PlaneDistance 
+  are just another form of a plane equation. <font color="#FF0000">Note:</font> 
+  See the overview for a more detailed discussion of left vs. right handed coordinate 
+  systems.</p>
+<p><a name="geXForm_Multiply"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_Multiply(const geXForm3d *M1, const geXForm3d *M2, geXForm3d *Product)</font></tt></b></font></p>
+<p><b>Description</b>: Calculates the product of M1 and M2.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>M1</b></td>
+    <td width="246">Input transform</td>
+  </tr>
+  <tr> 
+    <td width="95">M2</td>
+    <td width="246">Input transform</td>
+  </tr>
+  <tr>
+    <td width="95"><b>Product</b></td>
+    <td width="246">Result of M1 * M2</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: The result is the concatentation of the transformat in M2 onto 
+  the transformation in M1.</p>
+<p><a name="geXForm_Orthonormalize"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_Orthonormalize(geXForm3d *XForm)</font></tt></b></font></p>
+<p><b>Description</b>: Ensures that a transform's basis vectors are perpendicular 
+  to each other, and of length 1.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to orthonormalize</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: This operation essentially removes scaling and other distortions 
+  from a matrix. Because floating point error tends to build through multiple 
+  matrix operations, it is normally a good idea for an application which stores 
+  transforms and accrues operations into them to orthonormalize those matrices 
+  from time to time. The matrix library does not do this for you automatically 
+  on every operation because the orthonormalization process is slow.</p>
+<p><a name="geXForm_Rotate"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_Rotate(const geXForm3d *XForm, const geVec3d *Vector, geVec3d *Result)</font></tt></b></font></p>
+<p><b>Description</b>: Rotates a vector by a transform</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Rotation transform</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Vector</b></td>
+    <td width="246">Vector to be transformed</td>
+  </tr>
+  <tr>
+    <td width="95"><b>Result</b></td>
+    <td width="246">Vector rotated by XForm (XForm * Vector)</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: Any translation component in the input transform is ignored.</p>
+<p><a name="geXForm_RotateX"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_RotateX(geXForm3d *XForm, geFloat Angle)</font></tt></b></font></p>
+<p><b>Description</b>: Rotates a transform about the X axis.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to apply the rotation to</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Angle</b></td>
+    <td width="246">Angle, in radians, to rotate the transform</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: The rotation is applied to the existing contents of the transform.</p>
+<p><a name="geXForm_RotateY"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_RotateY(geXForm3d *XForm, geFloat Angle)</font></tt></b></font></p>
+<p><b>Description</b>: Rotates a transform about the Y axis.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to apply the rotation to</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Angle</b></td>
+    <td width="246">Angle, in radians, to rotate the transform</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: The rotation is applied to the existing contents of the transform.</p>
+<p><a name="geXForm_RotateZ"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_RotateZ(geXForm3d *XForm, geFloat Angle)</font></tt></b></font></p>
+<p><b>Description</b>: Rotates a transform about the Z axis.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to apply the rotation to</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Angle</b></td>
+    <td width="246">Angle, in radians to rotate the transform</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: The rotation is applied to the existing contents of the transform.</p>
+<p><a name="geXForm_Scale"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_Scale(geXForm3d *XForm, geFloat X, geFloat Y, geFloat Z)</font></tt></b></font></p>
+<p><b>Description</b>: Scales a transform in all three axes.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to apply the scale factors to</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>X</b></td>
+    <td width="246">Scale factor to apply to the X axis basis vector of the transform</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Y</b></td>
+    <td width="246">Scale factor to apply to the Y axis basis vector of the transform</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Z</b></td>
+    <td width="246">Scale factor to apply to the Z axis basis vector of the transform</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: The scaling is applied to the existing contents of the transform.</p>
+<p><a name="geXForm_SetEulerAngles"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_SetEulerAngles(geXForm3d *XForm, const geVec3d *Angles)</font></tt></b></font></p>
+<p><b>Description</b>: Builds a transform from Euler angles.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">The transform to build</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Angles</b></td>
+    <td width="246">Euler angles. Each component corresponds to the angle to the 
+      axis to apply the rotation to.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: The transform is built by applying the Z rotation to an identity 
+  matrix, then the Y rotation, then the X rotation. Any existing contents in XForm 
+  are discarded.</p>
+<p><a name="geXForm_SetFromLeftUpIn"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_SetFromLeftUpIn(geXForm3d *XForm, const geVec3d *Left, const geVec3d 
+  *Up, const geVec3d *In)</font></tt></b></font></p>
+<p><b>Description</b>: Builds a transform from 'left', 'up' and 'in' vectors.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95" height="21"><b>XForm</b></td>
+    <td width="246" height="21">Transform to build</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Left</b></td>
+    <td width="246">Vector pointing to the 'left'</td>
+  </tr>
+  <tr>
+    <td width="95"><b>Up</b></td>
+    <td width="246">Vector pointing 'up'</td>
+  </tr>
+  <tr>
+    <td width="95"><b>In</b></td>
+    <td width="246">Vector pointing 'in'</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: See the overview for a discussion of what left, up and in mean 
+  for transforms. Any existing contents in XForm are discarded.</p>
+<p><a name="geXForm_Identity"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_SetIdentity(geXForm3d *XForm)</font></tt></b></font></p>
+<p><b>Description</b>: Builds the identity matrix</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to build</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: The identity matrix is the transform, which when applied to 
+  another matrix or vector causes no change.</p>
+<p><a name="geXForm_SetMaximalAssertionMode"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_SetMaximalAssertionMode(geBoolean Enable)</font></tt></b></font></p>
+<p><b>Description</b>: Enables or disables strict constraint testing on transforms 
+  at runtime.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>Enable</b></td>
+    <td width="246">GE_TRUE to enable strict testing, GE_FALSE to disable strict 
+      testing. </td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: In debug builds, the transform library performs a number of 
+  tests on transforms on many operations. These tests are for things such as NULL 
+  pointers, validity (NAN checking), orthonormal tests, orthogonality tests, etc. 
+  The sum of these tests imposes a very significant performance penalty on the 
+  basic operation of the whole engine, which tends to make debug builds untenable 
+  in the development environment. Consequently, we have made the running of the 
+  most expensive of these tests conditional to the enabling of maximal assertions 
+  in the transform library, and defaulted to not doing these tests. If you are 
+  experiencing trouble with your transforms becoming non-orthonormal, or are having 
+  other difficult to track down problems with your transforms, you may want to 
+  enable these tests. This API is not present in the release builds of the engine.</p>
+<p><a name="geXForm_SetScaling"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_SetScaling(geXForm3d *XForm, geFloat X, geFloat Y, geFloat Z)</font></tt></b></font></p>
+<p><b>Description</b>: Builds a transform that scales by X, Y and Z.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to build</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>X</b></td>
+    <td width="246">X axis scaling value</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Y</b></td>
+    <td width="246">Y axis scaling value</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Z</b></td>
+    <td width="246">Z axis scaling value</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: Any existing contents in the transform are discarded.</p>
+<p><a name="geXForm_SetTranslation"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_SetTranslation(geXForm3d *XForm, geFloat X, geFloat Y, geFloat Z)</font></tt></b></font></p>
+<p><b>Description</b>: Builds a transform that translates by X, Y and Z.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to build</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>X</b></td>
+    <td width="246">X translation value</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Y</b></td>
+    <td width="246">Y translation value</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Z</b></td>
+    <td width="246">Z translation value</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: Any existing contents in the transform are discarded. The rotation 
+  component of the matrix is set to identity.</p>
+<p><a name="geXForm_SetXRotation"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_SetXRotation(geXForm3d *XForm, geFloat Angle)</font></tt></b></font></p>
+<p><b>Description</b>: Builds a transform that rotates about the X axis.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to build</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Angle</b></td>
+    <td width="246">Angle to rotate</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: Any existing contents in the transform are discarded. The translation 
+  component of the matrix is set to zero.</p>
+<p><a name="geXForm_SetYRotation"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_SetYRotation(geXForm3d *XForm, geFloat Angle)</font></tt></b></font></p>
+<p><b>Description</b>: Builds a transform that rotates about the Y axis.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to build</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Angle</b></td>
+    <td width="246">Angle to rotate</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: Any existing contents in the transform are discarded. The translation 
+  component of the matrix is set to zero.</p>
+<p><a name="geXForm_SetZRotation"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_SetZRotation(geXForm3d *XForm, geFloat Angle)</font></tt></b></font></p>
+<p><b>Description</b>: Builds a transform that rotates about the Z axis.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to build</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Angle</b></td>
+    <td width="246">Angle to rotate</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: Any existing contents in the transform are discarded. The translation 
+  component of the matrix is set to zero.</p>
+<p><a name="geXForm_Transform"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_Transform(const geXForm3d *XForm, const geVec3d *Vector, geVec3d *Result)</font></tt></b></font></p>
+<p><b>Description</b>: Applies a transform to a vector.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Transform to apply</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Vector</b></td>
+    <td width="246">Vector to apply the transform to</td>
+  </tr>
+  <tr>
+    <td width="95"><b>Result</b></td>
+    <td width="246">Transformed result</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><a name="geXForm_TransformArray"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_TransformArray(const geXForm3d *XForm, const geVec3d *VectorArray, 
+  geVec3d *ResultArray, int32 Count)</font></tt></b></font></p>
+<p><b>Description</b>: Applies a transform to an array of vectors.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="379" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="263">Transform to apply</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>VectorArray</b></td>
+    <td width="263">Array of vectors to apply the transform to</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>ResultArray</b></td>
+    <td width="263">Transformed result array</td>
+  </tr>
+  <tr>
+    <td width="95"><b>Count</b></td>
+    <td width="263">Number of vectors in the input array</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: It is assumed that there is enough space in the output array 
+  for the transformed results. This API is provided primarily for efficiency.</p>
+<p><a name="geXForm_Translate"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_Translate(geXForm3d *XForm, geFloat X, geFloat Y, geFloat Z)</font></tt></b></font></p>
+<p><b>Description</b>: Translates a transform by X, Y and Z.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="455" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="339">Transform to be translated</td>
+  </tr>
+  <tr> 
+    <td width="95" height="21"><b>X</b></td>
+    <td width="339" height="21">X displacement to apply to the translation of 
+      XForm.</td>
+  </tr>
+  <tr> 
+    <td width="95" height="21"><b>Y</b></td>
+    <td width="339" height="21">Y displacement to apply to the translation of 
+      XForm.</td>
+  </tr>
+  <tr> 
+    <td width="95" height="21"><b>Z</b></td>
+    <td width="339" height="21">Z displacement to apply to the translation of 
+      XForm.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: The translation is applied to the existing contents of XForm, 
+  including the translation.</p>
+<p><a name="geXForm_TransposeTransform"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geXForm3d_TransposeTransform(const geXForm3d *XForm, const geVec3d *Vector, 
+  geVec3d *Result)</font></tt></b></font></p>
+<p><b>Description</b>: Applies the transpose transform of XForm to a vector.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="362" >
+  <tr> 
+    <td width="95"><b>XForm</b></td>
+    <td width="246">Input transform</td>
+  </tr>
+  <tr> 
+    <td width="95"><b>Vector</b></td>
+    <td width="246">Vector to transform</td>
+  </tr>
+  <tr>
+    <td width="95"><b>Result</b></td>
+    <td width="246">Result vector</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void</p>
+<p><b>Remarks</b>: This API is provided for efficiency of parts of the engine. 
+  Since most spacial transforms are orthogonal, the transpose is equivalent to 
+  the inverse, this is a fast way of applying an inverse transform to a vector.</p>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>geRam</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h2>Summary</h2>
+<p>The geRam module is a layer over memory management designed to provide an added 
+  measure of safety and debug build checking on allocations.</p>
+<h2>Overview</h2>
+<p>Use this module as you would normally use malloc, realloc and free. Allocations 
+  will be tracked in debug builds via support code bound to your applications 
+  through macros in ram.h. You can get reports on allocations, including leaks 
+  and possible memory corruption by calling geRam_ReportAllocations. This will 
+  give a dump via OutputDebugString of allocations that have not been freed, plus 
+  of allocated blocks that have been corrupted. The APIs have debug build checks 
+  in them to check block integrity on calls to geRam_Free, in an effort to catch 
+  problems before they become too far removed from their source.</p>
+<h2>Reference</h2>
+<p><a name="geRam_Allocate"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  *geRam_Allocate(uint32 Size)</font></tt></b></font></p>
+<p><b>Description</b>: Allocates memory.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="398" >
+  <tr> 
+    <td><b>Size</b></td>
+    <td>Size, in bytes, of the block to allocate.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: Pointer to the new memory block on success, NULL on failure.</p>
+<p></p>
+<p></p>
+<p><a name="geRam_Free"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geRam_Free(void *Ptr)</font></tt></b></font></p>
+<p><b>Description</b>: Frees a block allocated with geRam_Allocate.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="392" >
+  <tr> 
+    <td><b>Ptr</b></td>
+    <td>Block to free.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void.</p>
+<p></p>
+<p><a name="geRam_Realloc"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  *geRam_Realloc(void *Ptr, uint32 NewSize)</font></tt></b></font></p>
+<p><b>Description</b>: Resizes a block of memory. This function is equivalent 
+  to realloc.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="392" >
+  <tr> 
+    <td height="21"><b>Ptr</b></td>
+    <td height="21"> 
+      <p>Block to resize.</p>
+    </td>
+  </tr>
+  <tr>
+    <td height="21"><b>NewSize</b></td>
+    <td height="21">New size of the block.</td>
+  </tr>
+</table>
+<p><b>Returns</b>: Pointer to new block of memory on success, NULL on failure.</p>
+<p><a name="geRam_ReportAllocations"></a><font face="Courier New, Courier, mono"><b><tt><font color="#0000FF">void 
+  geRam_ReportAllocations(void)</font></tt></b></font></p>
+<p><b>Description</b>: Dumps a report on currently allocated blocks.</p>
+<p><b>Parameters</b>: </p>
+<table border=0 cellspacing=5 width="392" >
+  <tr> 
+    <td>void</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p><b>Returns</b>: void.</p>
+<p><b>Remarks</b>: This function will do a dump via OutputDebugString of all the 
+  blocks that are currently allocated, listing the file name and line number of 
+  the source module from which the block was allocated. Blocks which have been 
+  corrupted in sentinel areas reserved by geRam_Allocate will be flagged as such, 
+  and reported as well. This function is only operational in debug builds.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p></p>
+<p></p>
+<p></p>
+</body>
+</html>

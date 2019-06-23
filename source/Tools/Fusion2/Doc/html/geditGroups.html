@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<TITLE>Groups</TITLE>
+</HEAD><BODY>
+<A HREF= "defaultgedit.html"><IMG SRC="contents.gif" ALT="contents.gif" BORDER = 0></A><A HREF= "geditindex.html"><IMG SRC="index.gif" ALT="index.gif" BORDER = 0></A><A HREF= "geditTextures.html"><IMG SRC="prev1.gif" ALT="prev1.gif" BORDER = 0></A><A HREF= "geditConsole.html"><IMG SRC="next1.gif" ALT="next1.gif" BORDER = 0></A>
+<P>
+<A NAME="off_34726"></A><A NAME="d09d45dc"></A><FONT FACE="Arial" SIZE="3"><B>Groups
+<P>
+</B>Brush groups allow you to select a bunch of geometry and/or entities and group
+them into a named collection which you can then hide or select. This allows
+you to work with greater speed in a number of ways.
+<P>
+First, you can group large areas of geometry together and hide it in order to
+unclutter the views. When a level becomes complex, there is frequently a large
+amount of excess geometry in the views that you are not interested in at any
+particular point in time. Hiding parts of the level like this allows you to more
+easily select and manipulate the geometry that you are most interested in.
+<P>
+Geometry which is grouped and hidden is not included when displaying the level
+in the textured view, which can dramatically improve the editor's performance
+when dealing with complex levels.
+<P>
+Geometry which is grouped and hidden is not used when compiling the level,
+which means that the time required to compile the level can be greatly reduced by
+hiding large parts of the level. This becomes very important when you're
+texturing and lighting a level because you'll be making many small changes and
+recompiling frequently. Building a level with lighting--especially radiosity
+lighting--takes a long time.
+<P>
+This is where brush groups can help. Since you're typically lighting a single
+room at a time, you can group and hide all but the room on which you're
+working. Then, when you build the level only that room will be compiled. This will
+take much less time than rebuilding the entire level. You will still have to do a
+full radiosity build with all groups visible periodically to work on portions
+of the level that require light blending between rooms, and for the final level,
+but you should be able to save a considerable amount time by working on a
+single room at a time.
+<P>
+In addition to the Groups option page, on which you can control individual
+groups' visibility, three toolbar buttons allow you to control which groups are
+displayed by the editor and used when compiling the level. If the All Groups
+button is selected, then all groups are displayed, regardless of their individual
+visibily attributes. If the Visible Groups button is selected, then only those
+groups that have their individual visibility flags set will be displayed. If the
+Current Group button is selected, then only the currently-selected group is
+displayed.
+<P>
+</FONT></BODY>
+</HTML>

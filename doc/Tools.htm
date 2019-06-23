@@ -1,0 +1,221 @@
+<html>
+<head>
+<title>Tools</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h2><a name="ActorStudio"></a>Actor Studio</h2>
+<p>The Actor Studio is a tool for constructing project files for 3DS Max animations 
+  to convert those animations into a format that the Genesis3D engine can consume. 
+  Actor Studio makes use of 3D Studio Max to export data from your .MAX files, 
+  and then combines that data with additional information from you into Actors.</p>
+<h4>Basic requirements for exporters to work</h4>
+<p>You must have the following tools for the exporters to work:</p>
+<ul>
+  <li>3DS Max version 2.5 or 3.0</li>
+  <li>Character Studio version 2.0</li>
+</ul>
+<p>In addition, you must have the proper exporter plugins (nfoexp.dle and keyexp.dle) 
+  installed as plugins for your 3DS Max installation. Refer to your 3DS Max documentation 
+  for instructions on how to do this. The plugins in our root directory are for 2.5. The 3.0 plug-in files are in the R3 directory.
+<BR>
+There are also 3rd party support tools available for using alternate modelling programs. Please check our web site.</p>
+<h4>Recommended directory structure</h4>
+<p>When you build your meshes, you should try to keep in mind that the Actors 
+  will be built by tools that need to be aware of the locations of your texture 
+  maps. In addition, you may want to be able to take an individual Actor build 
+  tree and move it to another machine, or preserve it in version control. Finally, 
+  the Actor Studio enforces a single directory tree for the sources for its projects. 
+  Given these things, we recommend the following directory structure, or something 
+  close to it, to avoid difficulties managing your builds:</p>
+<pre><font face="Courier New, Courier, mono">\MYACTOR</font>
+    <font face="Courier New, Courier, mono">\MAX
+</font><font face="Courier New, Courier, mono">    \MAPS
+</font><font face="Courier New, Courier, mono">    \BLDTMP</font><font face="Courier New, Courier, mono"><br></font></pre>
+<p><br>
+  Under the MAX directory, place your .MAX files. Under the MAPS directory, place 
+  all of your bitmaps for the texture maps for your mesh. The BLDTMP directory 
+  is for use in the Actor Studio. It will be used to hold all of the temporary 
+  files from the builds.<font face="Courier New, Courier, mono"></font><br><br>
+ Warning! There is a problem with actor studio interfacing with 3DS Max - you can't have files or directories that begin with 'b','n','r',or 't'. This limitation is because 3DS Max interprets a slash followed by one of those characters as a control code rather than the letter. </p>
+<h4>Some Basic Rules</h4>
+<p>When you build your animations in 3DS Max, you have to follow a few basic rules:</p>
+<ul>
+  <li>Your mesh must be animated using bones. Do not do vertex animation.</li>
+  <li>All vertices must be physiqued to a bone.</li>
+  <li>All vertex attachments must be rigid.</li>
+</ul>
+<h4>Preparing Multiple Animations For A Single Actor</h4>
+<p>For most traditional applications, you will have multiple animations for each 
+  Actor. For example, you may have a walk, a run, and an idle animation for a 
+  biped character in a game. You will want to include all of these animations 
+  as individual animations within a single Actor file. To prepare for this, we 
+  suggest that you follow this procedure: Build a reference pose for your animation, 
+  and store that reference pose in a separate file with no animations. This will 
+  be referred to as your 'body' file. Construct each animation separately, and 
+  save them in separate .MAX files. For example, Walk.max, Run.max, Idle.max. 
+  Follow the directory structure above for storing your MAX files, and their texture 
+  maps. </p>
+<h4>Building Your Project</h4>
+<p>Once you've built a mesh, along with its animations, you have to build an Actor 
+  Studio project. If you have followed the directory structure above, you should 
+  create a new project by selecting File|New, and specify a project name in your 
+  \MYACTOR directory, for example c:\myactor\George. When you do this, you will 
+  be presented with the following dialog:</p>
+<p><img src="Images/ASTarget.GIF" width="548" height="311"></p>
+<p>The output file is the filename, relative to the project directory (MYACTOR) 
+  that the Actor will be stored to. Fill in this field as you choose to set the 
+  output file. Make sure that you include the .ACT extension. Once you've done 
+  this, click on the 'Body' tab to proceed to this dialog:</p>
+<p><img src="Images/ASBody.GIF" width="547" height="311"></p>
+<p>Fill in the filename field by clicking browse, and then selecting the 'body' 
+  file that you previously built.</p>
+<p>For advanced users, you can select different input file types for you body 
+  file by using the radio buttons on the dialog. The .NFO files are generated 
+  by the NFO exporter that you installed to 3DS Max. The .BDY files are intermediate 
+  files generated by running Actor Studio on a project once. The .ACT files are 
+  the final Actor files generated by Actor Studio. You can use another Actor file 
+  as the body for a different Actor. Most users should just use the .MAX file 
+  option, which is the default.</p>
+<p>Once you've selected a body, move to the Extra Materials tab:</p>
+<p><img src="Images/ASExtraMaterials.GIF" width="548" height="311"></p>
+<p>In general, you will not have to fill anything in on this tab. It is supplied 
+  to allow you to include in the Actor file materials that were not actually used 
+  in the texturing of the mesh in 3DS Max. It is sometimes useful to do this if 
+  your application will want to switch out materials on an Actor at runtime, and 
+  you want the alternate materials stored in the Actor. To add materials to the 
+  actor, just click on Add, and specify a name for the material. Then you can 
+  select a file for a bitmap for the material, with the Browse button, or you 
+  can select a single color to be used, by clicking on the Color checkbox, and 
+  then editing the color with the Choose button.</p>
+<p>Actor Studio will automatically include any textures that were used to texture 
+  the mesh in 3DS Max, so you do not need to include those textures here.</p>
+<p>Moving on to the Motions tab:</p>
+<p><img src="Images/ASMotions.GIF" width="548" height="311"></p>
+<p>Here you will specify all the animations that you want to include in the Actor. 
+  Each animation is named, and has a corresponding .MAX file to obtain its data 
+  from. Click on Add, and name a motion, then select the .MAX file using the Browse 
+  button. Add all the motions that you want.</p>
+<p>Each motion can be optimized by analysis of its key-frames for redundant key-frames, 
+  and for key-frames that, if removed, introduce a very small error into the animation. 
+  You can control the degree of error that is permitted, and hence the quality 
+  of the resulting animation by changing the optimization level with the Optimize 
+  spinner. The default optimization level is 4 for all animations. Most animations 
+  will suffer if you increase the animation level to 7. You have to trade of file 
+  size and memory usage against the quality of the animation. This will be application 
+  dependent, so you should play with the values, and observe the resulting animations 
+  in the Actor Viewer to make your decising regarding the best optimization level 
+  for your animations.</p>
+<p>For advanced users, you can use other file types for the input parameter for 
+  your motions. .MOT files are intermediate files produced by Actor Studio when 
+  it builds a project. .KEY files are obtained by using the KEY exporter from 
+  3DS Max.</p>
+<p>Once you've set up the motions, go to the Paths tab:</p>
+<p><img src="Images/ASPaths.GIF" width="548" height="311"></p>
+<p>This dialog allows you to setup some basic paths that the Actor Studio requires. 
+  The Materials directory is the directory that will be searched for all materials 
+  that you used to texture your mesh with in 3DS Max. This should be set to the 
+  .\maps directory, if you have chosen the hiearchy that we layed out above.</p>
+<p>The Temp files directory is the directory that Actor Studio will use for its 
+  intermediate files. Note that this directory will be completely wiped every 
+  time to rebuild the project completely using Project|Rebuild All. The directory 
+  that you name should be empty, and you should never store anything important 
+  there. Actor Studio will store .KEY, .BDY, .MOT and .NFO files in this directory. 
+  The .KEY files are the result of running the KEY exporter in 3DS Max. The NFO 
+  files are the result of running the NFO exporter in 3DS Max. The BDY file is 
+  the Actor Studio temporary version of the Body for your animations, and the 
+  MOT files contain the individual motions. Advanced users can copy these intermediate 
+  files from an Actor Studio build and use them for other Actor Studio projects. 
+  This can be useful if you want to build an Actor from files exported from 3DS 
+  Max on a machine that does not have 3DS Max installed.</p>
+<p>The last job you need to do is to configure the Settings tab for the Actor 
+  Studio:</p>
+<p><img src="Images/ASSettings.GIF" width="548" height="311"> </p>
+<p>The Actor Viewer path is the path to the Actor View executable program. This 
+  is only necessary if you wish to do previews of the Actor using Actor Studio.</p>
+<p>The 3DS MAX path is required if you are using 3DS MAX files as input parameters 
+  for the body or motions for your Actor. In this case, when you build your Actor, 
+  Actor Studio will need to run 3DS Max to export your animation data.</p>
+<p>The Motion optimization defaults can be set to make it easy for you when adding 
+  motions to a new Actor. The settings here are carried over as the defaults for 
+  each animation in the Motions tab. Set the optimization level here, and new 
+  animations will default to this level. You can override this on the Motions 
+  page.</p>
+<p>Finally, you should save the project. Select File|Save, and click OK, and your 
+  Actor Studio project is saved. You can open existing Actor Studio projects by 
+  selecting File|Open, and browsing for projects.</p>
+<h4>Building the Actor</h4>
+<p>Now that you've built your project, you will want to build the actual Actor. 
+  There are two buttons at the bottom of the Actor Studio application. One is 
+  Build, and one is Messages. The Messages button causes the dialog to expand 
+  to include an output window describing the progress of the build, along with 
+  any error or warning messages. The Build button will cause Actor Studio to actually 
+  build your project. If you are using 3DS Max files as input (the default), Actor 
+  Studio will run 3DS Max on your machine, and export some files automatically. 
+  It will then process the resulting output files and combine them into a .ACT 
+  file which can be loaded by Genesis3D. If you want to view your Actor in the 
+  engine, use the Actor Viewer. See the documentation for the Actor View for more 
+  information on how to do this.</p>
+<h4>Limitations In The Tool</h4>
+<p>There are some limitations that you need to be aware of in the tool. Some of 
+  these are due to restrictions imposed by 3DS Max, while some are design limitations 
+  in the Genesis3D engine.</p>
+<ul>
+  <li>All texture maps must be 8bit palettized bitmaps. We do not currently support 
+    24bit bitmaps, jpegs, or any other file format.</li>
+  <li>3DS Max files and temporary directories must not start with any of the following 
+    characters: 'r', 't' or 'n'. This appears to be a limitation in the scripting 
+    support in 3DS Max. If you get strange error messages from Actor Studio, check 
+    to make sure that you have not violated this rule.</li>
+</ul>
+<h2><a name="ActorBuilder"></a>Actor Builder</h2>
+<p>The Actor Builder is a command line tool for building existing Actor Studio 
+  project files (.APJ files). This tool was built, and is included, to support 
+  automated builds of Actors. The command line parameters to ActBuild are:</p>
+<table width="75%" border="1">
+  <tr>
+    <td width="25%">/F&lt;project file&gt;</td>
+    <td width="75%">The Actor Studio project file to build (e.g. myactor.apj)</td>
+  </tr>
+  <tr>
+    <td width="25%">/M&lt;Max path&gt;</td>
+    <td width="75%">The complete path to the 3DS Max executable. For example, 
+      c:\3DSMax\3dsmax.exe </td>
+  </tr>
+</table>
+<p>When you run this tool, it will build the Actor Studio project as though you 
+  had opened the project in Actor Studio, and pressed the Build button.</p>
+<h2><a name="ActorView"></a>Actor Viewer</h2>
+<p>The Actor viewer allows you to preview Actors that you have built with the 
+  Actor Studio, or with any external tool. It is able to preview motions, and 
+  test motion blending. The viewer has extensive online help. For information 
+  on how to use the viewer, please refer to the online help.</p>
+<h2><a name="TexturePacker"></a>Texture Packer</h2>
+<p>The texture packer is a drag and drop tool which allows you to build the texture 
+  libraries that the editor uses to build your levels.</p>
+<p><img src="Images/tpack.GIF" width="506" height="485"></p>
+<p>When you open the Texture Packer, you are presented with the simple interface 
+  above. </p>
+<p>The texture preview pane is where the selected texture will be displayed. Textures 
+  will be stretched to fill this pane.</p>
+<p>The texture list pane is the list of textures, by name, that are in the library. 
+  You add textures to a texture library by dragging BMP files from the explorer 
+  to the texture list box. If you want to delete a texture from the library, select 
+  it in the list box, and press the DEL key. Textures added to the texture packer 
+  must be power of 2, square bitmaps that are 8bit palletized.</p>
+<p>Under the options menu is an option to extract all bitmaps from the texture 
+  library. When you do this, all of the bitmaps will be written as BMP files to 
+  the current working directory of the texture packer.</p>
+<h2><a name="Exporters"></a>3DS Max Exporters</h2>
+<p>There are two sets of exporters, provided for 3DS Max versions 2.5 and 3.0. A set
+  is made of the two files NFOEXP.DLE 
+  and KEYEXP.DLE. In order for you to be able to build Actors with the Actor Studio, 
+  these must be installed in the plugins directory of your installation of 3DS 
+  Max. Use the exporters in the root directory for 2.5, and the ones in R3 for 3.0. 
+  Once installed, you can either invoke them manually from 3DS Max from the 
+  export menu, or they will be invoked automatically for you by the Actor Studio 
+  if you have specified that your Actor Studio project use Max files as your source 
+  data.</p>
+</body>
+</html>

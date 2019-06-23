@@ -1,0 +1,523 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{5a7b7894-bf27-41f7-9182-d3cebe48ab6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actor">
+      <UniqueIdentifier>{65114b2a-9b40-4e4d-ab23-d59c58fbeb22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Bitmap">
+      <UniqueIdentifier>{13c3dad6-5348-40d5-8ba2-190cce648419}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Bitmap\Compression">
+      <UniqueIdentifier>{27011bdd-f6f4-48d2-a6c1-540714a49726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{2e84a137-7f2c-4e5e-ade0-9f44de837483}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Logo">
+      <UniqueIdentifier>{ab2c3fe5-c401-4a09-a7e0-004a49248df5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{b34c35e2-eef6-4c08-9c7d-cb3fad9c4046}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Math">
+      <UniqueIdentifier>{f1b9516e-ef10-4c51-ba73-dbe59441956f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Support">
+      <UniqueIdentifier>{6be6028d-6aa5-4bef-86ab-7efa12c7a906}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\VFile">
+      <UniqueIdentifier>{e8103cd4-4c86-407e-b4e0-c10d7e2bfeb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\World">
+      <UniqueIdentifier>{47fa4d31-2534-44fc-b50f-6505ff80323b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Font">
+      <UniqueIdentifier>{8fd68920-7f37-41bf-bfc8-a8dba2cdd352}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{f9d4f685-dd32-4e66-916e-fccf9a6e64cb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Actor\actor.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor\body.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor\bodyinst.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor\motion.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor\path.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor\pose.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor\puppet.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor\QKFrame.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor\strblock.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor\tkarray.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor\tkevents.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor\vkframe.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor\XFArray.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmap\Compression\palcreate.cpp">
+      <Filter>Source Files\Bitmap\Compression</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmap\Compression\palettize.cpp">
+      <Filter>Source Files\Bitmap\Compression</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmap\Compression\paloptimize.cpp">
+      <Filter>Source Files\Bitmap\Compression</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmap\Compression\yuv.cpp">
+      <Filter>Source Files\Bitmap\Compression</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmap\bitmap.cpp">
+      <Filter>Source Files\Bitmap</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmap\bitmap_blitdata.cpp">
+      <Filter>Source Files\Bitmap</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmap\bitmap_gamma.cpp">
+      <Filter>Source Files\Bitmap</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmap\pixelformat.cpp">
+      <Filter>Source Files\Bitmap</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\BitmapList.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\engine.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\fontbmp.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Logo\A_CORONA.cpp">
+      <Filter>Source Files\Engine\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Logo\A_STREAK.cpp">
+      <Filter>Source Files\Engine\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Logo\CORONA.cpp">
+      <Filter>Source Files\Engine\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Logo\electric.cpp">
+      <Filter>Source Files\Engine\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Logo\logo.cpp">
+      <Filter>Source Files\Engine\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Logo\LogoActor.cpp">
+      <Filter>Source Files\Engine\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Logo\streak.cpp">
+      <Filter>Source Files\Engine\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Logo\WebUrl.cpp">
+      <Filter>Source Files\Engine\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Entities.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Font\font.cpp">
+      <Filter>Source Files\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Font\wgClip.cpp">
+      <Filter>Source Files\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Box.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\crc32.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\ExtBox.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\quatern.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Vec3d.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Xform3d.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\matrix33.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\PhysicsJoint.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\PhysicsObject.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\PhysicsSystem.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Support\Errorlog.cpp">
+      <Filter>Source Files\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="Support\geAssert.cpp">
+      <Filter>Source Files\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="Support\log.cpp">
+      <Filter>Source Files\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="Support\mempool.cpp">
+      <Filter>Source Files\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="Support\Ram.cpp">
+      <Filter>Source Files\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="Support\ramdll.cpp">
+      <Filter>Source Files\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="VFile\dirtree.cpp">
+      <Filter>Source Files\VFile</Filter>
+    </ClCompile>
+    <ClCompile Include="VFile\fsdos.cpp">
+      <Filter>Source Files\VFile</Filter>
+    </ClCompile>
+    <ClCompile Include="VFile\Fsmemory.cpp">
+      <Filter>Source Files\VFile</Filter>
+    </ClCompile>
+    <ClCompile Include="VFile\fsvfs.cpp">
+      <Filter>Source Files\VFile</Filter>
+    </ClCompile>
+    <ClCompile Include="VFile\vfile.cpp">
+      <Filter>Source Files\VFile</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Fog.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Frustum.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Gbspfile.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Light.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Plane.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Surface.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Trace.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\User.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Vis.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\WBitmap.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\World.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CSNetMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="list.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Netplay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound3d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tclip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tsc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actor\actor.h">
+      <Filter>Source Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor\body.h">
+      <Filter>Source Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor\bodyinst.h">
+      <Filter>Source Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor\motion.h">
+      <Filter>Source Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor\path.h">
+      <Filter>Source Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor\pose.h">
+      <Filter>Source Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor\puppet.h">
+      <Filter>Source Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor\QKFrame.h">
+      <Filter>Source Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor\strblock.h">
+      <Filter>Source Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor\tkarray.h">
+      <Filter>Source Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor\tkevents.h">
+      <Filter>Source Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor\vkframe.h">
+      <Filter>Source Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor\xfarray.h">
+      <Filter>Source Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap\Compression\image.h">
+      <Filter>Source Files\Bitmap\Compression</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap\Compression\palcreate.h">
+      <Filter>Source Files\Bitmap\Compression</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap\Compression\palettize.h">
+      <Filter>Source Files\Bitmap\Compression</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap\Compression\paloptimize.h">
+      <Filter>Source Files\Bitmap\Compression</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap\Compression\utility.h">
+      <Filter>Source Files\Bitmap\Compression</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap\Compression\yuv.h">
+      <Filter>Source Files\Bitmap\Compression</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap\bitmap.h">
+      <Filter>Source Files\Bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap\bitmap_blitdata.h">
+      <Filter>Source Files\Bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap\bitmap_gamma.h">
+      <Filter>Source Files\Bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap\pixelformat.h">
+      <Filter>Source Files\Bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Logo\electric.h">
+      <Filter>Source Files\Engine\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\BitmapList.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\engine.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Entities.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Box.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\crc32.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\ExtBox.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\quatern.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vec3d.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Xform3d.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Support\Basetype.h">
+      <Filter>Source Files\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="Support\Errorlog.h">
+      <Filter>Source Files\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="Support\geAssert.h">
+      <Filter>Source Files\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="Support\log.h">
+      <Filter>Source Files\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="Support\mempool.h">
+      <Filter>Source Files\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="Support\Ram.h">
+      <Filter>Source Files\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="VFile\dirtree.h">
+      <Filter>Source Files\VFile</Filter>
+    </ClInclude>
+    <ClInclude Include="VFile\fsdos.h">
+      <Filter>Source Files\VFile</Filter>
+    </ClInclude>
+    <ClInclude Include="VFile\Fsmemory.h">
+      <Filter>Source Files\VFile</Filter>
+    </ClInclude>
+    <ClInclude Include="VFile\fsvfs.h">
+      <Filter>Source Files\VFile</Filter>
+    </ClInclude>
+    <ClInclude Include="VFile\vfile.h">
+      <Filter>Source Files\VFile</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Fog.h">
+      <Filter>Source Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Frustum.h">
+      <Filter>Source Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Gbspfile.h">
+      <Filter>Source Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Light.h">
+      <Filter>Source Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Plane.h">
+      <Filter>Source Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Surface.h">
+      <Filter>Source Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Trace.h">
+      <Filter>Source Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\User.h">
+      <Filter>Source Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Vis.h">
+      <Filter>Source Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\WBitmap.h">
+      <Filter>Source Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\World.h">
+      <Filter>Source Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Font\font.H">
+      <Filter>Source Files\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Font\wgClip.H">
+      <Filter>Source Files\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\matrix33.h">
+      <Filter>Source Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\PhysicsJoint.h">
+      <Filter>Source Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\PhysicsObject.h">
+      <Filter>Source Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\PhysicsSystem.h">
+      <Filter>Source Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CSNetMgr.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Genesis.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="getypes.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="list.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Netplay.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ptrtypes.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound3d.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tclip.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tsc.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="genesis.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Bitmap\bitmap.__h">
+      <Filter>Source Files\Bitmap</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Bitmap\bitmap._h">
+      <Filter>Source Files\Bitmap</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+</Project>
