@@ -45,7 +45,7 @@ typedef signed int geBoolean;
 typedef float geFloat;
 
 #ifndef NULL
-#define NULL	((void *)0)
+#define NULL	nullptr
 #endif
 
 typedef signed long     int32;
@@ -70,6 +70,25 @@ typedef unsigned char  uint8 ;
 #define	GE_PI					((geFloat)3.14159265358979323846f)
 
 /****************************************************/
+
+#define GE_SAFE_DELETE(x)		{ if (x) delete x; x = nullptr; }
+#define GE_SAFE_DELETE_ARRAY(x)	{ if (x) delete [] x; x = nullptr; }
+#define GE_SAFE_RELEASE(x)		{ if (x) (x)->release(); x = nullptr; }
+
+namespace g3d {
+
+	class IgeUnknown
+	{
+	protected:
+		virtual ~IgeUnknown() {}
+
+	public:
+		virtual uint32 addRef() = 0;
+		virtual uint32 release() = 0;
+
+		uint32 m_iRefCount;
+	};
+}
 
 #endif
  

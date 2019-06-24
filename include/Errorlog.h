@@ -190,7 +190,7 @@ GENESISAPI void geErrorLog_AddExplicit(geErrorLog_ErrorClassType,
 #ifdef ERRORLOG_FULL_REPORTING
 	// 'Debug' version includes a textual error id, and the user string
 
-	#define geErrorLog_Add(Error, Context) geErrorLog_AddExplicit(Error, #Error, __FILE__, __LINE__,"", Context)
+	#define geErrorLog_Add(Error, Context) geErrorLog_AddExplicit((geErrorLog_ErrorClassType)Error, #Error, __FILE__, __LINE__,"", Context)
 		// logs an error.  
 
 	#define geErrorLog_AddString(Error,String, Context) geErrorLog_AddExplicit((geErrorLog_ErrorClassType)Error, #Error, __FILE__,__LINE__, String, Context)

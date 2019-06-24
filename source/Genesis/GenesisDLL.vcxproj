@@ -62,7 +62,7 @@
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\dependencies\DXSDK_81\include;.;World;Engine;Engine\Drivers;Actor;BSP;Math;Entities;Support;Physics;VFile;Bitmap;Bitmap\Compression;guWorld;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\dependencies\DXSDK_81\include;.;World;Engine;Engine\Drivers;Actor;BSP;Math;Entities;Support;Physics;VFile;Bitmap;Bitmap\Compression;guWorld;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_USRDLL;BUILDGENESIS;GENESISDLLVERSION;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\DebugDLL\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\DebugDLL\GenesisDLL.pch</PrecompiledHeaderOutputFile>
@@ -206,6 +206,7 @@
     <ClCompile Include="Sound3d.cpp" />
     <ClCompile Include="Support\Errorlog.cpp" />
     <ClCompile Include="Support\geAssert.cpp" />
+    <ClCompile Include="Support\geRootImpl.cpp" />
     <ClCompile Include="Support\log.cpp" />
     <ClCompile Include="Support\mempool.cpp" />
     <ClCompile Include="Support\Ram.cpp" />
@@ -231,11 +232,32 @@
     <ClCompile Include="World\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actor\actor.h" />
-    <ClInclude Include="Actor\body.h" />
+    <ClInclude Include="..\..\include\actor.h" />
+    <ClInclude Include="..\..\include\BASETYPE.H" />
+    <ClInclude Include="..\..\include\bitmap.h" />
+    <ClInclude Include="..\..\include\body.h" />
+    <ClInclude Include="..\..\include\Errorlog.h" />
+    <ClInclude Include="..\..\include\ExtBox.h" />
+    <ClInclude Include="..\..\include\font.H" />
+    <ClInclude Include="..\..\include\geFileLogger.h" />
+    <ClInclude Include="..\..\include\geLogger.h" />
+    <ClInclude Include="..\..\include\GENESIS.H" />
+    <ClInclude Include="..\..\include\geRoot.h" />
+    <ClInclude Include="..\..\include\geSingleton.h" />
+    <ClInclude Include="..\..\include\getypes.h" />
+    <ClInclude Include="..\..\include\matrix33.h" />
+    <ClInclude Include="..\..\include\motion.h" />
+    <ClInclude Include="..\..\include\path.h" />
+    <ClInclude Include="..\..\include\PhysicsJoint.h" />
+    <ClInclude Include="..\..\include\PhysicsObject.h" />
+    <ClInclude Include="..\..\include\PhysicsSystem.h" />
+    <ClInclude Include="..\..\include\pixelformat.h" />
+    <ClInclude Include="..\..\include\quatern.h" />
+    <ClInclude Include="..\..\include\RAM.H" />
+    <ClInclude Include="..\..\include\VEC3D.H" />
+    <ClInclude Include="..\..\include\vfile.h" />
+    <ClInclude Include="..\..\include\XFORM3D.H" />
     <ClInclude Include="Actor\bodyinst.h" />
-    <ClInclude Include="Actor\motion.h" />
-    <ClInclude Include="Actor\path.h" />
     <ClInclude Include="Actor\pose.h" />
     <ClInclude Include="Actor\puppet.h" />
     <ClInclude Include="Actor\QKFrame.h" />
@@ -244,7 +266,6 @@
     <ClInclude Include="Actor\tkevents.h" />
     <ClInclude Include="Actor\vkframe.h" />
     <ClInclude Include="Actor\xfarray.h" />
-    <ClInclude Include="Bitmap\bitmap.h" />
     <ClInclude Include="Bitmap\bitmap_blitdata.h" />
     <ClInclude Include="Bitmap\bitmap_gamma.h" />
     <ClInclude Include="Bitmap\Compression\palcreate.h" />
@@ -252,7 +273,6 @@
     <ClInclude Include="Bitmap\Compression\paloptimize.h" />
     <ClInclude Include="Bitmap\Compression\utility.h" />
     <ClInclude Include="Bitmap\Compression\yuv.h" />
-    <ClInclude Include="Bitmap\pixelformat.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CSNetMgr.h" />
     <ClInclude Include="Engine\BitmapList.h" />
@@ -260,32 +280,20 @@
     <ClInclude Include="Engine\Logo\electric.h" />
     <ClInclude Include="Engine\System.h" />
     <ClInclude Include="Entities\Entities.h" />
-    <ClInclude Include="Font\font.H" />
     <ClInclude Include="Font\wgClip.H" />
-    <ClInclude Include="Genesis.h" />
     <ClInclude Include="getypes.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="Math\Box.h" />
     <ClInclude Include="Math\crc32.h" />
-    <ClInclude Include="Math\ExtBox.h" />
-    <ClInclude Include="Math\quatern.h" />
-    <ClInclude Include="Math\Vec3d.h" />
-    <ClInclude Include="Math\Xform3d.h" />
     <ClInclude Include="Netplay.h" />
-    <ClInclude Include="Physics\matrix33.h" />
-    <ClInclude Include="Physics\PhysicsJoint.h" />
-    <ClInclude Include="Physics\PhysicsObject.h" />
-    <ClInclude Include="Physics\PhysicsSystem.h" />
     <ClInclude Include="Ptrtypes.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Sound3d.h" />
-    <ClInclude Include="Support\Basetype.h" />
-    <ClInclude Include="Support\Errorlog.h" />
     <ClInclude Include="Support\geAssert.h" />
+    <ClInclude Include="Support\geRootImpl.h" />
     <ClInclude Include="Support\log.h" />
     <ClInclude Include="Support\mempool.h" />
-    <ClInclude Include="Support\Ram.h" />
     <ClInclude Include="tclip.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="tsc.h" />

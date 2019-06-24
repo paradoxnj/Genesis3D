@@ -40,6 +40,9 @@
     <Filter Include="Source Files\Physics">
       <UniqueIdentifier>{f9d4f685-dd32-4e66-916e-fccf9a6e64cb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Interface Headers">
+      <UniqueIdentifier>{ca81c228-0c57-4955-8e67-18b96bae8ae0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor\actor.cpp">
@@ -276,21 +279,12 @@
     <ClCompile Include="tsc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Support\geRootImpl.cpp">
+      <Filter>Source Files\Support</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actor\actor.h">
-      <Filter>Source Files\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor\body.h">
-      <Filter>Source Files\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="Actor\bodyinst.h">
-      <Filter>Source Files\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor\motion.h">
-      <Filter>Source Files\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor\path.h">
       <Filter>Source Files\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Actor\pose.h">
@@ -332,16 +326,10 @@
     <ClInclude Include="Bitmap\Compression\yuv.h">
       <Filter>Source Files\Bitmap\Compression</Filter>
     </ClInclude>
-    <ClInclude Include="Bitmap\bitmap.h">
-      <Filter>Source Files\Bitmap</Filter>
-    </ClInclude>
     <ClInclude Include="Bitmap\bitmap_blitdata.h">
       <Filter>Source Files\Bitmap</Filter>
     </ClInclude>
     <ClInclude Include="Bitmap\bitmap_gamma.h">
-      <Filter>Source Files\Bitmap</Filter>
-    </ClInclude>
-    <ClInclude Include="Bitmap\pixelformat.h">
       <Filter>Source Files\Bitmap</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Logo\electric.h">
@@ -365,24 +353,6 @@
     <ClInclude Include="Math\crc32.h">
       <Filter>Source Files\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Math\ExtBox.h">
-      <Filter>Source Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\quatern.h">
-      <Filter>Source Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\Vec3d.h">
-      <Filter>Source Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\Xform3d.h">
-      <Filter>Source Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Support\Basetype.h">
-      <Filter>Source Files\Support</Filter>
-    </ClInclude>
-    <ClInclude Include="Support\Errorlog.h">
-      <Filter>Source Files\Support</Filter>
-    </ClInclude>
     <ClInclude Include="Support\geAssert.h">
       <Filter>Source Files\Support</Filter>
     </ClInclude>
@@ -390,9 +360,6 @@
       <Filter>Source Files\Support</Filter>
     </ClInclude>
     <ClInclude Include="Support\mempool.h">
-      <Filter>Source Files\Support</Filter>
-    </ClInclude>
-    <ClInclude Include="Support\Ram.h">
       <Filter>Source Files\Support</Filter>
     </ClInclude>
     <ClInclude Include="VFile\dirtree.h">
@@ -443,31 +410,13 @@
     <ClInclude Include="World\World.h">
       <Filter>Source Files\World</Filter>
     </ClInclude>
-    <ClInclude Include="Font\font.H">
-      <Filter>Source Files\Font</Filter>
-    </ClInclude>
     <ClInclude Include="Font\wgClip.H">
       <Filter>Source Files\Font</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics\matrix33.h">
-      <Filter>Source Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics\PhysicsJoint.h">
-      <Filter>Source Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics\PhysicsObject.h">
-      <Filter>Source Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics\PhysicsSystem.h">
-      <Filter>Source Files\Physics</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="CSNetMgr.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Genesis.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="getypes.h">
@@ -499,6 +448,84 @@
     </ClInclude>
     <ClInclude Include="tsc.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\actor.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\BASETYPE.H">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\bitmap.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\body.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Errorlog.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ExtBox.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\font.H">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\geFileLogger.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\geLogger.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\GENESIS.H">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\geSingleton.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\getypes.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\matrix33.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\motion.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\path.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\PhysicsJoint.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\PhysicsObject.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\PhysicsSystem.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\pixelformat.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\quatern.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\RAM.H">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\VEC3D.H">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\vfile.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\XFORM3D.H">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\geRoot.h">
+      <Filter>Interface Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Support\geRootImpl.h">
+      <Filter>Source Files\Support</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

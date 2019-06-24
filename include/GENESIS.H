@@ -28,6 +28,8 @@
 #include "ExtBox.h"
 #include "vfile.h"
 #include "Bitmap.h"
+#include "geFileLogger.h"
+#include "geRoot.h"
 
 //================================================================================
 //	Constants / Defines / TypDefs
@@ -218,6 +220,11 @@ typedef struct
 #define GE_POLYMODE_NORMAL		1			// Draw as is
 #define GE_POLYMODE_GOURAUD		2			// Gouraud only
 #define GE_POLYMODE_LINES		3			// Outlines only
+
+// Root creation
+namespace g3d {
+	GENESISAPI IgeRoot *geRoot_Create();
+}
 
 //================================================================================
 //	Engine Management functions
