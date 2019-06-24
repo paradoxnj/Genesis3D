@@ -352,9 +352,9 @@ World_BSP *World_CreateBSPFromBox(const geVec3d *Mins, const geVec3d *Maxs)
 //=====================================================================================
 GENESISAPI geWorld *geWorld_Create(geVFile *File)
 {
-	geWorld			*NewWorld;
-	int32			i;
-	geWorld_Model	*Models;
+	geWorld			*NewWorld = nullptr;
+	int32			i = 0;
+	geWorld_Model	*Models = nullptr;
 
 	NewWorld = GE_RAM_ALLOCATE_STRUCT(geWorld);
 
@@ -1723,7 +1723,7 @@ static geBoolean RenderSubModels(geCamera *Camera, Frustum_Info *FrustumInfo, ge
 //========================================================================================
 static World_BSP *CreateGBSP(geVFile *File)	
 {
-	World_BSP	*NewBSP;
+	World_BSP	*NewBSP = nullptr;
 
 	assert(File != NULL);
 
@@ -2540,7 +2540,7 @@ static geBoolean CreateStaticFogList(geWorld *World)
 {
 	geEntity			*Entity;
 	geEntity_EntitySet	*EntitySet;
-	geFog				*Fog;
+	geFog				*Fog = nullptr;
 
 	// ONly interested in "FogLight"'s
 

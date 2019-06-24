@@ -38,10 +38,6 @@
 #define		DRV_STR_SIZE				512
 #define		DRV_MODE_STR_SIZE			512
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef enum
 {
 	FrameState_None = 0,
@@ -229,7 +225,4 @@ geBoolean Sys_GetCPUFreq(Sys_CPUInfo *Info);
 geBoolean Sys_EnginePrint(geEngine *Engine, int32 x, int32 y, char *String);
 geBoolean	Sys_EngineResetDecorators(geEngine *Engine);
 
-#ifdef __cplusplus
-}
-#endif
 #endif

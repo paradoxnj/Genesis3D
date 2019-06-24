@@ -25,10 +25,6 @@
 
 #include "basetype.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef enum		// all supported formats (including shifts)
 {
 	GE_PIXELFORMAT_NO_DATA = 0,
@@ -142,11 +138,6 @@ GENESISAPI uint32		GENESISCC gePixelFormat_GetPixel(gePixelFormat Format,uint8 *
 GENESISAPI void			GENESISCC gePixelFormat_PutPixel(gePixelFormat Format,uint8 **ppData,uint32 Pixel);
 	
 GENESISAPI uint32		GENESISCC gePixelFormat_ConvertPixel(gePixelFormat Format,uint32 Pixel,gePixelFormat ToFormat);
-
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 

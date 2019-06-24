@@ -22,10 +22,6 @@
 #ifndef GE_BASETYPE_H
 #define GE_BASETYPE_H
  
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /******** The Genesis Calling Conventions ***********/ 
 
 #define	GENESISCC	_fastcall
@@ -74,10 +70,6 @@ typedef unsigned char  uint8 ;
 #define	GE_PI					((geFloat)3.14159265358979323846f)
 
 /****************************************************/
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
  

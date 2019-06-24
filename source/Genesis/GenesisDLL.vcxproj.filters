@@ -317,9 +317,6 @@
     <ClInclude Include="Actor\xfarray.h">
       <Filter>Source Files\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Bitmap\Compression\image.h">
-      <Filter>Source Files\Bitmap\Compression</Filter>
-    </ClInclude>
     <ClInclude Include="Bitmap\Compression\palcreate.h">
       <Filter>Source Files\Bitmap\Compression</Filter>
     </ClInclude>

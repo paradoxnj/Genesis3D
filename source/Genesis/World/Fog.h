@@ -30,10 +30,6 @@
 #include "Ram.h"
 #include "Errorlog.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //=====================================================================================
 //	Defines / Structure defines
 //=====================================================================================
@@ -75,9 +71,5 @@ GENESISAPI		geBoolean geFog_SetAttributes(	geFog			*Fog,
 
 GENESISAPI		geBoolean geFog_SetUserData(geFog *Fog, void *UserData);
 GENESISAPI		void *geFog_GetUserData(geFog *Fog);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

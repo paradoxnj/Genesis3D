@@ -29,10 +29,6 @@
 #include "vfile.h"
 #include "Bitmap.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //================================================================================
 //	Constants / Defines / TypDefs
 //================================================================================
@@ -596,10 +592,6 @@ GENESISAPI geBoolean		GENESISCC geCSNetMgr_StartSession(geCSNetMgr *M, const cha
 GENESISAPI geBoolean		GENESISCC geCSNetMgr_StopSession(geCSNetMgr *M);
 GENESISAPI geBoolean		GENESISCC geCSNetMgr_SendToServer(geCSNetMgr *M, geBoolean Guaranteed, uint8 *Data, int32 DataSize);
 GENESISAPI geBoolean		GENESISCC geCSNetMgr_SendToClient(geCSNetMgr *M, geCSNetMgr_NetID To, geBoolean Guaranteed, uint8 *Data, int32 DataSize);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 

@@ -28,10 +28,6 @@
 #include "GBSPFile.h"
 #include "Bitmap.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //==
 // This stuff should really go in GBSPFile.h...
 	#define		TEXTURE_SKYBOX				(1<<0)				// This is a skybox texture
@@ -74,9 +70,5 @@ uint32 geWBitmap_GetFlags(geWBitmap *WBitmap);
 geBitmap *geWBitmap_GetBitmap(geWBitmap *WBitmap);
 int32 geWBitmap_GetVisFrame(geWBitmap *WBitmap);
 geBoolean geWBitmap_SetVisFrame(geWBitmap *WBitmap, int32 VisFrame);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

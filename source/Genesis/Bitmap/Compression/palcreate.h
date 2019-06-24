@@ -26,10 +26,6 @@
 /*                                                                                      */
 /****************************************************************************************/
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 extern geBitmap_Palette * createPaletteGood(const geBitmap_Info * Info,const void * Bits);
 extern geBitmap_Palette * createPaletteFast(const geBitmap_Info * Info,const void * Bits);
 
@@ -43,8 +39,5 @@ extern geBitmap_Palette * createPaletteFromBitmap(const geBitmap * Bitmap,geBool
 extern void PalCreate_Start(void);
 extern void PalCreate_Stop(void);
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

@@ -27,10 +27,6 @@
 #include "pixelformat.h"
 #include "vfile.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /***********************************************************************************/
 
 typedef struct geBitmap			geBitmap;
@@ -615,10 +611,6 @@ int x,y;
 /***********************************************************************************/
 
 #endif
-#ifdef __cplusplus
-}
-#endif
-
 
 #endif
 

@@ -27,10 +27,6 @@
 
 #include "GBSPFile.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //=====================================================================================
 //	Defines / Structure defines
 //=====================================================================================
@@ -48,10 +44,5 @@ float GENESISCC Plane_PlaneDistanceFast(const GFX_Plane *Plane, const geVec3d *P
 float GENESISCC Plane_FaceDistanceFast(const GFX_Face *Face, const geVec3d *Point);
 float GENESISCC Plane_PlaneDistance(const GFX_Plane *Plane, const geVec3d *Point);
 void gePlane_SetFromVerts(GFX_Plane *Plane, const geVec3d *V1, const geVec3d *V2, const geVec3d *V3);
-
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

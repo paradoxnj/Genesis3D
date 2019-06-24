@@ -48,10 +48,6 @@
 #include "Motion.h"
 #include "XFArray.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 
 #define GE_POSE_ROOT_JOINT (-1)
 
@@ -160,10 +156,6 @@ void GENESISCC gePose_ClearCoverage(gePose *P, int ClearTo);
 	// are made to the joint coverage flags.
 int GENESISCC gePose_AccumulateCoverage(gePose *P, const geMotion *M, geBoolean QueryOnly);
 
-
-#ifdef __cplusplus
-}
-#endif
 
 
 #endif

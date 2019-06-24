@@ -49,15 +49,15 @@ static void VisFog(geEngine *Engine, geWorld *World, const geCamera *Camera, Fru
 //=====================================================================================
 geBoolean Vis_WorldInit(geWorld *World)
 {
-	World_BSP	*BSP;
-	int32		i;
+	World_BSP	*BSP = nullptr;
+	int32		i = 0;
 	static int32 StartupParams[]={0x696C6345,0x21657370};
 	
-	assert(World  != NULL);
+	assert(World  != nullptr);
 
 	BSP = World->CurrentBSP;
 
-	assert(BSP != NULL);
+	assert(BSP != nullptr);
 
 	if (!BSP)
 		return GE_FALSE;
@@ -118,7 +118,7 @@ geBoolean Vis_WorldInit(geWorld *World)
 //=====================================================================================
 void Vis_WorldShutdown(geWorld *World)
 {
-	World_BSP	*BSP;
+	World_BSP	*BSP = nullptr;
 	
 	assert(World  != NULL);
 
@@ -136,10 +136,10 @@ void Vis_WorldShutdown(geWorld *World)
 	if (BSP->NodeParents)
 		geRam_Free(BSP->NodeParents);
 
-	BSP->NodeVisFrame = NULL;
-	BSP->ClusterVisFrame = NULL;
-	BSP->AreaVisFrame = NULL;
-	BSP->NodeParents = NULL;
+	BSP->NodeVisFrame = nullptr;
+	BSP->ClusterVisFrame = nullptr;
+	BSP->AreaVisFrame = nullptr;
+	BSP->NodeParents = nullptr;
 }
 
 //=====================================================================================
@@ -155,10 +155,10 @@ geBoolean ModelVisible(geWorld *World, geWorld_Model *Model)
 //=====================================================================================
 void Vis_FloodAreas_r(geWorld *World, int32 Area)
 {
-	GBSP_BSPData	*BSP;
-	GFX_Area		*a;
-	GFX_AreaPortal	*p;
-	int32			i;
+	GBSP_BSPData	*BSP = nullptr;
+	GFX_Area		*a = nullptr;
+	GFX_AreaPortal	*p = nullptr;
+	int32			i = 0;
 
 	if (World->CurrentBSP->AreaVisFrame[Area] == World->CurFrameStatic)
 		return;		// Area already set

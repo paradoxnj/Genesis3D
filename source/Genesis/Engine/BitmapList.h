@@ -28,10 +28,6 @@
 
 typedef struct BitmapList		BitmapList;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 BitmapList *BitmapList_Create(void);
 geBoolean BitmapList_Destroy(BitmapList *pList);
 
@@ -52,7 +48,4 @@ int			BitmapList_CountMembers(BitmapList *pList);
 int			BitmapList_CountMembersAttached(BitmapList *pList);
 #endif
 
-#ifdef __cplusplus
-}
-#endif
 #endif

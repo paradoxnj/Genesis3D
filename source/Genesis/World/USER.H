@@ -35,10 +35,6 @@
 
 #include "DCommon.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #define MAX_USER_VERTS				4			
 #define USER_MAX_SORTED_POLYS		1024
 
@@ -116,9 +112,5 @@ geBoolean	User_DestroyOncePolys(geWorld *World);
 void		User_DestroyPolyList(geWorld *World, gePoly *List);
 
 void		User_EngineFillRect(geEngine *Engine, const GE_Rect *Rect, const GE_RGBA *Color);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

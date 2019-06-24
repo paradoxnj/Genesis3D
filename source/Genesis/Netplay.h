@@ -29,10 +29,6 @@
 
 #include "BaseType.h"
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
 // ************************************************************************************
 //	Defines
 // ************************************************************************************
@@ -70,9 +66,5 @@ BOOL DeInitNetPlay(void);
 
 // HACK!!!! Function is in Engine.cpp (So NetPlay.C can call it...)
 BOOL			AFX_CPrintfC(char *String);
-
-#ifdef	__cplusplus
-}
-#endif
 
 #endif

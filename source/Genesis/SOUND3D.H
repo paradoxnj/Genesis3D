@@ -25,10 +25,6 @@
 #include "BaseType.h"
 #include "Sound.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 // GENESIS_PUBLIC_APIS
 
 GENESISAPI	void geSound3D_GetConfig(
@@ -52,9 +48,5 @@ GENESISAPI	void geSound3D_GetConfigIgnoreObstructions(
 		geFloat *Frequency);
 
 // GENESIS_PRIVATE_APIS
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

@@ -27,10 +27,6 @@
 #include "XForm3d.h"
 #include "GETypes.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //================================================================================
 //	Structure defines
 //================================================================================
@@ -95,8 +91,5 @@ const geVec3d *GENESISCC geCamera_GetPov(const geCamera *Camera);
 const geVec3d *GENESISCC geCamera_GetVisPov(const geCamera *Camera);
 GENESISAPI geBoolean GENESISCC geCamera_ConvertWorldSpaceToCameraSpace(const geXForm3d *WXForm, geXForm3d *CXForm);
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

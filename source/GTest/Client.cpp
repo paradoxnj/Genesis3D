@@ -471,7 +471,7 @@ static void SetPlayerDefaults(GPlayer *Player)
 void Client_DestroyALLPlayers(Client_Client *Client)
 {
 	int32		i;
-	GPlayer		*Player;
+	GPlayer		*Player = nullptr;
 
 	assert(Client_IsValid(Client) == GE_TRUE);
 
@@ -503,7 +503,7 @@ void Client_DestroyALLPlayers(Client_Client *Client)
 //=====================================================================================
 void Client_FreeALLResources(Client_Client *Client)
 {
-	geBoolean	Ret;
+	geBoolean	Ret = GE_FALSE;
 
 	assert(Client_IsValid(Client) == GE_TRUE);
 
@@ -568,8 +568,8 @@ static geBoolean PrintClientScores(Client_Client *Client)
 	int32				i, k, j, Total;
 	int32				Sorted[NETMGR_MAX_CLIENTS];
 	int32				SortedScores[NETMGR_MAX_CLIENTS];
-	Client_ClientInfo	*ClientInfo;
-	char				*Name;
+	Client_ClientInfo	*ClientInfo = nullptr;
+	char				*Name = nullptr;
 	int32				Score;
 	int					Width,Height;
 

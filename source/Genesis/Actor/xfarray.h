@@ -35,10 +35,6 @@
 
 #include "xform3d.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef struct geXFArray geXFArray;
 
 	// Create the object.  Creates an array of Size elements.  
@@ -55,10 +51,6 @@ geXForm3d *GENESISCC geXFArray_GetElements(const geXFArray *XFA, int *Size);
 
 	// Sets every transform in the array to the given transform.
 void GENESISCC geXFArray_SetAll(geXFArray *XFA, const geXForm3d *Matrix);
-
-#ifdef __cplusplus
-}
-#endif
 
 
 #endif

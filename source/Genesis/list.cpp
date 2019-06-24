@@ -410,7 +410,7 @@ Stack * pStack = nullptr;
 	pStack = static_cast<Stack*>(new(Stack));
 	assert(pStack);
 	pStack->members = 4096;
-	pStack->Buffer[0] = MemAlloc(sizeof(void *)*(pStack->members));
+	pStack->Buffer = static_cast<void**>(MemAlloc(sizeof(void *)*(pStack->members)));
 	assert(pStack->Buffer);
 	pStack->End = pStack->Buffer + (pStack->members);
 	pStack->Head = pStack->Buffer;
@@ -423,7 +423,7 @@ void ** NewBuffer = nullptr;
 int newmembers = 0;
 	// realloc
 	newmembers = pStack->members + 4096;
-	NewBuffer[0] = MemAlloc(sizeof(void *)*newmembers);
+	NewBuffer = static_cast<void**>(MemAlloc(sizeof(void *)*newmembers));
 	assert(NewBuffer);
 	memcpy(NewBuffer,pStack->Buffer, sizeof(void *)*(pStack->members));
 	pStack->Head = NewBuffer + pStack->members;

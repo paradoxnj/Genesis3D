@@ -22,11 +22,6 @@
 #ifndef GE_CLIP_H
 #define GE_CLIP_H
 
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #define GE_CLIP_CENTER 1
 #define GE_CLIP_CORNER 0
 #include	"basetype.h"
@@ -38,10 +33,6 @@ GENESISAPI geBoolean GENESISCC CalculateClipping(
                            GE_Rect *artRect, int32 *resultX, int32 *resultY, 
                            int32 x, int32 y,
                            const GE_Rect bounds, int32 type);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 

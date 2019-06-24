@@ -32,10 +32,6 @@
 #include "XForm3d.h"
 #include "Surface.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #define MAX_FCP						32			// Max ClipPlanes for frustum...
 
 #define CLIP_PLANE_EPSILON  0.001f
@@ -103,9 +99,5 @@ geBoolean Frustum_PointInFrustum(const Frustum_Info *Fi, const geVec3d *Point, f
 
 geBoolean Frustum_ClipAllPlanesL(const Frustum_Info * Fi,uint32 ClipFlags,GE_LVertex *Verts, int32 *pNumVerts);
 
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

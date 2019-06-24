@@ -25,10 +25,6 @@
 
 #include "Vec3d.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef struct
 {	
 	geFloat AX,AY,AZ;	// e[0][0],e[0][1],e[0][2]
@@ -210,10 +206,6 @@ GENESISAPI void GENESISCC geXForm3d_Mirror(
 	GENESISAPI 	void GENESISCC geXForm3d_SetMaximalAssertionMode( geBoolean Enable );
 #else
 	#define geXForm3d_SetMaximalAssertionMode(Enable)
-#endif
-
-#ifdef __cplusplus
-}
 #endif
 
 #endif

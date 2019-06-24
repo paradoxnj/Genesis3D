@@ -247,7 +247,6 @@
     <ClInclude Include="Bitmap\bitmap.h" />
     <ClInclude Include="Bitmap\bitmap_blitdata.h" />
     <ClInclude Include="Bitmap\bitmap_gamma.h" />
-    <ClInclude Include="Bitmap\Compression\image.h" />
     <ClInclude Include="Bitmap\Compression\palcreate.h" />
     <ClInclude Include="Bitmap\Compression\palettize.h" />
     <ClInclude Include="Bitmap\Compression\paloptimize.h" />

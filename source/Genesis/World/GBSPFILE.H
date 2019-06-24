@@ -31,10 +31,6 @@
 #include "VFile.h"
 #include "Motion.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #define GBSP_VERSION				15	
 
 #define GBSP_CHUNK_HEADER			0
@@ -347,9 +343,5 @@ typedef struct
 
 geBoolean GBSP_LoadGBSPFile(geVFile *File, GBSP_BSPData *BSP);
 geBoolean GBSP_FreeGBSPFile(GBSP_BSPData *BSP);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

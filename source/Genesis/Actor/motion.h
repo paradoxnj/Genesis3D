@@ -33,10 +33,6 @@
 #include "path.h"
 #include "vfile.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 // GENESIS_PUBLIC_APIS
 typedef struct geMotion geMotion;
 
@@ -171,10 +167,5 @@ GENESISAPI geBoolean GENESISCC geMotion_GetEventExtents(const geMotion *M,
 GENESISAPI geMotion *GENESISCC geMotion_CreateFromFile(geVFile *f);
 GENESISAPI geBoolean GENESISCC geMotion_WriteToFile(const geMotion *M, geVFile *f);
 GENESISAPI geBoolean GENESISCC geMotion_WriteToBinaryFile(const geMotion *M,geVFile *pFile);
-
-#ifdef __cplusplus
-}
-#endif
-
 
 #endif

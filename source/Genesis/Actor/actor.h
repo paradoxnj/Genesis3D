@@ -97,10 +97,6 @@
 
 #include "Body.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 // GENESIS_PUBLIC_APIS
 
 #ifndef GE_ACTOR_ENUMS
@@ -431,11 +427,6 @@ GENESISAPI int GENESISCC geActor_GetCount(void);
 
 // GENESIS_PRIVATE_APIS
 	// call setscale and setshadow after preparing the actor for rendering (renderprep)
-
-
-#ifdef __cplusplus
-}
-#endif
 
 
 #endif

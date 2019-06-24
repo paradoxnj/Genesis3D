@@ -28,11 +28,6 @@
 	#define ERRORLOG_FULL_REPORTING
 #endif
 
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef enum geErrorLog_ErrorIDEnumType
 {
 	GE_ERR_INVALID_DRIVER_HANDLE,			// Driver not supported
@@ -224,10 +219,6 @@ GENESISAPI geBoolean geErrorLog_Report(int History, geErrorLog_ErrorClassType *E
 	// reports from the error log.  
 	// history is 0 for most recent,  1.. for second most recent etc.
 	// returns GE_TRUE if report succeeded.  GE_FALSE if it failed.
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 

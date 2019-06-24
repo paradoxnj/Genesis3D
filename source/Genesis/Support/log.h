@@ -24,10 +24,6 @@
 
 #include <stdarg.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #ifdef	_LOG
 
 void Log_Puts(	const char * string);
@@ -39,10 +35,6 @@ static _inline void Log_Printf(const char * str, ...) { }
 #define Log_Puts(string)
 
 #endif	// _LOG
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif // LOG_H
 

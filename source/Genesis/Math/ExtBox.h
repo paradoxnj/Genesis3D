@@ -25,10 +25,6 @@
 #include "basetype.h"
 #include "vec3d.h"
 
-#ifdef __cplusplus
-	extern "C" {
-#endif
-
 typedef struct geExtBox
 {
 	geVec3d Min;
@@ -83,10 +79,6 @@ void GENESISCC geExtBox_LinearSweep(	const geExtBox *BoxToSweep,
 //       if Normal is non-NULL, Normal is the surface normal of the box where the collision occured.
 geBoolean GENESISCC geExtBox_RayCollision( const geExtBox *B, const geVec3d *Start, const geVec3d *End, 
 								geFloat *T, geVec3d *Normal );
-
-#ifdef __cplusplus
-	}
-#endif
 
 
 

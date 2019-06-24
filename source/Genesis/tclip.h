@@ -28,10 +28,6 @@
 #include "bitmap.h"
 #include "engine.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /*******
 
 TClip is a state machine like OpenGL
@@ -63,11 +59,6 @@ geBoolean	GENESISCC geTClip_Pop(void);
 
 geBoolean	GENESISCC geTClip_SetTexture(const geBitmap * Bitmap);
 void		GENESISCC geTClip_Triangle(const GE_LVertex TriVertex[3]);
-
-
-#ifdef __cplusplus
-}
-#endif
 
 
 #endif

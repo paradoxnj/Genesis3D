@@ -31,10 +31,6 @@
 #include "World.h"
 //#include "System.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //=====================================================================================
 //	Defines / Structure defines
 //=====================================================================================
@@ -130,9 +126,5 @@ void Trace_GetMoveBox(const geVec3d *Mins, const geVec3d *Maxs, const geVec3d *F
 
 void		Trace_SetupIntersect(geWorld *World);
 geBoolean	Trace_IntersectWorldBSP(geVec3d *Front, geVec3d *Back, int32 Node);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

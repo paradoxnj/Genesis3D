@@ -25,10 +25,6 @@
 
 #include "basetype.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 extern void RGBb_to_YUVb(const uint8 *RGB,uint8 *YUV);
 extern void YUVb_to_RGBb(const uint8 *YUV,uint8 *RGB);
 extern void RGBb_to_YUVb_line(const uint8 *RGB,uint8 *YUV,int array);
@@ -81,9 +77,5 @@ do {	R = R_YUV(Y,(U)-127,(V)-127); G = G_YUV(Y,(U)-127,(V)-127); B = B_YUV(Y,(U)
 		R = minmax(R,0,255); G = minmax(G,0,255); B = minmax(B,0,255); } while(0)
 
 /**************************************************************/
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

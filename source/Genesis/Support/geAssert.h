@@ -24,10 +24,6 @@
 
 #include <assert.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 // You should use geAssert() anywhere in the Genesis engine that
 // you would normally use assert().
 //
@@ -59,9 +55,5 @@ typedef void (*geAssert_CriticalShutdownCallback) (void *Context);
 extern void geAssert_SetCriticalShutdownCallback( geAssert_CriticalShutdownCallback CB , void *Context);
 
 /************************************************************/
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

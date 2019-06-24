@@ -22,10 +22,6 @@
 #ifndef MEMPOOL_H
 #define MEMPOOL_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef struct MemPool MemPool;
 
 extern MemPool * MemPool_Create(int HunkLength,int NumHunks,int AutoExtendNumItems);
@@ -39,10 +35,6 @@ extern int MemPool_FreeHunk(MemPool * Pool,void *Hunk);
 
 #ifdef _DEBUG
 extern int MemPool_IsValid(MemPool * Pool);
-#endif
-
-#ifdef __cplusplus
-}
 #endif
 
 #endif /*CRB_MEMPOOL_H*/

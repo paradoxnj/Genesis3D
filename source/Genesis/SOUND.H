@@ -22,10 +22,6 @@
 #ifndef	GE_SOUND_H
 #define	GE_SOUND_H
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
 
 // GENESIS_PUBLIC_APIS
 
@@ -62,10 +58,6 @@ GENESISAPI	geBoolean		geSound_SoundIsPlaying(geSound_System *SoundS, geSound *So
 GENESISAPI	geBoolean		geSound_SetMasterVolume( geSound_System *SoundS, geFloat Volume );
 
 // GENESIS_PRIVATE_APIS
-
-#ifdef	__cplusplus
-}
-#endif
 
 #endif
 

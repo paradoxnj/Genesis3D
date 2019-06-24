@@ -34,10 +34,6 @@
 #include "basetype.h"
 #include "vfile.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef struct geTKEvents geTKEvents;
 typedef geFloat geTKEvents_TimeType;
 
@@ -92,11 +88,6 @@ GENESISAPI geBoolean GENESISCC geTKEvents_GetExtents(
 		geTKEvents *Events,
 		geTKEvents_TimeType *FirstEventTime,	// time of first event
 		geTKEvents_TimeType *LastEventTime);	// time of last event
-
-#ifdef __cplusplus
-}
-#endif
-
 
 
 #endif // __TKEVENTS_H__

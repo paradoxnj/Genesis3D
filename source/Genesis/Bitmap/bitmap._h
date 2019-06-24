@@ -27,10 +27,6 @@
 #include	"bitmap.h"
 #include	"dcommon.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /***
 **
 *
@@ -60,10 +56,6 @@ geRDriver_THandle * GENESISCC geBitmap_GetTHandle(const geBitmap *Bmp);
 geBoolean			GENESISCC geBitmap_SetDriverFlags(geBitmap *Bmp,uint32 flags);
 
 geBoolean			GENESISCC geBitmap_SetGammaCorrection_DontChange(geBitmap *Bmp,geFloat Gamma);
-
-#ifdef __cplusplus
-}
-#endif
 
 
 #endif // BITMAP_PRIVATE_H

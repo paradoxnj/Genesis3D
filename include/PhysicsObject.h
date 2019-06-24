@@ -24,10 +24,6 @@
 
 #include "matrix33.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #define PHYSICSOBJECT_GRAVITY				(-3.9f)
 
 typedef struct gePhysicsObject gePhysicsObject;
@@ -128,10 +124,6 @@ GENESISAPI int GENESISCC gePhysicsObject_GetActiveConfig(gePhysicsObject* pPhyso
 
 GENESISAPI void GENESISCC gePhysicsObject_SetPhysicsScale(gePhysicsObject* pPhysob, float scale);
 GENESISAPI float GENESISCC gePhysicsObject_GetPhysicsScale(gePhysicsObject* pPhysob);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 

@@ -32,11 +32,6 @@
 #include "vfile.h"
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 typedef struct gePuppet gePuppet;
 
 gePuppet *GENESISCC gePuppet_Create(geVFile *TextureFS, const geBody *B, geWorld *World);
@@ -97,9 +92,6 @@ void GENESISCC gePuppet_SetLightingOptions(gePuppet *P,
 	int LightReferenceBoneIndex,
 	int PerBoneLighting);
 
-#ifdef __cplusplus
-}
-#endif
 
 
 #endif

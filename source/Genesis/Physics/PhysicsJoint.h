@@ -22,10 +22,6 @@
 #ifndef	PHYSICSJOINT_H
 #define PHYSICSJOINT_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef enum
 {
 	JT_WORLD = 0,
@@ -60,9 +56,5 @@ GENESISAPI gePhysicsObject* GENESISCC gePhysicsJoint_GetObject1(const gePhysicsJ
 GENESISAPI gePhysicsObject* GENESISCC gePhysicsJoint_GetObject2(const gePhysicsJoint* pPhysjnt);
 GENESISAPI float GENESISCC gePhysicsJoint_GetAssemblyRate(const gePhysicsJoint* pPhysjnt);
 GENESISAPI void GENESISCC gePhysicsJoint_SetAssemblyRate(gePhysicsJoint* pPhysjnt, float assemblyRate);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

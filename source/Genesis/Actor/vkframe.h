@@ -42,10 +42,6 @@
 #include "TKArray.h"
 #include "vfile.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef enum
 {
 	VKFRAME_LINEAR,
@@ -118,9 +114,5 @@ geTKArray *GENESISCC geVKFrame_CreateFromFile(geVFile *pFile, geVKFrame_Interpol
 geBoolean GENESISCC geVKFrame_WriteToBinaryFile(geVFile *pFile, void *geVKFrame, 
 								geVKFrame_InterpolationType InterpolationType, int Looping);
 geTKArray *GENESISCC geVKFrame_CreateFromBinaryFile(geVFile *pFile, geVKFrame_InterpolationType *InterpolationType, int *Looping);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

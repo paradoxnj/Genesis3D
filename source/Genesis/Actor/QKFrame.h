@@ -48,10 +48,6 @@
 #include "Quatern.h"
 #include "vfile.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef enum
 {
 	QKFRAME_LINEAR,
@@ -141,11 +137,6 @@ geTKArray *GENESISCC geQKFrame_CreateFromBinaryFile(geVFile *pFile, int *Interpo
 geBoolean GENESISCC geQKFrame_WriteToBinaryFile(geVFile *pFile, geTKArray *KeyList, 
 		geQKFrame_InterpolationType InterpolationType, int Looping);
 
-
-
-#ifdef __cplusplus
-}
-#endif
 
 
 #endif

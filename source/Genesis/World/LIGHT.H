@@ -30,10 +30,6 @@
 #include "System.h"
 #include "DCommon.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //=====================================================================================
 //	Defines / Structure defines
 //=====================================================================================
@@ -98,9 +94,5 @@ void		Light_SetupLightmap(DRV_LInfo *LInfo, BOOL *Dynamic);
 geBoolean	Light_GetLightmapRGB(Surf_SurfInfo *Surf, geVec3d *Pos, GE_RGBA *RGBA);
 geBoolean	Light_GetLightmapRGBBlended(Surf_SurfInfo *Surf, geVec3d *Pos, GE_RGBA *RGBA);
 void		Light_FogVerts(const geFog *Fog, const geVec3d *POV, const geVec3d *Verts, Surf_TexVert *TexVerts, int32 NumVerts);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

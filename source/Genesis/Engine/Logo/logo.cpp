@@ -167,7 +167,7 @@ geBoolean DoSplashScreen(geEngine *Engine, geDriver_Mode *DriverMode)
 	geVec3d				LightingNormal;
 	LARGE_INTEGER		CurrentTic;
 
-	_Electric_BoltEffect *Bolt;
+	_Electric_BoltEffect *Bolt = nullptr;
 	geVec3d				BoltStart;
 	geVec3d				BoltEnd;
 

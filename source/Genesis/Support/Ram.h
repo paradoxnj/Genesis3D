@@ -24,10 +24,6 @@
 
 #include "basetype.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef int (* geRam_CriticalCallbackFunction)(void);
 
 /*
@@ -130,10 +126,6 @@ GENESISAPI void * geRam_AllocateClear(uint32 size);
 
 #ifndef NDEBUG
 geBoolean geRam_IsValidPtr(void *ptr);
-#endif
-
-#ifdef __cplusplus
-  }
 #endif
 
 #endif

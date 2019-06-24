@@ -26,10 +26,6 @@
 #include <stdio.h>
 #include "tsc.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //{
 
 extern FILE * timerFP;
@@ -109,10 +105,6 @@ return 0;
 **********/
 
 //}
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif // TIMER_H
 

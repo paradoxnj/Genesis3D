@@ -32,10 +32,6 @@
 #include "vfile.h"
 #include "bitmap.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #define GE_BODY_NUMBER_OF_LOD			(4)		// 0 is highest detail
 #define GE_BODY_NO_PARENT_BONE         (-1)   
 #define GE_BODY_HIGHEST_LOD            (0)
@@ -124,13 +120,6 @@ geBoolean GENESISCC geBody_GetBoneByName(const geBody* B,
 
 geBoolean GENESISCC geBody_WriteToFile(const geBody *B, geVFile *pFile);
 geBody  *GENESISCC  geBody_CreateFromFile(geVFile *pFile);
-
-
-
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 					

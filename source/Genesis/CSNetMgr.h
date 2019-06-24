@@ -24,10 +24,6 @@
 
 #include "BaseType.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 
 //================================================================================
 //	Structure defines
@@ -90,8 +86,5 @@ GENESISAPI geBoolean GENESISCC		geCSNetMgr_SendToClient(geCSNetMgr *M, geCSNetMg
 
 
 // GENESIS_PRIVATE_APIS
-#ifdef __cplusplus
-}
-#endif
 
 #endif

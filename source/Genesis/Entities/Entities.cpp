@@ -95,9 +95,9 @@ static geBoolean InsertEntityInClassList(geWorld *World, geEntity *Entity)
 //====================================================================================
 geBoolean Ent_WorldInit(geWorld *World)
 {
-	GBSP_BSPData		*BSP;
-	geEntity_EntitySet	*EntitySet;
-	geEntity			*Entity;
+	GBSP_BSPData		*BSP = nullptr;
+	geEntity_EntitySet	*EntitySet = nullptr;
+	geEntity			*Entity = nullptr;
 
 	assert(World != NULL);
 	
@@ -119,12 +119,12 @@ geBoolean Ent_WorldInit(geWorld *World)
 		return GE_FALSE;
 
 	// Insert default set...
-	World->EntClassSets[0].ClassName = NULL;
+	World->EntClassSets[0].ClassName = nullptr;
 	World->EntClassSets[0].Set = EntitySet;
 	World->NumEntClassSets++;
 		
 	// Build class sets
-	Entity = NULL;
+	Entity = nullptr;
 	while (1)
 	{
 		Entity = geEntity_EntitySetGetNextEntity(EntitySet, Entity);

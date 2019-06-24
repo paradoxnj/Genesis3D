@@ -419,7 +419,7 @@ static	SoundManager *	CreateSoundManager(HWND hWnd )
 	SoundManager *	sm;
 //	DS_CREATE_FUNC pDirectSoundCreate;
 
-	CoInitialize(NULL);
+	//CoInitialize(NULL);
 
 	// load the DirectSound DLL
 	/*hmodDirectSound = LoadLibrary ("DSOUND.DLL");
@@ -522,7 +522,7 @@ static	SoundManager *	CreateSoundManager(HWND hWnd )
 //static	BOOL CreateChannel( char* Name, DSBUFFERDESC*	dsBD, Channel** chanelPtr)
 static	BOOL CreateChannel(DSBUFFERDESC*	dsBD, Channel** chanelPtr)
 {
-	Channel* channel;
+	Channel* channel = nullptr;
 	LPDIRECTSOUNDBUFFER lpBuf = nullptr;
 
 //	channel = malloc( sizeof( Channel ) );
@@ -547,8 +547,8 @@ static	BOOL CreateChannel(DSBUFFERDESC*	dsBD, Channel** chanelPtr)
 		return FALSE;
 	}
 
-	lpBuf->Release();
-	lpBuf = nullptr;
+	//lpBuf->Release();
+	//lpBuf = nullptr;
 
 	if(DS_OK != channel->buffer->GetFrequency((LPDWORD)&channel->BaseFreq) )
 	{
@@ -944,6 +944,10 @@ static	BOOL DupChannel( SoundManager *sm, Channel* channel, Channel** dupChannel
 	dupChannel->Data = channel->Data;
 	channel->nextDup = dupChannel;
 	*dupChannelPtr = dupChannel;
+
+	lpBuf->Release();
+	lpBuf = nullptr;
+
 	return( TRUE );
 }
 

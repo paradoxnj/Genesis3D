@@ -22,10 +22,6 @@
 #ifndef	ELECTRIC_H
 #define ELECTRIC_H
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
 #include "Genesis.h"
 
 #define	ELECTRIC_BOLT_REDDOMINANT	0
@@ -79,10 +75,6 @@ void _Electric_BoltEffectSetColorInfo(
 	_Electric_BoltEffect *	Effect,
 	GE_RGBA *				BaseColor,		/* Base color of the bolt (2 colors should be the same */
 	int						DominantColor);	/* Which color is the one to leave fixed */
-
-#ifdef	__cplusplus
-}
-#endif
 
 #endif
 

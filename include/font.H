@@ -52,10 +52,6 @@
 #define GE_FONT_JUSTIFY_RIGHT       0x00000008
 #define GE_FONT_JUSTIFY_CENTER      0x00000010
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 // opaque structure headers.
 typedef struct geFont geFont;			// an instance of a font
 
@@ -260,10 +256,6 @@ GENESISAPI geBoolean GENESISCC geFont_GetCharMap(geFont *font, uint8 character, 
 GENESISAPI void GENESISCC geFont_EnableAntialiasing(geFont *font, const geBoolean anti);
 //*************************************************************************************** 
 GENESISAPI geBoolean GENESISCC geFont_IsAntialiased(geFont *font);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 

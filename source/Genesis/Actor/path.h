@@ -27,11 +27,6 @@
 #include "quatern.h"
 #include "vfile.h"
 
-#ifdef __cplusplus
-	extern "C" {
-#endif
-
-
 // GENESIS_PUBLIC_APIS
 typedef struct _gePath gePath;
 
@@ -143,11 +138,6 @@ GENESISAPI geBoolean GENESISCC gePath_WriteToFile(const gePath *P, geVFile *F);
 GENESISAPI geBoolean GENESISCC gePath_WriteToBinaryFile(const gePath *P, geVFile *F);
 	// dumps a minimal binary image for fastest reading
 
-
-
-#ifdef __cplusplus
-	}
-#endif
 
 
 #endif

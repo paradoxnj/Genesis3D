@@ -1627,15 +1627,15 @@ static void FillContents_r(int32 Node, const geVec3d *Pos, uint32 *Contents)
 //===================================================================================
 geBoolean Trace_GetContents(geWorld *World, const geVec3d *Pos, const geVec3d *Mins, const geVec3d *Maxs, uint32 Flags, uint32 UserFlags, GE_CollisionCB *CollisionCB, void *Context, GE_Contents *Contents)
 {
-	Mesh_RenderQ				*MeshHit;
-	geActor						*ActorHit;
+	Mesh_RenderQ				*MeshHit = nullptr;
+	geActor						*ActorHit = nullptr;
 	geExtBox					MeshExtBox;
 	geVec3d						TMins, TMaxs;
 	geBoolean					Hit;
 	int32						i, k;
 	uint32						NewContents, FinalContents;
-	geWorld_Model				*Models, *ModelHit;
-	GFX_Model					*GFXModels;
+	geWorld_Model				*Models = nullptr, *ModelHit= nullptr;
+	GFX_Model					*GFXModels = nullptr;
 
 	assert(World);
 	assert(Contents);
@@ -1656,7 +1656,7 @@ geBoolean Trace_GetContents(geWorld *World, const geVec3d *Pos, const geVec3d *M
 	if (Flags & GE_COLLIDE_ACTORS)
 	{
 		int32 Count;
-		World_Actor *WA;
+		World_Actor *WA = nullptr;
 			
 		Count = World->ActorCount;
 		WA = &(World->ActorArray[0]);
@@ -1857,8 +1857,8 @@ geBoolean Trace_CollideBeam(int32 Node, geVec3d *s, geVec3d *e, geFloat Radius)
 {
 	float		dd, sDist, eDist;
 	geVec3d		tempVec, tempVec2;
-	geBoolean	FrontLeaf, BackLeaf;
-	GFX_Plane	*Plane;
+	geBoolean	FrontLeaf = GE_FALSE, BackLeaf = GE_FALSE;
+	GFX_Plane	*Plane = nullptr;
 
 	if(Node < 0)
 	{

@@ -32,10 +32,6 @@
 #include "World.h"
 #include "Ram.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //=====================================================================================
 //	Defines / Structure defines
 //=====================================================================================
@@ -134,9 +130,5 @@ geBoolean 	geEntity_EntitySetAddEntity(geEntity_EntitySet *EntitySet, geEntity *
 GENESISAPI	geEntity	*geEntity_EntitySetGetNextEntity(geEntity_EntitySet *EntitySet, geEntity *Entity);
 geBoolean				geEntity_EntitySetAddClass(geEntity_EntitySet *EntitySet, geEntity_Class *Class);
 geEntity_EntitySet		*LoadEntitySet(const char *EntityData, int32 EntityDataSize);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

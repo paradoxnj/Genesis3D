@@ -22,10 +22,6 @@
 #ifndef	VFILE_H
 #define	VFILE_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include	"basetype.h"
 
 typedef	struct	geVFile			geVFile;
@@ -187,10 +183,5 @@ GENESISAPI geBoolean GENESISCC geVFile_SetSize		 (		geVFile *File, long Size);
 GENESISAPI geBoolean GENESISCC geVFile_SetAttributes(		geVFile *File, geVFile_Attributes Attributes);
 GENESISAPI geBoolean GENESISCC geVFile_SetTime		 (		geVFile *File, const geVFile_Time *Time);
 GENESISAPI geBoolean GENESISCC geVFile_SetHints	 (		geVFile *File, const geVFile_Hints *Hints);
-
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

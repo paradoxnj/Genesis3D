@@ -22,10 +22,6 @@
 #ifndef	MATRIX33_H
 #define MATRIX33_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef struct
 {
 	float x[3][3];
@@ -42,10 +38,6 @@ void Matrix33_GetTranspose(const Matrix33* m, Matrix33* t);
 void Matrix33_GetInverse(const Matrix33* m, Matrix33* inv);
 void Matrix33_MakeCrossProductMatrix33(const geVec3d* v, Matrix33* m);
 void Matrix33_ExtractFromXForm3d(const geXForm3d* xform, Matrix33* m);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 

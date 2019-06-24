@@ -23,11 +23,6 @@
 
 #include "BaseType.h"
 
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //
 //	Collision defines (for geWorld_Collision)
 //
@@ -91,10 +86,5 @@ typedef struct
 } GE_TLVertex;
 
 typedef GE_Rect geRect;
-
-#ifdef __cplusplus
-}
-#endif
-
 
 #endif GETYPES_H

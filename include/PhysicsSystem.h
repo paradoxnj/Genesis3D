@@ -22,10 +22,6 @@
 #if !defined (PHYSICSSYSTEM_H)
 #define PHYSICSSYSTEM_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef struct gePhysicsSystem gePhysicsSystem;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,10 +41,6 @@ GENESISAPI gePhysicsJoint** GENESISCC gePhysicsSystem_GetPhysjnts(const gePhysic
 GENESISAPI int GENESISCC gePhysicsSystem_GetNumPhysobs(const gePhysicsSystem* pSys);
 GENESISAPI int GENESISCC gePhysicsSystem_GetNumPhysjnts(const gePhysicsSystem* pSys);
 GENESISAPI int GENESISCC gePhysicsSystem_GetSumOfConstraintDimensions(const gePhysicsSystem* pSys);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 

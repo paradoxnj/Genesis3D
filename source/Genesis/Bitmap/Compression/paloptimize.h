@@ -26,17 +26,9 @@
 #include "basetype.h"
 #include "bitmap.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 void paletteOptimize(const geBitmap_Info * Info,const void * Bits,
 						uint8 *palette,int palEntries,int maxSamples);
 
 	// use maxIterations == 0 or -1 for infinity
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

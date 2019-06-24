@@ -24,10 +24,6 @@
 
 #include "basetype.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef struct
 {
 	geFloat X, Y, Z;
@@ -61,10 +57,6 @@ GENESISAPI void GENESISCC		geVec3d_AddScaled(const geVec3d *V1, const geVec3d *V
 GENESISAPI geFloat GENESISCC		geVec3d_DistanceBetween(const geVec3d *V1, const geVec3d *V2);	// returns length of V1-V2	
 
 GENESISAPI geBoolean GENESISCC geVec3d_IsValid(const geVec3d *V);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 

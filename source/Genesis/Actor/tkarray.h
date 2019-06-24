@@ -37,10 +37,6 @@
 #include "basetype.h"
 #include "vfile.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef geFloat geTKArray_TimeType;
 
 #define GE_TKA_TIME_TOLERANCE (0.00001f)
@@ -116,11 +112,5 @@ int GENESISCC geTKArray_ElementSize(
 
 geBoolean GENESISCC geTKArray_SamplesAreTimeLinear(const geTKArray *Array,geFloat Tolerance);
 	// returns true if the samples are linear in time within a tolerance
-
-#ifdef __cplusplus
-}
-#endif
-
-
 
 #endif

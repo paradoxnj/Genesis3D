@@ -23,9 +23,6 @@
 #ifndef TSC_H
 #define TSC_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**********
 *
@@ -58,8 +55,5 @@ typedef unsigned long tsc_type [2];
 void readTSC(unsigned long *tsc);
 double diffTSC(unsigned long *tsc1,unsigned long*tsc2);
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

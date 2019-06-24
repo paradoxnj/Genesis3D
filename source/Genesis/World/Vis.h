@@ -27,10 +27,6 @@
 
 #include "Frustum.h"
 
-/*#ifdef __cplusplus
-extern "C" {
-#endif*/
-
 //=====================================================================================
 //	Defines / Structure defines
 //=====================================================================================
@@ -44,9 +40,5 @@ void		Vis_WorldShutdown(geWorld *World);
 geBoolean	Vis_VisWorld(geEngine *Engine, geWorld *World, const geCamera *Camera, Frustum_Info *Fi);
 
 geBoolean	Vis_MarkWaterFaces(World_BSP *WBSP);
-
-/*#ifdef __cplusplus
-}
-#endif*/
 
 #endif

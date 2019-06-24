@@ -95,10 +95,6 @@
 #include "basetype.h"
 #include "xform3d.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef struct 
 {
 	geFloat	W;
@@ -228,10 +224,5 @@ geBoolean GENESISCC geQuaternion_Compare( geQuaternion *Q1, geQuaternion *Q2, ge
 #ifndef NDEBUG
 void GENESISCC geQuaternion_SetMaximalAssertionMode( geBoolean Enable );
 #endif
-
-#ifdef __cplusplus
-}
-#endif
-
 
 #endif // GE_QUATERNION_H

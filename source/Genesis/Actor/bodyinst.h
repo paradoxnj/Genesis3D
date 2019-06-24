@@ -38,12 +38,6 @@
 #include "XFArray.h"
 #include "camera.h"
 
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 typedef struct geBodyInst geBodyInst;
 
 typedef int16 geBodyInst_Index;
@@ -119,10 +113,6 @@ const geBodyInst_Geometry *GENESISCC geBodyInst_GetGeometry(
 								int LevelOfDetail,
 								const geCamera *Camera);
 
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 		

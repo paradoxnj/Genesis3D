@@ -30,10 +30,6 @@
 #include <stdlib.h>
 #include <string.h>	// for memcpy,memset
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef unsigned int uint;
 
 /****************************************/
@@ -100,10 +96,6 @@ typedef unsigned int uint;
 #endif
 
 /****************************************/
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif // __COMPUTIL_UTILITY_H
 

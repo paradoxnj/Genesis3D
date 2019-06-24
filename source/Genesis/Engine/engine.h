@@ -29,10 +29,6 @@
 #include "bitmap.h"
 #include "BitmapList.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //-------------------------------------------------
 // fake out windows include
 //-------------------------------------------------
@@ -105,9 +101,5 @@ geBoolean Engine_UploadBitmap(geEngine *Engine, DRV_Bitmap *Bitmap, DRV_Bitmap *
 geBoolean Engine_SetupPixelFormats(geEngine *Engine);
 geRDriver_THandle * Engine_CreateTHandle(geEngine *Engine,int Width,int Height,int Mips, int EngineTexType);
 void Engine_DestroyTHandle(geEngine *Engine,geRDriver_THandle * THandle);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif // GE_ENGINE_H

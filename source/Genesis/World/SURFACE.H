@@ -30,10 +30,6 @@
 #include "Vec3d.h"
 #include "DCommon.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //================================================================================
 //	Structure defines
 //================================================================================
@@ -108,9 +104,5 @@ geBoolean Surf_WorldInit(geWorld *World);
 void Surf_WorldShutdown(geWorld *World);
 
 BOOL Surf_InSurfBoundingBox(Surf_SurfInfo *Surf, geVec3d *Pos, float Box);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

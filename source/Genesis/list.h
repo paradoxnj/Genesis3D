@@ -25,10 +25,6 @@
 
 #include "basetype.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #define LISTCALL	__fastcall
 
 /*******************************************/
@@ -225,10 +221,6 @@ int LN_ListLen(LinkNode *pList);
 
 	*
 	*/
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif  // LIST_H
 

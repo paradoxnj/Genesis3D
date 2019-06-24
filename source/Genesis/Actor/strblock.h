@@ -26,10 +26,6 @@
 #include "basetype.h"	// geBoolean
 #include "vfile.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef struct geStrBlock geStrBlock;
 
 geStrBlock *GENESISCC geStrBlock_Create(void);
@@ -53,9 +49,5 @@ int GENESISCC geStrBlock_GetChecksum(const geStrBlock *SB);
 geStrBlock* GENESISCC geStrBlock_CreateFromFile(geVFile* pFile);
 geBoolean GENESISCC geStrBlock_WriteToFile(const geStrBlock *SB, geVFile *pFile);
 geBoolean GENESISCC geStrBlock_WriteToBinaryFile(const geStrBlock *SB,geVFile *pFile);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

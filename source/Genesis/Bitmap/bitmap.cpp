@@ -3059,7 +3059,7 @@ geBitmap_Palette * Pal;
 	Pal = geBitmap_GetPalette(Bmp);
 	if ( Bmp->Info.HasColorKey )
 	{
-	uint32 CK;
+	uint32 CK = 0;
 		if ( gePixelFormat_IsRaw(NewFormat) )
 		{
 			if ( gePixelFormat_IsRaw(Bmp->Info.Format) )
@@ -3718,7 +3718,7 @@ static geBoolean geBitmap_ReadFromBMP(geBitmap * Bmp,geVFile * F);
 
 GENESISAPI geBitmap * GENESISCC geBitmap_CreateFromFile(geVFile *F)
 {
-geBitmap *	Bmp;
+geBitmap *	Bmp = nullptr;
 geBmTag_t Tag;
 
 	assert(F);
@@ -3732,9 +3732,9 @@ geBmTag_t Tag;
 
 	if ( Tag == GEBM_TAG )
 	{
-	uint8 flags;
-	uint8 Version;
-	int mip;
+	uint8 flags = 0;
+	uint8 Version = 0;
+	int mip = 0;
 
 		// see WriteToFile for comments on the file format
 
@@ -4341,10 +4341,10 @@ geBoolean geBitmap_Palette_BlitData(gePixelFormat SrcFormat,const void *SrcData,
 									gePixelFormat DstFormat,	  void *DstData,const geBitmap_Palette * DstPal,
 									int Pixels)
 {
-uint8 *SrcPtr,*DstPtr;
+uint8 *SrcPtr = nullptr,*DstPtr = nullptr;
 geBoolean SrcHasCK,DstHasCK;
-uint32 SrcCK,DstCK;
-int SrcCKi,DstCKi;
+uint32 SrcCK = 0,DstCK = 0;
+int SrcCKi = 0,DstCKi = 0;
 
 	assert( SrcData && DstData );
 
@@ -4692,10 +4692,10 @@ GENESISAPI geBoolean GENESISCC geBitmap_Palette_UnLock(geBitmap_Palette *P)
 		{
 			if ( P->ColorKeyIndex >= 0 && P->ColorKeyIndex < P->Size )
 			{
-			uint8 *Bits,*pBits;
+			uint8 *Bits = nullptr,*pBits = nullptr;
 			uint32 Pixel;
 			int p;
-			const gePixelFormat_Operations *ops;
+			const gePixelFormat_Operations *ops = nullptr;
 			gePixelFormat_PixelPutter	PutPixel;
 			gePixelFormat_PixelGetter	GetPixel;
 

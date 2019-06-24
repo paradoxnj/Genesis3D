@@ -103,7 +103,7 @@ geBitmap_Palette * createPaletteFast(const geBitmap_Info * Info,const void * Bit
 
 paletteCreater myPaletteCreater = createPaletteGood;
 
-extern "C" void paletteOptimize(const geBitmap_Info * Info, const void * Bits,
+void paletteOptimize(const geBitmap_Info * Info, const void * Bits,
 	uint8 *palette, int palEntries, int maxSamples);
 
 void setCreatePaletteFunc(paletteCreater func)

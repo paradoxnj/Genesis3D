@@ -37,10 +37,6 @@
 
 #include "Actor.h"			
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #define MAX_MODELS	256
 
 // Upper limits on misc things
@@ -280,8 +276,5 @@ GENESISAPI geBitmap *geWorld_GetBitmapByName(geWorld *World, const char *BitmapN
 geBoolean geWorld_AttachAll(geWorld *World, DRV_Driver *Driver, geFloat Gamma);
 geBoolean geWorld_DetachAll(geWorld *World);
 
-#ifdef __cplusplus
-}
-#endif
 #endif
 

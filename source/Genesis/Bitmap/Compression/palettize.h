@@ -26,10 +26,6 @@
 #include "basetype.h"
 #include "bitmap.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 geBoolean palettizePlane(const	geBitmap_Info * SrcInfo,const	void * SrcBits,
 								geBitmap_Info * DstInfo,		void * DstBits,
 								int SizeX,int SizeY);
@@ -46,9 +42,5 @@ extern int			closestPal(int R,int G,int B,palInfo *pi);
 
 extern void Palettize_Start(void);
 extern void Palettize_Stop(void);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
