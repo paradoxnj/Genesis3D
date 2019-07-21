@@ -26,9 +26,6 @@
     <ClCompile Include="D3ddrv.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DDMemMgr.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Gspan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -45,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tpage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DDMemMgr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

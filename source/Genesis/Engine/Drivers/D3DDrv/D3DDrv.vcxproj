@@ -122,7 +122,7 @@
       <Optimization>Disabled</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..;..\..\..\Math;..\;..\..\..\..\..\dependencies\DxSdk_81\Include;..\D3DDrv;..\..\..\Support;..\..\..\Bitmap;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\include;..\..\..;..\..\..\Math;..\;..\..\..\..\..\dependencies\DxSdk_81\Include;..\D3DDrv;..\..\..\Support;..\..\..\Bitmap;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;D3DDRV_EXPORTS;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\Debug\D3DDrv.pch</PrecompiledHeaderOutputFile>
@@ -164,7 +164,7 @@
     <ClCompile Include="D3d_err.cpp" />
     <ClCompile Include="D3d_fx.cpp" />
     <ClCompile Include="D3d_main.cpp" />
-    <ClCompile Include="DDMemMgr.c" />
+    <ClCompile Include="DDMemMgr.cpp" />
     <ClCompile Include="Gspan.cpp" />
     <ClCompile Include="Pcache.cpp" />
     <ClCompile Include="Render.cpp" />
