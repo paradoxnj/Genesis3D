@@ -19,7 +19,9 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#include <Assert.h>
+#if 0
+
+#include <assert.h>
 
 #ifdef _DEBUG
 #include <windows.h>
@@ -27,13 +29,13 @@
 #endif
 
 #include "BitmapList.h"
-#include "DCommon.h"
-#include "Bitmap.h"
-#include "Bitmap._h"
+#include "Dcommon.h"
+#include "bitmap.h"
+#include "bitmap._h"
 #include "list.h"
 #include "mempool.h"
-#include "errorlog.h"
-#include "ram.h"
+#include "Errorlog.h"
+#include "RAM.H"
 //#include "tsc.h"
 
 struct BitmapList
@@ -377,3 +379,4 @@ geBoolean BitmapList_IsValid(BitmapList *pList)
 
 return GE_TRUE;
 }
+#endif

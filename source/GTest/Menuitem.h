@@ -8,7 +8,7 @@
 #ifndef MENUITEM_H
 #define MENUITEM_H
 
-#include "Genesis.h"
+#include "GENESIS.H"
 #include "Text.h"
 
 #define MENU_MAXSTRINGSIZE	64

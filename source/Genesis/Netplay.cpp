@@ -19,18 +19,20 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
+#ifdef _WINDOWS
+
 #define INITGUID
 #define IDIRECTPLAY2_OR_GREATER
 
 #include <Windows.H>
-#include <Assert.h>
+#include <assert.h>
 
 #include <dplay.h>
 #include <dplobby.h>
 #include <Stdio.h>
 
 #include "netplay.h"
-#include "ErrorLog.h"
+#include "Errorlog.h"
 
 //#define INIT_GUID
 
@@ -862,3 +864,6 @@ static void DoDPError(HRESULT Hr)
 		break;
 	}
 }
+
+#endif
+

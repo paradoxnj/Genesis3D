@@ -21,7 +21,7 @@
 
 #include <string>
 
-#include "BaseType.h"
+#include "BASETYPE.H"
 #include "geLogger.h"
 
 namespace g3d {

@@ -15,7 +15,7 @@
 #ifndef MODELIST_H
 #define MODELIST_H
 
-#include	"genesis.h"
+#include	"GENESIS.H"
 
 typedef enum ModeList_DriverType 
 {

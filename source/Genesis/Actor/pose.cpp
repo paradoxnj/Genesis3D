@@ -19,15 +19,15 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#pragma message ("could optimize a name binded setPose by caching the mapping from motionpath[i] to joint[j]")
+#pragma todo ("could optimize a name binded setPose by caching the mapping from motionpath[i] to joint[j]")
 
 #include <assert.h>
 #include <string.h>
 
-#include "ram.h"
-#include "errorlog.h"
-#include "Pose.h"
-#include "StrBlock.h"
+#include "RAM.H"
+#include "Errorlog.h"
+#include "pose.h"
+#include "strblock.h"
 
 #define GE_POSE_STARTING_JOINT_COUNT (1)
 
@@ -761,7 +761,7 @@ void GENESISCC gePose_SetMotion(gePose *P, const geMotion *M, geFloat Time,
 		NameBinding = GE_TRUE;
 
 	P->Touched = GE_TRUE;
-	#pragma message("could optimize this by looping two ways (min(jointcount,pathcount))")
+	#pragma todo("could optimize this by looping two ways (min(jointcount,pathcount))")
 	for (i=0, J=&(P->JointArray[0]); i<P->JointCount; i++,J++)
 		{
 			//gePath *JointPath;

@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  MOTION.H	                                                                        */
+/*  motion.h	                                                                        */
 /*                                                                                      */
 /*  Author: Mike Sandige	                                                            */
 /*  Description: Motion interface.					                                    */
@@ -29,7 +29,7 @@
 */
 
 #include <stdio.h>
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "path.h"
 #include "vfile.h"
 

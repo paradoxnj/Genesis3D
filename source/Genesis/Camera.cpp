@@ -20,15 +20,15 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <math.h>
-#include <Assert.h>
-#include <Memory.h>		// memset
+#include <assert.h>
+#include <memory.h>		// memset
 
-#include "Camera.h"
-#include "Ram.h"
-#include "ErrorLog.h"
+#include "CAMERA.H"
+#include "RAM.H"
+#include "Errorlog.h"
 
 
-#include "DCommon.h"
+#include "Dcommon.h"
 
 typedef struct geCamera 
 {
@@ -260,7 +260,8 @@ void geCamera_FillDriverInfo(geCamera *Camera)
 {
 	// this is for the software driver to cache out some stuff
 
-#pragma message ("Camera.c : remove _FillDriverInfo, and thereby GlobalInfo!" )
+#pragma #pragma todo("Camera.cpp : remove _FillDriverInfo, and thereby GlobalInfo!")
+
 extern GInfo GlobalInfo;
 	assert(Camera);
 

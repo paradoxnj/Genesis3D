@@ -1,7 +1,7 @@
 #ifndef	BOTMATCH_H
 #define	BOTMATCH_H
 
-#include	"genesis.h"
+#include	"GENESIS.H"
 
 #pragma warning( disable : 4068 )
 

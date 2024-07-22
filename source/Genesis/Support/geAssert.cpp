@@ -19,13 +19,13 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#include "geAssert.h"
+#include "geassert.h"
 #include <assert.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 	   
-// See geAssert.h for details.
+// See geassert.h for details.
 
 void geAssertDefault(void *, void *, unsigned);
 geAssertCallbackFn *geAssertCallback = &geAssertDefault;

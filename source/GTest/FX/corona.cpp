@@ -5,7 +5,7 @@
 #include	<stdlib.h>
 #include	<assert.h>
 
-#include	"ErrorLog.h"
+#include	"Errorlog.h"
 
 #define	BUILD_CORONA
 #include	"Corona.h"

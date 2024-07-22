@@ -31,7 +31,7 @@ void Log_Printf(const char * string, ...);
 
 #else	// _LOG
 
-static _inline void Log_Printf(const char * str, ...) { }
+static inline void Log_Printf(const char * str, ...) { }
 #define Log_Puts(string)
 
 #endif	// _LOG

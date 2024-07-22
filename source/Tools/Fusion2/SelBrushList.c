@@ -21,7 +21,7 @@
 /****************************************************************************************/
 #include "SelBrushList.h"
 #include "array.h"
-#include "ram.h"
+#include "RAM.H"
 #include <assert.h>
 
 struct tag_SelBrushList

@@ -24,7 +24,7 @@
 
 #include <Windows.h>
 #include "Glide.h"
-#include "BaseType.h"
+#include "BASETYPE.H"
 
 #ifdef __cplusplus
 extern "C" {

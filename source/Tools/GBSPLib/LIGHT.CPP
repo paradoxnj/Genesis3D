@@ -21,21 +21,21 @@
 /****************************************************************************************/
 #include <Windows.h>
 #include <Stdio.h>
-#include <Assert.h>
+#include <assert.h>
 
 #include "Math.h"
 #include "MathLib.h"
-#include "GBSPFile.h"
-#include "Light.h"
+#include "GBSPFILE.H"
+#include "LIGHT.H"
 #include "Map.h"
 #include "Texture.h"
 #include "Utils.h"
 #include "BSP.h"
 
-#include "Vec3d.h"
-#include "XForm3d.h"
+#include "VEC3D.H"
+#include "XFORM3D.H"
 
-#include "Ram.h"
+#include "RAM.H"
 
 float		LightScale		= 1.00f;
 float		EntityScale		= 1.00f;

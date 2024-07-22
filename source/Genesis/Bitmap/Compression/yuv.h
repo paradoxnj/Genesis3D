@@ -23,7 +23,7 @@
 /*                                                                                      */
 /****************************************************************************************/
 
-#include "basetype.h"
+#include "BASETYPE.H"
 
 extern void RGBb_to_YUVb(const uint8 *RGB,uint8 *YUV);
 extern void YUVb_to_RGBb(const uint8 *YUV,uint8 *RGB);

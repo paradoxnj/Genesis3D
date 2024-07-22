@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  Genesis.h                                                                           */
+/*  GENESIS.H                                                                           */
 /*                                                                                      */
 /*  Description: The master header for Genesis                                          */
 /*                                                                                      */
@@ -21,13 +21,13 @@
 #ifndef GENESIS_H
 #define GENESIS_H
 
-#include "BaseType.h"
-#include "Vec3d.h"
-#include "XForm3d.h"
-#include "GETypes.h"
+#include "BASETYPE.H"
+#include "VEC3D.H"
+#include "XFORM3D.H"
+#include "getypes.h"
 #include "ExtBox.h"
 #include "vfile.h"
-#include "Bitmap.h"
+#include "bitmap.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -112,7 +112,7 @@ typedef enum
 // Content types in GE_Contents structure (multiple contents can be mixed...)
 //
 //*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-//	IF THESE FLAGS CHANGE, THEY MUST CHANGE IN GBSPFILE.H in Genesis AND GBSPLIB, and Genesis.H!!!!!
+//	IF THESE FLAGS CHANGE, THEY MUST CHANGE IN GBSPFILE.H in Genesis AND GBSPLIB, and GENESIS.H!!!!!
 //*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
 #define GE_CONTENTS_SOLID			(1<<0)		// Solid (Visible)
 #define GE_CONTENTS_WINDOW			(1<<1)		// Window (Visible)
@@ -198,7 +198,7 @@ typedef struct
 	GE_Plane		Plane;							// Impact Plane
 } GE_Collision;
 
-// If these render states change, they must change in DCommon.h too!!!
+// If these render states change, they must change in Dcommon.h too!!!
 // These are still under construction, and are for debug purposes only.
 // They are merely means of overriding ways the engine normally renders primitives, etc...
 //
@@ -229,7 +229,7 @@ typedef struct
 
 
 #ifdef _INC_WINDOWS	
-	// Windows.h must be included before genesis.h for this api to be exposed.
+	// Windows.h must be included before GENESIS.H for this api to be exposed.
 	
 
 GENESISAPI	geEngine	*geEngine_CreateWithVersion(HWND hWnd, const char *AppName, const char *DriverDirectory, uint32 Version);
@@ -284,7 +284,7 @@ GENESISAPI void			geEngine_EnableFrameRateCounter(geEngine *Engine, geBoolean En
 GENESISAPI geBoolean	geEngine_Activate(geEngine *Engine, geBoolean bActive);
 
 #ifdef _INC_WINDOWS
-	// Windows.h must be included before genesis.h for this api to be exposed.
+	// Windows.h must be included before GENESIS.H for this api to be exposed.
 GENESISAPI geBoolean	geEngine_UpdateWindow(geEngine *Engine);
 #endif
 
@@ -299,7 +299,7 @@ GENESISAPI geBoolean	geDriver_ModeGetWidthHeight(geDriver_Mode *Mode, int32 *Wid
 //	Sound Management functions
 //================================================================================
 #ifdef _INC_WINDOWS
-	// Windows.h must be included before genesis.h for this api to be exposed.
+	// Windows.h must be included before GENESIS.H for this api to be exposed.
 GENESISAPI 	geSound_System *geSound_CreateSoundSystem(HWND hWnd);
 #endif
 
@@ -338,15 +338,15 @@ GENESISAPI void geSound3D_GetConfig(
 //================================================================================
 //  Path Support
 //================================================================================
-#include "Path.h"
+#include "path.h"
 //================================================================================
 //  Motion Support
 //================================================================================
-#include "Motion.h"
+#include "motion.h"
 //================================================================================
 //  Actor Support
 //================================================================================
-#include "Actor.h"
+#include "actor.h"
 
 
 
@@ -544,7 +544,7 @@ typedef struct
 } geCSNetMgr_NetClient;
 
 #ifdef _INC_WINDOWS
-	// Windows.h must be included before genesis.h for this api to be exposed.
+	// Windows.h must be included before GENESIS.H for this api to be exposed.
 	typedef struct geCSNetMgr_NetSession
 	{
 		char		SessionName[200];					// Description of Service provider

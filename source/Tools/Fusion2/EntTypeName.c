@@ -24,7 +24,7 @@
 #include "util.h"
 #include <string.h>
 #include <assert.h>
-#include "ram.h"
+#include "RAM.H"
 
 typedef struct
 {

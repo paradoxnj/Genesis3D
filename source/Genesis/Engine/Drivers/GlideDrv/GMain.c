@@ -21,7 +21,7 @@
 /****************************************************************************************/
 #include <Windows.h>
 #include <StdIO.h>
-#include <Assert.h>
+#include <assert.h>
 
 #include "GlideDrv.h"
 #include "GMain.h"

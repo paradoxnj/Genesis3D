@@ -2,7 +2,7 @@
 #define	PIXELFORMAT_H
 
 /****************************************************************************************/
-/*  PixelFormat.h                                                                       */
+/*  pixelformat.h                                                                       */
 /*                                                                                      */
 /*  Author: Charles Bloom                                                               */
 /*  Description:  The abstract Pixel primitives                                         */
@@ -24,7 +24,7 @@
 /****************************************************************************************/
 
 
-#include "basetype.h"
+#include "BASETYPE.H"
 
 #ifdef __cplusplus
 extern "C" {

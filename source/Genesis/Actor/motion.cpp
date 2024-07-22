@@ -29,12 +29,12 @@
 #include <assert.h>
 #include <string.h>		// strcmp, strnicmp
 
-#include "basetype.h"
-#include "ram.h"
-#include "errorlog.h"
+#include "BASETYPE.H"
+#include "RAM.H"
+#include "Errorlog.h"
 #include "motion.h"
 #include "tkevents.h"
-#include "StrBlock.h"
+#include "strblock.h"
 
 #pragma warning(disable : 4201)		// we're using nameless structures
 
@@ -810,7 +810,7 @@ GENESISAPI int GENESISCC geMotion_GetSubMotionCount(const geMotion *M)
 }
 
 
-#pragma message ("do we want to copy these before returning them?")
+#pragma todo ("do we want to copy these before returning them?")
 GENESISAPI geMotion * GENESISCC geMotion_GetSubMotion(const geMotion *M,int SubMotionIndex)
 {
 	assert( M != NULL );
@@ -1531,7 +1531,7 @@ GENESISAPI geMotion* GENESISCC geMotion_CreateFromFile(geVFile* pFile)
 				geErrorLog_Add( ERR_MOTION_FILE_READ , NULL);
 				return NULL;
 			}
-		if	(sscanf(line, "%X.%X\n", &u, &v) != 2)
+		if	(sscanf(line, "%X.%X\n", (unsigned int*)&u, (unsigned int*)&v) != 2)
 			{
 				geErrorLog_Add( ERR_MOTION_FILE_READ , NULL);
 				return NULL;
@@ -1557,7 +1557,11 @@ GENESISAPI geMotion* GENESISCC geMotion_CreateFromFile(geVFile* pFile)
 					geErrorLog_Add( ERR_MOTION_FILE_READ , NULL);
 					break; // got to read something
 				}
+			#ifdef _WINDOWS
 			else if(_strnicmp(line, MOTION_NAME_ID, sizeof(MOTION_NAME_ID)-1) == 0)
+			#else
+			else if(strncasecmp(line, MOTION_NAME_ID, sizeof(MOTION_NAME_ID)-1) == 0)
+			#endif
 			{
 				//line[strlen(line)-1]=0;  // zap off cr
 				if ( line[0] != 0 )
@@ -1581,7 +1585,11 @@ GENESISAPI geMotion* GENESISCC geMotion_CreateFromFile(geVFile* pFile)
 				//NumItemsRead++;
 			}
 			
+			#ifdef _WINDOWS
 			else if(_strnicmp(line, MOTION_MAINTAINNAMES_ID, sizeof(MOTION_MAINTAINNAMES_ID)-1) == 0)
+			#else
+			else if(strncasecmp(line, MOTION_MAINTAINNAMES_ID, sizeof(MOTION_MAINTAINNAMES_ID)-1) == 0)
+			#endif
 			{
 				if(sscanf(line + sizeof(MOTION_MAINTAINNAMES_ID)-1, "%d", &M->MaintainNames) != 1)
 					{						
@@ -1601,7 +1609,7 @@ GENESISAPI geMotion* GENESISCC geMotion_CreateFromFile(geVFile* pFile)
 			}
 			else if(_strnicmp(line, MOTION_NAMECHECKSUM_ID, sizeof(MOTION_NAMECHECKSUM_ID)-1) == 0)
 			{
-				if(sscanf(line + sizeof(MOTION_NAMECHECKSUM_ID)-1, "%d", &M->Leaf.NameChecksum) != 1)
+				if(sscanf(line + sizeof(MOTION_NAMECHECKSUM_ID)-1, "%d", (int*)&M->Leaf.NameChecksum) != 1)
 					{						
 						geErrorLog_Add( ERR_MOTION_FILE_READ , NULL);
 						break;
@@ -1784,7 +1792,7 @@ static geBoolean GENESISCC geMotion_WriteBranch(const geMotion *M, geVFile *pFil
 	assert( pFile != NULL );
 	assert( M->NodeType == MOTION_NODE_BRANCH);
 	assert( geMotion_IsValid(M) != GE_FALSE );
-	#pragma message("finish this")
+	#pragma todo("finish this")
 	return GE_FALSE;
 }
 
@@ -1871,7 +1879,7 @@ static geBoolean GENESISCC geMotion_ReadBinaryBranch(geMotion *M, geVFile *pFile
 			return GE_FALSE;
 		}
 
-	#pragma message("finish this")
+	#pragma todo("finish this")
 	return GE_FALSE;
 }
 
@@ -2106,7 +2114,7 @@ static geBoolean GENESISCC geMotion_WriteBinaryBranch(const geMotion *M, geVFile
 	assert( pFile != NULL );
 	assert( M->NodeType == MOTION_NODE_BRANCH);
 	assert( geMotion_IsValid(M) != GE_FALSE );
-	#pragma message("finish this")
+	#pragma todo("finish this")
 	return GE_FALSE;
 }
 

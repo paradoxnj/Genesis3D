@@ -21,7 +21,7 @@
 /****************************************************************************************/
 #include "SelFaceList.h"
 #include "array.h"
-#include "ram.h"
+#include "RAM.H"
 #include <assert.h>
 
 

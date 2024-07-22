@@ -29,7 +29,7 @@
 #include "BrushEntityDialog.h"
 #include "units.h"
 #include "face.h"
-#include "ram.h"
+#include "RAM.H"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -611,7 +611,7 @@ void CFusionView::OnMouseMove (UINT nFlags, CPoint point)
 							}
 							else if( !IsCopying && !ShiftHeld && !RButtonIsDown )
 							{
-#pragma message ("Logic flawed here when space being held.  Don't know exactly what.")
+#pragma todo ("Logic flawed here when space being held.  Don't know exactly what.")
 								if((abs(dx) > mCX_DRAG) || (abs(dy) > mCY_DRAG))
 								{
 									mDragCurrentPoint = RealCursorPosition;
@@ -1617,7 +1617,7 @@ void CFusionView::OnUpdateToolsBrushScalebrush(CCmdUI* pCmdUI)
 	if((GetModeTool()==ID_TOOLS_TEMPLATE && !pDoc->TempEnt) ||
 		(GetModeTool()==ID_GENERALSELECT &&
 		GetAdjustMode ()==ADJUST_MODE_BRUSH &&
-#pragma message ("Can't do multiple brush scaling due to Brush_Resize implementation.")
+#pragma todo ("Can't do multiple brush scaling due to Brush_Resize implementation.")
 //		SelBrushList_GetSize (pDoc->pSelBrushes) > 0)) 
 		SelBrushList_GetSize (pDoc->pSelBrushes) == 1))
 	{
@@ -1819,7 +1819,7 @@ void CFusionView::OnUpdateToolsBrushShearbrush(CCmdUI* pCmdUI)
 	if((GetModeTool()==ID_TOOLS_TEMPLATE && !pDoc->TempEnt) ||
 		(GetModeTool()==ID_GENERALSELECT &&
 		GetAdjustMode()==ADJUST_MODE_BRUSH &&
-#pragma message ("Can't do multiple brush shear due to Brush_Shear implementation.")
+#pragma todo ("Can't do multiple brush shear due to Brush_Shear implementation.")
 		SelBrushList_GetSize (pDoc->pSelBrushes) == 1)) 
 //		SelBrushList_GetSize (pDoc->pSelBrushes) > 0)) 
 	{
@@ -2359,7 +2359,7 @@ void CFusionView::OnToolsAddtolevel()
 
 void CFusionView::OnUpdateToolsAddtolevel(CCmdUI* pCmdUI) 
 {
-	// TODO: Add your command update UI handler code here
+	// #pragma todo: Add your command update UI handler code here
 	
 }
 
@@ -2382,7 +2382,7 @@ void CFusionView::OnViewZoomin()
 
 void CFusionView::OnUpdateViewZoomin(CCmdUI* pCmdUI) 
 {
-	// TODO: Add your command update UI handler code here
+	// #pragma todo: Add your command update UI handler code here
 	
 }
 
@@ -2393,7 +2393,7 @@ void CFusionView::OnViewZoomout()
 
 void CFusionView::OnUpdateViewZoomout(CCmdUI* pCmdUI) 
 {
-	// TODO: Add your command update UI handler code here
+	// #pragma todo: Add your command update UI handler code here
 	
 }
 

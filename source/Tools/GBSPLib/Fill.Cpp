@@ -27,7 +27,7 @@
 #include "Portals.h"
 #include "Leaf.h"
 #include "Poly.h"
-#include "GBSPFile.h"
+#include "GBSPFILE.H"
 #include "Bsp.h"
 
 int32		CurrentFill;

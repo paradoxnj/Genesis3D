@@ -13,11 +13,11 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 
-#include "Genesis.h"
+#include "GENESIS.H"
 #include "Errorlog.h"
-#include "Ram.h"
+#include "RAM.H"
 
 #include "Fx.h"
 

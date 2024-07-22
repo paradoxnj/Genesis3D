@@ -15,7 +15,7 @@
 #ifndef GENVSI_H
 #define GENVSI_H
 
-#include "Genesis.h"	// FIXME:  Should get rid of this, and make wrapper functions
+#include "GENESIS.H"	// FIXME:  Should get rid of this, and make wrapper functions
 
 //===========================================================================
 //===========================================================================
@@ -50,7 +50,7 @@ typedef struct
 //===========================================================================
 //	Button flags
 //===========================================================================
-//#pragma message ("Change the nameing convention here.")
+//#pragma todo ("Change the nameing convention here.")
 
 #define HOST_BUTTON_JUMP				(1<<0)
 #define HOST_BUTTON_LEFT				(1<<1)
@@ -122,7 +122,7 @@ typedef void GenVSI_ConsolePrintfCB(void *Udata, const char *Str, ...);
 typedef void GenVSI_ConsoleHeaderPrintfCB(void *Udata, int32 ClientHandle, geBoolean AllClients, const char *Str, ...);
 typedef float GenVSI_GetTimeCB(void *UData);
 
-//#pragma message ("all this player stuff will soon be handles, not void...")
+//#pragma todo ("all this player stuff will soon be handles, not void...")
 typedef void *GenVSI_SpawnPlayerCB(void *UData, const char *ClassName);
 typedef void GenVSI_DestroyPlayerCB(void *UData, void *PlayerData);
 

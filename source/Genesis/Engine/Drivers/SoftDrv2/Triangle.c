@@ -32,7 +32,7 @@
 #include <math.h>		// fabs
 #include <string.h>		// memcpy
 #include "swthandle.h"
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "triangle.h"
 
 

@@ -22,13 +22,16 @@
 #ifndef GE_TRACE_H
 #define GE_TRACE_H
 
-#include <Assert.h>
-#include <Windows.h>
+#include <assert.h>
 
-#include "Genesis.h"
-#include "BaseType.h"
-#include "Vec3d.h"
-#include "World.h"
+#ifdef _WINDOWS
+#include <Windows.h>
+#endif
+
+#include "GENESIS.H"
+#include "BASETYPE.H"
+#include "VEC3D.H"
+#include "WORLD.H"
 //#include "System.h"
 
 //=====================================================================================

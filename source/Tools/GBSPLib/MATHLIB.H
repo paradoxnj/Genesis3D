@@ -2,7 +2,7 @@
 /*  MathLib.h                                                                           */
 /*                                                                                      */
 /*  Author: John Pollard                                                                */
-/*  Description: Various math functions not included in Vec3d.h, etc...                 */
+/*  Description: Various math functions not included in VEC3D.H, etc...                 */
 /*                                                                                      */
 /*  The contents of this file are subject to the Genesis3D Public License               */
 /*  Version 1.01 (the "License"); you may not use this file except in                   */
@@ -22,7 +22,7 @@
 #ifndef MATHLIB_H
 #define MATHLIB_H
 
-#include "Vec3d.h"
+#include "VEC3D.H"
 
 //#define	ON_EPSILON			(geFloat)0.05
 #define		ON_EPSILON			(geFloat)0.1

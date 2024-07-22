@@ -28,9 +28,9 @@ typedef unsigned long ulong;
 // {
 #ifdef _TSC
 
-#pragma message("TSC on")
+#pragma todo("TSC on")
 
-#include "ram.h"
+#include "RAM.H"
 #include "log.h"
 #include <stdio.h>	//sprintf
 #include <windows.h>	//outputdebug
@@ -122,7 +122,7 @@ double diffTSC(ulong *tsc1,ulong *tsc2)
 #else // _TSC
 // }{
 
-#pragma message("TSC off")
+#pragma todo("TSC off")
 
 //void pushTSC(void) {}
 void pushTSC(void) {}

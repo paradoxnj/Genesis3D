@@ -21,7 +21,7 @@
 /****************************************************************************************/
 #include "array.h"
 #include <assert.h>
-#include "ram.h"
+#include "RAM.H"
 
 geBoolean Array_Init (Array *pArray, int InitialSize, int ItemSize)
 {

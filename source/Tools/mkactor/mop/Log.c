@@ -29,7 +29,7 @@
 #pragma warning (default:4201)
 #include <assert.h>				
 
-#include "ram.h"		// geRam_Allocate
+#include "RAM.H"		// geRam_Allocate
 #include "log.h"
  
  

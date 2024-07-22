@@ -24,8 +24,8 @@
 
 #include <Windows.h>
 
-#include "BaseType.h"
-#include "DCommon.h"
+#include "BASETYPE.H"
+#include "Dcommon.h"
 #include "D3DCache.h"
 
 #include "TPage.h"

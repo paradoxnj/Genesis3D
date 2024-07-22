@@ -26,7 +26,7 @@
 
 #include <io.h>						// _finddata_t
 
-#include "Ram.h"
+#include "RAM.H"
 #include "mkutil.h"
 #include "mxscript.h"
 #include "filepath.h"

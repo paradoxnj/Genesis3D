@@ -15,7 +15,7 @@
 #ifndef VIDMODE_H
 #define VIDMODE_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 
 #ifdef __cplusplus
 extern "C" {

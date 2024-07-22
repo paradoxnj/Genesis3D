@@ -52,5 +52,5 @@ void Log_Printf(const char * String, ...)
 }
 
 #ifdef _LOG
-#pragma message("LOG on")
+#pragma todo("LOG on")
 #endif

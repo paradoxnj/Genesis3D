@@ -7,7 +7,7 @@
 #ifndef PROCEDURAL_H
 #define PROCEDURAL_H
 
-#include "Bitmap.h"
+#include "bitmap.h"
 
 #ifdef __cplusplus
 extern "C" {

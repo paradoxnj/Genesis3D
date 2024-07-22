@@ -15,7 +15,7 @@
 #ifndef GPLAYER_H
 #define GPLAYER_H
 
-#include "Genesis.h"
+#include "GENESIS.H"
 
 #include "GenVSI.h"
 

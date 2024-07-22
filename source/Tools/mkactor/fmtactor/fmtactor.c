@@ -23,9 +23,9 @@
 #include <string.h>
 
 
-#include "genesis.h"
+#include "GENESIS.H"
 #include "actor.h"
-#include "ram.h"
+#include "RAM.H"
 #include "fmtactor.h"
 
 #define MAX_OPTIMIZATION_LEVEL 1

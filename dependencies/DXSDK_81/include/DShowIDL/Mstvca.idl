@@ -743,7 +743,7 @@ library MSTvCALib
         [default, source] dispinterface _ICADenialsEvents;
     };
     
-                        // TODO - mark this as hidden...
+                        // #pragma todo - mark this as hidden...
     [
         uuid(11166550-DF8A-463a-B620-7BEC23542010),
         helpstring("CAOffer Class")

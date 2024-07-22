@@ -9,8 +9,8 @@
 #include	<math.h>
 #include	<assert.h>
 
-#include	"genesis.h"
-#include	"ErrorLog.h"
+#include	"GENESIS.H"
+#include	"Errorlog.h"
 
 #include	"Electric.h"
 #include	"..\\Procedurals\\gebmutil.h"

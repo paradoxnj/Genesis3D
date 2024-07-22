@@ -23,12 +23,14 @@
 /*                                                                                      */
 /****************************************************************************************/
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "bitmap.h"
 
+#ifdef _WINDOWS
 void paletteOptimize(const geBitmap_Info * Info,const void * Bits,
 						uint8 *palette,int palEntries,int maxSamples);
 
 	// use maxIterations == 0 or -1 for infinity
+#endif
 
 #endif

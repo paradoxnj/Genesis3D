@@ -11,12 +11,12 @@
 #include <ctype.h>
 
 #include "Particles.h"
-#include "genesis.h"
-#include "ram.h"
-#include "errorlog.h"
+#include "GENESIS.H"
+#include "RAM.H"
+#include "Errorlog.h"
 #include "procutil.h"
 #include "gebmutil.h"
-#include "vec3d.h"
+#include "VEC3D.H"
 
 #ifdef DO_TIMER
 #include "timer.h"

@@ -25,7 +25,7 @@
 //  Tests cpu for various features.
 
 
-#include "basetype.h"
+#include "BASETYPE.H"
 
 #ifdef __cplusplus
 extern "C" {

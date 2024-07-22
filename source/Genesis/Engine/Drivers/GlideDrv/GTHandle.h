@@ -24,8 +24,8 @@
 
 #include <Windows.h>
 
-#include "DCommon.h"
-#include "BaseType.h"
+#include "Dcommon.h"
+#include "BASETYPE.H"
 #include "GCache.h"
 #include "Glide.h"
 

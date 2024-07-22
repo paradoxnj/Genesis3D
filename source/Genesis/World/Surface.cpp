@@ -19,20 +19,20 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#include <Assert.h>
+#include <assert.h>
 #include <Windows.h>
 #include <Math.h>
 
-#include "BaseType.h"
+#include "BASETYPE.H"
 #include "System.h"
-#include "World.h"
-#include "Ram.h"
-#include "Surface.h"
+#include "WORLD.H"
+#include "RAM.H"
+#include "SURFACE.H"
 #include "WBitmap.h"	
-#include "Vec3d.h"
+#include "VEC3D.H"
 #include "Vis.h"
 
-#include "Light.h"
+#include "LIGHT.H"
 
 //================================================================================
 //	local static globals

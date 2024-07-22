@@ -327,11 +327,11 @@
     <ClInclude Include="Brush2.h" />
     <ClInclude Include="Bsp.h" />
     <ClInclude Include="Fill.h" />
-    <ClInclude Include="Gbspfile.h" />
+    <ClInclude Include="GBSPFILE.H" />
     <ClInclude Include="Gbsplib.h" />
     <ClInclude Include="Gbspprep.h" />
     <ClInclude Include="Leaf.h" />
-    <ClInclude Include="Light.h" />
+    <ClInclude Include="LIGHT.H" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Mathlib.h" />
     <ClInclude Include="Poly.h" />

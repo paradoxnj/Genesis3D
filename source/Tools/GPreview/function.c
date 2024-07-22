@@ -60,7 +60,7 @@ Function_RTFunction *	Function_RTFunctionCreateTriangleOscillator(
 {
 	Function_RTFunction *	Func;
 
-#pragma message ("Add range support on TriangleOscillator")
+#pragma todo ("Add range support on TriangleOscillator")
 if	(RangeMin != 0.0f)
 	return NULL;
 if	(RangeMax != 1.0f)
@@ -94,7 +94,7 @@ Function_RTFunction *	Function_RTFunctionCreateLinearRamp(
 {
 	Function_RTFunction *	Func;
 
-#pragma message ("Add range support on LinearRamp")
+#pragma todo ("Add range support on LinearRamp")
 if	(RangeMin != 0.0f)
 	return NULL;
 if	(RangeMax != 1.0f)
@@ -130,7 +130,7 @@ Function_RTFunction *	Function_RTFunctionCreateSampled(
 {
 	Function_RTFunction *	Func;
 
-#pragma message ("Add range support on Sampled")
+#pragma todo ("Add range support on Sampled")
 if	(RangeMin != 0.0f)
 	return NULL;
 if	(RangeMax != 1.0f)
@@ -377,7 +377,7 @@ float Function_SampledValue(Function_Sampled *sf, float X)
 
 //	assert(xValue >= sf->sfDomainMin);
 //	assert(xValue <= sf->sfDomainMax);
-#pragma message("Clean up domain/range support on Sampled functions")
+#pragma todo("Clean up domain/range support on Sampled functions")
 	if	(X < sf->sfDomainMin)
 		return sf->sfRangeMin;
 	if	(X > sf->sfDomainMax)

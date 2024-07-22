@@ -23,13 +23,13 @@
 #define GBSPLIB_H
 
 #include <Windows.h>
-#include "vec3d.h"
-#include "basetype.h"
+#include "VEC3D.H"
+#include "BASETYPE.H"
 
 //#include "MyDef.h"
 //#include "MathLib.h"
 
-//#include "Motion.h"
+//#include "motion.h"
 
 #define GBSP_VERSION_MAJOR	6
 #define GBSP_VERSION_MINOR	0

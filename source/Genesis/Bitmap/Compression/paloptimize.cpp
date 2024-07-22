@@ -84,6 +84,7 @@ The problems :
 
 /*******/
 
+#ifdef _WINDOWS
 typedef struct 
 {
 	int totR,totG,totB,count;
@@ -247,3 +248,4 @@ palOptInfo optInfo[256];
 
 	//showPopTSC("palOptimize");
 }
+#endif

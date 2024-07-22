@@ -25,7 +25,7 @@
 #include "EntityTable.h"
 #include "FusionDoc.h"  // icko!
 #include <assert.h>
-#include "ram.h"
+#include "RAM.H"
 #include "util.h"
 
 #ifdef _DEBUG

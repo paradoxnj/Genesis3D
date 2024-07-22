@@ -27,10 +27,10 @@ permission.  http://www.d6.com/users/checker
 
 #include "render.h"
 #include "node.h"
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "units.h"
 #include "consoletab.h"
-#include "ram.h"
+#include "RAM.H"
 #include "bitmap.h"
 
 #include <math.h>
@@ -153,7 +153,7 @@ geFloat Render_ComputeGridDist (const ViewVars *v, int GridType)
 			  Currently, all views call it so this assertion will cause a problem.
 			  Need to fix this...
 			*/
-			#pragma message ("This function should not be called by non-ortho views.")
+			#pragma todo ("This function should not be called by non-ortho views.")
 #else
 			assert (0);
 #endif			
@@ -2333,7 +2333,7 @@ void	Render_RenderSpanFaceCB(Face *f, const Face *OGFace, int Key, geFloat pdist
 void Render_ClearViewDib (ViewVars *Cam)
 {
 	memset(Cam->pBits, 0, Cam->Width * Cam->Height *2);
-	ClearZBuffer(Cam);  //TODO: vtune this, might march
+	ClearZBuffer(Cam);  //#pragma todo: vtune this, might march
 }
 
 void	Render_RenderTree(ViewVars *Cam, Node *n, HDC ViewDC, int RFlags)
@@ -2398,7 +2398,7 @@ static void AddNodeEdges(Face *NodeFace,	//node face
 		GradNeeded	=FALSE;
 	}
 
-	//TODO: clamp sf to window limits
+	//#pragma todo: clamp sf to window limits
 
 	for(i=0;i < sf->NumPoints;i++)
 	{

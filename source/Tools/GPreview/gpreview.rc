@@ -6,7 +6,7 @@
 // Generated from the TEXTINCLUDE 2 resource.
 //
 #include "resource.h"
-#include "winuser.h"
+#include "winUSER.H"
 #include "winresrc.h"
 
 /////////////////////////////////////////////////////////////////////////////
@@ -55,7 +55,7 @@ IDR_CURSOR              RCDATA  DISCARDABLE     "cursor.bmp"
 1 TEXTINCLUDE DISCARDABLE 
 BEGIN
     "#include ""resource.h""\r\n"
-    "#include ""winuser.h""\r\n"
+    "#include ""winUSER.H""\r\n"
     "#include ""winresrc.h""\r\n"
     "\0"
 END

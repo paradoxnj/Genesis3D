@@ -172,7 +172,7 @@ SOURCE=.\DrawDecal.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\Support\Ram.h
+SOURCE=..\..\..\Support\RAM.H
 # End Source File
 # Begin Source File
 

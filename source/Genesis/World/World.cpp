@@ -19,34 +19,34 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#include <Assert.h>
-#include <Math.h>
+#include <assert.h>
+#include <math.h>
 
-#include "World.h"
+#include "WORLD.H"
 #include "System.h"
-#include "Ram.h"
-#include "BaseType.h"
-#include "GBSPFile.h"
-#include "Camera.h"
-#include "Plane.h"
-#include "Surface.h"
-#include "Light.h"
+#include "RAM.H"
+#include "BASETYPE.H"
+#include "GBSPFILE.H"
+#include "CAMERA.H"
+#include "PLANE.H"
+#include "SURFACE.H"
+#include "LIGHT.H"
 #include "WBitmap.h"
-#include "Frustum.h"
+#include "FRUSTUM.H"
 #ifdef	MESHES
 #include "Mesh.h"
 #endif
-#include "Entities.h"
+#include "ENTITIES.H"
 #include "Vis.h"
-#include "User.h"
-#include "VFile.h"
+#include "USER.H"
+#include "vfile.h"
 
-#include "Trace.h"
+#include "TRACE.H"
 
-#include "list.h"
+//#include "list.h"
 
-#include "Bitmap.h"
-#include "Bitmap._h"
+#include "bitmap.h"
+#include "bitmap._h"
 
 //#define BSP_BACK_TO_FRONT
 
@@ -59,7 +59,7 @@
 //============================================================================
 // Dirty HACKS that need to be removed
 //============================================================================
-#pragma message ("HACK!!! remove geCamera_FillDriverInfo (uses GlobalInfo)")
+#pragma todo (HACK!!! remove geCamera_FillDriverInfo (uses GlobalInfo))
 
 int32				MirrorRecursion;					// GLOBAL!!!
 
@@ -445,7 +445,7 @@ GENESISAPI geWorld *geWorld_Create(geVFile *File)
 	
 	Models = NewWorld->CurrentBSP->Models;
 
-	//#pragma message ("Fixed number of models supported")
+	//#pragma todo ("Fixed number of models supported")
 	for (i=0; i< MAX_MODELS; i++)
 	{
 		memset(&Models[i], 0, sizeof(geWorld_Model));
@@ -751,7 +751,7 @@ geBoolean World_WorldRenderQ(geEngine *Engine, geWorld *World, geCamera *Camera)
 GENESISAPI geBoolean GENESISCC geWorld_IsActorPotentiallyVisible(const geWorld *World, const geActor *Actor, const geCamera *Camera)
 		// if the actor doesn't have a render hint box, we assume it's potentially visible
 {
-	#pragma message ("This is a fairly poor test: ")
+	#pragma todo (This is a fairly poor test)
 		// mirrors aren't checked.
 		// this doesn't check the extents of the actor, just the center point.
 		// if the render hint box isn't set, should this return true, or find the DynamicExtBox?
@@ -775,7 +775,7 @@ GENESISAPI geBoolean GENESISCC geWorld_IsActorPotentiallyVisible(const geWorld *
 	CameraTransform = geCamera_GetWorldSpaceVisXForm( Camera );
 	geWorld_GetLeaf(World, &(CameraTransform->Translation), &CameraLeaf);
 
-	#pragma message ("geWorld_MightSeeLeaf would be WAY FASTER here, but would be a frame behind...")
+	#pragma todo ("geWorld_MightSeeLeaf would be WAY FASTER here, but would be a frame behind...")
 	if (geWorld_LeafMightSeeLeaf(World, Leaf, CameraLeaf, 0 )==GE_FALSE)
 		return GE_FALSE;
 
@@ -784,7 +784,7 @@ GENESISAPI geBoolean GENESISCC geWorld_IsActorPotentiallyVisible(const geWorld *
 		// see if the hint box is visible on the screen.  
 		// (transform and project it to the screen, then check extents of that projection
 		//  against the clipping rect)
-		#pragma message ("This should use frustum in world space, and use Trace_BoxOnPlaneSides with frustum planes...")
+		#pragma todo ("This should use frustum in world space, and use Trace_BoxOnPlaneSides with frustum planes...")
 		geRect ClippingRect;
 		geVec3d BoxCorners[8];
 		const geXForm3d *ObjectToCamera;
@@ -1427,7 +1427,7 @@ static void RenderFace(int32 Face, const geWorld_RenderInfo *RenderInfo, int32 C
 		//	Mirror the camera
 		//	Use the world space face for this
 		//
-		#pragma message ("Rotated models are broken in mirrors.  Quick fix:  Rotate the plane against the models xform")
+		#pragma todo ("Rotated models are broken in mirrors.  Quick fix:  Rotate the plane against the models xform")
 
 		FaceNormal = BSPData->GFXPlanes[pFace->PlaneNum].Normal;
 		FaceDist = BSPData->GFXPlanes[pFace->PlaneNum].Dist;
@@ -1880,7 +1880,7 @@ static void CalcBSPModelInfo(World_BSP *BSP)
 }
 
 // FIXME:  Put all this model stuff into Model.c
-#pragma message ("Fix naming convention in models i.e: geWorld_SetModelXForm ---> geWorld_ModelSetXForm...")
+#pragma todo (Fix naming convention in models i.e: geWorld_SetModelXForm ---> geWorld_ModelSetXForm...)
 //========================================================================================
 //	World_SetModelXForm
 //========================================================================================
@@ -3008,9 +3008,9 @@ static void SetupSkyForScene(World_SkyBox *SkyBox, geCamera *Camera, Frustum_Inf
 geBoolean geWorld_BitmapListInit(geWorld *World)
 {
 	assert(World);
-	assert(World->AttachedBitmaps == NULL);
+	//assert(World->AttachedBitmaps == NULL);
 
-	if (World->AttachedBitmaps == NULL )
+	/*if (World->AttachedBitmaps == NULL )
 	{
 		World->AttachedBitmaps = BitmapList_Create();
 
@@ -3019,7 +3019,7 @@ geBoolean geWorld_BitmapListInit(geWorld *World)
 			geErrorLog_AddString(-1, "geWorld_BitmapListInit:  BitmapList_Create failed.", NULL);
 			return GE_FALSE;
 		}
-	}
+	}*/
 
 	// Only add bitmaps if the list is not NULL (could be an empty world with no textures yet)
 	if (World->CurrentBSP->WBitmapPool)
@@ -3068,13 +3068,26 @@ geBoolean geWorld_BitmapListShutdown(geWorld *World)
 {
 	assert(World);
 
-	if (World->AttachedBitmaps )
+	/*if (World->AttachedBitmaps )
 	{
 		//BitmapList_DetachAll(World->AttachedBitmaps);
 		// destroy detached for you!
 		BitmapList_Destroy(World->AttachedBitmaps);
 		World->AttachedBitmaps = NULL;
+	}*/
+
+	BitmapList::iterator bli = World->AttachedBitmaps.begin();
+	while (bli != World->AttachedBitmaps.end())
+	{
+		if (!geBitmap_DetachDriver((*bli), GE_TRUE))
+			return GE_FALSE;
+
+		geBitmap_Destroy(&(*bli));
+
+		bli++;
 	}
+
+	World->AttachedBitmaps.clear();
 
 	return GE_TRUE;
 }
@@ -3086,18 +3099,29 @@ GENESISAPI geBoolean geWorld_AddBitmap(geWorld *World, geBitmap *Bitmap)
 {
 	assert(World);
 	assert(Bitmap);
-	assert(World->AttachedBitmaps);
+	/*assert(World->AttachedBitmaps);
 
 	if (!World->AttachedBitmaps)
 	{
 		geErrorLog_AddString(-1, "geWorld_AddBitmap:  AttachedBitmapList is NULL.", NULL);
 		return GE_FALSE;
-	}
+	}*/
 
 	geBitmap_SetDriverFlags(Bitmap, RDRIVER_PF_3D | RDRIVER_PF_COMBINE_LIGHTMAP);
+	BitmapList::iterator bli = World->AttachedBitmaps.begin();
+	while (bli != World->AttachedBitmaps.end())
+	{
+		if ((*bli) == Bitmap)
+			return GE_TRUE;
 
+		bli++;
+	}
+
+	geBitmap_CreateRef(Bitmap);
+	World->AttachedBitmaps.push_back(Bitmap);
+	
 	// Add bitmap to the list of bitmaps attached to the engine
-	if ( BitmapList_Add(World->AttachedBitmaps, Bitmap) )
+	/*if ( BitmapList_Add(World->AttachedBitmaps, Bitmap) )
 	{
 		World->Changed = GE_TRUE;
 		
@@ -3118,7 +3142,7 @@ GENESISAPI geBoolean geWorld_AddBitmap(geWorld *World, geBitmap *Bitmap)
 			OutputDebugString(str);
 		}
 		#endif
-	}
+	}*/
 
 	return GE_TRUE;
 }
@@ -3131,7 +3155,7 @@ GENESISAPI geBoolean geWorld_RemoveBitmap(geWorld *World,geBitmap *Bitmap)
 
 	assert(World);
 	assert(Bitmap);
-	assert(World->AttachedBitmaps);
+	/*assert(World->AttachedBitmaps);
 
 	if (!World->AttachedBitmaps)
 		return GE_FALSE;
@@ -3157,8 +3181,23 @@ GENESISAPI geBoolean geWorld_RemoveBitmap(geWorld *World,geBitmap *Bitmap)
 			OutputDebugString(str);
 		}
 		#endif
-	}
+	}*/
 		
+	BitmapList::iterator bli = World->AttachedBitmaps.begin();
+	while (bli != World->AttachedBitmaps.end())
+	{
+		if ((*bli) == Bitmap)
+		{
+			if (!geBitmap_DetachDriver((*bli), GE_TRUE))
+				return GE_FALSE;
+
+			geBitmap_Destroy(&(*bli));
+			World->AttachedBitmaps.erase(bli);
+			return GE_TRUE;
+		}
+
+		bli++;
+	}
 
 	return GE_TRUE;
 }
@@ -3182,13 +3221,31 @@ GENESISAPI geBitmap *geWorld_GetBitmapByName(geWorld *World, const char *BitmapN
 geBoolean geWorld_AttachAll(geWorld *World, DRV_Driver *Driver, geFloat Gamma)
 {
 	assert(World);
-	assert(World->AttachedBitmaps);
+	//assert(World->AttachedBitmaps);
 	assert(Driver);
 
-	if (!BitmapList_AttachAll(World->AttachedBitmaps, Driver, Gamma))
+	/*if (!BitmapList_AttachAll(World->AttachedBitmaps, Driver, Gamma))
 	{
 		geErrorLog_AddString(-1, "geWorld_AttachAll:  BitmapList_AttachAll failed.", NULL);
 		return GE_FALSE;
+	}*/
+
+	BitmapList::iterator bli = World->AttachedBitmaps.begin();
+	while (bli != World->AttachedBitmaps.end())
+	{
+		if (!geBitmap_SetGammaCorrection_DontChange((*bli), Gamma) )
+		{
+			geErrorLog_AddString(-1,"BitmapList_AttachAll : SetGamma failed", NULL);
+			return GE_FALSE;
+		}
+
+		if (!geBitmap_AttachToDriver((*bli), RDriver, 0) )
+		{
+			geErrorLog_AddString(-1,"BitmapList_AttachAll : AttachToDriver failed", NULL);
+			return GE_FALSE;
+		}
+
+		bli++;
 	}
 	
 	return GE_TRUE;
@@ -3200,13 +3257,23 @@ geBoolean geWorld_AttachAll(geWorld *World, DRV_Driver *Driver, geFloat Gamma)
 geBoolean geWorld_DetachAll(geWorld *World)
 {
 	assert(World);
-	assert(World->AttachedBitmaps);
+	//assert(World->AttachedBitmaps);
 
-	if (!BitmapList_DetachAll(World->AttachedBitmaps))
+	/*if (!BitmapList_DetachAll(World->AttachedBitmaps))
 	{
 		geErrorLog_AddString(-1, "geWorld_DetachAll:  BitmapList_DetachAll failed.", NULL);
 		return GE_FALSE;
+	}*/
+
+	BitmapList::iterator bli = World->AttachedBitmaps.begin();
+	while (bli != World->AttachedBitmaps.end())
+	{
+		if (!geBitmap_DetachDriver((*bli), GE_TRUE))
+			return GE_FALSE;
+
+		bli++;
 	}
+
 	return GE_TRUE;
 }
 
@@ -3216,10 +3283,21 @@ geBoolean geWorld_DetachAll(geWorld *World)
 GENESISAPI geBoolean geWorld_HasBitmap(const geWorld *World, const geBitmap *Bitmap)
 {
 	assert(World);
-	assert(World->AttachedBitmaps);
+	//assert(World->AttachedBitmaps);
 
-	return BitmapList_Has((BitmapList*)World->AttachedBitmaps, (geBitmap*)Bitmap);
+	//return BitmapList_Has((BitmapList*)World->AttachedBitmaps, (geBitmap*)Bitmap);
+	BitmapList::iterator bli = World->AttachedBitmaps.begin();
+	while (bli != World->AttachedBitmaps.end())
+	{
+		if ((*bli) == Bitmap)
+			return GE_TRUE;
+
+		bli++;
+	}
+
+	return GE_FALSE;
 }
+
 //================================================================================
 //================================================================================
 GENESISAPI geBoolean geWorld_BitmapIsVisible(geWorld *World, const geBitmap *Bitmap)
@@ -3236,5 +3314,3 @@ GENESISAPI geBoolean geWorld_BitmapIsVisible(geWorld *World, const geBitmap *Bit
 
 	return GE_FALSE;
 }
-
-

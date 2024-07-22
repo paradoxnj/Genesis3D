@@ -1,6 +1,6 @@
 
 #include "resource.h"
-#include "winuser.h"
+#include "winUSER.H"
 
 //
 // Dialog

@@ -24,7 +24,7 @@
 #include "undostack.h"
 #include "stack.h"
 #include "array.h"
-#include "ram.h"
+#include "RAM.H"
 #include <assert.h>
 
 

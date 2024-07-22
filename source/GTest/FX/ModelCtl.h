@@ -1,7 +1,7 @@
 #ifndef	MODELCTL_H
 #define	MODELCTL_H
 
-#include	"genesis.h"
+#include	"GENESIS.H"
 
 #pragma warning( disable : 4068 )
 

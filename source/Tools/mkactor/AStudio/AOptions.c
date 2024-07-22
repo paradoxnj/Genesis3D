@@ -20,7 +20,7 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include "AOptions.h"
-#include "ram.h"
+#include "RAM.H"
 #include <assert.h>
 
 // Include windows for profile reading stuff...

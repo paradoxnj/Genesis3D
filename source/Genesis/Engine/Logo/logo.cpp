@@ -19,19 +19,21 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
+#ifdef _WINDOWS
 #define WIN32_LEAN_AND_MEAN
 #pragma warning(disable : 4201 4214 4115)
 #include <windows.h>
 #include <mmsystem.h> //timeGetTime
 #pragma warning(default : 4201 4214 4115)
+#endif
 
 #include	<math.h>
 
-#include	"genesis.h"
+#include	"GENESIS.H"
 #include	"engine.h"
 #include	"bitmap.h"
-#include	"PixelFormat.h"
-#include	"errorlog.h"
+#include	"pixelformat.h"
+#include	"Errorlog.h"
 #include	"electric.h"
 
 extern	unsigned char	LogoActor_act[];
@@ -165,8 +167,12 @@ geBoolean DoSplashScreen(geEngine *Engine, geDriver_Mode *DriverMode)
 	int32				Width, Height;
 
 	geVec3d				LightingNormal;
+	#ifdef _WINDOWS
 	LARGE_INTEGER		CurrentTic;
-
+	#else
+	int64_t				CurrentTic;
+	#endif
+	
 	_Electric_BoltEffect *Bolt = nullptr;
 	geVec3d				BoltStart;
 	geVec3d				BoltEnd;

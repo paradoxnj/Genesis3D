@@ -24,7 +24,7 @@
 
 
 #include "GBSPPrep.h"
-#include "GBSPFile.h"
+#include "GBSPFILE.H"
 #include "Poly.h"		// For Planes, and NumPlanes
 #include "BSP.h"
 #include "Map.h"		// For texture
@@ -32,8 +32,8 @@
 #include "Portals.h"
 #include "Leaf.h"
 
-#include "VFile.h"
-#include "Ram.h"
+#include "vfile.h"
+#include "RAM.H"
 
 geBoolean	SaveGFXModelData(geVFile *f);
 geBoolean	SaveGFXNodes(geVFile *f);
@@ -584,7 +584,7 @@ geBoolean SaveGFXFaces_r(GBSP_Node *Node, geVFile *f)
 			GFace.PlaneNum = Face->PlaneNum;
 			GFace.PlaneSide = Face->PlaneSide;
 			GFace.TexInfo = Face->TexInfo;
-			#pragma message ("Make LWidth/Height correct!")
+			#pragma todo ("Make LWidth/Height correct!")
 			GFace.LWidth = 0;
 			GFace.LHeight = 0;
 			GFace.LightOfs = -1;		// No light info yet

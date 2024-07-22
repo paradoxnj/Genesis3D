@@ -20,9 +20,9 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <assert.h>
-#include "XFArray.h"
-#include "Ram.h"
-#include "ErrorLog.h"
+#include "xfarray.h"
+#include "RAM.H"
+#include "Errorlog.h"
 
 
 typedef struct geXFArray

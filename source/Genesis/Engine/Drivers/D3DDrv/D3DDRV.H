@@ -22,7 +22,7 @@
 #ifndef D3DDRV_H
 #define D3DDRV_H
 
-#include "DCommon.h"
+#include "Dcommon.h"
 
 extern DRV_Window			ClientWindow;
 extern DRV_Driver			D3DDRV;

@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  ERRORLOG.H                                                                          */
+/*  Errorlog.h                                                                          */
 /*                                                                                      */
 /*  Author: Mike Sandige                                                                */
 /*  Description: Generic error logging system interface                                 */
@@ -22,7 +22,7 @@
 #ifndef GE_ERRORLOG_H
 #define GE_ERRORLOG_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 
 #ifdef __cplusplus
 extern "C" {

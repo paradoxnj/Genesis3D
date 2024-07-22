@@ -34,7 +34,7 @@
 	Error conditions are reported to errorlog
 */
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "vfile.h"
 
 typedef geFloat geTKArray_TimeType;

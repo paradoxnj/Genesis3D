@@ -26,7 +26,7 @@
 #pragma warning(disable : 4201 4214 4115)
 #include <windows.h>
 #pragma warning(default : 4201 4214 4115)
-#include "basetype.h"
+#include "BASETYPE.H"
 
 #ifdef __cplusplus
 	extern "C" {

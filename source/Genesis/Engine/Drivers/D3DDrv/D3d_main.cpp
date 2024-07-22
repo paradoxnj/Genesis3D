@@ -20,7 +20,7 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 #include <stdio.h>
 #include <DDraw.h>
 #include <D3D.h>

@@ -26,9 +26,9 @@
 
 #include <stdio.h>
 #include "cparser.h"
-#include "ram.h"
+#include "RAM.H"
 #include "util.h"
-#include "FilePath.h"
+#include "Filepath.h"
 #include "bitmap.h"
 #include "array.h"
 #include "vfile.h"

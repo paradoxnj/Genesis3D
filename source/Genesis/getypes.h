@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  GeTypes.h                                                                           */
+/*  getypes.h                                                                           */
 /*                                                                                      */
 /*  Description: Genesis Types (not primitive enough for basetype)                      */
 /*                                                                                      */
@@ -21,7 +21,7 @@
 #ifndef GE_TYPES_H
 #define GE_TYPES_H
 
-#include "BaseType.h"
+#include "BASETYPE.H"
 
 //
 //	Collision defines (for geWorld_Collision)
@@ -87,4 +87,4 @@ typedef struct
 
 typedef GE_Rect geRect;
 
-#endif GETYPES_H
+#endif // GETYPES_H

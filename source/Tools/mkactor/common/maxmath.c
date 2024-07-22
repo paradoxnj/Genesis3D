@@ -32,7 +32,7 @@
 #include <assert.h>
 #include <math.h>
 
-#include "xform3d.h"
+#include "XFORM3D.H"
 
 #define MATRIX_SIZE 4
 

@@ -24,7 +24,7 @@
 #include "FusionTabControls.h"
 #include "FUSIONDoc.h"
 #include "EntityTable.h"
-#include "FilePath.h"
+#include "Filepath.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -445,7 +445,7 @@ geBoolean CBrushEntityDialog::GetCurrentObjectName (char *pObjName)
 // called when the user presses the Place Object push button on the Brush/Entity dialog
 // and is charged with placing the currently selected library object down into the level
 // where the user wishes it to go
-// TODO : need some method by which objects are placed at a user specified location,  instead
+// #pragma todo : need some method by which objects are placed at a user specified location,  instead
 //        of just plopping them down at the origin
 void CBrushEntityDialog::OnPlaceObject() 
 {

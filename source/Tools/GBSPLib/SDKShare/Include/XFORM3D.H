@@ -23,7 +23,7 @@
 #define GE_XFORM_H
 
 
-#include "Vec3d.h"
+#include "VEC3D.H"
 
 #ifdef __cplusplus
 extern "C" {

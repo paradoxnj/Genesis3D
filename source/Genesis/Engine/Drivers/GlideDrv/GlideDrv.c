@@ -21,7 +21,7 @@
 /****************************************************************************************/
 #include <Windows.h>
 
-#include "DCommon.h"
+#include "Dcommon.h"
 #include "GlideDrv.h"
 #include "GMain.h"
 #include "Glide.h"
@@ -44,7 +44,7 @@ geBoolean DRIVERCC DrvInit(DRV_DriverHook *Hook)
 	{
 		// reset key states (compensate for windows bug)
 		uint32 KeyState1, KeyState2;
-		#pragma message("Glide : WireFrame enabled!")
+		#pragma todo("Glide : WireFrame enabled!")
 		KeyState1 = GetAsyncKeyState(VK_CONTROL);
 		KeyState2 = GetAsyncKeyState(VK_F8);
 	}

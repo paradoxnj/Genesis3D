@@ -27,7 +27,7 @@
 #include	"iden.h"
 #include	"type.h"
 #include	"symtab.h"
-#include	"ram.h"
+#include	"RAM.H"
 
 Type *	Type_CreatePtrType(Type **tl, Type *tp)
 {
@@ -237,7 +237,7 @@ void		Type_AddTypeField(Type *tp, SymTab_Symbol *fieldName, unsigned short flags
 	newField = (TypeField *)geRam_Allocate(sizeof(*newField));
 	if	(!newField)
 	{
-#pragma message("Type_AddTypeField can't propagate memory allocation errors")
+#pragma todo("Type_AddTypeField can't propagate memory allocation errors")
 		assert(0);
 		return;
 	}

@@ -15,7 +15,7 @@ extern "C" {
 #endif // __cplusplus
 
 #include <mmsystem.h>
-#include <dsound.h>
+#include <dSOUND.H>
 
 // This is the interface the audio renderer supports to give the application
 // access to the direct sound object and the buffers it is using, to allow the

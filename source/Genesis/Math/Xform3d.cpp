@@ -22,7 +22,7 @@
 #include <assert.h>
 #include <math.h>
 
-#include "XForm3d.h"
+#include "XFORM3D.H"
 
 
 #ifndef NDEBUG

@@ -44,7 +44,7 @@
 
 #include "FUSIONView.h"
 #include "wadfile.h"
-#include "XForm3d.h"
+#include "XFORM3D.H"
 #include "gbsplib.h"
 #include "render.h"
 #include "EntityTable.h"
@@ -60,14 +60,14 @@
 #include <errno.h>
 #include <direct.h>
 #include <assert.h>
-#include "basetype.h"
-#include "Vec3d.h"
+#include "BASETYPE.H"
+#include "VEC3D.H"
 #include "brush.h"
 #include "typeio.h"
 #include "units.h"
-#include "FilePath.h"
+#include "Filepath.h"
 #include <io.h>		// for _access
-#include "ram.h"
+#include "RAM.H"
 #include "util.h"
 #include "BrushTemplate.h"
 #include "TextureDialog.h"
@@ -3066,7 +3066,7 @@ static geBoolean fdocFindCutFace (Brush *pBrush, void *lParam)
 		Plane PlaneInv;
 
 		pData = (FaceSearchCallbackData *)lParam;
-#pragma message ("Need to reverse plane?")
+#pragma todo ("Need to reverse plane?")
 		PlaneInv = *pData->pFacePlane;
 		geVec3d_Inverse (&PlaneInv.Normal);
 		PlaneInv.Dist = -PlaneInv.Dist;
@@ -3812,7 +3812,7 @@ void CFusionDoc::RenderWorld(ViewVars *v, CDC *pDC)
 
 
 	// Temporary Hack for not updating
-//#pragma message ("This temporary hack needs to be fixed.  Perhaps a 'force redraw' flag?")
+//#pragma todo ("This temporary hack needs to be fixed.  Perhaps a 'force redraw' flag?")
 /*
 	if (Level_RebuildBspAlways (pLevel) == GE_FALSE)
 	{
@@ -5893,7 +5893,7 @@ static geBoolean fdocAddPremadeEntity (CEntity &Ent, void *lParam)
 
 // -------------------------------------------------------------------------------
 // places the specified object down into the level at the specified location
-// TODO: later want to make it so that newly added brushes/entities are all placed
+// #pragma todo: later want to make it so that newly added brushes/entities are all placed
 // in a single group and selected so the user can immediately begin to move
 // and adjust the object within the level		
 geBoolean CFusionDoc::PlaceObject( const char *ObjectName, const geVec3d *location )

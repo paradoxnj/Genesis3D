@@ -24,7 +24,7 @@
 #include <StdIo.h>
 
 #include "Utils.h"
-#include "Basetype.h"
+#include "BASETYPE.H"
 
 //====================================================================================
 //	DefaultExtension

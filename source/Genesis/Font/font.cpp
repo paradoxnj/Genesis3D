@@ -26,8 +26,8 @@
 #include <windowsx.h>
 #pragma warning(default : 4201 4214 4115)
 
-#include "extbox.h"
-#include "ram.h"
+#include "ExtBox.h"
+#include "RAM.H"
 #include "wgClip.h"
 
 #include <assert.h>

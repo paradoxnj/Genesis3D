@@ -24,7 +24,7 @@
 
 #include <Windows.h>
 
-#include "DCommon.h"
+#include "Dcommon.h"
 
 #ifdef __cplusplus
 extern "C" {

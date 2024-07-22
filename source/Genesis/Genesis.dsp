@@ -100,7 +100,7 @@ SOURCE=.\World\Frustum.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\World\Frustum.h
+SOURCE=.\World\FRUSTUM.H
 # End Source File
 # Begin Source File
 
@@ -108,7 +108,7 @@ SOURCE=.\World\Gbspfile.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\World\Gbspfile.h
+SOURCE=.\World\GBSPFILE.H
 # End Source File
 # Begin Source File
 
@@ -116,7 +116,7 @@ SOURCE=.\World\Light.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\World\Light.h
+SOURCE=.\World\LIGHT.H
 # End Source File
 # Begin Source File
 
@@ -132,7 +132,7 @@ SOURCE=.\World\Surface.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\World\Surface.h
+SOURCE=.\World\SURFACE.H
 # End Source File
 # Begin Source File
 
@@ -148,7 +148,7 @@ SOURCE=.\World\User.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\World\User.h
+SOURCE=.\World\USER.H
 # End Source File
 # Begin Source File
 
@@ -172,7 +172,7 @@ SOURCE=.\World\World.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\World\World.h
+SOURCE=.\World\WORLD.H
 # End Source File
 # End Group
 # Begin Group "Engine"
@@ -400,7 +400,7 @@ SOURCE=.\Math\Vec3d.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\Math\Vec3d.h
+SOURCE=.\Math\VEC3D.H
 # End Source File
 # Begin Source File
 
@@ -408,7 +408,7 @@ SOURCE=.\Math\Xform3d.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\Math\Xform3d.h
+SOURCE=.\Math\XFORM3D.H
 # End Source File
 # End Group
 # Begin Group "Entities"
@@ -428,7 +428,7 @@ SOURCE=.\Entities\Entities.h
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\Support\Basetype.h
+SOURCE=.\Support\BASETYPE.H
 # End Source File
 # Begin Source File
 
@@ -444,7 +444,7 @@ SOURCE=.\Support\geAssert.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\Support\geAssert.h
+SOURCE=.\Support\geassert.h
 # End Source File
 # Begin Source File
 
@@ -468,7 +468,7 @@ SOURCE=.\Support\Ram.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\Support\Ram.h
+SOURCE=.\Support\RAM.H
 # End Source File
 # Begin Source File
 
@@ -665,7 +665,7 @@ SOURCE=.\Camera.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\Camera.h
+SOURCE=.\CAMERA.H
 # End Source File
 # Begin Source File
 
@@ -681,7 +681,7 @@ SOURCE=.\Ge.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\Genesis.h
+SOURCE=.\GENESIS.H
 # End Source File
 # Begin Source File
 
@@ -709,7 +709,7 @@ SOURCE=.\Netplay.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Ptrtypes.h
+SOURCE=.\PTRTYPES.H
 # End Source File
 # Begin Source File
 
@@ -721,7 +721,7 @@ SOURCE=.\Sound.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\Sound.h
+SOURCE=.\SOUND.H
 # End Source File
 # Begin Source File
 

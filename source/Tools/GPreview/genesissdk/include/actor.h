@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  ACTOR.H                                                                             */
+/*  actor.h                                                                             */
 /*                                                                                      */
 /*  Author: Mike Sandige	                                                            */
 /*  Description:  Actor interface		                                                */
@@ -83,19 +83,19 @@
 #ifndef GE_ACTOR_H
 #define GE_ACTOR_H
 
-#include "genesis.h"				
-#include "basetype.h"
-#include "extbox.h"
+#include "GENESIS.H"				
+#include "BASETYPE.H"
+#include "ExtBox.h"
 #include "bitmap.h"
 
-#include "Motion.h"
+#include "motion.h"
 
 #ifdef GE_WORLD_H
-#include "camera.h"
-#include "Frustum.h"
+#include "CAMERA.H"
+#include "FRUSTUM.H"
 #endif
 
-#include "Body.h"
+#include "body.h"
 
 #ifdef __cplusplus
 extern "C" {

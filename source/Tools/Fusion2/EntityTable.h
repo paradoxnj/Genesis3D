@@ -22,7 +22,7 @@
 #ifndef ENTITYTABLE_H
 #define ENTITYTABLE_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "iden.h"
 #include "type.h"
 #include "bitmap.h"

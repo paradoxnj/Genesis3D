@@ -7,7 +7,7 @@
 
 #define	BUILD_MODELCTL
 #include	"modelctl.h"
-#include	"errorlog.h"
+#include	"Errorlog.h"
 
 geBoolean ModelCtl_Init(void)
 {

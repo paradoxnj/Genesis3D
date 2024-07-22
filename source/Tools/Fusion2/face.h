@@ -22,8 +22,8 @@
 #ifndef _FACE_H_
 #define _FACE_H_
 
-#include "Vec3d.h"
-#include "xform3d.h"
+#include "VEC3D.H"
+#include "XFORM3D.H"
 #include "box3d.h"
 #include <stdio.h>
 #include "Parse3dt.h"

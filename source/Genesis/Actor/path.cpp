@@ -25,13 +25,13 @@
 #include <stdio.h>  //sscanf
 
 #include "path.h"
-#include "Quatern.h"
-#include "errorlog.h"
-#include "ram.h"
+#include "quatern.h"
+#include "Errorlog.h"
+#include "RAM.H"
 #include "tkarray.h"
-#include "VKFrame.h"
+#include "vkframe.h"
 #include "QKFrame.h"
-#include "vec3d.h"
+#include "VEC3D.H"
 
 #define min(aa,bb)  (( (aa)>(bb) ) ? (bb) : (aa) )
 #define max(aa,bb)  (( (aa)>(bb) ) ? (aa) : (bb) )
@@ -1048,7 +1048,7 @@ geBoolean GENESISCC gePath_ReadChannel_F0_(int ChannelMask, gePath_Channel *C, g
 		return GE_FALSE;
 	}
 
-	if	(sscanf(VersionString, "%X.%X\n", &u, &v) != 2)
+	if	(sscanf(VersionString, "%X.%X\n", (unsigned int*)&u, (unsigned int*)&v) != 2)
 	{
 		geErrorLog_Add( ERR_PATH_FILE_READ , NULL);
 		return GE_FALSE;
@@ -1107,7 +1107,7 @@ geBoolean GENESISCC gePath_ReadChannel_F0_(int ChannelMask, gePath_Channel *C, g
 			assert(C->KeyList == NULL);
 
 			// v = number of elements
-			if(sscanf(line + sizeof(GE_PATH_CHANNEL_KEYLIST_ID)-1, "%d", &v) != 1)
+			if(sscanf(line + sizeof(GE_PATH_CHANNEL_KEYLIST_ID)-1, "%d", (int*)&v) != 1)
 				{						
 					geErrorLog_Add( ERR_PATH_FILE_READ , NULL);
 					break;		 
@@ -1326,7 +1326,7 @@ GENESISAPI gePath* GENESISCC gePath_CreateFromFile(geVFile* pFile)
 			geErrorLog_Add( ERR_PATH_FILE_READ , NULL);
 			return NULL;
 		}
-	if	(sscanf(line, "%X.%X\n", &u, &v) != 2)
+	if	(sscanf(line, "%X.%X\n", (unsigned int*)&u, (unsigned int*)&v) != 2)
 		{
 			geErrorLog_Add( ERR_PATH_FILE_PARSE , NULL);
 			return NULL;
@@ -1353,14 +1353,14 @@ GENESISAPI gePath* GENESISCC gePath_CreateFromFile(geVFile* pFile)
 	if (v==GE_PATH_FILE_VERSION1)
 		{
 			P->Rotation.InterpolationType    = 0;
-			if(sscanf(line + sizeof(GE_PATH_ROTATION_ID)-1, "%d", &flag) != 1)
+			if(sscanf(line + sizeof(GE_PATH_ROTATION_ID)-1, "%d", (int*)&flag) != 1)
 				EXIT_ERROR
 		}
 	else
 		{
 			if (v==GE_PATH_FILE_VERSION)
 				{
-					if(sscanf(line + sizeof(GE_PATH_ROTATION_ID)-1, "%d %d", &flag, &(P->Rotation.InterpolationType)) != 2)
+					if(sscanf(line + sizeof(GE_PATH_ROTATION_ID)-1, "%d %d", (int*)&flag, (int*)&(P->Rotation.InterpolationType)) != 2)
 						EXIT_ERROR
 				}
 			else
@@ -1383,14 +1383,14 @@ GENESISAPI gePath* GENESISCC gePath_CreateFromFile(geVFile* pFile)
 	if (v==GE_PATH_FILE_VERSION1)
 		{
 			P->Translation.InterpolationType = 0;
-			if(sscanf(line + sizeof(GE_PATH_TRANSLATION_ID)-1, "%d", &flag) != 1)
+			if(sscanf(line + sizeof(GE_PATH_TRANSLATION_ID)-1, "%d", (int*)&flag) != 1)
 				EXIT_ERROR
 		}
 	else
 		{
 			if (v==GE_PATH_FILE_VERSION)
 				{
-					if(sscanf(line + sizeof(GE_PATH_TRANSLATION_ID)-1, "%d %d", &flag, &(P->Translation.InterpolationType)) != 2)
+					if(sscanf(line + sizeof(GE_PATH_TRANSLATION_ID)-1, "%d %d", (int*)&flag, (int*)&(P->Translation.InterpolationType)) != 2)
 						EXIT_ERROR
 				}
 			else

@@ -17,8 +17,8 @@
 
 #include <Windows.h>
 
-#include "Genesis.h"
-#include "Ram.h"
+#include "GENESIS.H"
+#include "RAM.H"
 
 #include "GenVSI.h"
 #include "GPlayer.h"

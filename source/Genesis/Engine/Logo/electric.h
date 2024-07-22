@@ -22,7 +22,7 @@
 #ifndef	ELECTRIC_H
 #define ELECTRIC_H
 
-#include "Genesis.h"
+#include "GENESIS.H"
 
 #define	ELECTRIC_BOLT_REDDOMINANT	0
 #define	ELECTRIC_BOLT_GREENDOMINANT	1

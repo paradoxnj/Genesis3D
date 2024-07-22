@@ -13,11 +13,11 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 #include <stdio.h>
 #include <direct.h>
 
-#include "Ram.h"
+#include "RAM.H"
 #include "Errorlog.h"
 
 #include "GameMgr.h"

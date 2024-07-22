@@ -22,9 +22,9 @@
 #ifndef GLIDEDRV_H
 #define GLIDEDRV_H
 
-#include "BaseType.h"
+#include "BASETYPE.H"
 
-#include "DCommon.h"
+#include "Dcommon.h"
 
 extern		DRV_Driver GLIDEDRV;
 

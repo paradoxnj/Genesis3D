@@ -19,7 +19,7 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#include "FilePath.h"
+#include "Filepath.h"
 
 #pragma warning(disable : 4201 4214 4115 4514)
 #include <windows.h>
@@ -29,7 +29,7 @@
 #include <stdlib.h>
 #include <io.h>
 #include "util.h"
-#include "ram.h"
+#include "RAM.H"
 
 geBoolean FilePath_GetDrive
 	(

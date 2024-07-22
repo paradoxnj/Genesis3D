@@ -22,10 +22,10 @@
 #ifndef GE_VIS_H
 #define GE_VIS_H
 
-#include "Genesis.h"
-#include "BaseType.h"
+#include "GENESIS.H"
+#include "BASETYPE.H"
 
-#include "Frustum.h"
+#include "FRUSTUM.H"
 
 //=====================================================================================
 //	Defines / Structure defines

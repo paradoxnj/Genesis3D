@@ -23,7 +23,7 @@
 #include <assert.h>
 #include "util.h"
 #include <stdlib.h>
-#include "ram.h"
+#include "RAM.H"
 #include <stdarg.h>
 #include <memory.h>
 #include <string.h>

@@ -20,14 +20,14 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 #include <stdio.h>
 #include <mmsystem.h>
 #include <math.h>
 
 #include "SoftDrv.h"
 #include "System.h"
-#include "DCommon.h"
+#include "Dcommon.h"
 #include "Sal.h"
 
 #include "Register.h"

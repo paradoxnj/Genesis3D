@@ -28,9 +28,9 @@
 #include "stdafx.h"
 #include "AStudio.h"
 #include "PropSheet.h"
-#include "FilePath.h"
+#include "Filepath.h"
 #include "rcstring.h"
-#include "ram.h"
+#include "RAM.H"
 #pragma warning (disable:4201)		// namless struct/union
 #include <shlobj.h>
 #pragma warning (default:4201)		// namless struct/union
@@ -91,7 +91,7 @@ END_MESSAGE_MAP()
 
 CAStudioApp::CAStudioApp()
 {
-	// TODO: add construction code here,
+	// #pragma todo: add construction code here,
 	// Place all significant initialization in InitInstance
 }
 

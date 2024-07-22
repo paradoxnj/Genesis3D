@@ -22,7 +22,7 @@
 #include <Windows.h>
 
 #include <Stdio.h>
-#include <Assert.h>
+#include <assert.h>
 
 #include "Map.h"
 #include "BSP.h"
@@ -31,7 +31,7 @@
 
 #include	"vfile.h"
 #include	"bitmap.h"
-#include	"ram.h"
+#include	"RAM.H"
 
 int32		NumTextures;
 GFX_Texture	Textures[MAX_MAP_TEXTURES];

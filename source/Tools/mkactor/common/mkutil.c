@@ -23,11 +23,11 @@
 #include <string.h>
 
 #include "mkutil.h"
-#include "ram.h"
+#include "RAM.H"
 
 
 #ifdef FMTACTOR
-#include "FmtActor.h"
+#include "Fmtactor.h"
 #define OPTIONS					FmtActor_Options
 #define TOOL_CREATE_OPTIONS		FmtActor_OptionsCreate
 #define TOOL_DESTROY_OPTIONS	FmtActor_OptionsDestroy
@@ -37,7 +37,7 @@
 #endif
 
 #ifdef MKACTOR
-#include "MkActor.h"
+#include "Mkactor.h"
 #define OPTIONS					MkActor_Options
 #define TOOL_CREATE_OPTIONS		MkActor_OptionsCreate
 #define TOOL_DESTROY_OPTIONS	MkActor_OptionsDestroy
@@ -47,7 +47,7 @@
 #endif
 
 #ifdef MKBODY
-#include "MkBody.h"
+#include "Mkbody.h"
 #define OPTIONS					MkBody_Options
 #define TOOL_CREATE_OPTIONS		MkBody_OptionsCreate
 #define TOOL_DESTROY_OPTIONS	MkBody_OptionsDestroy
@@ -67,7 +67,7 @@
 #endif
 
 #ifdef MKMOTION
-#include "MkMotion.h"
+#include "Mkmotion.h"
 #define OPTIONS					MkMotion_Options
 #define TOOL_CREATE_OPTIONS		MkMotion_OptionsCreate
 #define TOOL_DESTROY_OPTIONS	MkMotion_OptionsDestroy

@@ -273,7 +273,7 @@
     <ClInclude Include="Bitmap\Compression\paloptimize.h" />
     <ClInclude Include="Bitmap\Compression\utility.h" />
     <ClInclude Include="Bitmap\Compression\yuv.h" />
-    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CAMERA.H" />
     <ClInclude Include="CSNetMgr.h" />
     <ClInclude Include="Engine\BitmapList.h" />
     <ClInclude Include="Engine\engine.h" />
@@ -286,11 +286,11 @@
     <ClInclude Include="Math\Box.h" />
     <ClInclude Include="Math\crc32.h" />
     <ClInclude Include="Netplay.h" />
-    <ClInclude Include="Ptrtypes.h" />
+    <ClInclude Include="PTRTYPES.H" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Sound.h" />
+    <ClInclude Include="SOUND.H" />
     <ClInclude Include="Sound3d.h" />
-    <ClInclude Include="Support\geAssert.h" />
+    <ClInclude Include="Support\geassert.h" />
     <ClInclude Include="Support\geRootImpl.h" />
     <ClInclude Include="Support\log.h" />
     <ClInclude Include="Support\mempool.h" />
@@ -303,16 +303,16 @@
     <ClInclude Include="VFile\fsvfs.h" />
     <ClInclude Include="VFile\vfile.h" />
     <ClInclude Include="World\Fog.h" />
-    <ClInclude Include="World\Frustum.h" />
-    <ClInclude Include="World\Gbspfile.h" />
-    <ClInclude Include="World\Light.h" />
+    <ClInclude Include="World\FRUSTUM.H" />
+    <ClInclude Include="World\GBSPFILE.H" />
+    <ClInclude Include="World\LIGHT.H" />
     <ClInclude Include="World\Plane.h" />
-    <ClInclude Include="World\Surface.h" />
+    <ClInclude Include="World\SURFACE.H" />
     <ClInclude Include="World\Trace.h" />
-    <ClInclude Include="World\User.h" />
+    <ClInclude Include="World\USER.H" />
     <ClInclude Include="World\Vis.h" />
     <ClInclude Include="World\WBitmap.h" />
-    <ClInclude Include="World\World.h" />
+    <ClInclude Include="World\WORLD.H" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Bitmap\bitmap._h" />

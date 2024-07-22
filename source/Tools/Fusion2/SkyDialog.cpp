@@ -25,7 +25,7 @@
 #include "wadfile.h"
 #include "fusiondoc.h"
 #include "fusiontabcontrols.h"
-#include "ram.h"
+#include "RAM.H"
 #include "util.h"
 
 #ifdef _DEBUG

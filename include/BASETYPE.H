@@ -24,16 +24,58 @@
  
 /******** The Genesis Calling Conventions ***********/ 
 
+#ifdef _WINDOWS
 #define	GENESISCC	_fastcall
+#else
+#include <stdint.h>
 
-#if	defined(BUILDGENESIS) && defined(GENESISDLLVERSION)
+#define GENESISCC
+typedef void            *HINSTANCE;
+typedef void            *HWND;
+#define LARGE_INTEGER		int64_t
+
+typedef uint32_t        DWORD;
+typedef uint16_t        WORD;
+typedef uint8_t         BYTE, *LPBYTE;
+typedef void            VOID, *LPVOID;
+
+typedef struct _SYSTEMTIME
+    {
+    uint16_t wYear;
+    uint16_t wMonth;
+    uint16_t wDayOfWeek;
+    uint16_t wDay;
+    uint16_t wHour;
+    uint16_t wMinute;
+    uint16_t wSecond;
+    uint16_t wMilliseconds;
+    }   SYSTEMTIME;
+
+#define BOOL				uint8_t
+#define TRUE				(1)
+#define FALSE				(0)
+
+#define _strnicmp   strncasecmp
+
+#endif
+
+#if	defined(BUILDGENESIS) && defined(GENESISDLLVERSION) && defined(_WINDOWS)
   #define GENESISAPI	_declspec(dllexport)
 #else
-  #if	defined(GENESISDLLVERSION)
+  #if	defined(GENESISDLLVERSION) && defined(_WINDOWS)
     #define GENESISAPI	_declspec(dllimport)
   #else
     #define GENESISAPI
   #endif
+#endif
+
+#ifdef _WINDOWS
+#define #pragma todo(x)  message(__DE_FILE__LINE__ "#pragma todo: " #x "\n")
+#define fixme(x) message(__DE_FILE__LINE__ "FIXME: " #x "\n")
+#else
+#define DO_PRAGMA(x)            _Pragma (#x)
+#define todo(x)					        message ("#pragma todo: " __FILE__ ": " __LINE__ " - " #x)
+#define fixme(x) 								message ("FIXME: __FILE__ :  __LINE__ - " #x)
 #endif
 
 /******** The Basic Types ****************************/

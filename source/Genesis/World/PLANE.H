@@ -22,10 +22,13 @@
 #ifndef GE_PLANE_H
 #define GE_PLANE_H
 
-#include <Assert.h>
-#include <Windows.h>
+#include <assert.h>
 
-#include "GBSPFile.h"
+#ifdef _WINDOWS
+#include <Windows.h>
+#endif
+
+#include "GBSPFILE.H"
 
 //=====================================================================================
 //	Defines / Structure defines

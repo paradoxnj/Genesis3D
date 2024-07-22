@@ -20,17 +20,17 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 
 #include "Entities.h"
-#include "BaseType.h"
+#include "BASETYPE.H"
 #include "Errorlog.h"
-#include "Vec3d.h"
-#include "Ram.h"
+#include "VEC3D.H"
+#include "RAM.H"
 
 // These are temporary until we find a better way to get models pointers into the entity stuff
-#include "World.h"
-#include "GBSPFile.h"
+#include "WORLD.H"
+#include "GBSPFILE.H"
 
 
 //=====================================================================================

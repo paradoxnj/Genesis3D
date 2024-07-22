@@ -22,8 +22,8 @@
 #include <assert.h>
 #include <math.h>
 
-#include "vec3d.h"
-#include "xform3d.h"
+#include "VEC3D.H"
+#include "XFORM3D.H"
 #include "matrix33.h"
 
 void Matrix33_MakeCrossProductMatrix33(const geVec3d* v,

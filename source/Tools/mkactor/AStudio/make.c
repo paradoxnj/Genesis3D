@@ -31,21 +31,21 @@
 #include <time.h>
 #include <string.h>
 #include <direct.h>		// _mkdir
-#include "genesis.h"
+#include "GENESIS.H"
 #include "actor.h"
 #include "body.h"
 #include "motion.h"
 #include "make.h"
 #include "AProject.h"
 #include "MXScript.h"
-#include "ram.h"
+#include "RAM.H"
 #include "mkbody.h"
 #include "mkmotion.h"
 #include "mopshell.h"
 #include "mkactor.h"
 #include "filepath.h"
 
-#pragma message ("Need a force-build flag for each target")
+#pragma todo ("Need a force-build flag for each target")
 
 
 #define BIG (2048)
@@ -1437,7 +1437,7 @@ geBoolean Make_Actor(AProject *Prj, AOptions *Options, MkUtil_Printf Printf)
 				Printf("Error: Can't get output filename\n");
 				return GE_FALSE;
 			} 
-		#pragma message ("would like to test against date of apj file")
+		#pragma todo ("would like to test against date of apj file")
 	
 		Handle = _findfirst( TargetName, &TargetData );
 		if (Handle == -1)

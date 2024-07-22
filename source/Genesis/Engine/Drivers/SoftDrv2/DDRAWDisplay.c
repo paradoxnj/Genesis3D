@@ -31,7 +31,7 @@
 #include "DDRAWDisplay.h" 
 
 #ifdef GENESIS_VERSION_2
-#include "errorlog.h"
+#include "Errorlog.h"
 #else
 #define geErrorLog_AddString(Error,xx,yy) 
 #endif
@@ -324,7 +324,7 @@ geBoolean	DDRAWDisplay_Unlock(DDRAWDisplay *D)
 		if(ddrval==DD_OK)
 			break;
 
-		#pragma message (" can you loose a locked surface?")
+		#pragma todo (" can you loose a locked surface?")
 		if(ddrval==DDERR_SURFACELOST)		
 		{
 			if (DDRAWDisplay_RestoreAll(D) == GE_FALSE)
@@ -519,7 +519,7 @@ static geBoolean DDRAWDisplay_SetMode(DDRAWDisplay *D, int width, int height, in
 				}
 			}
 		}
-			#pragma message ("this cant be set can it?")
+			#pragma todo ("this cant be set can it?")
 		else if(!(D->ModeFlags & VIDEO)
 			&& !(D->ModeFlags & STRETCHMODE))
 		{
@@ -714,7 +714,7 @@ geBoolean	DDRAWDisplay_Wipe(DDRAWDisplay *D,uint32 color)
 	memset(&ddsd, 0, sizeof(DDSCAPS2));
 	ddsd.dwSize	=sizeof(ddsd);
 	ddsd.dwFlags=DDSD_HEIGHT | DDSD_WIDTH;
-	#pragma message ("this may not be necessary")
+	#pragma todo ("this may not be necessary")
 	D->lpDDSBack->lpVtbl->GetSurfaceDesc(D->lpDDSBack, &ddsd);
 
 	Width	=ddsd.dwWidth;
@@ -755,7 +755,7 @@ static HRESULT WINAPI DDRAWDisplay_ModeCallback(LPDDSURFACEDESC2 pdds, LPVOID lP
 {
 	DisplayModeInfo *Info =(DisplayModeInfo *)lParam;
 
-	#pragma message ("only 16 bit display is supported")
+	#pragma todo ("only 16 bit display is supported")
 	if(pdds->ddpfPixelFormat.dwRGBBitCount==16)		
 	{
 		DisplayModeInfo_AddEntry(Info,

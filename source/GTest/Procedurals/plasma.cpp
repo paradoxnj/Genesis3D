@@ -11,10 +11,10 @@
 #include <ctype.h>
 
 #include "Plasma.h"
-#include "genesis.h"
-#include "ram.h"
+#include "GENESIS.H"
+#include "RAM.H"
 #include "gebmutil.h"
-#include "errorlog.h"
+#include "Errorlog.h"
 #include "proceng.h"
 #include "procutil.h"
 

@@ -6,8 +6,8 @@
 #include	<assert.h>
 
 #define	BUILD_DYNLIGHT
-#include	"Dynlight.h"
-#include	"errorlog.h"
+#include	"DynLIGHT.H"
+#include	"Errorlog.h"
 
 static geBoolean DynLight_SetWorld(geWorld *World, geVFile *Context);
 

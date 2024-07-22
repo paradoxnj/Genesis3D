@@ -13,7 +13,7 @@
 #include <mmsystem.h>
 #include <mmreg.h>
 #include <msacm.h>
-#include "dsound.h"
+#include "dSOUND.H"
 
 #ifdef __cplusplus
 extern "C" {

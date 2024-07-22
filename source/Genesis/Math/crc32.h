@@ -22,7 +22,7 @@
 #ifndef GE_CRC32_H
 #define GE_CRC32_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 
 extern uint32 CRC32_Array(const uint8 * buf,uint32 buflen);
 

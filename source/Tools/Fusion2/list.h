@@ -22,7 +22,7 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 
 #ifdef __cplusplus
 	extern "C" {

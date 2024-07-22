@@ -37,7 +37,7 @@ extern void Timer_Stop(void);
 
 #ifdef DO_TIMER	//}{
 
-#pragma message("timer ON")
+#pragma todo("timer ON")
 
 #define TIMER_VARS(func)	static double time_##func =0.0;	static tsc_type tsc_##func##1,tsc_##func##2;
 
@@ -53,7 +53,7 @@ extern void Timer_Stop(void);
 
 #else	//}{
 
-#pragma message("timer OFF")
+#pragma todo(timer OFF)
 
 #define TIMER_VARS(func)
 #define TIMER_P(func)

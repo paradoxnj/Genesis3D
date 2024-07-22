@@ -31,8 +31,8 @@
 
 #include "FusionTabControls.h"
 #include "about.h"
-#include "FilePath.h"
-#include "ram.h"
+#include "Filepath.h"
+#include "RAM.H"
 #include "util.h"
 
 #ifdef _DEBUG
@@ -67,7 +67,7 @@ END_MESSAGE_MAP()
 
 CFusionApp::CFusionApp()
 {
-	// TODO: add construction code here,
+	// #pragma todo: add construction code here,
 	// Place all significant initialization in InitInstance
 }
 
@@ -382,7 +382,7 @@ void CFusionApp::InitUserPreferences(CMainFrame* pMainFrame)
 
 BOOL CFusionApp::OnIdle(LONG lCount) 
 {
-	// TODO: Add your specialized code here and/or call the base class
+	// #pragma todo: Add your specialized code here and/or call the base class
 
 	//	Let's grab the active document and save it...
 	CChildFrame* pActiveChild =(CChildFrame *)pMainFrame->MDIGetActive();
@@ -619,6 +619,6 @@ afx_msg void CFusionApp::OnHelpIndex( )
 
 void CFusionApp::OnHelpHowdoi() 
 {
-	// TODO: Add your command handler code here
+	// #pragma todo: Add your command handler code here
 	
 }

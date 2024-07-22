@@ -20,7 +20,7 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include "softdrv.h"
-#include "basetype.h"
+#include "BASETYPE.H"
 
 typedef struct EdgeAsmFPUTag EdgeAsmFPU;
 

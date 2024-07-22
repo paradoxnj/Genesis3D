@@ -19,7 +19,7 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#include "FilePath.h"
+#include "Filepath.h"
 
 #include <windows.h>
 

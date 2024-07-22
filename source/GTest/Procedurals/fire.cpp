@@ -10,8 +10,8 @@
 #include <ctype.h>
 
 #include "Fire.h"
-#include "genesis.h"
-#include "ram.h"
+#include "GENESIS.H"
+#include "RAM.H"
 #include "gebmutil.h"
 #include "proceng.h"
 #include "procutil.h"

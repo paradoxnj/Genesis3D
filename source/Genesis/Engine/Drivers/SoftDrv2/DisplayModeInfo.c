@@ -25,7 +25,7 @@
 #include "DisplayModeInfo.h"
 
 #ifdef GENESIS_VERSION_2
-#include "errorlog.h"
+#include "Errorlog.h"
 #else
 #define geErrorLog_AddString(Error,xx,yy) 
 #endif

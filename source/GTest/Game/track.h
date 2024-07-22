@@ -1,7 +1,7 @@
 #ifndef	TRACK_H
 #define	TRACK_H
 
-#include	"genesis.h"
+#include	"GENESIS.H"
 #include    "bit.h"
 #include	"genvsi.h"
 

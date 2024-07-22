@@ -27,10 +27,10 @@
 #include "Map.h"
 #include "Poly.h"
 #include "Texture.h"
-#include "GBSPFile.h"
-#include "Light.h"
+#include "GBSPFILE.H"
+#include "LIGHT.H"
 
-#include "Ram.h"
+#include "RAM.H"
 
 int32		NumSubdivides;
 float		SubdivideSize = 235.0f;

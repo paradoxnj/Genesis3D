@@ -26,7 +26,7 @@
 
 #include "System.h"
 #include "SoftDrv.h"
-#include "DCommon.h"
+#include "Dcommon.h"
 #include "Render.h"
 #include "Sal.h"
 #include "dmodes.h"

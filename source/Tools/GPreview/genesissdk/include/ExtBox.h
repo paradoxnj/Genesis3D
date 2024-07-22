@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  EXTBOX.H                                                                            */
+/*  ExtBox.h                                                                            */
 /*                                                                                      */
 /*  Author:                                                                             */
 /*  Description: Axial aligned bounding box (extent box) support                        */
@@ -22,8 +22,8 @@
 #ifndef GE_EXTBOX_H
 #define GE_EXTBOX_H
 
-#include "basetype.h"
-#include "vec3d.h"
+#include "BASETYPE.H"
+#include "VEC3D.H"
 
 #ifdef __cplusplus
 	extern "C" {

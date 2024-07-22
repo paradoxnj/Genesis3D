@@ -27,8 +27,8 @@
 #include	<stdarg.h>
 #include	<string.h>
 
-#include	"basetype.h"
-#include	"ram.h"
+#include	"BASETYPE.H"
+#include	"RAM.H"
 
 #include	"vfile.h"
 #include	"vfile._h"
@@ -80,7 +80,7 @@ static	geBoolean GENESISCC geVFile_RegisterFileSystemInternal(const geVFile_Syst
 		return GE_FALSE;
 
 	RegisteredAPIs = NewList;
-#pragma message ("Casting away const in geVFile_RegisterFileSystem")
+#pragma todo ("Casting away const in geVFile_RegisterFileSystem")
 	RegisteredAPIs[SystemCount++] = (geVFile_SystemAPIs *)APIs;
 	*Type = SystemCount;
 
@@ -425,7 +425,7 @@ GENESISAPI geBoolean GENESISCC geVFile_Close(geVFile *File)
 
 	geRam_Free(File->SearchList);
 	geRam_Free(File);
-#pragma message ("Need to propagate returns through VFile_Close")
+#pragma todo ("Need to propagate returns through VFile_Close")
 	return GE_TRUE;
 }
 

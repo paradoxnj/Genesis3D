@@ -1,7 +1,7 @@
 #ifndef PROCUTIL_H
 #define PROCUTIL_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "bitmap.h"
 #include <math.h>
 

@@ -21,7 +21,7 @@
 /****************************************************************************************/
 /*
 
-	TODO:
+	#pragma todo:
 	  make cued motions keyed to a 'root' bone.  Register the root bone, and then 
 	  all requests are relative to that bone, rather than the current 'anchor' point.
 	  actually, this doesn't really change much, just _AnimationCue() - and it allows
@@ -34,14 +34,14 @@
 #include <math.h>	 // fabs()
 #include <stdio.h>	 //sscanf
 
-#include "world.h"	// to expose _Render apis in actor.h
+#include "WORLD.H"	// to expose _Render apis in actor.h
 
-#include "Actor.h"
-#include "Ram.h"
-#include "Puppet.h"
-#include "Body.h"
-#include "Motion.h"
-#include "ErrorLog.h"
+#include "actor.h"
+#include "RAM.H"
+#include "puppet.h"
+#include "body.h"
+#include "motion.h"
+#include "Errorlog.h"
 #include "strblock.h"
 
 
@@ -377,7 +377,7 @@ GENESISAPI geBoolean GENESISCC geActor_SetBody( geActor_Def *ActorDefinition, ge
 }
 
 
-#pragma message ("consider removing this and related parameters to setpose")
+#pragma todo ("consider removing this and related parameters to setpose")
 GENESISAPI void GENESISCC geActor_SetBlendingType( geActor *A, geActor_BlendingType BlendingType )
 {
 	assert( geActor_IsValid(A) != GE_FALSE );
@@ -512,7 +512,7 @@ GENESISAPI geBody *GENESISCC geActor_GetBody(const geActor_Def *Ad)
 	return Ad->Body;
 }
 	
-#pragma message ("Keep this function: geActor_DefHasBoneNamed()?")
+#pragma todo ("Keep this function: geActor_DefHasBoneNamed()?")
 // Returns GE_TRUE if the actor definition has a bone named 'Name'
 GENESISAPI geBoolean GENESISCC geActor_DefHasBoneNamed(const geActor_Def *Ad, const char *Name )
 {
@@ -1722,7 +1722,7 @@ GENESISAPI geBoolean GENESISCC geActor_SetShadow(geActor *A,
 geBoolean GENESISCC geActor_RenderPrep( geActor *A, geWorld *World)
 {
 	assert( geActor_IsValid(A) != GE_FALSE );
-	#pragma message ("need to make a world method that does this. so World doesn't get passed in")
+	#pragma todo ("need to make a world method that does this. so World doesn't get passed in")
 	assert( geActor_DefIsValid(A->ActorDefinition) != GE_FALSE );
 	assert( geBody_IsValid(A->ActorDefinition->Body) != GE_FALSE );
 

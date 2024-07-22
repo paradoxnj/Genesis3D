@@ -28,9 +28,9 @@
 #include <assert.h>
 #include <string.h>
 
-#include "genesis.h"
-#include "basetype.h"
-#include "extbox.h"
+#include "GENESIS.H"
+#include "BASETYPE.H"
+#include "ExtBox.h"
 
 #include "wgClip.h"
 

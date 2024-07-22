@@ -27,11 +27,11 @@ permission.  http://www.d6.com/users/checker
 
 #include <Windows.h>
 #include <Stdio.h>
-#include <Assert.h>
+#include <assert.h>
 #include <Math.h>
 
 #include "SoftDrv.h"
-#include "DCommon.h"
+#include "Dcommon.h"
 #include "Render.h"
 #include "Span.h"
 #include "Scene.h"
@@ -40,8 +40,8 @@ permission.  http://www.d6.com/users/checker
 #include "3dnowspan.h"
 #include "x86span565.h"
 #include "x86span555.h"
-#include "XForm3d.h"
-#include "Vec3d.h"
+#include "XFORM3D.H"
+#include "VEC3D.H"
 #include "dmodes.h"
 
 

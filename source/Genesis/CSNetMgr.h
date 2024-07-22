@@ -22,8 +22,9 @@
 #ifndef GE_CSNETMGR_H
 #define GE_CSNETMGR_H
 
-#include "BaseType.h"
+#include "BASETYPE.H"
 
+#ifdef _WINDOWS
 
 //================================================================================
 //	Structure defines
@@ -62,7 +63,7 @@ typedef struct
 	{
 		char		SessionName[200];					// Description of Service provider
 		GUID		Guid;								// Service Provider GUID
-		#pragma message("define a geGUID?.. wouldn't need a windows dependency here...")
+		#pragma todo("define a geGUID?.. wouldn't need a windows dependency here...")
 	} geCSNetMgr_NetSession;
 
 GENESISAPI geBoolean		GENESISCC geCSNetMgr_FindSession(geCSNetMgr *M, const char *IPAdress, geCSNetMgr_NetSession **SessionList, int32 *SessionNum );
@@ -86,5 +87,7 @@ GENESISAPI geBoolean GENESISCC		geCSNetMgr_SendToClient(geCSNetMgr *M, geCSNetMg
 
 
 // GENESIS_PRIVATE_APIS
+
+#endif
 
 #endif

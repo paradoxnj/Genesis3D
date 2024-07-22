@@ -27,8 +27,8 @@
 #endif
 
 #include <stdio.h>
-#include "basetype.h"
-#include "XForm3d.h"
+#include "BASETYPE.H"
+#include "XFORM3D.H"
 
 // writing
 

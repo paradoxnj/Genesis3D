@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  GBSPFile.h                                                                          */
+/*  GBSPFILE.H                                                                          */
 /*                                                                                      */
 /*  Author: John Pollard                                                                */
 /*  Description: Loads a BSP                                                            */
@@ -25,11 +25,11 @@
 #include <Windows.h>
 #include <Stdio.h>
 
-#include "DCommon.h"
+#include "Dcommon.h"
 #include "MathLib.h"
 #include "vfile.h"
 #include "motion.h"
-#include "Vec3d.h"
+#include "VEC3D.H"
 
 #define GBSP_VERSION				15
 

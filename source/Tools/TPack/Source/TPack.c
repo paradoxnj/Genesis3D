@@ -35,7 +35,7 @@
   4) Added HandleInitMenu called with WM_INITMENU message to properly set
      the pulldown menu state.
 
-  TODO: 1) Getting the palette entries is pretty slow. I can't seem to get 
+  #pragma todo: 1) Getting the palette entries is pretty slow. I can't seem to get 
            geBitmap_Palette_GetData() to work propoerly.
         2) Progress bar for extract all would be nice.
         3) In 8-bit color video mode, TPack doesn't display the textures
@@ -56,9 +56,9 @@
 #include <assert.h>
 
 #include "resource.h"
-#include "genesis.h"
+#include "GENESIS.H"
 #include "bitmap.h"
-#include "ram.h"
+#include "RAM.H"
 
 #pragma warning (disable:4514)		// unreferenced inline function
 
@@ -300,7 +300,7 @@ static	void	Load(TPack_WindowData *pData)
 
 		if	(Result == IDYES)
 		{
-#pragma message ("We don't respect CANCEL of saving dirty data in Load")
+#pragma todo ("We don't respect CANCEL of saving dirty data in Load")
 			if	(pData->FileNameIsValid)
 				Save(pData, pData->TXLFileName);
 			else
@@ -601,7 +601,7 @@ static LRESULT wm_Command
 
 			if	(Result == IDYES)
 			{
-#pragma message("If we do a cancel in here, then we still shut down the app, and lose changes.")
+#pragma todo("If we do a cancel in here, then we still shut down the app, and lose changes.")
 				if	(pData->FileNameIsValid)
 					Save(pData, pData->TXLFileName);
 				else

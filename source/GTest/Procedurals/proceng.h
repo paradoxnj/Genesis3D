@@ -7,7 +7,7 @@
 #ifndef PROCENG_H
 #define PROCENG_H
 
-#include "Genesis.h"
+#include "GENESIS.H"
 
 #ifdef __cplusplus
 extern "C" {

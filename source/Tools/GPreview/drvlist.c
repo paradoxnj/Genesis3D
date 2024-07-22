@@ -1,7 +1,7 @@
 /*
   DrvList.c -- Select driver from list
 
-  Copyright © 1999, WildTangent, Inc.
+  Copyright ï¿½ 1999, WildTangent, Inc.
 
   NOTE:  This version has been modified to list only those drivers that
   have a windowed mode.
@@ -13,7 +13,7 @@
 #include	<stdlib.h>
 #include	<assert.h>
 
-#include	"genesis.h"
+#include	"GENESIS.H"
 
 #include	"resource.h"
 #include	"drvlist.h"

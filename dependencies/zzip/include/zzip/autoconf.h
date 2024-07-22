@@ -13,7 +13,7 @@
 #if   defined HAVE_ENDIAN_H          || defined ZZIP_HAVE_ENDIAN_H
 #include <endian.h>     /* glibc */
 #elif defined HAVE_SYS_PARAM_H       || defined ZZIP_HAVE_SYS_PARAM_H
-#include <sys/param.h>  /* solaris */
+#include <sys/paRAM.H>  /* solaris */
 #endif
 
 #if             defined __BYTE_ORDER

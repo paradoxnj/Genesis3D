@@ -517,7 +517,7 @@ SOURCE=.\facelist.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\FilePath.h
+SOURCE=.\Filepath.h
 # End Source File
 # Begin Source File
 

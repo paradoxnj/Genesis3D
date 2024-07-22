@@ -22,12 +22,12 @@
 #ifndef GE_FOG_H
 #define GE_FOG_H
 
-#include <Assert.h>
+#include <assert.h>
 
-#include "Vec3d.h"
-#include "BaseType.h"
-#include "GeTypes.h"
-#include "Ram.h"
+#include "VEC3D.H"
+#include "BASETYPE.H"
+#include "getypes.h"
+#include "RAM.H"
 #include "Errorlog.h"
 
 //=====================================================================================

@@ -253,7 +253,7 @@ static void TextureBrushList
 	assert(pList);
 	assert(Name);
 
-#pragma message ("Change this and the function above to use BrushList_EnumAll")
+#pragma todo ("Change this and the function above to use BrushList_EnumAll")
 	for(b=BrushList_GetFirst(pList, &bi);b;b=BrushList_GetNext(&bi))
 	{
 		TextureBrush(b, SelId, Name);

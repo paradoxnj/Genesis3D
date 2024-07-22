@@ -24,9 +24,9 @@
 #include <D3D.h>
 
 #include "THandle.h"
-#include "BaseType.h"
+#include "BASETYPE.H"
 #include "D3DDrv.h"
-#include "DCommon.h"
+#include "Dcommon.h"
 #include "D3DCache.h"
 #include "D3D_Main.h"
 #include "PCache.h"
@@ -734,7 +734,7 @@ geBoolean THandle_CheckCache(void)
 	D3DMain_Log("THandle_CheckCache:  Resetting texture cache...\n");
 
 #ifdef USE_ONE_CACHE
-		#pragma message ("There numbers ARE NOT DONE.  So if USE_ONE_CACHE is defined, please finish this...")
+		#pragma todo ("There numbers ARE NOT DONE.  So if USE_ONE_CACHE is defined, please finish this...")
 		// Texture cache & Lightmap cache (we are only using one cache, so the combine into the TextureCache)
 		MaxTable1[0] = 256;			//  1x1
 		MaxTable1[1] = 256;			//  2x2

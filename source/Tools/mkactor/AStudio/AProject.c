@@ -21,11 +21,11 @@
 /****************************************************************************************/
 #include "AProject.h"
 #include "array.h"
-#include "ram.h"
+#include "RAM.H"
 #include <assert.h>
 #include "util.h"
-#include "ErrorLog.h"
-#include "FilePath.h"
+#include "Errorlog.h"
+#include "Filepath.h"
 #include <stdio.h>
 #include <stdlib.h>
 

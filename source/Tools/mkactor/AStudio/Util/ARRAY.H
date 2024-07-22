@@ -22,7 +22,7 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include <string.h>
 
 #ifdef __cplusplus

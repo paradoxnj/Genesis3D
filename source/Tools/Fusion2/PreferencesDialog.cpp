@@ -76,7 +76,7 @@ BOOL CPreferencesDialog::OnInitDialog()
 
 void CPreferencesDialog::OnOK() 
 {
-	// TODO: Add extra validation here
+	// #pragma todo: Add extra validation here
 	coBackground = m_GridBackground.GetColor( ) ;
 	coSnapGrid = m_SnapGrid.GetColor( ) ;
 	coGrid = m_Grid.GetColor( ) ;
@@ -86,6 +86,6 @@ void CPreferencesDialog::OnOK()
 
 void CPreferencesDialog::OnPathprefs() 
 {
-	// TODO: Add your control notification handler code here
+	// #pragma todo: Add your control notification handler code here
 	
 }

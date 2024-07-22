@@ -18,9 +18,9 @@
 #include <Windows.h>
 #include <stdio.h>
 
-#include "Genesis.h"
+#include "GENESIS.H"
 #include "Errorlog.h"
-#include "Ram.h"
+#include "RAM.H"
 
 #include "GameMgr.h"
 #include "NetMgr.h"

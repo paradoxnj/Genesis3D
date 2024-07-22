@@ -23,7 +23,7 @@
 #ifndef SPANBUFFER_H
 #define SPANBUFFER_H
 
-#include "basetype.h" 
+#include "BASETYPE.H" 
  
 #ifdef __cplusplus
 extern "C" {

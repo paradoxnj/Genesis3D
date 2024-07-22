@@ -23,7 +23,7 @@
 #include "group.h"
 #include "resource.h"
 #include <assert.h>
-#include "ram.h"
+#include "RAM.H"
 #include "util.h"
 
 struct tag_Group
@@ -438,7 +438,7 @@ void Group_RemoveEntity
 	assert (pEntity != NULL);
 	// just making sure it's a good group
 	assert (Group_FindById (pList, GroupId) != NULL);
-#pragma message( "See if this entity is really in this group?" )
+#pragma todo( "See if this entity is really in this group?" )
 
 	pEntity->SetGroupId (0);
 }

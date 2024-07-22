@@ -26,8 +26,8 @@
 
 #include "body.h"
 #include "body._h"
-#include "ram.h"
-#include "errorlog.h"
+#include "RAM.H"
+#include "Errorlog.h"
 
 
 #define MAX(aa,bb)   ( (aa)>(bb)?(aa):(bb) )
@@ -37,7 +37,7 @@
 
 
 #if defined(DEBUG) || !defined(NDEBUG)
-static geBoolean GENESISCC geBody_SanityCheck(const geBody *B)
+geBoolean GENESISCC geBody_SanityCheck(const geBody *B)
 {
 	int i,j,k;
 	int Lod,FaceCount,VertexCount,NormalCount,BoneCount;
@@ -325,7 +325,7 @@ geBoolean GENESISCC geBody_GetBoundingBox( const geBody *B,
 	assert( (BoneIndex < B->BoneCount) || (BoneIndex == GE_BODY_ROOT));
 	if (BoneIndex == GE_BODY_ROOT)
 		{
-		#pragma message ("discontinue this?")
+		#pragma todo ("discontinue this?")
 			*MinimumBoxCorner = B->BoundingBoxMin;
 			*MaximumBoxCorner = B->BoundingBoxMax;
 		}
@@ -909,7 +909,7 @@ geBoolean GENESISCC geBody_ComputeLevelsOfDetail( geBody *B ,int Levels)
 	assert( Levels >= 0 );
 	assert( Levels < GE_BODY_NUMBER_OF_LOD );
 	assert( geBody_IsValid(B) != GE_FALSE );
-	#pragma message ("LOD code goes here:")
+	#pragma todo ("LOD code goes here:")
 	B->LevelsOfDetail = GE_BODY_HIGHEST_LOD_MASK; // Levels
 	Levels;
 	return GE_TRUE;

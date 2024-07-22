@@ -21,10 +21,10 @@
 /****************************************************************************************/
 #include <Windows.h>
 #include <stdio.h>
-#include <Assert.h>
+#include <assert.h>
 
 #include "SoftDrv.h"
-#include "DCommon.h"
+#include "Dcommon.h"
 #include "Register.h"
 #include "Sal.h"
 #include "ddraw.h"

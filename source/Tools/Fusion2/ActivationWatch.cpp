@@ -89,7 +89,7 @@ BOOL CActivationWatch::InitInstance()
 
 int CActivationWatch::ExitInstance()
 {
-	// TODO:  perform any per-thread cleanup here
+	// #pragma todo:  perform any per-thread cleanup here
 	return CWinThread::ExitInstance();
 }
 

@@ -23,10 +23,15 @@
 /*                                                                                      */
 /****************************************************************************************/
 
-#include "basetype.h"
+#include "BASETYPE.H"
 
+#ifdef _WINDOWS
 #define LISTCALL	__fastcall
+#else
+#define LISTCALL
+#endif
 
+#ifdef _WINDOWS
 /*******************************************/
 /** you must wrap any calls to this module with these: **/
 
@@ -182,7 +187,7 @@ struct LinkNode
 #define zLN_AddAfter(Node,List)		do { (Node)->Prev = List; (Node)->Next = (List)->Next; LN_Fix(Node); } while(0)
 #define zLN_AddBefore(Node,List)	do { (Node)->Next = List; (Node)->Prev = (List)->Prev; LN_Fix(Node); } while(0)
 #define zLN_Walk_Editting(Node,List,Holder)	for( Node = (List)->Next; (Node) != (List) && ((Holder) = (Node)->Next) != NULL ; Node = Holder )
-#define zLN_Walk(Node,List)			for( Node = (List)->Next; (Node) != (List) ; Node = (Node)->Next )
+#define zLN_Walk(Node,List)			for( Node = List->Next; Node != List ; Node = Node->Next )
 #define zLN_EmptyList(List)			( (List)->Next == (List) )
 
 #define LN_InitList(List)			zLN_InitList((LinkNode *)List)
@@ -221,6 +226,7 @@ int LN_ListLen(LinkNode *pList);
 
 	*
 	*/
+#endif
 
 #endif  // LIST_H
 

@@ -22,8 +22,8 @@
 #ifndef GE_SOUND3D_H
 #define GE_SOUND3D_H
 
-#include "BaseType.h"
-#include "Sound.h"
+#include "BASETYPE.H"
+#include "SOUND.H"
 
 // GENESIS_PUBLIC_APIS
 

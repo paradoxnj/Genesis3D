@@ -23,8 +23,8 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "genesis.h"
-#include "ram.h"
+#include "GENESIS.H"
+#include "RAM.H"
 #include "matrix33.h"
 #include "quatern.h"
 
@@ -384,7 +384,7 @@ GENESISAPI void GENESISCC gePhysicsObject_SetMass(gePhysicsObject* po, float mas
 
 	po->mass = mass;
 
-	#pragma message("TODO: set i tensor")
+	#pragma todo("#pragma todo: set i tensor")
 }
 
 GENESISAPI float GENESISCC gePhysicsObject_GetOneOverMass(const gePhysicsObject* po)

@@ -114,7 +114,7 @@ SOURCE=.\Util\FilePath.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\Util\FilePath.h
+SOURCE=.\Util\Filepath.h
 # End Source File
 # Begin Source File
 

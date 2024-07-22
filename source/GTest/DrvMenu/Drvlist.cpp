@@ -18,7 +18,7 @@
 #include	<stdlib.h>
 #include	<assert.h>
 
-#include	"genesis.h"
+#include	"GENESIS.H"
 
 #include	"resource.h"
 #include	"drvlist.h"

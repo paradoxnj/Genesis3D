@@ -25,7 +25,7 @@
 #ifndef DIBDisplay_H
 #define DIBDisplay_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "DisplayModeInfo.h"
 
 #ifdef __cplusplus

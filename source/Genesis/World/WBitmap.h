@@ -22,14 +22,14 @@
 #ifndef WBITMAP_H
 #define WBITMAP_H
 
-#include <Assert.h>
+#include <assert.h>
 
-#include "BaseType.h"
-#include "GBSPFile.h"
-#include "Bitmap.h"
+#include "BASETYPE.H"
+#include "GBSPFILE.H"
+#include "bitmap.h"
 
 //==
-// This stuff should really go in GBSPFile.h...
+// This stuff should really go in GBSPFILE.H...
 	#define		TEXTURE_SKYBOX				(1<<0)				// This is a skybox texture
 
 	//	TexInfo Flags (Global shared info about each surface)

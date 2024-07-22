@@ -25,20 +25,21 @@
 
 #include <math.h>  //fabs()
 #include <assert.h>
+#include <string.h>
 
-#include "light.h"
-#include "world.h"
-#include "trace.h"		//Trace_WorldCollisionExact2()
-#include "surface.h"	// Surf_InSurfBoundingBox()
+#include "LIGHT.H"
+#include "WORLD.H"
+#include "TRACE.H"		//Trace_WorldCollisionExact2()
+#include "SURFACE.H"	// Surf_InSurfBoundingBox()
 
 #include "xfarray.h"
 #include "puppet.h"
 #include "pose.h"
-#include "ErrorLog.h"
-#include "ram.h"
+#include "Errorlog.h"
+#include "RAM.H"
 #include "tclip.h"
 
-#include "Frustum.h"
+#include "FRUSTUM.H"
 #include "ExtBox.h"
 #include "bodyinst.h"
 
@@ -88,7 +89,7 @@ typedef struct gePuppet
 	const geBitmap		*ShadowMap;
 	int					 ShadowBoneIndex;
 
-		#pragma message ("this goes away!: World")
+		#pragma todo ("this goes away!: World")
 	geWorld				*World;
 } gePuppet;
 
@@ -261,7 +262,7 @@ gePuppet *GENESISCC gePuppet_Create(geVFile *TextureFS, const geBody *B, geWorld
 	gePuppet *P;
 
 	assert( geBody_IsValid(B)!=GE_FALSE );
-	#pragma message ("Need geWorld_IsValid()")
+	#pragma todo ("Need geWorld_IsValid()")
 	
 	P = GE_RAM_ALLOCATE_STRUCT(gePuppet);
 	if (P==NULL)
@@ -1003,7 +1004,7 @@ geBoolean GENESISCC gePuppet_RenderThroughFrustum(const gePuppet *P,
 
 	JointTransforms = gePose_GetAllJointTransforms(Joints);
 
-	#pragma message ("Level of detail hacked:")
+	#pragma todo ("Level of detail hacked:")
 
 	gePose_GetScale(Joints,&Scale);
 	G = geBodyInst_GetGeometry(P->BodyInstance, &Scale, JointTransforms, 0, NULL);
@@ -1242,7 +1243,7 @@ geBoolean GENESISCC gePuppet_RenderThroughFrustum(const gePuppet *P,
 		}
 	}
 
-	#pragma message ("BUG:  Shadow caused crash in mirrors (oops).  Need to write a RenderShadowThroughFrustum...")
+	#pragma todo ("BUG:  Shadow caused crash in mirrors (oops).  Need to write a RenderShadowThroughFrustum...")
 	/*
 	if (P->DoShadow)
 		{
@@ -1368,7 +1369,7 @@ geBoolean GENESISCC gePuppet_Render(	const gePuppet *P,
 		
 	JointTransforms = gePose_GetAllJointTransforms(Joints);
 
-	#pragma message ("Level of detail hacked:")
+	#pragma todo ("Level of detail hacked:")
 	gePose_GetScale(Joints,&Scale);
 	G = geBodyInst_GetGeometry(P->BodyInstance, &Scale, JointTransforms, 0,Camera);
 
@@ -1381,7 +1382,7 @@ geBoolean GENESISCC gePuppet_Render(	const gePuppet *P,
 #ifdef ONE_OVER_Z_PIPELINE
 #define TEST_Z_OUT(zzz, edge) 		((zzz) > (edge)) 
 #define TEST_Z_IN(zzz, edge) 		((zzz) < (edge)) 
-#pragma message ("test this! this is untested")
+#pragma todo ("test this! this is untested")
 #else
 #define TEST_Z_OUT(zzz, edge) 		((zzz) < (edge)) 
 #define TEST_Z_IN(zzz, edge) 		((zzz) > (edge)) 

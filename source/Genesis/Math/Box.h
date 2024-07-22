@@ -23,8 +23,8 @@
 #if !defined (GE_BOX_H)
 #define GE_BOX_H
 
-#include "Vec3d.h"
-#include "XForm3d.h"
+#include "VEC3D.H"
+#include "XFORM3D.H"
 
 typedef struct geBox
 {

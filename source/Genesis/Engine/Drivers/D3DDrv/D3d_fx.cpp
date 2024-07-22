@@ -25,7 +25,7 @@
 #include <D3D.h>
 
 #include "D3DDrv.h"
-#include "DCommon.h"
+#include "Dcommon.h"
 #include "Render.h"
 #include "Scene.h"
 #include "D3D_FX.h"

@@ -27,8 +27,8 @@
 #include	<string.h>
 #include	<assert.h>
 
-#include	"basetype.h"
-#include	"ram.h"
+#include	"BASETYPE.H"
+#include	"RAM.H"
 
 #include	"vfile.h"
 #include	"vfile._h"
@@ -702,7 +702,7 @@ static	geBoolean	GENESISCC FSDos_GetProperties(const void *Handle, geVFile_Prope
 	{
 		memset(Properties, 0, sizeof(*Properties));
 		Properties->AttributeFlags = FILE_ATTRIBUTE_DIRECTORY;
-#pragma message ("FSDos_GetProperties: Time support is not there for directories")
+#pragma todo ("FSDos_GetProperties: Time support is not there for directories")
 	}
 	else
 	{

@@ -92,8 +92,8 @@
 
 ********************************************/
 
-#include "basetype.h"
-#include "xform3d.h"
+#include "BASETYPE.H"
+#include "XFORM3D.H"
 
 typedef struct 
 {

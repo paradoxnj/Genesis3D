@@ -22,7 +22,7 @@
 #ifndef SOFTDRV_H
 #define SOFTDRV_H
 
-#include "DCommon.h"
+#include "Dcommon.h"
 #include "ddraw.h"
 
 #ifdef __cplusplus

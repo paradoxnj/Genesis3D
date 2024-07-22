@@ -20,10 +20,10 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 #include <Stdio.h>
 
-#include "BaseType.h"
+#include "BASETYPE.H"
 #include "TPage.h"
 
 // These must be a power of 2!!!

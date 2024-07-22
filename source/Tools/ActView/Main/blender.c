@@ -26,7 +26,7 @@
 #include <commctrl.h>
 #pragma warning(default : 4201 4214 4115)
 #include "resource.h"
-#include "ram.h"
+#include "RAM.H"
 #include "rcstring.h"
 #include "units.h"
 #include <assert.h>
@@ -181,7 +181,7 @@ static Blender_Submotion Blender_GetCompleteSubmotion
 			geFloat KeyTime;
 
 			nKeyframes = gePath_GetKeyframeCount (SubInfo.BlendPath, GE_PATH_TRANSLATION_CHANNEL);
-#pragma message ("Smooth blends only, for now")
+#pragma todo ("Smooth blends only, for now")
 			assert ((nKeyframes == 1) || (nKeyframes == 2));
 
 			SubInfo.SmoothBlend = GE_TRUE;
@@ -697,7 +697,7 @@ static void Blender_SetBlendMotionData (Blender_WindowData *pData)
 		}
 	}
 		
-#pragma message ("Add path display")
+#pragma todo ("Add path display")
 	// here we'll do the path...
 
 	Blender_PaintMotionWindow (pData);

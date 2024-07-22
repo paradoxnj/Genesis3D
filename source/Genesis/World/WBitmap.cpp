@@ -19,14 +19,14 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#include <Assert.h>
+#include <assert.h>
 
 //=====================================================================================
 //=====================================================================================
 #include "WBitmap.h"
-#include "GBSPFile.h"
-#include "Ram.h"
-#include "Bitmap.h"
+#include "GBSPFILE.H"
+#include "RAM.H"
+#include "bitmap.h"
 #include "Errorlog.h"
 #include "Bitmap._h"
 

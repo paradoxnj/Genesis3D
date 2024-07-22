@@ -23,8 +23,8 @@
 
 #include "body._h"
 #include "bodyinst.h"
-#include "ram.h"
-#include "errorlog.h"
+#include "RAM.H"
+#include "Errorlog.h"
 #include "strblock.h"
 
 

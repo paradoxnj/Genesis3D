@@ -32,11 +32,11 @@
  */
 
 
-#include "basetype.h"
-#include "xform3d.h"
+#include "BASETYPE.H"
+#include "XFORM3D.H"
 #include "body.h"
-#include "XFArray.h"
-#include "camera.h"
+#include "xfarray.h"
+#include "CAMERA.H"
 
 typedef struct geBodyInst geBodyInst;
 

@@ -21,17 +21,17 @@
 /****************************************************************************************/
 #include <Windows.h>
 #include <Stdio.h>
-#include <Assert.h>
+#include <assert.h>
 
 #include "Portals.h"
 #include "Poly.h"
 #include "Bsp.h"
-#include "GBSPFile.h"
+#include "GBSPFILE.H"
 #include "Leaf.h"
 #include "Utils.h"
 #include "Map.h"
 
-#include "Ram.h"
+#include "RAM.H"
 
 GBSP_Node	*OutsideNode;
 geVec3d		NodeMins, NodeMaxs;

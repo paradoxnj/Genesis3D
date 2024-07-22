@@ -22,7 +22,7 @@
 #include <Windows.h>
 
 #include "Map.h"
-#include "GBSPFile.h"
+#include "GBSPFILE.H"
 #include "Texture.h"
 #include "BSP.h"
 #include "Stdio.h"
@@ -31,9 +31,9 @@
 #include "Poly.h"
 #include "Mathlib.h"
 
-#include "Motion.h"				// From Genesis (in include path)
+#include "motion.h"				// From Genesis (in include path)
 #include "Errorlog.h"
-#include "Ram.h"
+#include "RAM.H"
 
 int32		NumEntities;
 MAP_Entity	Entities[MAX_MAP_ENTITIES];

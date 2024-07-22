@@ -39,11 +39,12 @@ we palettize ("inverse colormap") using an octree lookup system
 #include "palettize.h"
 #include <stdlib.h>
 #include <assert.h>
-#include "ram.h"
+#include "RAM.H"
 #include "mempool.h"
 
+#ifdef _WINDOWS
 #ifdef _TSC
-#pragma message("palettize using TSC")
+#pragma todo("palettize using TSC")
 #include "tsc.h"
 #endif
 
@@ -454,8 +455,11 @@ int __inline closestPalInlineRGB(int R,int G,int B,palInfo *pi)
 octNode *node,*kid;
 
 	doSteps();
-
+#ifdef _WINDOWS
 return ((int)node)-1;
+#else
+return -1;
+#endif
 }
 
 int closestPal(int R,int G,int B,palInfo *pi)
@@ -464,9 +468,13 @@ octNode *node,*kid;
 
 	doSteps();
 
-	assert( ((int)node) <= 256 && ((int)node) > 0 );
+	//assert( ((int)node) <= 256 && ((int)node) > 0 );
 
+#ifdef _WINDOWS
 return ((int)node)-1;
+#else
+return -1;
+#endif
 }
 
 void closestPalFree(palInfo *pi)
@@ -561,3 +569,4 @@ int i,h;
 		}
 	}
 }
+#endif

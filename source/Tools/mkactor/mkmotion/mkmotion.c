@@ -27,7 +27,7 @@
 #include "actor.h"
 #include "body.h"
 #include "motion.h"
-#include "ram.h"
+#include "RAM.H"
 #include "strblock.h"
 
 #include "mkutil.h"
@@ -208,7 +208,7 @@ geBoolean KEYMotion_InsertEventNoDuplicateTime(geMotion* pMotion, geFloat tKey, 
 		geMotion_SetupEventIterator(pMotion, InsertKeyTime, InsertKeyTime + TIME_STEP_DISTANCE);
 		if(geMotion_GetNextEvent(pMotion, &KeyTime, &pEventString) == GE_FALSE)
 		{
-#pragma message("geMotion_InsertEvent should take a const const*")
+#pragma todo("geMotion_InsertEvent should take a const const*")
 			return(geMotion_InsertEvent(pMotion, InsertKeyTime, (char*)String));
 		}
 

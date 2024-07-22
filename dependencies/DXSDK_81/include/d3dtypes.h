@@ -15,7 +15,7 @@
 #endif
 
 #if (DIRECT3D_VERSION >= 0x0800)
-#pragma message("should not include d3dtypes.h when compiling for DX8 or newer interfaces")
+#pragma todo("should not include d3dtypes.h when compiling for DX8 or newer interfaces")
 #endif
 
 #include <windows.h>

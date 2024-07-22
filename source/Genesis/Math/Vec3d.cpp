@@ -21,7 +21,7 @@
 /****************************************************************************************/
 #include <Math.h>
 #include <assert.h>
-#include "Vec3d.h"
+#include "VEC3D.H"
 
 #define VCOMPARE_EPSILON	(geFloat)0.0005
 

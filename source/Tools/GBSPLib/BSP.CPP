@@ -33,10 +33,10 @@
 #include "Leaf.h"
 #include "Fill.h"
 #include "Utils.h"
-#include "Light.h"
-#include "GBSPFile.h"
+#include "LIGHT.H"
+#include "GBSPFILE.H"
 
-#include "Ram.h"
+#include "RAM.H"
 
 // Globals
 GBSP_Model	BSPModels[MAX_BSP_MODELS];

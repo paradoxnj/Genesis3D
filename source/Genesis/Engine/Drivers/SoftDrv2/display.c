@@ -23,13 +23,13 @@
 #include <windows.h>
 #pragma warning(default : 4201 4214 4115; disable : 4514)
 #include <assert.h>
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "display.h"
 #include "DIBDisplay.h"
 #include "DDRAWDisplay.h"
 
 #ifdef GENESIS_VERSION_2
-#include "errorlog.h"
+#include "Errorlog.h"
 #else
 #define geErrorLog_AddString(Error,xx,yy) 
 #endif
@@ -45,7 +45,7 @@ typedef struct Display
 	DDRAWDisplay *pDDRAWDisplay;
 }Display;
 
-#pragma message ("BitsPerPixel should be a Bitmap Format")
+#pragma todo ("BitsPerPixel should be a Bitmap Format")
 
 void Display_GetDisplayFormat(		const Display *D,
 									Display_Type *DisplayType,
@@ -145,7 +145,7 @@ geBoolean Display_Wipe		(	Display *D,
 		}
 }
 
-#pragma message ("should the ptr argument to Display_Lock be a uint8?")
+#pragma todo ("should the ptr argument to Display_Lock be a uint8?")
 
 geBoolean Display_Lock		(	Display *D,
 								uint8       **ptr,

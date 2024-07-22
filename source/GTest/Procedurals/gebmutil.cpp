@@ -5,8 +5,8 @@
 #pragma warning(default : 4201 4214 4115)
 
 #include "gebmutil.h"
-#include "Ram.h"
-#include "errorlog.h"
+#include "RAM.H"
+#include "Errorlog.h"
 #include <stdlib.h>
 #include <assert.h>
 #include <math.h>
@@ -37,7 +37,7 @@ gePixelFormat Format;
 geBitmap_Info info;
 HBITMAP hbm = NULL;
 
-#pragma message("gebmu_CreateHBITMAP : choose format to be 8,16,or 24, whichever is closest to Bitmap")
+#pragma todo("gebmu_CreateHBITMAP : choose format to be 8,16,or 24, whichever is closest to Bitmap")
 
 	Format = GE_PIXELFORMAT_24BIT_BGR;
 

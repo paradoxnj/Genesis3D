@@ -192,7 +192,7 @@
     <ClInclude Include="Fx\corona.h">
       <Filter>Source Files\Fx</Filter>
     </ClInclude>
-    <ClInclude Include="Fx\DynLight.h">
+    <ClInclude Include="Fx\DynLIGHT.H">
       <Filter>Source Files\Fx</Filter>
     </ClInclude>
     <ClInclude Include="Fx\electric.h">

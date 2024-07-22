@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  User.h                                                                              */
+/*  USER.H                                                                              */
 /*                                                                                      */
 /*  Author: John Pollard                                                                */
 /*  Description: User poly's                                                            */
@@ -22,18 +22,21 @@
 #ifndef GE_USER_H
 #define GE_USER_H
 
-#include <Assert.h>
+#include <assert.h>
+
+#ifdef _WINDOWS
 #include <Windows.h>
+#endif
 
-#include "BaseType.h"
-#include "Vec3d.h"
-#include "XForm3d.h"
-#include "Camera.h"
-#include "Genesis.h"
-#include "World.h"
-#include "Surface.h"
+#include "BASETYPE.H"
+#include "VEC3D.H"
+#include "XFORM3D.H"
+#include "CAMERA.H"
+#include "GENESIS.H"
+#include "WORLD.H"
+#include "SURFACE.H"
 
-#include "DCommon.h"
+#include "Dcommon.h"
 
 #define MAX_USER_VERTS				4			
 #define USER_MAX_SORTED_POLYS		1024

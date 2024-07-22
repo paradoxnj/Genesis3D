@@ -16,8 +16,8 @@
 #include <assert.h>
 
 #include "modelist.h"
-#include "ram.h"
-#include "errorlog.h"
+#include "RAM.H"
+#include "Errorlog.h"
 
 #define MODELIST_MAX_NAME (1000)
 #define MODELIST_ALLOCATION_BLOCK_SIZE (10)

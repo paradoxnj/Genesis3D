@@ -30,7 +30,7 @@
 #ifndef Display_H
 #define Display_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "DisplayModeInfo.h"
 
 #ifdef __cplusplus

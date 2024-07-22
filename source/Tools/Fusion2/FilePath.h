@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  FilePath.h                                                                          */
+/*  Filepath.h                                                                          */
 /*                                                                                      */
 /*  Author:       Jim Mischel, Ken Baird, Jeff Lomax                                    */
 /*  Description:  Genesis world editor header file                                      */
@@ -23,7 +23,7 @@
 
 #define FILEPATH_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 
 #ifdef __cplusplus
 	extern "C" {

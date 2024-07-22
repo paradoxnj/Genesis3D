@@ -25,7 +25,7 @@
 
 
 #include	"bitmap.h"
-#include	"dcommon.h"
+#include	"Dcommon.h"
 
 /***
 **

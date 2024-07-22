@@ -22,7 +22,7 @@
 #ifndef BRUSHTEMPLATE_H
 #define BRUSHTEMPLATE_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "brush.h"
 
 #ifdef __cplusplus

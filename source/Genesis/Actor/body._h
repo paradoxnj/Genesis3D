@@ -22,8 +22,8 @@
 #ifndef GE_BODY__H
 #define GE_BODY__H 
 
-#include "basetype.h"
-#include "xform3d.h"
+#include "BASETYPE.H"
+#include "XFORM3D.H"
 #include "body.h"
 #include "strblock.h"
 #include "bitmap.h"

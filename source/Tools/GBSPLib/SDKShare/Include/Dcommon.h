@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  DCommon.h                                                                           */
+/*  Dcommon.h                                                                           */
 /*                                                                                      */
 /*  Author: John Pollard                                                                */
 /*  Description: Header file for all driver modules.                                    */
@@ -26,10 +26,10 @@
 // If you include Windows it MUST be before dcommon!
 
 // FIXME:  What should we do with these?
-#include "XForm3d.h"
-#include "Vec3d.h"
-#include "PixelFormat.h"
-#include "geTypes.h"		// This is a no no
+#include "XFORM3D.H"
+#include "VEC3D.H"
+#include "pixelformat.h"
+#include "getypes.h"		// This is a no no
 
 #ifdef __cplusplus
 extern "C" {

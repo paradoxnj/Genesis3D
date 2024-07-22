@@ -27,7 +27,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "ram.h"
+#include "RAM.H"
 
 //---------------------------------------------------------------------------
 // Logging code absorbed from old module

@@ -30,9 +30,9 @@
 #include	<stdlib.h>
 #include	<string.h>
 
-#include	"basetype.h"
+#include	"BASETYPE.H"
 #include	"getypes.h"
-#include	"ram.h"
+#include	"RAM.H"
 
 #include	"bitmap.h"
 #include	"bitmap._h"
@@ -40,7 +40,7 @@
 #include	"bitmap_blitdata.h"
 
 #include	"vfile.h"
-#include	"ErrorLog.h"
+#include	"Errorlog.h"
 
 #include	"palcreate.h"
 #include	"palettize.h"
@@ -368,12 +368,14 @@ geBoolean geBitmap_BlitData_Sub(	const geBitmap_Info * iSrcInfo,const void *iSrc
 					SrcPal = geBitmap_GetPalette(SrcBmp);
 			}
 
+			#ifdef _WINDOWS
 			if (BlitData_Palettize()==GE_FALSE)
 				{
 					geErrorLog_AddString(-1,"geBitmap_BlitData:  BlitData_Palettize failed.",NULL);
 					return GE_FALSE;	
 				}
 			else
+			#endif
 				return GE_TRUE;
 		}
 	}
@@ -581,7 +583,7 @@ int AlphaXtra;
 	**
 	 ******/
 
-	#pragma message("Bitmap_BlitData: inconsistent handling of separates with color keys!")
+	#pragma todo("Bitmap_BlitData: inconsistent handling of separates with color keys!")
 
 	SrcPtr = (uint8 *)SrcData;
 	DstPtr = (uint8 *)DstData;
@@ -1467,7 +1469,7 @@ geBoolean BlitData_DePalettize(void)
 
 					#else
 
-					#pragma message("Bitmap_Blitdata :using assembly DePalettize code")
+					#pragma todo("Bitmap_Blitdata :using assembly DePalettize code")
 					// {} is this minimal push safe in _fastcall ? aparently so!
 
 					__asm
@@ -1516,7 +1518,7 @@ geBoolean BlitData_DePalettize(void)
 
 			#ifdef DO_TIMER
 			{
-			#pragma message("Blitdata : doing timer")
+			#pragma todo("Blitdata : doing timer")
 				TIMER_VARS(WordCopy);
 
 				timerFP = fopen("q:\\timer.log","at+");
@@ -1838,10 +1840,14 @@ return GE_FALSE;
 
 geBoolean BlitData_Palettize(void)
 {
+#ifdef _WINDOWS
 	// unpal -> pal : hard
 return palettizePlane(	SrcInfo,SrcData,
 						DstInfo,DstData,
 						SizeX,SizeY);
+#else
+return GE_FALSE;
+#endif
 }
 
 /*}{*********************************************************************/

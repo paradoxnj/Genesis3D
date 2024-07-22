@@ -320,7 +320,7 @@
     <ClInclude Include="facelist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FilePath.h">
+    <ClInclude Include="Filepath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fusion.h">

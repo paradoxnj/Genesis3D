@@ -20,8 +20,8 @@
 
 #include	"AutoSelect.h"
 
-#include    "ErrorLog.h"
-#include    "Ram.h"
+#include    "Errorlog.h"
+#include    "RAM.H"
 #include	"Gamemgr.h"
 
 

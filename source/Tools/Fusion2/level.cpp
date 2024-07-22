@@ -25,10 +25,10 @@
 #include "Parse3dt.h"
 #include "EntTypeName.h"
 #include <assert.h>
-#include "ram.h"
+#include "RAM.H"
 #include "units.h"
 #include "util.h"
-#include "FilePath.h"
+#include "Filepath.h"
 
 #define NUM_VIEWS (4)
 struct tag_Level

@@ -30,8 +30,8 @@
 #include <stdio.h>
 
 #include "strblock.h"
-#include "ram.h"
-#include "errorlog.h"
+#include "RAM.H"
+#include "Errorlog.h"
 
 #define STRBLOCK_MAX_STRINGLEN 255
 
@@ -426,7 +426,7 @@ geStrBlock* GENESISCC geStrBlock_CreateFromFile(geVFile* pFile)
 			geErrorLog_Add( ERR_STRBLOCK_FILE_READ , NULL);
 			return NULL;
 		}
-		if	(sscanf(VersionString, "%X.%X\n", &u, &v) != 2)
+		if	(sscanf(VersionString, "%X.%X\n", (unsigned int*)&u, (unsigned int*)&v) != 2)
 		{
 			geErrorLog_Add( ERR_STRBLOCK_FILE_READ , NULL);
 			return NULL;

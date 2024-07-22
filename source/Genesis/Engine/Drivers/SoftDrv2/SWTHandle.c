@@ -23,13 +23,13 @@
 
 #include <stdlib.h>					// malloc, free
 #include <memory.h>					// memset
-#include <Assert.h>
+#include <assert.h>
 
 #include "SoftDrv.h"				// SD_Display, ClientWindow.  Could be cleaned up.
 #include "SWTHandle.h"
 
 #ifdef GENESIS_VERSION_2
-#include "errorlog.h"
+#include "Errorlog.h"
 #else
 #define geErrorLog_AddString(Error,xx,yy) 
 #endif
@@ -286,11 +286,11 @@ geBoolean	DRIVERCC	SWTHandle_GetInfo(geRDriver_THandle *THandle, int32 MipLevel,
 	Info->Stride		= THandle->Width  >> MipLevel;
 	Info->ColorKey		= 1;
 	Info->Flags			= GE_FALSE;
-	#pragma message ("is this right?")
+	#pragma todo ("is this right?")
 	Info->PixelFormat	= THandle->PixelFormat;
 	if ( THandle->Flags & THANDLE_TRANS )
 		{
-	#pragma message ("remember this")
+	#pragma todo ("remember this")
 			Info->Flags	= RDRIVER_THANDLE_HAS_COLORKEY;
 		}
 	return	GE_TRUE;

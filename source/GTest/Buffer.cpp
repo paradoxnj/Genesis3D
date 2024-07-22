@@ -13,9 +13,9 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 
-#include "Genesis.h"
+#include "GENESIS.H"
 
 #include "Buffer.h"
 

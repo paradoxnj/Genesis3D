@@ -22,12 +22,14 @@
 #ifndef GE_NETPLAY_H
 #define GE_NETPLAY_H
 
+#ifdef _WINDOWS
+
 #define INITGUID
 
 #include <windows.h>
 #include <dplay.h>
 
-#include "BaseType.h"
+#include "BASETYPE.H"
 
 // ************************************************************************************
 //	Defines
@@ -66,5 +68,7 @@ BOOL DeInitNetPlay(void);
 
 // HACK!!!! Function is in Engine.cpp (So NetPlay.C can call it...)
 BOOL			AFX_CPrintfC(char *String);
+
+#endif
 
 #endif

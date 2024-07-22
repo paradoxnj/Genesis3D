@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  BODY.H                                                                              */
+/*  body.h                                                                              */
 /*                                                                                      */
 /*  Author: Mike Sandige	                                                            */
 /*  Description: Actor body interface.		                                            */
@@ -27,8 +27,8 @@
    This object holds the geometry for the body and the list of materials needed.
 */
 
-#include "basetype.h"
-#include "xform3d.h"
+#include "BASETYPE.H"
+#include "XFORM3D.H"
 #include "vfile.h"
 #include "bitmap.h"
 

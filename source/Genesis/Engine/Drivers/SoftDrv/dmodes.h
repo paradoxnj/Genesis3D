@@ -19,7 +19,7 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#include "basetype.h"
+#include "BASETYPE.H"
 
 extern	void					GetDDrawPixelFormat(DRV_Window *cwnd);
 extern	LPDIRECTDRAWSURFACE4	DDrawLoadSurface(U32 dwWidth, U32 dwHeight, const void *pixels, const char *pal);

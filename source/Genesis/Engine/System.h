@@ -23,13 +23,16 @@
 #define GE_SYSTEM_H
 
 //#define OLD_FONT
-
-#include "ErrorLog.h"
-#include "Genesis.h"
+#ifdef _WINDOWS
 #include <windows.h>
-#include "dcommon.h"
-#include "Camera.h"
-#include "PtrTypes.h"
+#endif
+
+#include "Errorlog.h"
+#include "GENESIS.H"
+#include "Dcommon.h"
+#include "CAMERA.H"
+#include "PTRTYPES.H"
+#include "BitmapList.h"
 
 #define		VectorToSUB(a, b) ( *(((float*)&a) + b) )
 
@@ -136,7 +139,7 @@ typedef struct
 #define ENGINE_PF_ALPHA_CHANNEL	(6)
 #define ENGINE_PF_COUNT			(7)
 
-typedef struct BitmapList BitmapList;
+//typedef struct BitmapList BitmapList;
 
 #define ENGINE_MAX_WORLDS		8
 
@@ -155,7 +158,11 @@ typedef struct geEngine
 	Sys_CPUInfo			CPUInfo;			// Info about the Cpu
 	Sys_DebugInfo		DebugInfo;
 
+	#ifdef _WINDOWS
 	LARGE_INTEGER		CurrentTic;
+	#else
+	int64_t				CurrentTic;
+	#endif
 
 	Sys_FontInfo		FontInfo;
 
@@ -184,7 +191,7 @@ typedef struct geEngine
 
 	char				*DriverDirectory;	// Path to load driver DLLs from
 
-	BitmapList			*AttachedBitmaps;
+	BitmapList			AttachedBitmaps;
 
 	geBoolean			HasPixelFormat[ENGINE_PF_COUNT];
 	geRDriver_PixelFormat PixelFormats[ENGINE_PF_COUNT];

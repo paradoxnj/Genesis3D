@@ -24,7 +24,7 @@
 
 #include <Windows.H>
 
-#include "DCommon.h"
+#include "Dcommon.h"
 
 #define RENDER_NONE				0
 #define RENDER_WORLD			1

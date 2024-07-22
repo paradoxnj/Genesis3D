@@ -24,7 +24,7 @@
 #define DDRAWDISPLAY_H
 
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "DisplayModeInfo.h"
 
 #ifdef __cplusplus

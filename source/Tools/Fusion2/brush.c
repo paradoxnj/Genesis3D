@@ -24,12 +24,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-#include "Vec3d.h"
-#include "basetype.h"
+#include "VEC3D.H"
+#include "BASETYPE.H"
 #include "typeio.h"
 #include "facelist.h"
 #include "units.h"
-#include "ram.h"
+#include "RAM.H"
 #include "util.h"
 #include "ConsoleTab.h"	//for conprintf
 

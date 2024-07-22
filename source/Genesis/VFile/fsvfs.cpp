@@ -25,7 +25,7 @@
 #include	<assert.h>
 #include	<algorithm>
 
-#include	"ram.h"
+#include	"RAM.H"
 
 #include	"fsvfs.h"
 #include	"dirtree.h"
@@ -301,7 +301,7 @@ static	void *	GENESISCC FSVFS_OpenNewSystem(
 		long			DirectoryStartPos;
 		long			DirectoryEndPos;
 
-//#pragma message  ("FSVFS_OpenNewSystem: READ/WRITE opens not supported")
+//#pragma todo  ("FSVFS_OpenNewSystem: READ/WRITE opens not supported")
 
 		if	(geVFile_Read(RWOps, &Header, sizeof(Header)) == GE_FALSE)
 			return NULL;

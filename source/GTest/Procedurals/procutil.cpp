@@ -5,7 +5,7 @@
 #include <algorithm>
 
 #include "procutil.h"
-#include "errorlog.h"
+#include "Errorlog.h"
 
 static uint32 lastRandomNumber = 0xA2A9; // that's a prime
 

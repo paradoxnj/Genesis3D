@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  MKMOTION.H	                                                                        */
+/*  MKmotion.h	                                                                        */
 /*                                                                                      */
 /*  Author: Stephen Balkum	                                                            */
 /*  Description: Motion construction from MAX export.									*/

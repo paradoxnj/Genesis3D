@@ -22,10 +22,10 @@
 #include <Windows.h>
 #include <Stdio.h>
 
-#include "DCommon.h"
-#include "GBSPFile.h"
-#include "VFile.h"
-#include "Ram.h"
+#include "Dcommon.h"
+#include "GBSPFILE.H"
+#include "vfile.h"
+#include "RAM.H"
 
 //========================================================================================
 //	Globals

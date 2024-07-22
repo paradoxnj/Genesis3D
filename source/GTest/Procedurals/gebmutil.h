@@ -1,7 +1,7 @@
 #ifndef GEBMUTIL_H
 #define GEBMUTIL_H
 
-#include "genesis.h"
+#include "GENESIS.H"
 
 #ifndef _INC_WINDOWS
 #ifdef STRICT
@@ -57,7 +57,7 @@ double geBitmapUtil_PSNR2MSE(double psnr);
 
 /******
 
-todo :
+#pragma todo :
 
 	WriteToBMP
 

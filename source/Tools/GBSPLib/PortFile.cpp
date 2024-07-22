@@ -25,7 +25,7 @@
 #include "Bsp.h"
 #include "Portals.h"
 #include "Leaf.h"
-#include "GBspFile.h"
+#include "GBSPFILE.H"
 #include "Poly.h"
 #include "Utils.h"
 

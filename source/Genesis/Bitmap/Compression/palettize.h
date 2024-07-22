@@ -23,9 +23,12 @@
 /*                                                                                      */
 /****************************************************************************************/
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "bitmap.h"
 
+typedef struct palInfo palInfo;
+
+#ifdef _WINDOWS
 geBoolean palettizePlane(const	geBitmap_Info * SrcInfo,const	void * SrcBits,
 								geBitmap_Info * DstInfo,		void * DstBits,
 								int SizeX,int SizeY);
@@ -34,13 +37,13 @@ geBoolean palettizePlane(const	geBitmap_Info * SrcInfo,const	void * SrcBits,
 
 /******* if you want to do your own palettizing : ******/
 
-typedef struct palInfo palInfo;
-
 extern palInfo *	closestPalInit(uint8 * palette);
 extern void			closestPalFree(palInfo *info);
 extern int			closestPal(int R,int G,int B,palInfo *pi);
 
 extern void Palettize_Start(void);
 extern void Palettize_Stop(void);
+
+#endif
 
 #endif

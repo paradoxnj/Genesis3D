@@ -22,13 +22,13 @@
 #ifndef GE_PUPPET_H
 #define GE_PUPPET_H
 
-#include "Motion.h"
-#include "Camera.h"
-#include "Body.h"
-#include "Pose.h"
+#include "motion.h"
+#include "CAMERA.H"
+#include "body.h"
+#include "pose.h"
 #include "ExtBox.h"			// geExtBox for gePuppet_RenderThroughFrustum
 
-#include "Frustum.h"
+#include "FRUSTUM.H"
 #include "vfile.h"
 
 

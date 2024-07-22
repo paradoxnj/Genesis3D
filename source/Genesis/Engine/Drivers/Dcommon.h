@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  DCommon.h                                                                           */
+/*  Dcommon.h                                                                           */
 /*                                                                                      */
 /*  Author: John Pollard                                                                */
 /*  Description: Header file for all driver modules.                                    */
@@ -26,10 +26,10 @@
 // If you include Windows it MUST be before dcommon!
 
 // FIXME:  What should we do with these?
-#include "XForm3d.h"
-#include "Vec3d.h"
-#include "PixelFormat.h"
-#include "geTypes.h"		// This is a no no
+#include "XFORM3D.H"
+#include "VEC3D.H"
+#include "pixelformat.h"
+#include "getypes.h"		// This is a no no
 
 #ifdef __cplusplus
 extern "C" {
@@ -65,11 +65,13 @@ typedef UCHAR *PUCHAR;
 typedef char *PSZ;
 #endif  /* !BASETYPES */
 
+#ifdef _WINDOWS
 typedef unsigned long       DWORD;
 typedef int                 geBoolean;
 typedef unsigned char       BYTE;
 typedef unsigned short      WORD;
 typedef float               FLOAT;
+#endif
 
 typedef struct tagRECT
 {
@@ -81,7 +83,11 @@ typedef struct tagRECT
 
 #endif // WINVER
 
+#ifdef _WINDOWS
 #define	DRIVERCC _fastcall
+#else
+#define DRIVERCC
+#endif
 
 #ifndef __cplusplus
 	#define DllImport	__declspec( dllimport )

@@ -39,7 +39,7 @@
 #ifndef GE_VKFRAME_H
 #define GE_VKFRAME_H
 
-#include "TKArray.h"
+#include "tkarray.h"
 #include "vfile.h"
 
 typedef enum

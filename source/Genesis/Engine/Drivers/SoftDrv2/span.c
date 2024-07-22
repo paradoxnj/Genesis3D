@@ -420,7 +420,7 @@ void GENESISCC Span_LightMapSample(void)
 	
 	// address base corner into lightmap by LMU,LMV
 	LM0 = Triangle.LightMapBits + (3*(LMU>>16) + TOPDOWN_OR_BOTTOMUP((LMV>>16) * Triangle.LightMapStride));
-	#pragma message ("is there a clamping problem here somewhere?  see a hi-res lightmap only rendering...")
+	#pragma todo ("is there a clamping problem here somewhere?  see a hi-res lightmap only rendering...")
 
 	#if 1
 		// address other corners, clamping
@@ -461,7 +461,7 @@ void GENESISCC Span_LightMapSample(void)
 		RRight = *LM0<<RGB_FXP_SHIFTER; LM0++;
 		GRight = *LM0<<RGB_FXP_SHIFTER; LM0++;
 		BRight = *LM0<<RGB_FXP_SHIFTER; 
-		#pragma message ("lightmap filtering disabled")
+		#pragma todo ("lightmap filtering disabled")
 	#endif
 
 	//R=RRight;G=GRight;B=BRight;

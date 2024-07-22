@@ -19,21 +19,21 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#include <Assert.h>
+#include <assert.h>
 #include <Windows.h>
 
-#include "User.h"
-#include "World.h"
-#include "Ram.h"
-#include "ErrorLog.h"
+#include "USER.H"
+#include "WORLD.H"
+#include "RAM.H"
+#include "Errorlog.h"
 #include "System.h"
-#include "Surface.h"
-#include "Genesis.h"
-#include "Camera.h"
-#include "Frustum.h"
+#include "SURFACE.H"
+#include "GENESIS.H"
+#include "CAMERA.H"
+#include "FRUSTUM.H"
 #include "Plane.h"
 
-#include "DCommon.h"
+#include "Dcommon.h"
 
 #include "Bitmap._h"
 

@@ -124,7 +124,7 @@ SOURCE=.\Gbspfile.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gbspfile.h
+SOURCE=.\GBSPFILE.H
 # End Source File
 # Begin Source File
 
@@ -156,7 +156,7 @@ SOURCE=.\Light.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Light.h
+SOURCE=.\LIGHT.H
 # End Source File
 # Begin Source File
 

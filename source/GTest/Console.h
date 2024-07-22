@@ -15,7 +15,7 @@
 #ifndef __CONSOLE_H__
 #define __CONSOLE_H__
 
-#include "Genesis.h"
+#include "GENESIS.H"
 
 #define SMALL_CONSOLE_CUTOFF_WIDTH (640)
 

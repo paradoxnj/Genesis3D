@@ -1290,7 +1290,7 @@ geBoolean DRIVERCC BeginScene(geBoolean Clear, geBoolean ClearZ, RECT *WorldRect
 	{
 		uint32 KeyState1, KeyState2;
 		
-		#pragma message("Glide : WireFrame enabled!")
+		#pragma todo("Glide : WireFrame enabled!")
 		KeyState1 = GetAsyncKeyState(VK_CONTROL) & 0x8001;
 		KeyState2 = GetAsyncKeyState(VK_F8) & 0x8001;
 		if (KeyState1 && KeyState2)

@@ -353,7 +353,7 @@
     <ClInclude Include="Math\crc32.h">
       <Filter>Source Files\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Support\geAssert.h">
+    <ClInclude Include="Support\geassert.h">
       <Filter>Source Files\Support</Filter>
     </ClInclude>
     <ClInclude Include="Support\log.h">
@@ -380,25 +380,25 @@
     <ClInclude Include="World\Fog.h">
       <Filter>Source Files\World</Filter>
     </ClInclude>
-    <ClInclude Include="World\Frustum.h">
+    <ClInclude Include="World\FRUSTUM.H">
       <Filter>Source Files\World</Filter>
     </ClInclude>
-    <ClInclude Include="World\Gbspfile.h">
+    <ClInclude Include="World\GBSPFILE.H">
       <Filter>Source Files\World</Filter>
     </ClInclude>
-    <ClInclude Include="World\Light.h">
+    <ClInclude Include="World\LIGHT.H">
       <Filter>Source Files\World</Filter>
     </ClInclude>
     <ClInclude Include="World\Plane.h">
       <Filter>Source Files\World</Filter>
     </ClInclude>
-    <ClInclude Include="World\Surface.h">
+    <ClInclude Include="World\SURFACE.H">
       <Filter>Source Files\World</Filter>
     </ClInclude>
     <ClInclude Include="World\Trace.h">
       <Filter>Source Files\World</Filter>
     </ClInclude>
-    <ClInclude Include="World\User.h">
+    <ClInclude Include="World\USER.H">
       <Filter>Source Files\World</Filter>
     </ClInclude>
     <ClInclude Include="World\Vis.h">
@@ -407,13 +407,13 @@
     <ClInclude Include="World\WBitmap.h">
       <Filter>Source Files\World</Filter>
     </ClInclude>
-    <ClInclude Include="World\World.h">
+    <ClInclude Include="World\WORLD.H">
       <Filter>Source Files\World</Filter>
     </ClInclude>
     <ClInclude Include="Font\wgClip.H">
       <Filter>Source Files\Font</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
+    <ClInclude Include="CAMERA.H">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="CSNetMgr.h">
@@ -428,13 +428,13 @@
     <ClInclude Include="Netplay.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Ptrtypes.h">
+    <ClInclude Include="PTRTYPES.H">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Sound.h">
+    <ClInclude Include="SOUND.H">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Sound3d.h">

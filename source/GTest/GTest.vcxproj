@@ -209,7 +209,7 @@
     <ClInclude Include="DrvMenu\Drvlist.h" />
     <ClInclude Include="DrvMenu\Resource.h" />
     <ClInclude Include="Fx\corona.h" />
-    <ClInclude Include="Fx\DynLight.h" />
+    <ClInclude Include="Fx\DynLIGHT.H" />
     <ClInclude Include="Fx\electric.h" />
     <ClInclude Include="Fx\fx.h" />
     <ClInclude Include="Fx\ModelCtl.h" />

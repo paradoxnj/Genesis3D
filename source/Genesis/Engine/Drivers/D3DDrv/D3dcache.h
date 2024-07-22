@@ -26,7 +26,7 @@
 #include <DDraw.h>
 #include <D3D.H>
 
-#include "BaseType.h"
+#include "BASETYPE.H"
 #include "DDMemMgr.h"			
 
 #define	D3DCACHE_MAX_NAME			256

@@ -68,16 +68,18 @@ TClip_Rasterize      : 0.006183 : 1.$ %
 #include <assert.h>
 #include <string.h>
 
-#include "TClip.h"
+#include <list>
+
+#include "tclip.h"
 #include "engine.h"
 #include "bitmap._h"
 
-#include "list.h"
-#include "ram.h"  
+//#include "list.h"
+#include "RAM.H"  
 
 #include "timer.h"
 
-TIMER_VARS(TClip_Triangle);
+TIMER_VARS(TClip_Triangle)
 
 //#define ONE_OVER_Z_PIPELINE	// this has more accuracy, but the slowness of doing 1/ divides
 
@@ -138,50 +140,56 @@ static void GENESISCC geTClip_TrianglePlane_Old(const GE_LVertex * zTriVertex,ge
 
 /*}{************ The State Statics ***********/
 
-static Link * geTClip_Link = NULL;
+//static Link * geTClip_Link = NULL;
 static geTClip_StaticsType geTClip_Statics;
+static std::list<geTClip_StaticsType*>		geTClip_Link;
 
 /*}{************ Functions ***********/
 
 geBoolean GENESISCC geTClip_Push(void)
 {
-geTClip_StaticsType * TCI;
+	geTClip_StaticsType * TCI = nullptr;
 
-	if ( ! geTClip_Link )
+	/*if ( !geTClip_Link )
 	{
 		List_Start();
 		geTClip_Link = Link_Create();
 		if ( ! geTClip_Link ) 
 			return GE_FALSE;
-	}
+	}*/
 
 	TCI = static_cast<geTClip_StaticsType*>(geRam_Allocate(sizeof(geTClip_StaticsType)));
 	if ( ! TCI )
 		return GE_FALSE;
 	memcpy(TCI,&geTClip_Statics,sizeof(geTClip_StaticsType));
 
-	Link_Push( geTClip_Link , TCI );
+	//Link_Push( geTClip_Link , TCI );
+	geTClip_Link.push_back(TCI);
 
 	return GE_TRUE;
 }
 
 geBoolean GENESISCC geTClip_Pop(void)
 {
-geTClip_StaticsType * TCI;
-	if ( ! geTClip_Link )
+	geTClip_StaticsType * TCI = nullptr;
+	if (geTClip_Link.empty() )
 		return GE_FALSE;
-	TCI = static_cast<geTClip_StaticsType*>(Link_Pop( geTClip_Link ));
+
+	//TCI = static_cast<geTClip_StaticsType*>(Link_Pop( geTClip_Link ));
+	TCI = geTClip_Link.back();
 	if ( ! TCI )
 		return GE_FALSE;
 	memcpy(&geTClip_Statics,TCI,sizeof(geTClip_StaticsType));
 	geRam_Free(TCI);
-
-	if ( ! Link_Peek(geTClip_Link) )
+	geTClip_Link.pop_back();
+	
+	/*if ( ! Link_Peek(geTClip_Link) )
 	{
 		Link_Destroy(geTClip_Link);
 		geTClip_Link = NULL;
 		List_Stop();
-	}
+	}*/
+
 	return GE_TRUE;
 }
 

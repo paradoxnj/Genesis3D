@@ -25,7 +25,7 @@
 #include <string.h>
 
 #include "actor.h"
-#include "ram.h"
+#include "RAM.H"
 #include "strblock.h"
 #include "mkactor.h"
 

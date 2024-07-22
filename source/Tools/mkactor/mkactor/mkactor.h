@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  MKACTOR.H                                                                           */
+/*  MKactor.h                                                                           */
 /*                                                                                      */
 /*  Author: Stephen Balkum	                                                            */
 /*  Description: Actor construction from body and motions.								*/

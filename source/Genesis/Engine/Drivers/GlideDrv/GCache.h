@@ -25,7 +25,7 @@
 #include <Windows.h>
 #include "Glide.h"
 
-#include "BaseType.h"
+#include "BASETYPE.H"
 #include "GMemMGr.h"
 
 #ifdef __cplusplus

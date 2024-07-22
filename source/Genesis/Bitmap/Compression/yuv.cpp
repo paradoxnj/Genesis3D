@@ -1,6 +1,6 @@
 #include "yuv.h"
 #include "utility.h"
-#include <Assert.h>
+#include <assert.h>
 
 /****************************************************************************************/
 /*  Yuv                                                                                 */

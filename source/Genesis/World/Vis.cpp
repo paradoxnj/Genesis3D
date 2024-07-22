@@ -19,17 +19,17 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#include <Assert.h>
+#include <assert.h>
 
-#include "BaseType.h"
-#include "World.h"
+#include "BASETYPE.H"
+#include "WORLD.H"
 #include "Plane.h"
-#include "Vec3d.h"
-#include "Ram.h"
-#include "Surface.h"
+#include "VEC3D.H"
+#include "RAM.H"
+#include "SURFACE.H"
 #include "Trace.h"
-#include "Camera.h"
-#include "Frustum.h"
+#include "CAMERA.H"
+#include "FRUSTUM.H"
 #include "System.h"
 
 #include "Fog.h"

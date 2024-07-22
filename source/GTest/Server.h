@@ -17,9 +17,9 @@
 
 #include <Windows.h>
 
-#include "Genesis.h"
+#include "GENESIS.H"
 #include "Errorlog.h"
-#include "Ram.h"
+#include "RAM.H"
 
 #include "Game\Game.h"
 #include "Game\GPlayer.h"

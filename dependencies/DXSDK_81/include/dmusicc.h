@@ -19,7 +19,7 @@
 #include "dls1.h"
 #include "dmerror.h"
 #include "dmdls.h"
-#include "dsound.h"
+#include "dSOUND.H"
 #include "dmusbuff.h"
 
 #include <pshpack8.h>

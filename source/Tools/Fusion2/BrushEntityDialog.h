@@ -25,7 +25,7 @@
 #ifndef BRUSHENTITYDIALOG_H
 #define BRUSHENTITYDIALOG_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "resource.h"
 
 class CFusionDoc;

@@ -25,9 +25,9 @@
 #include <string.h>
 #include <float.h>
 
-#include "vec3d.h"
-#include "xform3d.h"
-#include "ram.h"
+#include "VEC3D.H"
+#include "XFORM3D.H"
+#include "RAM.H"
 #include "matrix33.h"
 #include "quatern.h"
 

@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  GBSPFile.h                                                                          */
+/*  GBSPFILE.H                                                                          */
 /*                                                                                      */
 /*  Author: John Pollard                                                                */
 /*  Description: BSP loader                                                             */
@@ -22,14 +22,17 @@
 #ifndef GE_GBSPFILE_H
 #define GE_GBSPFILE_H
 
-#include <Stdio.h>
+#include <stdio.h>
 
-#include "BaseType.h"
-#include "Vec3d.h"
+#include "BASETYPE.H"
+#include "VEC3D.H"
+#ifdef _WINDOWS
 #include <windows.h>
-#include "DCommon.h"
-#include "VFile.h"
-#include "Motion.h"
+#endif
+
+#include "Dcommon.h"
+#include "vfile.h"
+#include "motion.h"
 
 #define GBSP_VERSION				15	
 
@@ -68,7 +71,7 @@
 #define GE_CONTENTS_TYPES
 
 //*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-//	IF THESE FLAGS CHANGE, THEY MUST CHANGE IN GBSPFILE.H in Genesis AND GBSPLIB, and Genesis.H!!!!!
+//	IF THESE FLAGS CHANGE, THEY MUST CHANGE IN GBSPFILE.H in Genesis AND GBSPLIB, and GENESIS.H!!!!!
 //*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
 #define GE_CONTENTS_SOLID			(1<<0)		// Solid (Visible)
 #define GE_CONTENTS_WINDOW			(1<<1)		// Window (Visible)

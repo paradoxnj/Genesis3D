@@ -24,12 +24,12 @@
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "units.h"
 #include "box3d.h"
 #include "typeio.h"
 #include "consoletab.h"
-#include "ram.h"
+#include "RAM.H"
 #include "quatern.h"
 #include "util.h"
 
@@ -493,7 +493,7 @@ static void Face_UpdateLockedTextureVecs
 	assert (t != NULL);
 //	assert (t->xScale != 0.0f);
 //	assert (t->yScale != 0.0f);
-#pragma message ("this is an ugly hack.  Values should never be == 0.")
+#pragma todo ("this is an ugly hack.  Values should never be == 0.")
 	if (t->xScale == 0.0f) t->xScale = 1.0f;
 	if (t->yScale == 0.0f) t->yScale = 1.0f;
 
@@ -541,7 +541,7 @@ static void Face_UpdateWorldTextureVecs
 	assert (t != NULL);
 //	assert (t->xScale != 0.0f);
 //	assert (t->yScale != 0.0f);
-#pragma message ("this is an ugly hack.  Values should never be == 0.")
+#pragma todo ("this is an ugly hack.  Values should never be == 0.")
 	if (t->xScale == 0.0f) t->xScale = 1.0f;
 	if (t->yScale == 0.0f) t->yScale = 1.0f;
 
@@ -1183,7 +1183,7 @@ void	Face_WriteToMap(const Face *f, FILE *wf)
 	strcpy(szTemp, Face_GetTextureName (f));
 	TypeIO_WriteBlock(wf, szTemp, 32);
 	{
-		#pragma message ("New texture vector output!")
+		#pragma todo ("New texture vector output!")
 		const TexInfo_Vectors *TVecs = Face_GetTextureVecs (f);
 		geVec3d uVec, vVec;
 		const geFloat xScale = f->Tex.xScale/f->LightXScale;

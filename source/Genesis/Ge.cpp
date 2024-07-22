@@ -20,34 +20,40 @@
 /*                                                                                      */
 /****************************************************************************************/
 
+#ifdef _WINDOWS
 #include <Windows.h>
-#include <Math.h>
-#include <Assert.h>
+#endif
 
-#include "Genesis.H"
+#include <math.h>
+#include <assert.h>
+#include <string>
+
+#include "GENESIS.H"
 #include "System.h"
-#include "Ram.h"
+#include "RAM.H"
 
-//#include "Sound.h"
+//#include "SOUND.H"
 //#include "Sound3d.h"
 
-#include "World.h"
-#include "Surface.h"
-//#include "Camera.h"
-#include "Light.h"
-#include "Plane.h"
-#include "Entities.h"
-#include "Trace.h"
-#include "User.h"
+#include "WORLD.H"
+#include "SURFACE.H"
+//#include "CAMERA.H"
+#include "LIGHT.H"
+#include "PLANE.H"
+#include "ENTITIES.H"
+#include "TRACE.H"
+#include "USER.H"
 //#include "Host.h"
-#include "Motion.h"
+#include "motion.h"
 #include "Vis.h"
 
 //=====================================================================================
 //	local static globals
 //=====================================================================================
 static	geEngine			*CEngine;				// The current engine object
-static char *geTag="Eclipse!";
+//static char *geTag="Eclipse!";
+static std::string geTag = "Eclipse!";
+
 
 //=====================================================================================
 //	local static function prototypes

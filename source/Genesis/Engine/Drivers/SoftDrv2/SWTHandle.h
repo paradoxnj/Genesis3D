@@ -23,8 +23,8 @@
 #ifndef SWTHANDLE_H
 #define SWTHANDLE_H
 
-#include "DCommon.h"
-#include "PixelFormat.h"
+#include "Dcommon.h"
+#include "pixelformat.h"
 
 // THandle flags
 #define THANDLE_UPDATE		(1<<0)		// Force a thandle to be uploaded to the card

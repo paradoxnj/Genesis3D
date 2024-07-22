@@ -18,8 +18,8 @@
 #pragma warning ( default : 4201 4214 )
 #include <string.h>
 #include <assert.h>
-#include "Genesis.h"
-#include "Ram.h"
+#include "GENESIS.H"
+#include "RAM.H"
 #include "Text.h"
 #include "MenuItem.h"
 

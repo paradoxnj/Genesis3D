@@ -28,7 +28,7 @@
 
 #define INITGUID
 
-#include "DCommon.h"
+#include "Dcommon.h"
 
 #define MAX_APP_MODES					50
 #define DDMAIN_MAX_D3D_DRIVERS			10

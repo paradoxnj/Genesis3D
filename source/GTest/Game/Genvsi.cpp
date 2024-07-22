@@ -13,12 +13,12 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 #include <stdio.h>
 
 #include "GenVSI.h"
 
-#include "Genesis.h"
+#include "GENESIS.H"
 
 
 //=====================================================================================
@@ -197,7 +197,7 @@ void GenVSI_SetClientInventory(GenVSI *VSI, GenVSI_CHandle ClientHandle, int32 S
 //=====================================================================================
 //	GenVSI_IsClientBot
 //=====================================================================================
-#pragma message ("Bot - Genvsi.c")
+#pragma todo ("Bot - Genvsi.c")
 geBoolean GenVSI_IsClientBot(GenVSI *VSI, GenVSI_CHandle ClientHandle)
 {
 	if (!VSI->IsClientBot)

@@ -24,7 +24,7 @@
 #define BLENDER_H
 
 #include <windows.h>
-#include "genesis.h"
+#include "GENESIS.H"
 
 #ifdef __cplusplus
 	extern "C" {

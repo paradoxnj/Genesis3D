@@ -24,7 +24,7 @@
 #include <assert.h>
 #include "MyFileDlg.h"
 #include "TextInputDlg.h"
-#include "FilePath.h"
+#include "Filepath.h"
 #include "MakeHelp.h"
 #include "motion.h"
 
@@ -153,7 +153,7 @@ void CMotionsDlg::SetupCurrentItem (int Item)
 			case ApjMotion_Max : m_MotionFormat = 0; break;
 			case ApjMotion_Key : m_MotionFormat = 1; break;
 			case ApjMotion_Mot : m_MotionFormat = 2; break;
-#pragma message ("Motions from actors not yet supported")
+#pragma todo ("Motions from actors not yet supported")
 //			case ApjMotion_Act : m_MotionFormat = 3; break;
 			default :
 				assert (0);

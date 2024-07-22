@@ -243,7 +243,7 @@ CompilerErrorEnum Compiler_Compile
 		if (pParams->EntitiesOnly)
 		{
 			#if 1
-				#pragma message ("Should UpdateEntities return a GBSP_RETVAL?")
+				#pragma todo ("Should UpdateEntities return a GBSP_RETVAL?")
 				if (GlobalFHook->GBSP_UpdateEntities ((char *)pParams->Filename, BspFilename))
 				{
 					GbspRslt = GBSP_OK;

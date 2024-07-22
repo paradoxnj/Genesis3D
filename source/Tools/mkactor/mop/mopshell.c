@@ -30,10 +30,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "genesis.h"
+#include "GENESIS.H"
 #include "mkutil.h"
 #include "motion.h"
-#include "ram.h"
+#include "RAM.H"
 #include "pop.h"
 #include "log.h"
 #include "mopshell.h"

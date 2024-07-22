@@ -22,7 +22,7 @@
 #ifndef SCANNER_H
 #define SCANNER_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "iden.h"
 #include <stdio.h>
 

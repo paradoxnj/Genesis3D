@@ -24,7 +24,7 @@
 #include "stdafx.h"
 #include "KeyEditDlg.h"
 #include <assert.h>
-#include "ram.h"
+#include "RAM.H"
 #include "util.h"
 
 #ifdef _DEBUG

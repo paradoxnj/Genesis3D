@@ -195,7 +195,7 @@ SOURCE=..\..\..\Math\Vec3d.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\Math\Vec3d.h
+SOURCE=..\..\..\Math\VEC3D.H
 # End Source File
 # Begin Source File
 
@@ -223,7 +223,7 @@ SOURCE=..\..\..\Math\Xform3d.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\Math\Xform3d.h
+SOURCE=..\..\..\Math\XFORM3D.H
 # End Source File
 # End Group
 # Begin Group "Resource Files"

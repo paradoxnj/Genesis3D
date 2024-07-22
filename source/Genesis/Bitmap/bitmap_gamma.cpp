@@ -26,7 +26,7 @@
 #include "bitmap.__h"
 #include "bitmap_gamma.h"
 #include "pixelformat.h"
-#include "errorlog.h"
+#include "Errorlog.h"
 #include <assert.h>
 #include <math.h>
 
@@ -234,7 +234,7 @@ gePixelFormat_ColorPutter	PutColor;
 					}
 					ptr += xtra;
 				}
-				assert( (int)(ptr) == ( ((int)Bits) + pInfo->Height * pInfo->Stride ) );
+				assert( (uint8)(*ptr) == ( ((uint8)(*(int*)Bits)) + pInfo->Height * pInfo->Stride ) );
 				break;
 			}
 			case 2:
@@ -265,7 +265,7 @@ gePixelFormat_ColorPutter	PutColor;
 					}
 					ptr += xtra;
 				}
-				assert( (int)(ptr) == ( ((int)Bits) + pInfo->Height * pInfo->Stride * 2 ) );
+				assert( (uint16)(*ptr) == ( (uint16)(*(int*)Bits)) + pInfo->Height * pInfo->Stride * 2 );
 				break;
 			}
 
@@ -301,7 +301,7 @@ gePixelFormat_ColorPutter	PutColor;
 					}
 					ptr += xtra;
 				}
-				assert( (int)(ptr) == ( ((int)Bits) + pInfo->Height * pInfo->Stride * 3 ) );
+				assert( (uint8)(*ptr) == ( (uint8)(*(int*)Bits) + pInfo->Height * pInfo->Stride * 3 ) );
 				break;
 			}
 
@@ -333,7 +333,7 @@ gePixelFormat_ColorPutter	PutColor;
 					}
 					ptr += xtra;
 				}
-				assert( (int)(ptr) == ( ((int)Bits) + pInfo->Height * pInfo->Stride * 4 ) );
+				assert( (uint32)(*ptr) == ( (uint32)(*(int*)Bits) + pInfo->Height * pInfo->Stride * 4 ) );
 				break;
 			}
 		}
@@ -357,7 +357,7 @@ gePixelFormat_ColorPutter	PutColor;
 					}
 					ptr += xtra;
 				}
-				assert( (int)(ptr) == ( ((int)Bits) + pInfo->Height * pInfo->Stride ) );
+				assert( (uint8)(*ptr) == ( (uint8)(*(int*)Bits) + pInfo->Height * pInfo->Stride ) );
 				break;
 			}
 			case 2:
@@ -377,7 +377,7 @@ gePixelFormat_ColorPutter	PutColor;
 					}
 					ptr += xtra;
 				}
-				assert( (int)(ptr) == ( ((int)Bits) + pInfo->Height * pInfo->Stride * 2 ) );
+				assert( (uint16)(*ptr) == ( (uint16)(*(int*)Bits) + pInfo->Height * pInfo->Stride * 2 ) );
 				break;
 			}
 
@@ -400,7 +400,7 @@ gePixelFormat_ColorPutter	PutColor;
 					}
 					ptr += xtra;
 				}
-				assert( (int)(ptr) == ( ((int)Bits) + pInfo->Height * pInfo->Stride * 3 ) );
+				assert( (uint8)(*ptr) == ( (uint8)(*(int*)Bits) + pInfo->Height * pInfo->Stride * 3 ) );
 				break;
 			}
 
@@ -421,7 +421,7 @@ gePixelFormat_ColorPutter	PutColor;
 					}
 					ptr += xtra;
 				}
-				assert( (int)(ptr) == ( ((int)Bits) + pInfo->Height * pInfo->Stride * 4 ) );
+				assert( (uint32)(*ptr) == ( (uint32)(*(int*)Bits) + pInfo->Height * pInfo->Stride * 4 ) );
 				break;
 			}
 		}
@@ -499,7 +499,7 @@ uint16 * ptr;
 		}
 	}
 
-	assert( (int)(ptr) == ( ((int)Bits) + pInfo->Height * pInfo->Stride * 2 ) );
+	assert( (uint16)(*ptr) == ( (uint16)(*(int*)Bits) + pInfo->Height * pInfo->Stride * 2 ) );
 
 }
 					
@@ -573,7 +573,7 @@ uint16 * ptr;
 		}
 	}
 
-	assert( (int)(ptr) == ( ((int)Bits) + pInfo->Height * pInfo->Stride * 2 ) );
+	assert( (uint16)(*ptr) == ( (uint16)(*(int*)Bits) + pInfo->Height * pInfo->Stride * 2 ) );
 }
 																	
 void geBitmap_Gamma_Compute_Lut(double Gamma)

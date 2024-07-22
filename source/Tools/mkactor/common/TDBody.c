@@ -23,7 +23,7 @@
 
 #include "tdbody.h"
 
-#include "ram.h"
+#include "RAM.H"
 
 static void TopDownBody_InitNode(TopDownBody* pTDNode, int ThisBone)
 {

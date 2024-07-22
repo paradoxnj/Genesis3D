@@ -26,7 +26,7 @@
 #include <stdlib.h>
 #include <string.h>		// memmove(), strncpy() strncat()
 
-#include "ErrorLog.h"   
+#include "Errorlog.h"   
 
 #define MAX_ERRORS 30  //  ...
 
@@ -138,7 +138,7 @@ GENESISAPI void geErrorLog_AddExplicit(geErrorLog_ErrorClassType Error,
 	geErrorLog_Locals.ErrorCount++;
 
 #ifndef NDEBUG
-#pragma message ("Clean up the OutputDebugStrings in geErrorLog_AddExplicit")
+#pragma todo ("Clean up the OutputDebugStrings in geErrorLog_AddExplicit")
 {
 	char	buff[100];
 	sprintf(buff, "ErrorLog: %d -", Error);

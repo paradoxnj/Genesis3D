@@ -11,7 +11,7 @@
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 
-#include "Genesis.h"
+#include "GENESIS.H"
 #include "MenuItem.h"
 
 

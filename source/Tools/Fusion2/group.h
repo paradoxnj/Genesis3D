@@ -22,8 +22,8 @@
 #ifndef GROUP_H
 #define GROUP_H
 
-#include <BaseType.h>
-#include <GeTypes.h>
+#include <BASETYPE.H>
+#include <getypes.h>
 #include "brush.h"
 #include "entity.h"
 #include "Parse3dt.h"

@@ -25,7 +25,7 @@
 #include <Windows.h>
 
 #include "BSP.h"
-#include "Motion.h"
+#include "motion.h"
 
 #define MAX_MAP_ENTITIES			4096
 #define MAX_MAP_TEXINFO				8192

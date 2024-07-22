@@ -19,17 +19,17 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#include <Assert.h>
+#include <assert.h>
 
-#include "XForm3d.h"
-#include "BaseType.h"
-#include "GBSPFile.h"
-#include "World.h"
+#include "XFORM3D.H"
+#include "BASETYPE.H"
+#include "GBSPFILE.H"
+#include "WORLD.H"
 #include "System.h"
 #include "Plane.h"
 #include "Trace.h"
 #include "ExtBox.h"
-#include "Actor.h"
+#include "actor.h"
 
 #define ON_EPSILON	(0.1f)
 

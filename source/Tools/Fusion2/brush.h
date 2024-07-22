@@ -24,8 +24,8 @@
 
 #include <math.h>
 #include <stdio.h>
-#include "Vec3d.h"
-#include "XForm3d.h"
+#include "VEC3D.H"
+#include "XFORM3D.H"
 #include "face.h"
 #include "box3d.h"
 #include "parse3dt.h"

@@ -20,16 +20,16 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include "node.h"
-#include "basetype.h"
-#include "Vec3d.h"
+#include "BASETYPE.H"
+#include "VEC3D.H"
 #include <assert.h>
 #include "brush.h"
 #include "facelist.h"
 #include "face.h"
-#include "ram.h"
+#include "RAM.H"
 
 
-//TODO:  uncut feature for case
+//#pragma todo:  uncut feature for case
 
 //temp buffers for splitting faces
 //use caution in recursive code that uses these...

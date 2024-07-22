@@ -22,25 +22,25 @@
 #ifndef GE_PTRTYPES_H
 #define GE_PTRTYPES_H
 
-#include "BaseType.h"
+#include "BASETYPE.H"
 
 // System.h
 typedef struct	geEngine			geEngine;
 
-// Light.h
+// LIGHT.H
 typedef struct	Light_LightInfo		Light_LightInfo;
 
-//	Surface.h
+//	SURFACE.H
 typedef	struct	Surf_SurfInfo		Surf_SurfInfo;
 typedef	struct	Surf_TexVert		Surf_TexVert;
 
-// World.h
+// WORLD.H
 typedef	struct	geWorld				geWorld;
 
-// Frustum.h
+// FRUSTUM.H
 typedef	struct	Frustum_Info		Frustum_Info;
 
-// World.h
+// WORLD.H
 typedef struct	World_BSP			World_BSP;
 typedef struct	geWorld_Leaf		geWorld_Leaf;
 
@@ -53,7 +53,7 @@ typedef struct	Mesh_RenderQ		Mesh_RenderQ;
 // Entities.h
 typedef struct	geEntity_EntitySet geEntity_EntitySet;
 
-// User.h
+// USER.H
 typedef struct	User_Info		User_Info;
 typedef struct  gePoly			gePoly;
 

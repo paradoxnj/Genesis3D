@@ -1,7 +1,7 @@
 #ifndef	PATHPT_H
 #define	PATHPT_H
 
-#include "Genesis.h"
+#include "GENESIS.H"
 
 #pragma warning( disable : 4068 )
 

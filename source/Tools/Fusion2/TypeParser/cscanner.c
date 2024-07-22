@@ -27,7 +27,7 @@
 
 #include	"CScanner.h"
 #include	"util.h"
-#include	"ram.h"
+#include	"RAM.H"
 
 #if _MSC_VER
 	// disable "unknown pragma" warning for VC

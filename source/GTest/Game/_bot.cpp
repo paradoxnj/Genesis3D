@@ -2,12 +2,12 @@
 /*    FILE: _bot.c	- Misc bot utilities & support							*/
 /****************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 #include <Math.h>
 #include <Time.h>
 
-#include "Genesis.h"
-#include "Ram.h"
+#include "GENESIS.H"
+#include "RAM.H"
 
 #include "GMain.h"
 

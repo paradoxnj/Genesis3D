@@ -22,15 +22,15 @@
 #include <Windows.h>
 #include <Stdio.h>
 
-#include "Ram.h"
+#include "RAM.H"
 #include "Portals.h"
-#include "GBSPFile.h"
+#include "GBSPFILE.H"
 #include "BSP.h"
 #include "Poly.h"
 #include "Leaf.h"
 #include "Brush2.h"
 
-#include "Vec3d.h"
+#include "VEC3D.H"
 
 int32		 NumLeafClusters;
 

@@ -19,16 +19,16 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#include <Assert.h>
+#include <assert.h>
 #include <Windows.h>
 #include <Math.h>
 
-#include "BaseType.h"
+#include "BASETYPE.H"
 #include "System.h"
-#include "World.h"
-#include "GBSPFile.h"
-#include "Vec3d.h"
-#include "XForm3d.h"
+#include "WORLD.H"
+#include "GBSPFILE.H"
+#include "VEC3D.H"
+#include "XFORM3D.H"
 #include "Plane.h"
 
 //=====================================================================================

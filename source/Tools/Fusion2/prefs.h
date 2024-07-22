@@ -22,7 +22,7 @@
 #ifndef PREFS_H
 #define PREFS_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 
 #ifdef __cplusplus
 	extern "C" {

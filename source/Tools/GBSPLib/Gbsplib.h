@@ -26,7 +26,7 @@
 
 #include "MathLib.h"
 
-#include "Vec3d.h"
+#include "VEC3D.H"
 
 #define GBSP_VERSION_MAJOR	6
 #define GBSP_VERSION_MINOR	0

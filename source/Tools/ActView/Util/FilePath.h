@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  FILEPATH.H                                                                          */
+/*  FILEpath.h                                                                          */
 /*                                                                                      */
 /*  Author: Jim Mischel		                                                            */
 /*  Description:  Commonly used file and path name functions.	                        */
@@ -22,7 +22,7 @@
 #ifndef FILEPATH_H
 #define FILEPATH_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 
 #ifdef __cplusplus
 	extern "C" {

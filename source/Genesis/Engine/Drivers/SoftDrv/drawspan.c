@@ -27,10 +27,10 @@ permission.  http://www.d6.com/users/checker
 */
 
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 #include <math.h>
 
-#include "BaseType.h"
+#include "BASETYPE.H"
 #include "Render.h"
 #include "SoftDrv.h"
 #include "drawspan.h"

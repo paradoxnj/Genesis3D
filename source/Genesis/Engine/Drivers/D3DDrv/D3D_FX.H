@@ -27,7 +27,7 @@
 #include <D3D.h>
 
 #include "D3D_Main.h"
-#include "DCommon.h"
+#include "Dcommon.h"
 
 void D3DSetTexHandle(D3DTEXTUREHANDLE TexHandle);
 void D3DSetTexture(int32 Stage, LPDIRECT3DTEXTURE2 Texture);

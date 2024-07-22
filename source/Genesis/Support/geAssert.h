@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  GEASSERT.H                                                                          */
+/*  GEassert.h                                                                          */
 /*                                                                                      */
 /*  Author:                                                                             */
 /*  Description: Replacement for assert interface                                       */

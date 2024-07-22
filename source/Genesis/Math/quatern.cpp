@@ -21,7 +21,7 @@
 /****************************************************************************************/
 #include <assert.h>
 #include <math.h>
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "quatern.h"
 
 
@@ -499,7 +499,7 @@ void GENESISCC geQuaternion_SlerpNotShortest(
 			QT-> Y = Scale0 * Q0->Y + Scale1 * Q1->Y;
 			QT-> Z = Scale0 * Q0->Z + Scale1 * Q1->Z;
 			QT-> W = Scale0 * Q0->W + Scale1 * Q1->W;
-			//#pragma message (" ack:!!!!!!")
+			//#pragma todo (" ack:!!!!!!")
 			//geQuaternionNormalize(QT); 
 			geQuaternion_Assert( geQuaternion_IsUnit(QT));
 		}

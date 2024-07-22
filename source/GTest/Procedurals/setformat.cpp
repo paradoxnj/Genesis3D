@@ -3,9 +3,9 @@
 #include <assert.h>
 
 #include "SetFormat.h"
-#include "genesis.h"
-#include "errorlog.h"
-#include "ram.h"
+#include "GENESIS.H"
+#include "Errorlog.h"
+#include "RAM.H"
 #include "gebmutil.h"
 
 /**************************************************************/

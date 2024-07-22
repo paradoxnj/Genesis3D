@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  TDBODY.H																			*/
+/*  TDbody.h																			*/
 /*                                                                                      */
 /*  Author: Stephen Balkum	                                                            */
 /*  Description: Build-time internal body hierarchy format.								*/

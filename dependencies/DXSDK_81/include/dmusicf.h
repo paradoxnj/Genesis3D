@@ -781,7 +781,7 @@ LIST
 /* io structures */
 typedef struct _DMUS_IO_BAND_TRACK_HEADER
 {
-    BOOL bAutoDownload;     /* Determines if Auto-Download is enabled. */
+    BOOL bAu#pragma todownload;     /* Determines if Auto-Download is enabled. */
 } DMUS_IO_BAND_TRACK_HEADER;
 
 typedef struct _DMUS_IO_BAND_ITEM_HEADER
@@ -2131,7 +2131,7 @@ typedef struct _DMUS_IO_LYRICSTRACK_EVENTHEADER
 typedef struct _DMUS_IO_PARAMCONTROLTRACK_OBJECTHEADER
 {
     DWORD dwFlags;              /* Reserved.  Must be zero. */
-    GUID guidTimeFormat;        /* Time format to set the object to.  Must be GUID_TIME_REFERNCE or GUID_TIME_MUSIC from medparam.h. */
+    GUID guidTimeFormat;        /* Time format to set the object to.  Must be GUID_TIME_REFERNCE or GUID_TIME_MUSIC from medpaRAM.H. */
     /* Path for finding the object. These fields correspond to the first five parameters of IDirectMusicSegmentState::GetObjectInPath. */
     DWORD dwPChannel;
     DWORD dwStage;
@@ -2152,8 +2152,8 @@ typedef struct _DMUS_IO_PARAMCONTROLTRACK_CURVEINFO
     MUSIC_TIME  mtEndTime;
     float       fltStartValue;
     float       fltEndValue;
-    DWORD       dwCurveType;   /* One of the items from the MP_CURVE_TYPE enum in medparam.h */
-    DWORD       dwFlags;       /* A combination of the MPF_ENVLP_* constants in medparam.h */
+    DWORD       dwCurveType;   /* One of the items from the MP_CURVE_TYPE enum in medpaRAM.H */
+    DWORD       dwFlags;       /* A combination of the MPF_ENVLP_* constants in medpaRAM.H */
 } DMUS_IO_PARAMCONTROLTRACK_CURVEINFO;
 
 /*
@@ -2271,7 +2271,7 @@ typedef struct _DSOUND_IO_DSBUSID
 
 typedef struct _DSOUND_IO_3D
 {
-    GUID guid3DAlgorithm; /* GUID identifying the 3D algorithm to use (defined in dsound.h) */
+    GUID guid3DAlgorithm; /* GUID identifying the 3D algorithm to use (defined in dSOUND.H) */
     DS3DBUFFER ds3d;      /* Initial 3D parameters */
 } DSOUND_IO_3D;
 

@@ -26,7 +26,7 @@
 #include <Stdio.h>
 
 #include "BSP.h"
-#include "GBSPFile.h"
+#include "GBSPFILE.H"
 
 
 typedef struct _VIS_Portal

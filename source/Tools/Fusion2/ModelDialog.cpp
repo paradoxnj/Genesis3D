@@ -26,7 +26,7 @@
 #include "KeyEditDlg.h"
 #include "Resource.h"
 #include <assert.h>
-#include "ram.h"
+#include "RAM.H"
 #include "util.h"
 
 #include "FUSIONDoc.h"
@@ -680,7 +680,7 @@ void CModelDialog::UpdateKeysList
 	m_cbLockOrigin.SetCheck (Model_IsRotationLocked (pModel) ? 1 : 0);
 	m_cbLockOrigin.EnableWindow (Model_GetNumKeys (pModel) > 1);
 
-#pragma message ("Clean this up and move path/motion twiddling to Model.c")
+#pragma todo ("Clean this up and move path/motion twiddling to Model.c")
 	pPath = Model_GetPath (pModel);
 	pMotion = Model_GetMotion (pModel);
 
@@ -1090,7 +1090,7 @@ void CModelDialog::EnableControls
 	)
 // This function called to enable/disable dialog controls
 {
-	#pragma message ("VCR control buttons disabled")
+	#pragma todo ("VCR control buttons disabled")
     // Permamently disable the VCR control buttons...
 	m_Stop.EnableWindow (FALSE);
 	m_rrStart.EnableWindow (FALSE);
@@ -1103,7 +1103,7 @@ void CModelDialog::EnableControls
 	m_RemoveBrushes.EnableWindow (Enable);
 	m_AddModel.EnableWindow (Enable);
 
-	#pragma message ("Edit Model button disabled")
+	#pragma todo ("Edit Model button disabled")
 	m_EditModel.EnableWindow (FALSE);
 
 	m_DeleteModel.EnableWindow (Enable);
@@ -1113,7 +1113,7 @@ void CModelDialog::EnableControls
 	m_DeleteKey.EnableWindow (Enable);
 	m_AddEvent.EnableWindow (Enable);
 
-	#pragma message ("Edit Event button disabled")
+	#pragma todo ("Edit Event button disabled")
 	m_EditEvent.EnableWindow (FALSE);
 
 	m_DeleteEvent.EnableWindow (Enable);
@@ -1144,7 +1144,7 @@ void CModelDialog::EnableControls
     	CurSel = GetCurrentLbKey (&Time, &KeyType);
 
 	    m_EditKey.EnableWindow ((KeyType == KEY_TYPE_KEYFRAME));
-#pragma message ("Editing events disabled")
+#pragma todo ("Editing events disabled")
 //	    m_EditEvent.EnableWindow ((KeyType == KEY_TYPE_EVENT));
 	    m_DeleteKey.EnableWindow ((KeyType == KEY_TYPE_KEYFRAME));
 	    m_DeleteEvent.EnableWindow ((KeyType == KEY_TYPE_EVENT));
@@ -1358,7 +1358,7 @@ void CModelDialog::OnSelchangeKeyslist()
     {
         case KEY_TYPE_EVENT :
 	        m_EditKey.EnableWindow (FALSE);
-#pragma message ("Editing events disabled")
+#pragma todo ("Editing events disabled")
 	        m_EditEvent.EnableWindow (FALSE);
 //	        m_EditEvent.EnableWindow (TRUE);
 	        m_DeleteKey.EnableWindow (FALSE);
@@ -1765,7 +1765,7 @@ void CModelDialog::OnDeleteevent()
 
 void CModelDialog::OnEditevent() 
 {
-	// TODO: Add your control notification handler code here
+	// #pragma todo: Add your control notification handler code here
 	
 }
 
@@ -1854,6 +1854,6 @@ void CModelDialog::OnEditkey()
 
 void CModelDialog::OnEditmodel() 
 {
-	// TODO: Add your control notification handler code here
+	// #pragma todo: Add your control notification handler code here
 	
 }

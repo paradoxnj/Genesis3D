@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  XFARRAY.H																			*/
+/*  xfarray.h																			*/
 /*                                                                                      */
 /*  Author: Mike Sandige	                                                            */
 /*  Description: Array of transforms interface.											*/
@@ -33,7 +33,7 @@
    ...In the name of optimal access to the array.
 */
 
-#include "xform3d.h"
+#include "XFORM3D.H"
 
 typedef struct geXFArray geXFArray;
 

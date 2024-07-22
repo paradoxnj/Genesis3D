@@ -27,7 +27,7 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "swthandle.h"			// geRDriver_THandle
 
 #ifdef __cplusplus

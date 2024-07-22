@@ -8,7 +8,7 @@
 #ifndef GMENU_H
 #define GMENU_H
 
-#include "Genesis.h"
+#include "GENESIS.H"
 
 #include "Menu.h"
 

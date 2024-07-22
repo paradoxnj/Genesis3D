@@ -6,14 +6,14 @@
 /****************************************************************************/
 #include <stdlib.h>
 #include <math.h>
-#include <Assert.h>
+#include <assert.h>
 #include <ctype.h>
 
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>	// for dll stuff
 
-#include "Genesis.h"
-#include "Ram.h"
+#include "GENESIS.H"
+#include "RAM.H"
 #include "Errorlog.h"
 #include "Stdio.h"
 #include "String.h"

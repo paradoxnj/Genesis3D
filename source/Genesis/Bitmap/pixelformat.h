@@ -2,7 +2,7 @@
 #define	PIXELFORMAT_H
 
 /****************************************************************************************/
-/*  PixelFormat.h                                                                       */
+/*  pixelformat.h                                                                       */
 /*                                                                                      */
 /*  Author: Charles Bloom                                                               */
 /*  Description:  The abstract Pixel primitives                                         */
@@ -23,7 +23,7 @@
 /*                                                                                      */
 /****************************************************************************************/
 
-#include "basetype.h"
+#include "BASETYPE.H"
 
 typedef enum		// all supported formats (including shifts)
 {
@@ -100,7 +100,7 @@ typedef struct gePixelFormat_Operations
 
 	int			BytesPerPel;
 	geBoolean	HasPalette;
-	char *		Description;
+	const char *		Description;
 	
 	gePixelFormat_Composer		ComposePixel;
 	gePixelFormat_Decomposer	DecomposePixel;

@@ -22,15 +22,18 @@
 #ifndef GE_ENTITIES_H
 #define GE_ENTITIES_H
 
-#include <Assert.h>
-#include <Windows.h>
+#include <assert.h>
 
-#include "BaseType.h"
+#ifdef _WINDOWS
+#include <Windows.h>
+#endif
+
+#include "BASETYPE.H"
 #include "Errorlog.h"
-#include "Vec3d.h"
+#include "VEC3D.H"
 #include "System.h"
-#include "World.h"
-#include "Ram.h"
+#include "WORLD.H"
+#include "RAM.H"
 
 //=====================================================================================
 //	Defines / Structure defines

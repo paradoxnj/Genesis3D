@@ -20,7 +20,7 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 
 #include "GTHandle.h"
 #include "GCache.h"
@@ -642,7 +642,7 @@ geBoolean DRIVERCC GTHandle_Lock(geRDriver_THandle *THandle, int32 MipLevel, voi
 //==================================================================================
 geBoolean DRIVERCC GTHandle_UnLock(geRDriver_THandle *THandle, int32 MipLevel)
 {
-	#pragma message ("FIXME:  Flags needs to be per-mip!!!")
+	#pragma todo ("FIXME:  Flags needs to be per-mip!!!")
 	
 	//if (!(THandle->Flags & THANDLE_LOCKED))
 	//	return GE_FALSE;

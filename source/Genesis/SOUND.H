@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  Sound.h                                                                             */
+/*  SOUND.H                                                                             */
 /*                                                                                      */
 /*  Author: Brian Adelberg                                                              */
 /*  Description: DirectSound wrapper                                                    */
@@ -22,27 +22,30 @@
 #ifndef	GE_SOUND_H
 #define	GE_SOUND_H
 
+#include "GENESIS.H"
 
 // GENESIS_PUBLIC_APIS
 
 typedef struct geSound_System	geSound_System;
-typedef struct geSound_Def		geSound_Def;
-typedef struct geSound			geSound;
 
+typedef uint32_t				geSound_Def;
+typedef uint32_t				geSound;
 
 #ifdef _INC_WINDOWS
 	// Windows.h must be previously included for this api to be exposed.
 GENESISAPI	geSound_System *geSound_CreateSoundSystem(HWND hWnd);
+else
+GENESISAPI	geSound_System *geSound_CreateSoundSystem(void* hWnd);
 #endif
 
 GENESISAPI	void			geSound_DestroySoundSystem(geSound_System *Sound);
 
 
-GENESISAPI	geSound_Def	   *geSound_LoadSoundDef(geSound_System *SoundS, geVFile *File);
+GENESISAPI	geSound_Def	   	geSound_LoadSoundDef(geSound_System *SoundS, geVFile *File);
 GENESISAPI	void			geSound_FreeSoundDef(geSound_System *SoundS, 
 									geSound_Def *SoundDef);
 
-GENESISAPI	geSound		   *geSound_PlaySoundDef(geSound_System *SoundS, 
+GENESISAPI	geSound		   	geSound_PlaySoundDef(geSound_System *SoundS, 
 									geSound_Def *SoundDef, 
 									geFloat Volume, 
 									geFloat Pan, 
@@ -56,6 +59,7 @@ GENESISAPI	geBoolean		geSound_ModifySound(geSound_System *SoundS,
 									geFloat Frequency);
 GENESISAPI	geBoolean		geSound_SoundIsPlaying(geSound_System *SoundS, geSound *Sound);
 GENESISAPI	geBoolean		geSound_SetMasterVolume( geSound_System *SoundS, geFloat Volume );
+
 
 // GENESIS_PRIVATE_APIS
 

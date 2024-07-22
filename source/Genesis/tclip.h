@@ -23,7 +23,7 @@
 #ifndef GE_TCLIP_H
 #define GE_TCLIP_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "getypes.h"
 #include "bitmap.h"
 #include "engine.h"

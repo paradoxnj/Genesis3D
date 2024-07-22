@@ -17,7 +17,7 @@
 
 #include <Windows.h>
 
-#include "Genesis.h"
+#include "GENESIS.H"
 
 #ifdef __cplusplus
 extern "C" {

@@ -21,6 +21,8 @@
 /****************************************************************************************/
 #include <assert.h>
 
+#ifdef _WINDOWS
+
 //#define INITGUID
 #include <Windows.H>
 #include <objbase.h>
@@ -28,13 +30,13 @@
 #include "CSNetMgr.h"
 #include "NetPlay.h"
 
-#include "BaseType.h"
-#include "Ram.h"
-#include "ErrorLog.h"
+#include "BASETYPE.H"
+#include "RAM.H"
+#include "Errorlog.h"
 
 #include <InitGuid.h>
 
-#pragma message(" some assertions in here would be nice:")
+#pragma todo(" some assertions in here would be nice:")
 
 #define PACKET_HEADER_SIZE				1
 
@@ -651,3 +653,5 @@ GENESISAPI geBoolean GENESISCC geCSNetMgr_SendToClient(geCSNetMgr *M, geCSNetMgr
 	
 	return GE_TRUE;
 }
+
+#endif

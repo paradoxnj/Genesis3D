@@ -28,7 +28,7 @@
 //   Triangle Rasterizer
 //
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "rop.h"
 #include "swthandle.h"			// geRDriver_THandle
 

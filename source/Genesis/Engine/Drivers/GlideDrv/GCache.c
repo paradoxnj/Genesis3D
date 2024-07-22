@@ -21,11 +21,11 @@
 /****************************************************************************************/
 #include <Windows.h>
 #include <Stdio.h>
-#include <Assert.h>
+#include <assert.h>
 
 #include "GCache.h"
 #include "GMemMGr.h"
-#include "DCommon.h"
+#include "Dcommon.h"
 #include "Glide.h"
 
 #define							GCACHE_WRITELOG

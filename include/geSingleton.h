@@ -20,7 +20,7 @@
 #pragma once
 
 #include <assert.h>
-#include "BaseType.h"
+#include "BASETYPE.H"
 
 namespace g3d {
 

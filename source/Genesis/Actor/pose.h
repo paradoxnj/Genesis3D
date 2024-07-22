@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  POSE.H																				*/
+/*  pose.h																				*/
 /*                                                                                      */
 /*  Author: Mike Sandige	                                                            */
 /*  Description: Bone hierarchy interface.								.				*/
@@ -45,8 +45,8 @@
 */
 
 #include <stdio.h>
-#include "Motion.h"
-#include "XFArray.h"
+#include "motion.h"
+#include "xfarray.h"
 
 
 #define GE_POSE_ROOT_JOINT (-1)

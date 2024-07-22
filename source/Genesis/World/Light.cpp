@@ -19,21 +19,25 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#include <Assert.h>
+#include <assert.h>
+
+#ifdef _WINDOWS
 #include <Windows.h>
-#include <Math.h>
+#endif
 
-#include "BaseType.h"
-#include "Ram.h"
+#include <math.h>
+
+#include "BASETYPE.H"
+#include "RAM.H"
 #include "System.h"
-#include "Vec3d.h"
-#include "Light.h"
-#include "Surface.h"
-#include "GBSPFile.h"
-#include "Plane.h"
-#include "World.h"
+#include "VEC3D.H"
+#include "LIGHT.H"
+#include "SURFACE.H"
+#include "GBSPFILE.H"
+#include "PLANE.h"
+#include "WORLD.H"
 
-#include "Trace.h"
+#include "TRACE.H"
 
 #define LIGHT_FRACT		8
 //=====================================================================================
@@ -94,8 +98,8 @@ static void SetupWavyColorLight1(DRV_RGB *light1, DRV_RGB *RGBM, int32 lw, int32
 static void SetupWavyColorLight2(DRV_RGB *light1, DRV_RGB *RGBM, int32 lw, int32 lh);
 static void SetupColorLight1(DRV_RGB *light1, DRV_RGB *RGBM, int32 lw, int32 lh, float intensity);
 static void SetupColorLight2(DRV_RGB *light1, DRV_RGB *RGBM, int32 lw, int32 lh, float intensity);
-static BOOL CombineDLightWithRGBMap(int32 *LightData, Light_DLight *Light, GFX_Face *Face, Surf_SurfInfo *SInfo);
-static BOOL CombineDLightWithRGBMapWithShadow(int32 *LightData, Light_DLight *Light, GFX_Face *Face, Surf_SurfInfo *SInfo);
+static geBoolean CombineDLightWithRGBMap(int32 *LightData, Light_DLight *Light, GFX_Face *Face, Surf_SurfInfo *SInfo);
+static geBoolean CombineDLightWithRGBMapWithShadow(int32 *LightData, Light_DLight *Light, GFX_Face *Face, Surf_SurfInfo *SInfo);
 static void BuildLightLUTS(geEngine *Engine);
 static void SetupDynamicLight_r(Light_DLight *pLight, geVec3d *Pos, int32 LNum, int32 Node);
 
@@ -746,7 +750,7 @@ static geBoolean FogLightmap2(geFog *Fog, int32 *LightData, GFX_Face *Face, Surf
 //=====================================================================================
 //	Light_SetupLightmap
 //=====================================================================================
-void Light_SetupLightmap(DRV_LInfo *LInfo, BOOL *Dynamic)
+void Light_SetupLightmap(DRV_LInfo *LInfo, geBoolean *Dynamic)
 {
 	int32			LightOffset;
 	geBoolean		IsDyn, HasDLight;
@@ -1033,9 +1037,9 @@ static void AddLightType1(int32 *LightDest, uint8 *LightData, int32 lw, int32 lh
 //=====================================================================================
 //	CombineDLightWithRGBMap
 //=====================================================================================
-static BOOL CombineDLightWithRGBMap(int32 *LightData, Light_DLight *Light, GFX_Face *Face, Surf_SurfInfo *SInfo)
+static geBoolean CombineDLightWithRGBMap(int32 *LightData, Light_DLight *Light, GFX_Face *Face, Surf_SurfInfo *SInfo)
 {
-	BOOL		Hit;
+	geBoolean	Hit;
 	float		Radius, Dist;
 	GFX_Plane	*Plane;
 	GFX_TexInfo	*TexInfo;
@@ -1134,9 +1138,9 @@ static BOOL CombineDLightWithRGBMap(int32 *LightData, Light_DLight *Light, GFX_F
 //=====================================================================================
 //	CombineDLightWithRGBMap
 //=====================================================================================
-static BOOL CombineDLightWithRGBMapWithShadow(int32 *LightData, Light_DLight *Light, GFX_Face *Face, Surf_SurfInfo *SInfo)
+static geBoolean CombineDLightWithRGBMapWithShadow(int32 *LightData, Light_DLight *Light, GFX_Face *Face, Surf_SurfInfo *SInfo)
 {
-	BOOL		Hit;
+	geBoolean	Hit;
 	float		Radius, Dist;
 	GFX_Plane	*Plane;
 	GFX_TexInfo	*TexInfo;

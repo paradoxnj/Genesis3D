@@ -25,14 +25,14 @@
 #include <windows.h>
 #pragma warning(default : 4201 4214 4115; disable : 4514 4244)
 #include <stdio.h> 
-#include <Assert.h>
+#include <assert.h>
 
 #include "SoftDrv.h"
 #include "CPUInfo.h"
-#include "DCommon.h"
+#include "Dcommon.h"
 #include "SpanBuffer.h"		
 #include "Span.h"
-#include "ram.h"
+#include "RAM.H"
 
 #include "SWTHandle.h"
 #include "Display.h"
@@ -40,7 +40,7 @@
 #include "DrawDecal.h"
 
 #ifdef GENESIS_VERSION_2
-#include "errorlog.h"
+#include "Errorlog.h"
 #else
 #define geErrorLog_AddString(Error,xx,yy) 
 #endif
@@ -96,7 +96,7 @@ void SoftDrv_ClearZBuffer(DRV_Window *Window)
 	ZBSize = (Window->Width*Window->Height)<<1;
 
 
-#pragma message ("clear z buffer to biggest z.  was 0.")
+#pragma todo ("clear z buffer to biggest z.  was 0.")
 	memset(SoftDrv_Internals.ZBuffer.BitPtr[0], 0xFF, ZBSize);
 
 }
@@ -180,7 +180,7 @@ geBoolean DRIVERCC SoftDrv_Init(DRV_DriverHook *Hook)
 	// hook->width, hook->height are ignored...
 	uint16	*ZBuffer=NULL;
 
-	#pragma message ("fix to:") //geBoolean DRIVERCC SoftDrv_Init(Hwnd, char *DriverString, int Height, int Width, int BitsPerPixel, uint32 Flags)
+	#pragma todo ("fix to:") //geBoolean DRIVERCC SoftDrv_Init(Hwnd, char *DriverString, int Height, int Width, int BitsPerPixel, uint32 Flags)
 
 	if (SoftDrv_DisplayInfoTable_Create(&(SoftDrv_Internals), GE_TRUE)==GE_FALSE)
 		{
@@ -320,7 +320,7 @@ geBoolean DRIVERCC SoftDrv_Init(DRV_DriverHook *Hook)
 		}
 	}
 	
-#pragma message ("set up DRV_TLHandle for display and zbuffer")
+#pragma todo ("set up DRV_TLHandle for display and zbuffer")
 
 	
 	// assume the window is active:
@@ -715,7 +715,7 @@ geBoolean DRIVERCC SoftDrv_RenderGouraudPoly(DRV_TLVertex *Pnts, S32 NumPoints, 
 				}
 			Pnts2[0].a = Pnts[0].a;
 			#ifdef GENESIS_VERSION_2
-				#pragma message ("temporary:")
+				#pragma todo ("temporary:")
 				if( Pnts2[0].x < 0 )	Pnts2[0].x = 0 ;
 				if( Pnts2[1].x < 0 )	Pnts2[1].x = 0 ;
 				if( Pnts2[2].x < 0 )	Pnts2[2].x = 0 ;
@@ -761,7 +761,7 @@ void SoftDrv_LightMapSetupCallback(TRaster_Lightmap *LM)
 {
 	geBoolean Dynamic;
 	SOFTDRV.SetupLightmap(SoftDrv_TempLInfo, &Dynamic);
-	#pragma message ("SetupLightmap callback: can it fail?")
+	#pragma todo ("SetupLightmap callback: can it fail?")
 
 	{
 		float MipScale;
@@ -897,7 +897,7 @@ geBoolean DRIVERCC SoftDrv_RenderWorldPoly(	DRV_TLVertex		*Pnts,
 				Pnts2[2].u = (Pnts2[2].u*ScaleU+ShiftU)*OOW;
 				Pnts2[2].v = (Pnts2[2].v*ScaleV+ShiftV)*OOH;
 				#ifdef GENESIS_VERSION_2
-					#pragma message ("temporary:")
+					#pragma todo ("temporary:")
 					if( Pnts2[0].x < 0 )	Pnts2[0].x = 0 ;
 					if( Pnts2[1].x < 0 )	Pnts2[1].x = 0 ;
 					if( Pnts2[2].x < 0 )	Pnts2[2].x = 0 ;
@@ -967,7 +967,7 @@ geBoolean DRIVERCC SoftDrv_RenderMiscTexturePoly(DRV_TLVertex *Pnts, S32 NumPoin
 				}
 			Pnts2[0].a = Pnts[0].a;
 			#ifdef GENESIS_VERSION_2
-				#pragma message ("temporary:")
+				#pragma todo ("temporary:")
 				if( Pnts2[0].x < 0 )	Pnts2[0].x = 0 ;
 				if( Pnts2[1].x < 0 )	Pnts2[1].x = 0 ;
 				if( Pnts2[2].x < 0 )	Pnts2[2].x = 0 ;

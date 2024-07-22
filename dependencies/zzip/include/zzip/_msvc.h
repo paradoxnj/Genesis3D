@@ -74,7 +74,7 @@
    */
 /* #undef ZZIP_HAVE_SYS_NDIR_H */
 
-/* Define to 1 if you have the <sys/param.h> header file. */
+/* Define to 1 if you have the <sys/paRAM.H> header file. */
 /* #undef ZZIP_HAVE_SYS_PARAM_H */
 
 /* Define to 1 if you have the <sys/stat.h> header file. */

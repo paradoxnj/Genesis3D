@@ -1,7 +1,7 @@
 #ifndef	BOTACTOR_H
 #define	BOTACTOR_H
 
-#include	"genesis.h"
+#include	"GENESIS.H"
 
 #pragma warning( disable : 4068 )
 

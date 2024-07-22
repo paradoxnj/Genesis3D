@@ -27,10 +27,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "genesis.h"
+#include "GENESIS.H"
 #include "make.h"
 #include "mkutil.h"
-#include "ram.h"
+#include "RAM.H"
 
 #define MAX_PATH 260
 

@@ -24,7 +24,7 @@
 #include <assert.h>
 
 #include "SoftDrv.h"
-#include "DCommon.h"
+#include "Dcommon.h"
 #include "Render.h"
 #include "Scene.h"
 #include "Span.h"

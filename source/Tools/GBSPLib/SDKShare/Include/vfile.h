@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  VFILE.H                                                                             */
+/*  vfile.h                                                                             */
 /*                                                                                      */
 /*  Author: Eli Boling                                                                  */
 /*  Description: Virtual file interface                                                 */
@@ -26,7 +26,7 @@
 extern "C" {
 #endif
 
-#include	"basetype.h"
+#include	"BASETYPE.H"
 
 typedef	struct	geVFile			geVFile;
 

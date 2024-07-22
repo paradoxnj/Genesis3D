@@ -20,21 +20,21 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 #include <Math.h>
 
 #include "Mathlib.h"
 #include "Poly.h"
 #include "BSP.h"
-#include "GBSPFile.h"
+#include "GBSPFILE.H"
 #include "Map.h"
 #include "Portals.h"
 #include "Texture.h"
 #include "Fill.h"
 #include "Brush2.h"
 
-#include "Vec3d.h"
-#include "Ram.h"
+#include "VEC3D.H"
+#include "RAM.H"
 
 #define USE_VOLUMES
 

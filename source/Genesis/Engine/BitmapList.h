@@ -22,11 +22,14 @@
 #ifndef BITMAPLIST_H
 #define BITMAPLIST_H
 
-#include "GeTypes.h"
-#include "DCommon.h"
-#include "Bitmap.h"
+#include <list>
+#include "getypes.h"
+#include "Dcommon.h"
+#include "bitmap.h"
 
-typedef struct BitmapList		BitmapList;
+typedef std::list<geBitmap*>	BitmapList;
+
+/*typedef struct BitmapList		BitmapList;
 
 BitmapList *BitmapList_Create(void);
 geBoolean BitmapList_Destroy(BitmapList *pList);
@@ -47,5 +50,6 @@ geBoolean BitmapList_Has(BitmapList *pList, geBitmap *Bitmap);
 int			BitmapList_CountMembers(BitmapList *pList);
 int			BitmapList_CountMembersAttached(BitmapList *pList);
 #endif
+*/
 
 #endif

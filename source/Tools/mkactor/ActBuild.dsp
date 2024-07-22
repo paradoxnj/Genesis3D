@@ -227,7 +227,7 @@ SOURCE=.\common\TDBody.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\common\TDBody.h
+SOURCE=.\common\TDbody.h
 # End Source File
 # Begin Source File
 
@@ -280,7 +280,7 @@ SOURCE=.\AStudio\Util\FilePath.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\AStudio\Util\FilePath.h
+SOURCE=.\AStudio\Util\Filepath.h
 # End Source File
 # Begin Source File
 

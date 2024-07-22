@@ -27,7 +27,7 @@
 #endif
 
 
-#include "genesis.h"
+#include "GENESIS.H"
 
 typedef struct tag_AProject	AProject;
 

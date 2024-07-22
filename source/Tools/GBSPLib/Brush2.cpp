@@ -28,9 +28,9 @@
 #include "BSP.h"
 #include "Texture.h"
 
-#include "VFile.h"
-#include "Vec3d.h"
-#include "Ram.h"
+#include "vfile.h"
+#include "VEC3D.H"
+#include "RAM.H"
 
 #define BSP_BRUSH_SIZE(s) ((sizeof(GBSP_Brush)-sizeof(GBSP_Side[NUM_BRUSH_DEFAULT_SIDES]))+(sizeof(GBSP_Side)*(s)));
 #define MAP_BRUSH_SIZE(s) ((sizeof(MAP_Brush)-sizeof(GBSP_Side[NUM_BRUSH_DEFAULT_SIDES]))+(sizeof(GBSP_Side)*(s)));

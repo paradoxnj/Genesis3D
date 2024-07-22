@@ -22,8 +22,8 @@
 #ifndef BOX3D_H
 #define BOX3D_H
 
-#include "basetype.h"
-#include "vec3d.h"
+#include "BASETYPE.H"
+#include "VEC3D.H"
 
 #ifdef __cplusplus
 	extern "C" {

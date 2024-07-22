@@ -20,13 +20,13 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
-#include <Assert.h>
+#include <assert.h>
 
 #include "SpanBuffer.h"
-#include "Ram.h"
+#include "RAM.H"
 
 #ifdef GENESIS_VERSION_2
-#include "errorlog.h"
+#include "Errorlog.h"
 #else
 #define geErrorLog_AddString(Error,xx,yy) 
 #endif
@@ -151,7 +151,7 @@ int SpanBuffer_ClipAndAdd(int Line, int LeftStart, int Width)
 	int Left = LeftStart;
 	int Right = LeftStart + Width -1;  
 	int SegmentCount = 0;
-	#pragma message("fix this off by one problem here and in the engine!")
+	#pragma todo("fix this off by one problem here and in the engine!")
 	if (Line>=SpanBuffer_LineCount)
 		return 0;
 

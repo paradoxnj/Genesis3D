@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  Bitmap.h                                                                            */
+/*  bitmap.h                                                                            */
 /*                                                                                      */
 /*  Author: Charles Bloom                                                               */
 /*  Description:  Abstract Bitmap system                                                */
@@ -24,7 +24,7 @@
 #ifndef BITMAP_H
 #define BITMAP_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "pixelformat.h"
 #include "vfile.h"
 

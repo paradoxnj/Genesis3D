@@ -2,7 +2,7 @@
 /*    FILE: Bot.c														*/
 /****************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 #include <Math.h>
 
 #include "GMain.h"

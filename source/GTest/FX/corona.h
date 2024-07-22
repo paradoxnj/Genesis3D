@@ -1,7 +1,7 @@
 #ifndef	CORONA_H
 #define	CORONA_H
 
-#include	"genesis.h"
+#include	"GENESIS.H"
 
 #pragma warning( disable : 4068 )
 

@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  Frustum.h                                                                           */
+/*  FRUSTUM.H                                                                           */
 /*                                                                                      */
 /*  Author: John Pollard                                                                */
 /*  Description: Frustum creation/clipping                                              */
@@ -22,15 +22,15 @@
 #ifndef GE_FRUSTUM_H
 #define GE_FRUSTUM_H
 
-#include <Assert.h>
+#include <assert.h>
 //#include <Windows.h>
 
-#include "BaseType.h"
-#include "GBSPFile.h"
-#include "Vec3d.h"
-#include "Camera.h"
-#include "XForm3d.h"
-#include "Surface.h"
+#include "BASETYPE.H"
+#include "GBSPFILE.H"
+#include "VEC3D.H"
+#include "CAMERA.H"
+#include "XFORM3D.H"
+#include "SURFACE.H"
 
 #define MAX_FCP						32			// Max ClipPlanes for frustum...
 

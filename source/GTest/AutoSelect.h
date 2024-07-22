@@ -15,7 +15,7 @@
 #ifndef AUTOSELECT_H
 #define AUTOSELECT_H
 
-#include "genesis.h"
+#include "GENESIS.H"
 #include "ModeList.h"
 
 #ifdef __cplusplus

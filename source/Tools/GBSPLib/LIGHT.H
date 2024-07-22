@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  Light.h                                                                             */
+/*  LIGHT.H                                                                             */
 /*                                                                                      */
 /*  Author: John Pollard                                                                */
 /*  Description: Lights a BSP                                                           */
@@ -25,7 +25,7 @@
 #include <Windows.h>
 #include <Stdio.h>
 
-#include "GBSPfile.h"
+#include "GBSPFILE.H"
 #include "GBSPLib.h"				// Lightparms
 #include "BSP.h"
 

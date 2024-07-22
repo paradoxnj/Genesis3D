@@ -35,9 +35,10 @@ List_Ram can still be as high as 30% of the time!
 #include <string.h>
 #include "list.h"
 #include "mempool.h"
-#include "ram.h"
+#include "RAM.H"
 #include "crc32.h"
 
+#ifdef _WINDOWS
 /**********************************/
 // Timer Stuff
 
@@ -933,7 +934,7 @@ the cost of adding N nodes to hash of size M is only O(N + M*M)
 
 #ifdef SAFE_HASH_DEBUG //{
 
-#pragma message("using safe debug hash implementation")
+#pragma todo("using safe debug hash implementation")
 
 struct Hash
 {
@@ -1429,3 +1430,5 @@ geBoolean List_Stop(void)
 	}
 	return GE_TRUE;
 }
+
+#endif

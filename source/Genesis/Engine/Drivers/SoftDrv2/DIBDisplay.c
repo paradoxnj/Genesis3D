@@ -34,7 +34,7 @@
 
 
 #ifdef GENESIS_VERSION_2
-#include "errorlog.h"
+#include "Errorlog.h"
 #else
 #define geErrorLog_AddString(Error,xx,yy) 
 #define geErrorLog_Add(Error,xx) 
@@ -639,7 +639,7 @@ DIBDisplay *DIBDisplay_Create	(	HWND hWindow,
 	assert ( window_rect.left  == 0 );
 	assert ( window_rect.top == 0 );
 	
-	#pragma message ("getting size from window!")
+	#pragma todo ("getting size from window!")
 	D->Size_X = ((window_rect.right  - window_rect.left)+3)&~3;
 	D->Size_Y = (window_rect.bottom - window_rect.top);
 

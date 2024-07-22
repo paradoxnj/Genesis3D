@@ -21,7 +21,7 @@
 /****************************************************************************************/
 #include "stdafx.h"
 #include "MakeHelp.h"
-#include "FilePath.h"
+#include "Filepath.h"
 #include <string.h>
 #include "resource.h"
 #include <assert.h>
@@ -79,7 +79,7 @@ extern "C" void MakeHelp_Printf (const char *fmt, ...)
 		if (TheMessage != NULL)
 		{
 			lstrcpy (TheMessage, buf);
-#pragma message ("This probably should use PostThreadMessage.")
+#pragma todo ("This probably should use PostThreadMessage.")
 			GlobalMessagesWindow->PostMessage (WM_USER_COMPILE_MESSAGE, 0, (LPARAM)TheMessage);
 		}
 	}

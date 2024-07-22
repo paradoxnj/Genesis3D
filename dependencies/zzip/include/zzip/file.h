@@ -38,7 +38,7 @@
 #endif
 
 #ifdef ZZIP_HAVE_SYS_PARAM_H
-#include <sys/param.h> /* PATH_MAX */
+#include <sys/paRAM.H> /* PATH_MAX */
 #endif
 
 #ifndef PATH_MAX

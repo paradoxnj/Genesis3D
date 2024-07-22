@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  VFILE.H                                                                             */
+/*  vfile.h                                                                             */
 /*                                                                                      */
 /*  Author: Eli Boling                                                                  */
 /*  Description: Virtual file interface                                                 */
@@ -22,7 +22,7 @@
 #ifndef	VFILE_H
 #define	VFILE_H
 
-#include	"basetype.h"
+#include	"BASETYPE.H"
 
 typedef	struct	geVFile			geVFile;
 

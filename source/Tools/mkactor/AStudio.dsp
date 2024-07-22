@@ -289,7 +289,7 @@ SOURCE=.\AStudio\BodyDlg.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\AStudio\Util\FilePath.h
+SOURCE=.\AStudio\Util\Filepath.h
 # End Source File
 # Begin Source File
 

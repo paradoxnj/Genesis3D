@@ -13,7 +13,7 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 #include <Math.h>
 
 #include "GMain.h"
@@ -26,7 +26,7 @@ void		GenVS_Error(const char *Msg, ...);  //oh, dear.
 
 //#define FLY_MODE
 
-// FIXME:  Take out Genesis.h dependency.  Replace with server API code that sits on top
+// FIXME:  Take out GENESIS.H dependency.  Replace with server API code that sits on top
 //		   of Genesis calls...
 
 geBoolean		Client_Control(GenVSI *VSI, void *PlayerData, float Time);
@@ -501,7 +501,7 @@ geBoolean CheckVelocity(GenVSI *VSI, void *PlayerData, float BounceScale, geBool
 	boundingBoxScale.Y = (float)fabs(0.5f * (Maxs.Y - Mins.Y));
 	boundingBoxScale.Z = (float)fabs(0.5f * (Maxs.Z - Mins.Z));
 
-	#pragma message ("Use: GenVSI_GetNextPlayer here...")
+	#pragma todo ("Use: GenVSI_GetNextPlayer here...")
 	Set = NULL;
 	Set = geWorld_GetEntitySet(World, "ForceField");
 	if (Set != NULL)
@@ -526,7 +526,7 @@ geBoolean CheckVelocity(GenVSI *VSI, void *PlayerData, float BounceScale, geBool
 			
 			geVec3d_Subtract(&boundingBoxCenter, &ff->Origin, &forceFieldCenterToBBCenter);
 			geVec3d_Copy(&forceFieldCenterToBBCenter, &forceDir);
-			#pragma message("does geVec3d_Normalize() return length?")
+			#pragma todo("does geVec3d_Normalize() return length?")
 			geVec3d_Normalize(&forceDir);
 
 			distToFFCenter = geVec3d_Length(&forceFieldCenterToBBCenter);
@@ -617,7 +617,7 @@ geBoolean CheckVelocity(GenVSI *VSI, void *PlayerData, float BounceScale, geBool
 		if (Collision.Model)
 		{
 			GPlayer		*Target;
-			#pragma message ("Use: GenVSI_ModelToPlayer...")
+			#pragma todo ("Use: GenVSI_ModelToPlayer...")
 			Target = (GPlayer*)geWorld_ModelGetUserData(Collision.Model);
 			if (Target && Target->Trigger && Target->ViewFlags & VIEW_TYPE_PHYSOB)
 				Target->Trigger(VSI, Target, Player, (void*)&Collision);
@@ -1534,7 +1534,7 @@ static void PhysicsObject_Spawn(GenVSI *VSI, void *PlayerData, void *ClassData, 
 	
 	geWorld_ModelGetBBox(World, po->Model, &Mins, &Maxs);
 
-	#pragma message("Mins / maxs should be OK in the next build")
+	#pragma todo("Mins / maxs should be OK in the next build")
 	
 	po->stateInfo = gePhysicsObject_Create(&po->Origin,
 																po->mass,

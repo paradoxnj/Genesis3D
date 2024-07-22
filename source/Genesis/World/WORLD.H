@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  World.h                                                                             */
+/*  WORLD.H                                                                             */
 /*                                                                                      */
 /*  Author: John Pollard                                                                */
 /*  Description: Code to render the world, and distribute work to other modules         */
@@ -22,20 +22,20 @@
 #ifndef GE_WORLD_H
 #define GE_WORLD_H
 
-#include "ErrorLog.h"
-#include "PtrTypes.h"
-#include "Genesis.h"
-#include "GBSPFile.h"
-#include "Motion.h"
-#include "Surface.h"
+#include "Errorlog.h"
+#include "PTRTYPES.H"
+#include "GENESIS.H"
+#include "GBSPFILE.H"
+#include "motion.h"
+#include "SURFACE.H"
 #include "Fog.h"
 #include "WBitmap.h"
-#include "User.h"
-#include "Light.h"
+#include "USER.H"
+#include "LIGHT.H"
 
-#include "Bitmaplist.h"
+#include "BitmapList.h"
 
-#include "Actor.h"			
+#include "actor.h"			
 
 #define MAX_MODELS	256
 
@@ -220,7 +220,7 @@ typedef struct geWorld
 	geFog				*VisibleFog[MAX_VISIBLE_FOG];		// List of visible fog for this frame
 	int32				NumVisibleFog;
 
-	BitmapList			*AttachedBitmaps;						
+	BitmapList			AttachedBitmaps;						
 
 	geXForm3d			LastCameraXForm;
 

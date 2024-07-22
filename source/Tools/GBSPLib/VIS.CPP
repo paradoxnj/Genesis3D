@@ -24,11 +24,11 @@
 
 #include "Utils.h"
 #include "Vis.h"
-#include "GBSPFile.h"
+#include "GBSPFILE.H"
 #include "Poly.h"
 #include "Bsp.h"
 
-#include "Ram.h"
+#include "RAM.H"
 
 int32		NumVisPortals;					// Total portals
 int32		NumVisPortalBytes;				// Total portals / 8

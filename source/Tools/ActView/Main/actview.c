@@ -31,12 +31,12 @@
 #include <stdio.h>
 #include <io.h>
 #include <math.h>
-#include "genesis.h"
+#include "GENESIS.H"
 #include "rcstring.h"
 #include "resource.h"
 #include "InstCheck.h"
-#include "FilePath.h"
-#include "ram.h"
+#include "Filepath.h"
+#include "RAM.H"
 #include <assert.h>
 #include "drvlist.h"
 #include "about.h"
@@ -45,7 +45,7 @@
 
 #pragma warning (disable:4514)		// unreferenced inline function
 
-#pragma message ("Need to disable buttons when no actor selected")
+#pragma todo ("Need to disable buttons when no actor selected")
 
 #define	USER_ALL	0xffffffff
 

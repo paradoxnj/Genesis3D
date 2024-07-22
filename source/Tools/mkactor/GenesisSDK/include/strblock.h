@@ -2,7 +2,7 @@
 #ifndef GE_STRBLOCK_H
 #define GE_STRBLOCK_H
 
-#include "basetype.h"	// geBoolean
+#include "BASETYPE.H"	// geBoolean
 #include "vfile.h"
 
 #ifdef __cplusplus

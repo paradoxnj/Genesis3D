@@ -24,7 +24,7 @@
 #ifndef DisplayModeInfo_H
 #define DisplayModeInfo_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 
 #ifdef __cplusplus
 extern "C" {

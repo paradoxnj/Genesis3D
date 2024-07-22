@@ -17,14 +17,14 @@
 
 #include <Windows.h>
 
-#include "Genesis.h"
+#include "GENESIS.H"
 #include "Console.h"
 
 // Effects
 #include "Fx\\Fx.h"
 #include "Fx\\Corona.h"
 #include "Fx\\Electric.h"
-#include "Fx\\DynLight.h"
+#include "Fx\\DynLIGHT.H"
 #include "Fx\\ModelCtl.h"
 
 #include "VidMode.h"

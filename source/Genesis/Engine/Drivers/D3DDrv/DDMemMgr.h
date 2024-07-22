@@ -23,9 +23,9 @@
 #define DDMEMMGR_H
 
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 
-#include "BaseType.h"
+#include "BASETYPE.H"
 
 #ifdef __cplusplus
 extern "C" {

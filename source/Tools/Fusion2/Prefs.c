@@ -20,7 +20,7 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include "prefs.h"
-#include "ram.h"
+#include "RAM.H"
 #include "util.h"
 #include <assert.h>
 #pragma warning(disable : 4201 4214 4115 4514)

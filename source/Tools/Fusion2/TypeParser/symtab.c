@@ -26,7 +26,7 @@
 #include	"iden.h"
 #include	"type.h"
 #include	"symtab.h"
-#include	"ram.h"
+#include	"RAM.H"
 
 SymTab *	SymTab_Create(void)
 {

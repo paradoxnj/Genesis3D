@@ -24,7 +24,7 @@
 #include "MyFileDlg.h"
 #include "TextInputDlg.h"
 #include "MakeHelp.h"
-#include "FilePath.h"
+#include "Filepath.h"
 
 /////////////////////////////////////////////////////////////////////////////
 // CMaterialsDlg property page

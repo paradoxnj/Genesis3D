@@ -27,9 +27,9 @@
 ***
 *
 
-see @@ for urgent todos !
-see <> for todos
-see {} for notes/long-term-todos
+see @@ for urgent #pragma todos !
+see <> for #pragma todos
+see {} for notes/long-term-#pragma todos
 
 -------
 
@@ -58,14 +58,15 @@ see {} for notes/long-term-todos
 #include	<string.h>
 #include	<algorithm>
 
-#include	"basetype.h"
+#include	"BASETYPE.H"
 #include	"getypes.h"
-#include	"ram.h"
+#include	"RAM.H"
 
 #include	"vfile.h"
-#include	"ErrorLog.h"
-#include	"Log.h"
+#include	"Errorlog.h"
+#include	"log.h"
 #include	"mempool.h"
+	// use maxIterations == 0 or -1 for infinity
 
 #include	"bitmap.h"
 #include	"bitmap._h"
@@ -108,8 +109,10 @@ void geBitmap_Start(void)
 	{
 		BitmapPool = MemPool_Create(sizeof(geBitmap),100,100);
 		assert(BitmapPool);
+		#ifdef _WINDOWS
 		Palettize_Start();
 		PalCreate_Start();
+		#endif
 	}
 	BitmapInit_RefCount ++;
 }
@@ -122,8 +125,10 @@ void geBitmap_Stop(void)
 	{
 		assert(BitmapPool);
 		MemPool_Destroy(&BitmapPool);
+		#ifdef _WINDOWS
 		Palettize_Stop();
 		PalCreate_Stop();
+		#endif
 	}
 }
 
@@ -1179,7 +1184,7 @@ const gePixelFormat_Operations *seekops,*pfops;
 		we use fuzzy logic : we apply rating to all the matches and then choose
 		the one with the best rating.
 
-		possible todos :
+		possible #pragma todos :
 			1. be aware of memory use and format-conversion times, and penalize
 				or favor formats accordingly
 
@@ -2043,7 +2048,7 @@ int SaveMaxMip;
 		//	this is really bad when _BlitData is a wavelet decompress !
 		// {} try this : decompress to a buffer in memory (on a thread)
 		//	then THandle_Lock and just do a (prefetching) memcpy
-		//#pragma message("Bitmap : minimize time spent in a THandle_Lock!")
+		//#pragma todo("Bitmap : minimize time spent in a THandle_Lock!")
 
 		if ( ! Bmp->Driver->THandle_Lock(SaveDriverHandle,mip,&DstBits) )
 		{
@@ -2436,7 +2441,7 @@ int fmxtra,tow,toh,toxtra,fmw,fmh,fmstep,x,y,bpp;
 		return GE_FALSE;
 	}
 
-	// {} todo : average for some special cases (16rgb,24rgb,32rgb)
+	// {} #pragma todo : average for some special cases (16rgb,24rgb,32rgb)
 
 	bpp = gePixelFormat_BytesPerPel(FmInfo->Format);
 
@@ -2535,7 +2540,7 @@ int fmxtra,tow,toh,toxtra,fmw,fmh,fmstep,x,y,bpp;
 	uint8 *fmp,*fmp2,*top;
 	uint8 paldata[768],*palptr;
 	int p;
-	palInfo * PalInfo;
+	palInfo * PalInfo = nullptr;
 
 		assert(bpp == 1);
 		assert(FmInfo->Palette);
@@ -2543,8 +2548,10 @@ int fmxtra,tow,toh,toxtra,fmw,fmh,fmstep,x,y,bpp;
 		if ( ! geBitmap_Palette_GetData(FmInfo->Palette,paldata,GE_PIXELFORMAT_24BIT_RGB,256) )
 			return GE_FALSE;
 
+		#ifdef _WINDOWS
 		if ( ! (PalInfo = closestPalInit(paldata)) )
 			return GE_FALSE;
+		#endif
 
 		fmp = static_cast<uint8*>(FmBits);
 		top = static_cast<uint8*>(ToBits);
@@ -2576,15 +2583,19 @@ int fmxtra,tow,toh,toxtra,fmw,fmh,fmstep,x,y,bpp;
 				G = (G+2)>>2;
 				B = (B+2)>>2;
 
+				#ifdef _WINDOWS
 				p = closestPal(R,G,B,PalInfo);
+				#endif
 				*top++ = p;
 			}
 			fmp += fmxtra;
 			top += toxtra;
 		}
 
+		#ifdef _WINDOWS
 		closestPalFree(PalInfo);
-
+		#endif
+		
 		assert( top == (((uint8 *)ToBits) + ToInfo->Stride * ToInfo->Height * bpp ) );
 		assert( fmp == (((uint8 *)FmBits) + FmInfo->Stride * ToInfo->Height * 2 * bpp ) );
 	}
@@ -3404,7 +3415,7 @@ uint32 pel,ColorKey;
 			geErrorLog_AddString(-1,"UsesColorKey : invalid format", NULL);
 			return GE_TRUE;
 		case 3:
-			#pragma message("Bitmap : UsesColorKey : no 24bit Smart ColorKey")
+			#pragma todo("Bitmap : UsesColorKey : no 24bit Smart ColorKey")
 			geErrorLog_AddString(-1,"UsesColorKey : no 24bit Smart ColorKey", NULL);
 			return GE_TRUE;	
 		case 1:
@@ -5261,7 +5272,7 @@ GENESISAPI geBoolean GENESISCC geBitmap_GetAverageColor(const geBitmap *Bmp,int 
 		{
 			// <> Blech!
 			geErrorLog_AddString(-1,"Bitmap_AverageColor : doesn't support palettized yet!",NULL);
-			#pragma message("Bitmap_AverageColor : doesn't support palettized yet!")
+			#pragma todo("Bitmap_AverageColor : doesn't support palettized yet!")
 			return GE_FALSE;
 		}
 		else

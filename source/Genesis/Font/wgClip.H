@@ -24,7 +24,7 @@
 
 #define GE_CLIP_CENTER 1
 #define GE_CLIP_CORNER 0
-#include	"basetype.h"
+#include	"BASETYPE.H"
 #include	"getypes.h"
 
 //***************************************************************

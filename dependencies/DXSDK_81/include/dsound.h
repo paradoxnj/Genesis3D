@@ -2,7 +2,7 @@
  *
  *  Copyright (C) 1995-2001 Microsoft Corporation.  All Rights Reserved.
  *
- *  File:       dsound.h
+ *  File:       dSOUND.H
  *  Content:    DirectSound include file
  *
  **************************************************************************/

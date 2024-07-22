@@ -25,7 +25,7 @@
 #include <assert.h>
 #include "rcstring.h"
 #include "MyFileDlg.h"
-#include "FilePath.h"
+#include "Filepath.h"
 #include "MkUtil.h"
 #include "MakeHelp.h"
 
@@ -272,7 +272,7 @@ BOOL CAStudioPropSheet::OnInitDialog()
 
 		if (rslt == FALSE)
 		{
-			#pragma message ("Need to handle creation err here")
+			#pragma todo ("Need to handle creation err here")
 			// really don't know what to do about this...
 			// probably should destroy myself
 			assert (0);

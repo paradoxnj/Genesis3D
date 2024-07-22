@@ -371,7 +371,7 @@
     <ClInclude Include="face.h" />
     <ClInclude Include="FaceAttributesDialog.h" />
     <ClInclude Include="facelist.h" />
-    <ClInclude Include="FilePath.h" />
+    <ClInclude Include="Filepath.h" />
     <ClInclude Include="Fusion.h" />
     <ClInclude Include="FUSIONDoc.h" />
     <ClInclude Include="FusionTabControls.h" />

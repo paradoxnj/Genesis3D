@@ -20,9 +20,9 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 
-#include "BaseType.h"
+#include "BASETYPE.H"
 #include "DDMemMgr.h"
 
 #define DDMEMMGR_MAX_PARTITIONS				16

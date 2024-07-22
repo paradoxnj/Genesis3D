@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  MKBODY.H	                                                                        */
+/*  MKbody.h	                                                                        */
 /*                                                                                      */
 /*  Author: Stephen Balkum	                                                            */
 /*  Description: Body construction from MAX export and textures.						*/

@@ -22,16 +22,16 @@
 #include <Windows.h>
 #include <Stdio.h>
 
-#include "DCommon.h"
+#include "Dcommon.h"
 #include "BSP.h"
-#include "GBSPFile.h"
+#include "GBSPFILE.H"
 #include "Math.h"
 #include "MathLib.h"
 #include "Poly.h"
-#include "Light.h"
+#include "LIGHT.H"
 #include "Texture.h"
 
-#include "Ram.h"
+#include "RAM.H"
 
 pRAD_Patch	*FacePatches;
 pRAD_Patch	*PatchList;

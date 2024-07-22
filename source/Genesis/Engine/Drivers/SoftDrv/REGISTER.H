@@ -26,7 +26,7 @@
 
 #include "ddraw.h"
 
-#include "DCommon.h"
+#include "Dcommon.h"
 
 #define	MAX_TEXTURE_HANDLES		15000
 

@@ -30,10 +30,10 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "TKEvents.h"
-#include "TKArray.h"
-#include "ErrorLog.h"
-#include "ram.h"
+#include "tkevents.h"
+#include "tkarray.h"
+#include "Errorlog.h"
+#include "RAM.H"
 #include "string.h"
 
 typedef struct
@@ -366,7 +366,7 @@ geTKEvents* GENESISCC geTKEvents_CreateFromFile(
 			geErrorLog_Add(ERR_TKEVENTS_FILE_READ, NULL);
 			return NULL;
 		}
-		sscanf(VersionString, "%X.%X\n", &u, &v);
+		sscanf(VersionString, "%X.%X\n", (unsigned int*)&u, (unsigned int*)&v);
 		v |= (u << 8);
 		// Should this structure change, then actually code multiversion support.
 		if(v != TKEVENTS_FILE_VERSION)
@@ -378,7 +378,7 @@ geTKEvents* GENESISCC geTKEvents_CreateFromFile(
 		if(_strnicmp(line, TKEVENTS_DATASIZE_ID, sizeof(TKEVENTS_DATASIZE_ID)-1) != 0)
 			ABORT_READ_AND_FREE;
 
-		if(sscanf(line + sizeof(TKEVENTS_DATASIZE_ID)-1, "%d", &pEvents->DataSize) != 1)
+		if(sscanf(line + sizeof(TKEVENTS_DATASIZE_ID)-1, "%d", (int*)&pEvents->DataSize) != 1)
 			ABORT_READ_AND_FREE;
 		if (pEvents->DataSize +1> LINE_LENGTH)
 			ABORT_READ_AND_FREE;
@@ -411,7 +411,7 @@ geTKEvents* GENESISCC geTKEvents_CreateFromFile(
 			char	TimeString[64];
 			if	(geVFile_GetS(pFile, TimeString, sizeof(TimeString)) == GE_FALSE)
 				ABORT_READ_AND_FREE_ALL;
-			if(sscanf(TimeString, "%f %d\n", &Time, &v) != 2)
+			if(sscanf(TimeString, "%f %d\n", &Time, (int*)&v) != 2)
 				ABORT_READ_AND_FREE_ALL;
 			if(!geTKArray_Insert(&pEvents->pTimeKeys, Time, (int*)&u))
 				ABORT_READ_AND_FREE_ALL;

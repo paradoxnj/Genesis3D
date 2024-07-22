@@ -13,14 +13,14 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 #include <Stdio.h>
 
 #include "Console.h"
 
-#include "Genesis.h"
-#include "ErrorLog.h"
-#include "Ram.h"
+#include "GENESIS.H"
+#include "Errorlog.h"
+#include "RAM.H"
 
 #include "Server.h"
 

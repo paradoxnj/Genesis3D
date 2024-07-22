@@ -24,9 +24,9 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include "genesis.h"
-#include "ram.h"
-#include "errorlog.h"
+#include "GENESIS.H"
+#include "RAM.H"
+#include "Errorlog.h"
 
 #include "drvlist.h"
 #include "function.h"
@@ -462,7 +462,7 @@ static	void	Help (void)
 
 	for	(i = 0; i < sizeof(HelpStrings) / sizeof(HelpStrings[0]); i++)
 	{
-		#pragma message ("Ugly cast 'cause geEngine_Printf is not const correct.")
+		#pragma todo ("Ugly cast 'cause geEngine_Printf is not const correct.")
 		geEngine_Printf (Engine, 5, TEXTLINE(i), (char *)HelpStrings[i]);
 	}
 }

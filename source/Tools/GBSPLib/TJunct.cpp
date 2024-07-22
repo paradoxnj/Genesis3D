@@ -27,7 +27,7 @@
 #include "Poly.h"
 #include "Texture.h"
 
-#include "Ram.h"
+#include "RAM.H"
 
 #define OFF_EPSILON					0.05f
 

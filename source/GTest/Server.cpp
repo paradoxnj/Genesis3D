@@ -13,7 +13,7 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 #include <Time.h>
 
 #include "Server.h"
@@ -3190,7 +3190,7 @@ static void Server_SetupGenVSI(void *S)
 	VSI->SetClientWeapon = Server_SetClientWeapon;
 	VSI->SetClientInventory = Server_SetClientInventory;
 	VSI->GetClientMove = Server_GetClientMove;
-#pragma message ("Bot - Server.c")
+#pragma todo ("Bot - Server.c")
 	VSI->IsClientBot = Server_IsClientBot;
 	VSI->ClientDisconnect = Server_ClientDisconnectByHandle;
 

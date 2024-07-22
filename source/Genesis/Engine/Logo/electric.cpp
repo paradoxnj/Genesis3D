@@ -19,15 +19,19 @@
 /*  Copyright (C) 1999 WildTangent, Inc. All Rights Reserved           */
 /*                                                                                      */
 /****************************************************************************************/
+#ifdef _WINDOWS
 #include	<windows.h>
+#endif
+
+#include	<string.h>
 #include	<math.h>
 #include	<assert.h>
 
-#include	"genesis.h"
-#include	"ErrorLog.h"
+#include	"GENESIS.H"
+#include	"Errorlog.h"
 
-#include	"Electric.h"
-#include	"ram.h"
+#include	"electric.h"
+#include	"RAM.H"
 
 static	int		logBase2(int n)
 {
@@ -216,7 +220,7 @@ void _Electric_BoltEffectAnimate(
 		int	Spike;
 
 		DecayRate = rand() % (int)(Effect->beBaseColors[dominant] - Effect->beBaseColors[nonDominant1]);
-		DecayRate = max(DecayRate, 5);
+		DecayRate = std::max(DecayRate, 5);
 		Effect->beDecayRate = DecayRate;
 		if	(Effect->beBaseColors[nonDominant1] >= 1.0f)
 			Spike = rand() % (int)(Effect->beBaseColors[nonDominant1]);

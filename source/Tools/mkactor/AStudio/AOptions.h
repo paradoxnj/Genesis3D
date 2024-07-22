@@ -22,7 +22,7 @@
 #ifndef AOPTIONS_H
 #define AOPTIONS_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 
 #ifdef __cplusplus
 	extern "C" {

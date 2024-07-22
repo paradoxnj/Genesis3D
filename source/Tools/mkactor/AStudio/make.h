@@ -22,7 +22,7 @@
 #ifndef MAKE_H
 #define MAKE_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "mkutil.h"
 #include "AProject.h"
 #include "AOptions.h"

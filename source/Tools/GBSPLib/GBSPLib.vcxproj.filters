@@ -82,7 +82,7 @@
     <ClInclude Include="Fill.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Gbspfile.h">
+    <ClInclude Include="GBSPFILE.H">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Gbsplib.h">
@@ -94,7 +94,7 @@
     <ClInclude Include="Leaf.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Light.h">
+    <ClInclude Include="LIGHT.H">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">

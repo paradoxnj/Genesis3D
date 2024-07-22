@@ -21,7 +21,7 @@
 /****************************************************************************************/
 #include "stdafx.h"
 #include "WadFile.h"
-#include "ram.h"
+#include "RAM.H"
 #include "vfile.h"
 #include "util.h"
 #include <assert.h>

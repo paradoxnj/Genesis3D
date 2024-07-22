@@ -26,7 +26,7 @@
 #include "TypeIO.h"
 #include <float.h>
 #include "units.h"
-#include "ram.h"
+#include "RAM.H"
 #include "util.h"
 #include "node.h"
 #include "brush.h"

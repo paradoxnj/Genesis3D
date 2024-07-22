@@ -23,7 +23,7 @@
 #include <stdio.h>
 
 #include "D3DDrv.h"
-#include "DCommon.h"
+#include "Dcommon.h"
 #include "Render.h"
 #include "Scene.h"
 #include "GSpan.h"

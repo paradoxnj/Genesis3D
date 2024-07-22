@@ -29,7 +29,7 @@ permission.  http://www.d6.com/users/checker
 
 #include	"windows.h"		//I really didn't want to do this
 #include	"softdrv.h"
-#include	"basetype.h"
+#include	"BASETYPE.H"
 #include	"drawspan.h"
 #include	"render.h"
 

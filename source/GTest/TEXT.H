@@ -8,7 +8,7 @@
 #ifndef TEXT_H
 #define TEXT_H
 
-#include "Genesis.h"
+#include "GENESIS.H"
 
 #ifdef __cplusplus
 	extern "C" {

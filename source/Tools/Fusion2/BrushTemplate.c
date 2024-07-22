@@ -22,7 +22,7 @@
 #include "BrushTemplate.h"
 #include "units.h"
 #include "facelist.h"
-#include "ram.h"
+#include "RAM.H"
 
 Brush *BrushTemplate_CreateArch (const BrushTemplate_Arch *pTemplate)
 {

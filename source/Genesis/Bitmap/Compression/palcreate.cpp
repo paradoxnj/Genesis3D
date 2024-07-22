@@ -86,7 +86,7 @@ why this isn't exactly optimal:
 #include "palcreate.h"
 #include "tsc.h"
 #include "paloptimize.h"
-#include "ram.h"
+#include "RAM.H"
 #include "yuv.h"
 #include "mempool.h"
 #include "utility.h"		// delete macro
@@ -463,7 +463,7 @@ int i,d,bestD,bestP;
 return bestD;
 }
 
-static void addOctNode(octNode *root,int R,int G,int B,int *nLeavesPtr)
+void addOctNode(octNode *root,int R,int G,int B,int *nLeavesPtr)
 {
 int idx;
 int bits;
@@ -489,7 +489,7 @@ octNode *node;
 	node->B = B;
 }
 
-static void gatherLeaves(octNode *node,octNode *** leavesPtrPtr,int minCount)
+void gatherLeaves(octNode *node,octNode *** leavesPtrPtr,int minCount)
 {
 	if ( node->count <= minCount ) return;
 	if ( node->nKids == 0 ) 
@@ -506,7 +506,7 @@ static void gatherLeaves(octNode *node,octNode *** leavesPtrPtr,int minCount)
 	}
 }
 
-static void gatherLeavesCutting(octNode *node,octNode *** leavesPtrPtr)
+void gatherLeavesCutting(octNode *node,octNode *** leavesPtrPtr)
 {
 	if ( node->nKids > 0 ) 
 	{
@@ -549,14 +549,15 @@ static void gatherLeavesCutting(octNode *node,octNode *** leavesPtrPtr)
 	}
 }
 
-static int leafCompareCount(const void *a,const void *b)
+int leafCompareCount(const void *a,const void *b)
 {
 octNode *na,*nb;
 	na = *((octNode **)a);
 	nb = *((octNode **)b);
 return (nb->count) - (na->count);
 }
-static int leafCompareCost(const void *a,const void *b)
+
+int leafCompareCost(const void *a,const void *b)
 {
 octNode *na,*nb;
 	na = *((octNode **)a);

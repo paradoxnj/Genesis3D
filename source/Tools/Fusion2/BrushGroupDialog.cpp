@@ -475,7 +475,7 @@ void CBrushGroupDialog::OnSelchangeBrushlist()
 void CBrushGroupDialog::UpdateGroupSelection( void ) 
 {
 #if 1
-	#pragma message ("Group selection stuff badly farkled")
+	#pragma todo ("Group selection stuff badly farkled")
 #else
 	int			c ;
 	int			i ;

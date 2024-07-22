@@ -25,8 +25,8 @@
 #include	<stdlib.h>
 #include	<string.h>
 
-#include	"basetype.h"
-#include	"ram.h"
+#include	"BASETYPE.H"
+#include	"RAM.H"
 
 #include	"dirtree.h"
 

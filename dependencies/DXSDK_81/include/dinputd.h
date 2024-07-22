@@ -11,7 +11,7 @@
 
 #ifndef DIRECTINPUT_VERSION
 #define DIRECTINPUT_VERSION         0x0800
-#pragma message(__FILE__ ": DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800")
+#pragma todo(__FILE__ ": DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800")
 #endif
 
 #ifdef __cplusplus

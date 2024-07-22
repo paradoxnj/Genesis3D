@@ -20,7 +20,7 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include "util.h"
-#include "ram.h"
+#include "RAM.H"
 #include <string.h>
 #include <assert.h>
 #include <ctype.h>

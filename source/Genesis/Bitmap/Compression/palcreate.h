@@ -1,7 +1,7 @@
 #ifndef GE_BRANDO_PALCREATE_H
 #define GE_BRANDO_PALCREATE_H
 
-#include "basetype.h"
+#include "BASETYPE.H"
 #include "bitmap.h"
 
 /****************************************************************************************/

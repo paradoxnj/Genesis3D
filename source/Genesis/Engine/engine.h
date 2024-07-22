@@ -23,9 +23,9 @@
 #ifndef GE_ENGINE_H
 #define GE_ENGINE_H
 
-#include "Genesis.h"
+#include "GENESIS.H"
 #include "System.h"
-#include "world.h"
+#include "WORLD.H"
 #include "bitmap.h"
 #include "BitmapList.h"
 

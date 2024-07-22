@@ -18,11 +18,11 @@
 #include <Windows.H>
 #include <MMSystem.H>
 #include <StdLib.h>
-#include <Assert.h>
+#include <assert.h>
 #include <Time.h>
 #include <direct.h>		//_chdir()
 
-#include "Genesis.h"
+#include "GENESIS.H"
 #include "bitmap.h"
 #include "Errorlog.h"
 

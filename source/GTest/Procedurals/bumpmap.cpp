@@ -1,12 +1,12 @@
 
 #include <math.h>
-#include <Assert.h>
+#include <assert.h>
 #include <string.h>
 
 #include "bumpmap.h"
-#include "genesis.h"
+#include "GENESIS.H"
 #include "bitmap.h"
-#include "ram.h"
+#include "RAM.H"
 
 /**********************************************************/
 

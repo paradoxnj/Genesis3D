@@ -27,7 +27,7 @@
 
 #include "body.h"
 #include "quatern.h"
-#include "ram.h"
+#include "RAM.H"
 #include "strblock.h"
 #include "vph.h"
 #include "mkbody.h"
@@ -413,7 +413,7 @@ ReturnCode ReadVPHData(MkBody_Options* options, FILE* fp, VPHData* pVPHData)
 				break;
 			}
 
-#pragma message ("need to test for rigid connections by looking at deform_link")
+#pragma todo ("need to test for rigid connections by looking at deform_link")
 			/*
 			// non-positive bone is a rigid bone and a good thing
 			if(pVPHVerts[j].bone > 0)
@@ -729,7 +729,7 @@ ReturnCode V2ReadVertices(MkBody_Options* options, FILE* fp, geBody* pBody, char
 
 		// apply rotation to all data at read time
 		geXForm3d_Transform(&euler, &pVerts[k].v, &pVerts[k].v);
-#pragma message ("vertex offsets not used now, but when they are used, they need to be rotated")
+#pragma todo ("vertex offsets not used now, but when they are used, they need to be rotated")
 
 		// to get to the bone name, search for the 6th space
 		ptext = line;
@@ -1266,11 +1266,11 @@ MkBody_Material(MkBody_Options *options, const char *line, geBody *pBody, int i)
 				H = geBitmap_Height( Bmp );
 				if (W != H)
 					{
-				#pragma message ("change this so that we can 'treat warnings as errors'")
+				#pragma todo ("change this so that we can 'treat warnings as errors'")
 						Printf("WARNING: bitmap for material %d is not square. '%s'\n",i,name);
 						//return GE_FALSE;
 					}
-				#pragma message ("remove this when these limitations are removed from engine")
+				#pragma todo ("remove this when these limitations are removed from engine")
 				for (TwoPower=1; TwoPower<=256; TwoPower*=2)
 					{
 						if (TwoPower==W)

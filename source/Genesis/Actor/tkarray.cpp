@@ -35,9 +35,9 @@
 #include <stddef.h>
 #include <string.h>
 
-#include "TKArray.h"
-#include "ErrorLog.h"
-#include "ram.h"
+#include "tkarray.h"
+#include "Errorlog.h"
+#include "RAM.H"
 
 typedef struct geTKArray
 {

@@ -13,7 +13,7 @@
 /*                                                                                      */
 /****************************************************************************************/
 #include <Windows.h>
-#include <Assert.h>
+#include <assert.h>
 
 #include "GMain.h"
 #include "Quatern.h"
@@ -267,7 +267,7 @@ geBoolean KillPlayer(GenVSI *VSI, void *PlayerData, void *TargetData, float Time
 	{
 		int32		i;
 
-		// TODO:  Create a new player, and copy over inventory for a backpack...
+		// #pragma todo:  Create a new player, and copy over inventory for a backpack...
 		for (i=1; i<MAX_PLAYER_ITEMS; i++)
 		{
 			Target->Inventory[i] = 0;

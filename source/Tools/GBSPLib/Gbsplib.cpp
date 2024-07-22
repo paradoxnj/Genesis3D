@@ -24,7 +24,7 @@
 #include "GBSPPrep.h"
 #include "BSP.h"
 #include "Vis.h"
-#include "Light.h"
+#include "LIGHT.H"
 #include "Map.h"
 
 #define HANDLE_EXCEPTIONS

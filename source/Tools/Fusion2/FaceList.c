@@ -22,7 +22,7 @@
 #include "facelist.h"
 #include <assert.h>
 #include "typeio.h"
-#include "ram.h"
+#include "RAM.H"
 #include <memory.h>
 
 struct tag_FaceList

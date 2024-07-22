@@ -1,5 +1,5 @@
 /****************************************************************************************/
-/*  FMTACTOR.H                                                                          */
+/*  FMTactor.h                                                                          */
 /*                                                                                      */
 /*  The contents of this file are subject to the Genesis3D Public License               */
 /*  Version 1.01 (the "License"); you may not use this file except in                   */
